@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="${project}/build">
-  <deploy packagingFormat="all">
-    <application name="Language Trainer" toolkit="fx"/>
-    <info/>
+<anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="${project}/build" cssToBin="true">
+  <deploy packagingFormat="all" proxyResolution="true">
+    <application name="Language Trainer" mainclass="br_0309.apps.languageTrainer.LanguageTrainer" version="0.0.1" toolkit="fx"/>
+    <info title="LanguageTrainer" vendor="Benjamin Raison"/>
   </deploy>
   <signjar/>
 </anttasks:AntTask>
