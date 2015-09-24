@@ -18,10 +18,10 @@ public class LanguageTrainer extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/br_0309/apps/languageTrainer/scenes/Menu.fxml"),
-					ResourceBundle.getBundle("lang.Locale", Locale.getDefault()));
+			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource(Reference.FXML_MENU),
+					ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			Scene scene = new Scene(root, 400, 400);
-			scene.getStylesheets().add(getClass().getResource("/br_0309/apps/languageTrainer/application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource(Reference.CSS_APPLICATION).toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -32,7 +32,7 @@ public class LanguageTrainer extends Application {
 	public static void main(String[] args) {
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
 
-		// launch(args);
+		launch(args);
 		System.exit(0);
 	}
 }

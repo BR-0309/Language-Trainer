@@ -124,7 +124,7 @@
 			includeDT="false"
 			offlineAllowed="true"
 			outdir="${basedir}/deploy"
-			outfile="LanguageTrainer" nativeBundles="all"
+			outfile="LanguageTrainer" nativeBundles="exe"
 			updatemode="background" >	
 			<fx:platform basedir="${java.home}"/>
 			<fx:info title="Language Trainer" vendor="Benjamin Raison"/>
