@@ -1,5 +1,8 @@
 package br_0309.apps.languageTrainer.data;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +15,8 @@ public class UserData implements Serializable {
 	private static final long serialVersionUID = 2362898497407984692L;
 	public List<String> map = new ArrayList<String>();
 	private Properties properties;
-	public String lang;
+	// TODO: Add themes
+	public String theme;
 
 	public UserData() {
 		properties = new Properties(getDefaults());
@@ -27,6 +31,19 @@ public class UserData implements Serializable {
 
 	public void save() {
 		// TODO: Implement saving of settings
+		ObjectOutputStream out = null;
+		try {
+			out = new ObjectOutputStream(new FileOutputStream(""));
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void load() {

@@ -15,6 +15,10 @@ public class LanguageHandler {
 			new Locale("sw"), new Locale("sv"), new Locale("ss"), new Locale("tn"), new Locale("to"), new Locale("tr"), new Locale("ve"), new Locale("vo"),
 			new Locale("wa"), new Locale("cy"), new Locale("wo"), new Locale("xh"), new Locale("zu") };
 
+	/**
+	 * @return the best suited locale given the current system lnguage and the
+	 *         available i18n files
+	 */
 	public static Locale getBestLocale() {
 		Locale defaultLocale = Locale.getDefault();
 		for (Locale l : INTERFACE_LANGS) {
@@ -26,6 +30,10 @@ public class LanguageHandler {
 		return new Locale("en", "GB");
 	}
 
+	/**
+	 * Sets the default locale to lanugage if it is an available locale, else
+	 * set to english
+	 */
 	public static void setDisplayLanguage(Locale language) {
 		Locale set = null;
 		for (Locale l : INTERFACE_LANGS) {

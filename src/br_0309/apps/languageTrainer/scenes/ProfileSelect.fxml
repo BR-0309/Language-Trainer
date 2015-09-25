@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ProfileSelectController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="269.0" layoutY="266.0" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel" />
+            <ListView fx:id="list" layoutX="12.0" layoutY="54.0" prefHeight="200.0" prefWidth="315.0" />
+            <Button fx:id="newProfile" layoutX="10.0" layoutY="266.0" mnemonicParsing="false" text="%profileSelect.newProfile" />
+            <Button layoutX="143.0" layoutY="267.0" mnemonicParsing="false" text="%generic.delete" />
+            <Button layoutX="214.0" layoutY="266.0" mnemonicParsing="false" text="%generic.go" />
+            <Label layoutX="15.0" layoutY="14.0" text="%profileSelect.title">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
