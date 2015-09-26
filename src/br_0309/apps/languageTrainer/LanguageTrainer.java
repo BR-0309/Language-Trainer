@@ -1,5 +1,6 @@
 package br_0309.apps.languageTrainer;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -7,6 +8,7 @@ import java.util.ResourceBundle;
 import com.aquafx_project.AquaFx;
 
 import br_0309.apps.languageTrainer.data.UserData;
+import br_0309.apps.languageTrainer.util.SystemUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -47,10 +49,21 @@ public class LanguageTrainer extends Application {
 	}
 
 	public static void main(String[] args) {
-		if( {
-			LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
+		if (SystemUtil.isWindows()) {
+			File file = new File(System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" + File.separator + "LanguageTrainer"
+					+ File.separator);
+			file.mkdirs();
+		} else if (SystemUtil.isMac()) {
+
+		} else {
+
 		}
-		if (System.getProperty("os.name").startsWith("Mac")) {
+		if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
+
+		}
+		System.out.println(System.getProperty("user.dir"));
+		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
+		if (SystemUtil.isMac()) {
 			AquaFx.style();
 			System.setProperty("apple.laf.useScreenMenuBar", "true");
 		} else if (System.getProperty("os.name").startsWith("Windows")) {
