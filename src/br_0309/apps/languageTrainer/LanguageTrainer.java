@@ -47,7 +47,9 @@ public class LanguageTrainer extends Application {
 	}
 
 	public static void main(String[] args) {
-		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
+		if( {
+			LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
+		}
 		if (System.getProperty("os.name").startsWith("Mac")) {
 			AquaFx.style();
 			System.setProperty("apple.laf.useScreenMenuBar", "true");

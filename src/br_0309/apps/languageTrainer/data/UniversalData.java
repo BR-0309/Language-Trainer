@@ -15,4 +15,25 @@ public class UniversalData {
 		// TODO: Implement saving of universal data
 	}
 
+	public void addLocation(File file) {
+		File folder;
+		if (file.isDirectory()) {
+			folder = file;
+		} else {
+			folder = file.getParentFile();
+			if (folder == null) {
+				return;
+			}
+		}
+		if (!folder.exists()) {
+			return;
+		}
+		for (File f : profileLocations) {
+			if (f.equals(folder)) {
+				return;
+			}
+		}
+		profileLocations.add(folder);
+	}
+
 }
