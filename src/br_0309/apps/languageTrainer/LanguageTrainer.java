@@ -2,11 +2,13 @@ package br_0309.apps.languageTrainer;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import com.aquafx_project.AquaFx;
 
+import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
 import br_0309.apps.languageTrainer.util.SystemUtil;
 import javafx.application.Application;
@@ -18,7 +20,8 @@ import javafx.stage.Stage;
 // FIXME: No custom icons for installer
 public class LanguageTrainer extends Application {
 
-	public static UserData data = new UserData();
+	public static UserData userData = new UserData();
+	public static UniversalData universalData = new UniversalData();
 	public static Stage window;
 
 	@Override
@@ -53,15 +56,30 @@ public class LanguageTrainer extends Application {
 			File file = new File(System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" + File.separator + "LanguageTrainer"
 					+ File.separator);
 			file.mkdirs();
+			Reference.DEFAULT_SAVE_DIR = System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" + File.separator
+					+ "LanguageTrainer" + File.separator;
 		} else if (SystemUtil.isMac()) {
-
+			// TODO: Check
+			File file = new File(System.getProperty("user.home") + File.separator + "Libraries" + File.separator + "ApplicationSupport" + File.separator);
+			file.mkdirs();
+			Reference.DEFAULT_SAVE_DIR = System.getProperty("user.home") + File.separator + "Libraries" + File.separator + "ApplicationSupport" + File.separator;
 		} else {
-
+			File file = new File(System.getProperty("user.home") + File.separator + "LanguageTrainer" + File.separator);
+			file.mkdirs();
+			Reference.DEFAULT_SAVE_DIR = System.getProperty("user.home") + File.separator + "LanguageTrainer" + File.separator;
 		}
 		if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
-
+			File log = new File(Reference.DEFAULT_SAVE_DIR + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate());
+			try {
+				log.getParentFile().mkdirs();
+				log.createNewFile();
+				PrintStream writer = new PrintStream(log);
+				System.setErr(writer);
+				System.setOut(writer);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		System.out.println(System.getProperty("user.dir"));
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
 		if (SystemUtil.isMac()) {
 			AquaFx.style();
@@ -71,7 +89,24 @@ public class LanguageTrainer extends Application {
 		} else {
 
 		}
+		printSystemInfo();
+		universalData.load();
 		launch(args);
 		System.exit(0);
 	}
+
+	private static void printSystemInfo() {
+		System.out.println("Operating System:\t\t\t" + System.getProperty("os.name"));
+		System.out.println("Operating System Version:\t" + System.getProperty("os.version"));
+		System.out.println("Architecture:\t\t\t\t" + System.getProperty("os.arch"));
+		System.out.println("Java Version:\t\t\t\t" + System.getProperty("java.version"));
+		System.out.println("Java Vendor:\t\t\t\t" + System.getProperty("java.vendor"));
+		System.out.println("JavaFX Version:\t\t\t\t" + System.getProperty("javafx.version"));
+		System.out.println("Java Home Dir:\t\t\t\t" + System.getProperty("java.home"));
+		System.out.println("Temporary Dir:\t\t\t\t" + System.getProperty("java.io.tmpdir"));
+		System.out.println("System language:\t\t\t" + System.getProperty("user.language"));
+		System.out.println("Execution Dir:\t\t\t\t" + System.getProperty("user.dir"));
+		System.out.println("User Home Dir:\t\t\t\t" + System.getProperty("user.home") + "\n");
+	}
+
 }

@@ -1,6 +1,8 @@
 package br_0309.apps.languageTrainer.scenes.controllers;
 
+import java.io.File;
 import java.net.URL;
+import java.util.Hashtable;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -14,6 +16,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 
+// FIXME: Add onClose or similar
 public class ProfileSelectController implements Initializable {
 
 	@FXML
@@ -28,24 +31,19 @@ public class ProfileSelectController implements Initializable {
 	public Button cancel;
 
 	private ResourceBundle BUNDLE;
+	private Hashtable<String, File> profiles = new Hashtable<String, File>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		BUNDLE = resources;
-		list.getItems().add("Benjamin");
-		list.getItems().add("Malik");
-		list.getItems().add("Nico");
-		list.getItems().add("Namse");
-		list.getItems().add("Rafael");
-		list.getItems().add("Robin");
-		list.getItems().add("Steven");
-		list.getItems().add("Benjamin");
-		list.getItems().add("Malik");
-		list.getItems().add("Nico");
-		list.getItems().add("Namse");
-		list.getItems().add("Rafael");
-		list.getItems().add("Robin");
-		list.getItems().add("Steven");
+		for (File file : LanguageTrainer.universalData.profileLocations) {
+			for (File f : file.listFiles()) {
+				if (f.getName().endsWith(".ltd")) {
+					profiles.put(f.getName().replace(".ltd", ""), file);
+					list.getItems().add(f.getName().replace(".ltd", ""));
+				}
+			}
+		}
 
 	}
 
