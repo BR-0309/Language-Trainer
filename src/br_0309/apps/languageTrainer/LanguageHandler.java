@@ -5,6 +5,7 @@ import java.util.Locale;
 public class LanguageHandler {
 
 	private final static Locale[] INTERFACE_LANGS = { Locale.GERMANY, Locale.UK };
+	// TODO: Add countries to match flags
 	public static final Locale[] LANGUAGES = { new Locale("af"), new Locale("an"), new Locale("ay"), new Locale("bi"), new Locale("br"), new Locale("ca"),
 			new Locale("ch"), new Locale("co"), new Locale("cs"), new Locale("da"), new Locale("en"), new Locale("eo"), new Locale("et"), new Locale("eu"),
 			new Locale("ff"), new Locale("gl"), new Locale("de"), new Locale("gn"), new Locale("ht"), new Locale("ho"), new Locale("ia"), new Locale("ie"),

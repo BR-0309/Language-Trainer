@@ -14,7 +14,7 @@ public class UserData implements Serializable {
 
 	private static final long serialVersionUID = 2362898497407984692L;
 	public List<String> map = new ArrayList<String>();
-	private Properties properties;
+	public Properties properties;
 	// TODO: Add themes
 	public String theme;
 
@@ -25,7 +25,6 @@ public class UserData implements Serializable {
 	private Properties getDefaults() {
 		Properties p = new Properties();
 		p.setProperty(Reference.PROPERTY_LANGUAGE, "en");
-
 		return p;
 	}
 

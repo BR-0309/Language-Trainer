@@ -17,6 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 
 // FIXME: Add onClose or similar
+// TODO: Add new profile editor
 public class ProfileSelectController implements Initializable {
 
 	@FXML
@@ -32,6 +33,7 @@ public class ProfileSelectController implements Initializable {
 
 	private ResourceBundle BUNDLE;
 	private Hashtable<String, File> profiles = new Hashtable<String, File>();
+	public boolean isProfileSelected = false;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
