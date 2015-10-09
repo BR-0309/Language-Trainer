@@ -72,10 +72,10 @@ public class LanguageTrainer extends Application {
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
 		if (SystemUtil.isMac()) {
 			System.setProperty("apple.laf.useScreenMenuBar", "true");
-		} else if (System.getProperty("os.name").startsWith("Windows")) {
-
+		} else if (SystemUtil.isWindows()) {
+			// Windows specific things
 		} else {
-
+			// Linux/Solaris specific things
 		}
 		printSystemInfo();
 		universalData.load();
@@ -84,19 +84,13 @@ public class LanguageTrainer extends Application {
 	}
 
 	private static void printSystemInfo() {
-		System.out.println("Operating System:\t\t" + System.getProperty("os.name"));
-		System.out.println("Operating System Version:\t" + System.getProperty("os.version"));
-		System.out.println("Architecture:\t\t\t" + System.getProperty("os.arch"));
-		System.out.println("Java Version:\t\t\t" + System.getProperty("java.version"));
-		System.out.println("Java Vendor:\t\t\t" + System.getProperty("java.vendor"));
-		System.out.println("JavaFX Version:\t\t\t" + System.getProperty("javafx.version"));
-		System.out.println("Java Home Dir:\t\t\t" + System.getProperty("java.home"));
-		System.out.println("Temporary Dir:\t\t\t" + System.getProperty("java.io.tmpdir"));
-		System.out.println("Execution Dir:\t\t\t" + System.getProperty("user.dir"));
-		System.out.println("User Home Dir:\t\t\t" + System.getProperty("user.home"));
-		System.out.println("System language:\t\t" + System.getProperty("user.language"));
-		System.out.println("JVM Default Locale:\t\t" + Locale.getDefault().toString());
-		System.out.println("Best suited locale:\t\t" + LanguageHandler.getBestLocale().toString() + "\n");
+		System.out.println("Operating System:\t\t" + System.getProperty("os.name") + "\n" + "Operating System Version:\t" + System.getProperty("os.version")
+				+ "\n" + "Architecture:\t\t\t" + System.getProperty("os.arch") + "\n" + "Java Version:\t\t\t" + System.getProperty("java.version") + "\n"
+				+ "Java Vendor:\t\t\t" + System.getProperty("java.vendor") + "\n" + "JavaFX Version:\t\t\t" + System.getProperty("javafx.version") + "\n"
+				+ "Java Home Dir:\t\t\t" + System.getProperty("java.home") + "\n" + "Temporary Dir:\t\t\t" + System.getProperty("java.io.tmpdir") + "\n"
+				+ "Execution Dir:\t\t\t" + System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t" + System.getProperty("user.home") + "\n"
+				+ "System language:\t\t" + System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t" + Locale.getDefault().toString() + "\n"
+				+ "Best suited locale:\t\t" + LanguageHandler.getBestLocale().toString() + "\n");
 
 	}
 
