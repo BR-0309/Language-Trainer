@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Set Eclipse execution environment to C:\Program Files\Java\jdk1.8.0_60\jre for it to work -->
-<!-- DO NOT Use SPACES IN NAME!! -->
-<!-- USE version IN fx:application OR IT DEFAULTS TO 1.0 -->
 	<project name="Language Trainer" default="do-deploy" basedir="."  xmlns:fx="javafx:com.sun.javafx.tools.ant">
+		<property name="version" value="0.0.6"/>
+		<!--Change to have systemwide installation-->
+		<property name="systemwide" value="false"/>
 	<target name="init-fx-tasks">
 		<path id="fxant">
 			<filelist>
-				<file name="${java.home}\..\lib\ant-javafx.jar"/>
-				<file name="${java.home}\lib\ext\jfxrt.jar"/>
+				<file name="C:\Program Files\Java\jdk1.8.0_60\..\lib\ant-javafx.jar"/>
+				<file name="C:\Program Files\Java\jdk1.8.0_60\lib\jfxrt.jar"/>
 				<file name="${basedir}"/>
 			</filelist>
 		</path>
@@ -88,15 +88,13 @@
 		<fx:resources id="appRes">
 			<fx:fileset dir="dist" includes="LanguageTrainer.jar"/>
 			<fx:fileset dir="dist" includes="libs/*"/>
-			<fx:fileset dir="dist" includes="resources/**"/>
 		</fx:resources>
 	
 		<fx:application id="fxApplication"
 			name="LanguageTrainer"
 			mainClass="br_0309.apps.languageTrainer.LanguageTrainer"
 			toolkit="fx"
-			version="0.0.1"
-		/>
+			version="${version}"/>
 	
 		<mkdir dir="build/classes/META-INF" />
 	
@@ -110,8 +108,8 @@
 	
 			<manifest>
 				<attribute name="Implementation-Vendor" value="Benjamin Raison"/>
-				<attribute name="Implementation-Title" value="LanguageTrainer"/>
-				<attribute name="Implementation-Version" value="0.0.1"/>
+				<attribute name="Implementation-Title" value="Language Trainer"/>
+				<attribute name="Implementation-Version" value="${version}"/>
 			</manifest>
 		</fx:jar>
 	
@@ -119,18 +117,27 @@
 		<mkdir dir="deploy" />
 		<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
 		<fx:deploy
-			embedJNLP="false"
+			verbose="true" 
+			embedJNLP="true"
 			extension="false"
 			includeDT="false"
 			offlineAllowed="true"
 			outdir="${basedir}/deploy"
-			outfile="LanguageTrainer" nativeBundles="exe"
-			updatemode="background" >	
-			<fx:platform basedir="${java.home}"/>
-			<fx:info title="Language Trainer" vendor="Benjamin Raison"/>
+			outfile="Language Trainer" nativeBundles="exe"
+			updatemode="background" >
+	
+			<fx:platform basedir="C:\Program Files\Java\jdk1.8.0_60"/>
+			<fx:info title="Language Trainer" vendor="Benjamin Raison">
+				<!--Use this until I find a better solution-->
+				<fx:icon href="LanguageTrainer.ico" kind="default"/>
+			</fx:info>		
 	
 			<fx:application refId="fxApplication"/>
 			<fx:resources refid="appRes"/>
+			<fx:preferences 
+				install="${systemwide}"
+				menu="true"
+				shortcut="true"/>
 		</fx:deploy>
 	
 		<fx:csstobin outdir="build/classes">

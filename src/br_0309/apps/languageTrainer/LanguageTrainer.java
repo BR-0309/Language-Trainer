@@ -96,6 +96,7 @@ public class LanguageTrainer extends Application {
 
 	private void showLogin() {
 		Stage stage = new Stage();
+		// stage.getIcons().add(new Image("/resources/Logov1.png"));
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT));
 		try {
 			loader.setResources(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));

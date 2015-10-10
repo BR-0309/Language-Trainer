@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 // TODO: Check StageStyle.UNIFIED on other platforms
+// TODO: Add more dialogs
+// TODO: Add default dialogs
 public class FXUtil {
 
 	/** Shows an Information Dialog with no header and a default title */
