@@ -14,10 +14,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 // FIXME: No custom icons for installer
+// TODO: Add icons at different resolutions
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -26,16 +28,16 @@ public class LanguageTrainer extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		window = primaryStage;
-		showLogin();
 		try {
 			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource(Reference.FXML_MENU),
 					ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
 			scene.getStylesheets().add(getClass().getResource(Reference.CSS_APPLICATION).toExternalForm());
 			primaryStage.setScene(scene);
+			window = primaryStage;
+			showLogin();
 			primaryStage.show();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -48,7 +50,7 @@ public class LanguageTrainer extends Application {
 			Reference.DEFAULT_SAVE_DIR = System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" + File.separator
 					+ "LanguageTrainer" + File.separator;
 		} else if (SystemUtil.isMac()) {
-			// TODO: Check
+			// TODO: Check Mac application support directory
 			File file = new File(System.getProperty("user.home") + File.separator + "Libraries" + File.separator + "ApplicationSupport" + File.separator);
 			file.mkdirs();
 			Reference.DEFAULT_SAVE_DIR = System.getProperty("user.home") + File.separator + "Libraries" + File.separator + "ApplicationSupport" + File.separator;
@@ -91,17 +93,18 @@ public class LanguageTrainer extends Application {
 				+ "Execution Dir:\t\t\t" + System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t" + System.getProperty("user.home") + "\n"
 				+ "System language:\t\t" + System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t" + Locale.getDefault().toString() + "\n"
 				+ "Best suited locale:\t\t" + LanguageHandler.getBestLocale().toString() + "\n");
-
 	}
 
 	private void showLogin() {
 		Stage stage = new Stage();
-		// stage.getIcons().add(new Image("/resources/Logov1.png"));
+		stage.getIcons().add(new Image(Reference.LOGO));
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT));
 		try {
 			loader.setResources(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			Parent root = (Parent) loader.load();
 			Scene scene = new Scene(root);
+			stage.setMinWidth(350);
+			stage.setMinHeight(400);
 			stage.setScene(scene);
 		} catch (IOException e1) {
 			e1.printStackTrace();

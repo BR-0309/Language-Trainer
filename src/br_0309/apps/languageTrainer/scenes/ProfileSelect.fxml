@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ProfileSelectController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ProfileSelectController">
    <top>
       <Label text="%profileSelect.title" BorderPane.alignment="CENTER">
          <font>
@@ -19,17 +19,25 @@
    <center>
       <ListView fx:id="list" prefHeight="200.0" prefWidth="315.0" BorderPane.alignment="CENTER" />
    </center>
-   <bottom>
-      <AnchorPane BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="newProfile" layoutY="11.0" mnemonicParsing="false" text="%profileSelect.newProfile" />
-            <Button layoutX="129.0" layoutY="11.0" mnemonicParsing="false" text="%generic.delete" />
-            <Button layoutX="263.0" layoutY="11.0" mnemonicParsing="false" text="%generic.go" />
-            <Button layoutX="298.0" layoutY="11.0" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel" />
-         </children>
-      </AnchorPane>
-   </bottom>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
+   <bottom>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="29.0" prefWidth="198.0" AnchorPane.leftAnchor="1.0">
+               <children>
+                  <Button fx:id="newProfile" mnemonicParsing="false" text="%profileSelect.newProfile" />
+                  <Button mnemonicParsing="false" text="%generic.delete" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" layoutX="184.0" layoutY="1.0" prefHeight="28.0" prefWidth="130.0" AnchorPane.rightAnchor="1.0">
+               <children>
+                  <Button mnemonicParsing="false" text="%generic.go" />
+                  <Button mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </bottom>
 </BorderPane>

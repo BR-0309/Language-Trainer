@@ -11,4 +11,6 @@ public class Reference {
 
 	public static String DEFAULT_SAVE_DIR;
 
+	public static final String LOGO = "/Logo.png";
+
 }
