@@ -116,7 +116,40 @@ public class FXUtil {
 		exception.printStackTrace(printWriter);
 		String exceptionText = stringWriter.toString();
 
-		Label label = new Label("The exception stacktrace was:");
+		Label label = new Label("Stacktrace:");
+
+		TextArea textArea = new TextArea(exceptionText);
+		textArea.setEditable(false);
+		textArea.setWrapText(true);
+
+		textArea.setMaxWidth(Control.USE_COMPUTED_SIZE);
+		textArea.setMaxHeight(Control.USE_COMPUTED_SIZE);
+		GridPane.setVgrow(textArea, Priority.ALWAYS);
+		GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+		GridPane expContent = new GridPane();
+		expContent.setMaxWidth(Double.MAX_VALUE);
+		expContent.add(label, 0, 0);
+		expContent.add(textArea, 0, 1);
+		alert.getDialogPane().setExpandableContent(expContent);
+		alert.initModality(Modality.APPLICATION_MODAL);
+		alert.showAndWait();
+	}
+
+	/** Show an error dialog with an expandable stack trace */
+	public static void showExceptionDialog(String title, String header, Throwable throwable) {
+		ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle(title);
+		alert.setHeaderText(header);
+		alert.setContentText(throwable.getLocalizedMessage());
+
+		StringWriter stringWriter = new StringWriter();
+		PrintWriter printWriter = new PrintWriter(stringWriter);
+		throwable.printStackTrace(printWriter);
+		String exceptionText = stringWriter.toString();
+
+		Label label = new Label(BUNDLE.getString("util.stacktrace"));
 
 		TextArea textArea = new TextArea(exceptionText);
 		textArea.setEditable(false);

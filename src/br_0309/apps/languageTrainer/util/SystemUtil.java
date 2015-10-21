@@ -129,6 +129,7 @@ public class SystemUtil {
 		}
 	}
 
+	/** Launches a jar file */
 	public static void launchJar(String dir) {
 		File file = new File(dir);
 		if (file.getName().endsWith(".jar")) {
@@ -138,9 +139,12 @@ public class SystemUtil {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		} else {
+			System.err.println("File is not of type JAR");
 		}
 	}
 
+	/** Launches a jar file */
 	public static void launchJar(File file) {
 		if (file.getName().endsWith(".jar")) {
 			try {
@@ -149,6 +153,8 @@ public class SystemUtil {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		} else {
+			System.err.println("File is not of type JAR");
 		}
 	}
 
@@ -166,11 +172,14 @@ public class SystemUtil {
 		return System.getProperty("os.name").startsWith("Windows");
 	}
 
+	/** Returns the file/folder of the coe source */
 	public static File getFile() throws URISyntaxException {
 		return new File(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 	}
 
+	/** Restarts the application */
 	public static void restart() {
+		// TODO: Add linux restart
 		if (isExe()) {
 			try {
 				launchExe(getFile());
@@ -199,9 +208,22 @@ public class SystemUtil {
 		}
 	}
 
+	/**
+	 * @return the current time and date in format: <b>yyy-mm-dd_hhmmss</b>
+	 */
 	public static String getTimeAndDate() {
 		SimpleDateFormat format = new SimpleDateFormat("yyy-mm-dd_hhmmss");
 		return format.format(new Date());
+	}
+
+	/** @return the user's home directory */
+	public static String getUserHome() {
+		return System.getProperty("user.home");
+	}
+
+	/** @return the current directory */
+	public static String getCurrentDir() {
+		return System.getProperty("user.dir");
 	}
 
 }

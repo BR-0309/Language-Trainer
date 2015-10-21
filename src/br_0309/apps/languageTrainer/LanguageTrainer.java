@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
 import br_0309.apps.languageTrainer.scenes.controllers.ProfileSelectController;
+import br_0309.apps.languageTrainer.util.FXUtil;
 import br_0309.apps.languageTrainer.util.SystemUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +30,11 @@ public class LanguageTrainer extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
+				throwable.printStackTrace();
+				FXUtil.showExceptionDialog("", "", throwable);
+			});
+			// Initialise before login so that the icon stacks neatly on taskbar
 			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource(Reference.FXML_MENU),
 					ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
@@ -42,23 +48,27 @@ public class LanguageTrainer extends Application {
 		}
 	}
 
+	/** Main method */
 	public static void main(String[] args) {
+		// Syste-specific settings
 		if (SystemUtil.isWindows()) {
 			File file = new File(System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" + File.separator + "LanguageTrainer"
 					+ File.separator);
 			file.mkdirs();
-			Reference.DEFAULT_SAVE_DIR = System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" + File.separator
-					+ "LanguageTrainer" + File.separator;
+			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 		} else if (SystemUtil.isMac()) {
 			// TODO: Check Mac application support directory
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
 			File file = new File(System.getProperty("user.home") + File.separator + "Libraries" + File.separator + "ApplicationSupport" + File.separator);
 			file.mkdirs();
-			Reference.DEFAULT_SAVE_DIR = System.getProperty("user.home") + File.separator + "Libraries" + File.separator + "ApplicationSupport" + File.separator;
+			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 		} else {
 			File file = new File(System.getProperty("user.home") + File.separator + "LanguageTrainer" + File.separator);
 			file.mkdirs();
-			Reference.DEFAULT_SAVE_DIR = System.getProperty("user.home") + File.separator + "LanguageTrainer" + File.separator;
+			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 		}
+		// If the application is run from anything but loose files, redirect
+		// console to log_<<time>>
 		if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
 			File log = new File(Reference.DEFAULT_SAVE_DIR + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate());
 			try {
@@ -71,20 +81,14 @@ public class LanguageTrainer extends Application {
 				e.printStackTrace();
 			}
 		}
+		// Set language to best suited language before user settings are loaded
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
-		if (SystemUtil.isMac()) {
-			System.setProperty("apple.laf.useScreenMenuBar", "true");
-		} else if (SystemUtil.isWindows()) {
-			// Windows specific things
-		} else {
-			// Linux/Solaris specific things
-		}
 		printSystemInfo();
 		universalData.load();
 		launch(args);
-		System.exit(0);
 	}
 
+	/** Print all relevant information about the system, user and languages */
 	private static void printSystemInfo() {
 		System.out.println("Operating System:\t\t" + System.getProperty("os.name") + "\n" + "Operating System Version:\t" + System.getProperty("os.version")
 				+ "\n" + "Architecture:\t\t\t" + System.getProperty("os.arch") + "\n" + "Java Version:\t\t\t" + System.getProperty("java.version") + "\n"
@@ -95,12 +99,14 @@ public class LanguageTrainer extends Application {
 				+ "Best suited locale:\t\t" + LanguageHandler.getBestLocale().toString() + "\n");
 	}
 
+	/** Shows the profile select screen */
 	private void showLogin() {
 		Stage stage = new Stage();
+		// TODO: Add more images for better resolutions
 		stage.getIcons().add(new Image(Reference.LOGO));
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT),
+				ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 		try {
-			loader.setResources(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			Parent root = (Parent) loader.load();
 			Scene scene = new Scene(root);
 			stage.setMinWidth(350);
