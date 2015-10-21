@@ -16,8 +16,11 @@ public class UniversalData {
 
 	@SuppressWarnings("unchecked")
 	public void load() {
-		File file = new File(Reference.DEFAULT_SAVE_DIR + "settings.dat");
+		System.out.println("Loading universal data");
+		File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
+		System.out.println(file.getAbsolutePath());
 		if (!file.exists()) {
+			System.out.println("File does not exist");
 			profileLocations = new ArrayList<File>();
 			save();
 			return;
@@ -26,6 +29,7 @@ public class UniversalData {
 		try {
 			in = new ObjectInputStream(new FileInputStream(file));
 			profileLocations = (ArrayList<File>) in.readObject();
+			System.out.println("Universal data loaded");
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
@@ -35,14 +39,20 @@ public class UniversalData {
 				e.printStackTrace();
 			}
 		}
+		for (File f : profileLocations) {
+			System.out.println(f.getAbsolutePath());
+		}
 	}
 
 	public void save() {
-		File file = new File(Reference.DEFAULT_SAVE_DIR + "settings.dat");
+		System.out.print("Saving universal data");
+		File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
 		if (!file.exists()) {
+			System.out.println("File does not exist.");
 			file.getParentFile().mkdirs();
 			try {
 				file.createNewFile();
+				System.out.println("File created");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -51,6 +61,7 @@ public class UniversalData {
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(file));
 			out.writeObject(profileLocations);
+			System.out.print("Universal data saved");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -81,6 +92,7 @@ public class UniversalData {
 			}
 		}
 		profileLocations.add(folder);
+		save();
 	}
 
 }

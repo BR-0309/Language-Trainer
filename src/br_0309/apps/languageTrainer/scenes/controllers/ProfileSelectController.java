@@ -3,6 +3,7 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.Locale;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import java.util.ResourceBundle;
 
 import br_0309.apps.languageTrainer.LanguageTrainer;
 import br_0309.apps.languageTrainer.Reference;
+import br_0309.apps.languageTrainer.data.UserData;
 import br_0309.apps.languageTrainer.util.FXUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,16 +52,21 @@ public class ProfileSelectController implements Initializable {
 		for (File file : LanguageTrainer.universalData.profileLocations) {
 			for (File f : file.listFiles()) {
 				if (f.getName().endsWith(".ltd")) {
-					profiles.put(f.getName().replace(".ltd", ""), file);
-					list.getItems().add(f.getName().replace(".ltd", "").replaceAll("_", " "));
+					String name = f.getName().replace(".ltd", "").replaceAll("_", " ");
+					profiles.put(name, new File(f.getAbsolutePath()));
+					list.getItems().add(name);
 				}
 			}
 		}
-
+		try {
+			list.getItems().sort(Comparator.naturalOrder());
+		} catch (NullPointerException e) {
+			System.err.println("No registered profiles!");
+		}
 	}
 
 	public void onCancel() {
-		// FIXME: Use FXUtil
+		// FIXME: Use FXUtil here
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle(BUNDLE.getString("generic.confirm"));
 		alert.setHeaderText(BUNDLE.getString("generic.confirmQuit"));
@@ -93,11 +100,34 @@ public class ProfileSelectController implements Initializable {
 		if (profile == null) {
 			return;
 		}
+		System.out.println(profile.getAbsolutePath());
 		profile.getParentFile().mkdirs();
+		Stage stage2 = (Stage) newProfile.getScene().getWindow();
 		try {
 			profile.createNewFile();
+			UserData data = new UserData(profile);
+			LanguageTrainer.userData = data;
+			LanguageTrainer.universalData.addLocation(profile.getParentFile());
+			isProfileSelected = true;
+			stage2.close();
 		} catch (IOException e) {
-			FXUtil.showExceptionDialog("", BUNDLE.getString("profile.createFail"), e);
+			FXUtil.showExceptionDialog("", BUNDLE.getString("profile.createFail"), e, stage2);
+		}
+	}
+
+	public void onGo() {
+		String name = list.getSelectionModel().getSelectedItem();
+		// TODO: Find out why go returns nul
+		Stage stage = (Stage) newProfile.getScene().getWindow();
+		if (name != null && !list.equals("")) {
+			try {
+				UserData data = new UserData(profiles.get(name));
+				LanguageTrainer.userData = data;
+				isProfileSelected = true;
+				stage.close();
+			} catch (Exception e) {
+				FXUtil.showExceptionDialog("", BUNDLE.getString("profile.loadFail"), e, stage);
+			}
 		}
 	}
 

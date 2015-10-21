@@ -36,7 +36,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" layoutX="185.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                <children>
-                  <Button defaultButton="true" mnemonicParsing="false" text="%generic.go" />
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#onGo" text="%generic.go" />
                   <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel">
                      <HBox.margin>
                         <Insets left="2.0" />

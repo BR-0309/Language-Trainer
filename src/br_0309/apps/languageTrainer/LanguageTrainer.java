@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 // FIXME: No custom icons for installer
 // TODO: Add icons at different resolutions
+// TODO: Add themes
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -34,14 +35,14 @@ public class LanguageTrainer extends Application {
 				throwable.printStackTrace();
 				FXUtil.showExceptionDialog("", "", throwable);
 			});
-			// Initialise before login so that the icon stacks neatly on taskbar
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
+			window = primaryStage;
+			showLogin();
 			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource(Reference.FXML_MENU),
 					ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
 			scene.getStylesheets().add(getClass().getResource(Reference.CSS_APPLICATION).toExternalForm());
 			primaryStage.setScene(scene);
-			window = primaryStage;
-			showLogin();
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();

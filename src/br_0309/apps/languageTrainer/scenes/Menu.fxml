@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.MenuController">
+<BorderPane prefHeight="499.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.MenuController">
    <center>
-      <TableView prefHeight="489.0" prefWidth="761.0" BorderPane.alignment="CENTER">
+      <TableView prefHeight="328.0" prefWidth="735.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn prefWidth="75.0" text="%menu.title" />
           <TableColumn prefWidth="75.0" text="C2" />
@@ -18,4 +18,28 @@
          </columnResizePolicy>
       </TableView>
    </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="122.0" prefWidth="715.0" style="-fx-border-color: black; -fx-border-insets: 5;" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
