@@ -107,7 +107,7 @@ public class ProfileSelectController implements Initializable, IController {
 			profile.createNewFile();
 			UserData data = new UserData(profile);
 			LanguageTrainer.userData = data;
-			LanguageTrainer.universalData.addLocation(profile.getParentFile());
+			LanguageTrainer.universalData.addProfileLocation(profile.getParentFile());
 			isProfileSelected = true;
 			stage2.close();
 		} catch (IOException e) {

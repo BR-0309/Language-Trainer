@@ -54,7 +54,12 @@ public class LanguageTrainer extends Application {
 
 				@Override
 				public void handle(WindowEvent event) {
-					currentController.onExit();
+					// OK return false for some reason despite the
+					// FXUtil.showConfirm... returns true when ok
+					if (!showExitPrompt()) {
+						currentController.onExit();
+						event.consume();
+					}
 				}
 			});
 			primaryStage.show();
@@ -71,6 +76,7 @@ public class LanguageTrainer extends Application {
 					+ File.separator);
 			file.mkdirs();
 			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
+
 		} else if (SystemUtil.isMac()) {
 			// TODO: Check Mac application support directory
 			System.setProperty("apple.laf.useScreenMenuBar", "true");
@@ -82,6 +88,7 @@ public class LanguageTrainer extends Application {
 			file.mkdirs();
 			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 		}
+		Reference.DEFAULT_EXCERSISE_DIR = Reference.DEFAULT_SAVE_DIR + "excersises" + File.separator;
 		// If the application is run from anything but loose files, redirect
 		// console to log_<<time>>
 		if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
@@ -100,6 +107,14 @@ public class LanguageTrainer extends Application {
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
 		printSystemInfo();
 		universalData.load();
+		File file = new File(Reference.DEFAULT_EXCERSISE_DIR);
+		file.getParentFile().mkdirs();
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		universalData.addExcersiseLocation(file);
 		launch(args);
 	}
 
@@ -133,7 +148,6 @@ public class LanguageTrainer extends Application {
 		stage.showAndWait();
 		ProfileSelectController controller = (ProfileSelectController) loader.getController();
 		if (!controller.isProfileSelected) {
-			System.out.println("No profile selected. Exiting.");
 			System.exit(0);
 		}
 	}
@@ -148,6 +162,12 @@ public class LanguageTrainer extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static boolean showExitPrompt() {
+		ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+		return FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.reallyQuit"),
+				BUNDLE.getString("generic.confirmQuit"), BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"));
 	}
 
 }

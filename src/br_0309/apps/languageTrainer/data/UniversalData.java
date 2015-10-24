@@ -13,21 +13,22 @@ import br_0309.apps.languageTrainer.Reference;
 public class UniversalData {
 
 	public ArrayList<File> profileLocations;
+	public ArrayList<File> excersiseLocations;
 
 	@SuppressWarnings("unchecked")
 	public void load() {
-		System.out.println("Loading universal data");
 		File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
-		System.out.println(file.getAbsolutePath());
 		if (!file.exists()) {
 			System.out.println("File does not exist");
 			profileLocations = new ArrayList<File>();
+			excersiseLocations = new ArrayList<File>();
 			save();
 			return;
 		}
 		ObjectInputStream in = null;
 		try {
 			in = new ObjectInputStream(new FileInputStream(file));
+			profileLocations = (ArrayList<File>) in.readObject();
 			profileLocations = (ArrayList<File>) in.readObject();
 			System.out.println("Universal data loaded");
 		} catch (IOException | ClassNotFoundException e) {
@@ -45,14 +46,11 @@ public class UniversalData {
 	}
 
 	public void save() {
-		System.out.print("Saving universal data");
 		File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
 		if (!file.exists()) {
-			System.out.println("File does not exist.");
 			file.getParentFile().mkdirs();
 			try {
 				file.createNewFile();
-				System.out.println("File created");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -61,7 +59,7 @@ public class UniversalData {
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(file));
 			out.writeObject(profileLocations);
-			System.out.print("Universal data saved");
+			out.writeObject(excersiseLocations);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -73,7 +71,7 @@ public class UniversalData {
 		}
 	}
 
-	public void addLocation(File file) {
+	public void addProfileLocation(File file) {
 		File folder;
 		if (file.isDirectory()) {
 			folder = file;
@@ -92,6 +90,28 @@ public class UniversalData {
 			}
 		}
 		profileLocations.add(folder);
+		save();
+	}
+
+	public void addExcersiseLocation(File file) {
+		File folder;
+		if (file.isDirectory()) {
+			folder = file;
+		} else {
+			folder = file.getParentFile();
+			if (folder == null) {
+				return;
+			}
+		}
+		if (!folder.exists()) {
+			return;
+		}
+		for (File f : excersiseLocations) {
+			if (f.equals(folder)) {
+				return;
+			}
+		}
+		excersiseLocations.add(folder);
 		save();
 	}
 

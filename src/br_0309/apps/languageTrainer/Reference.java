@@ -15,6 +15,7 @@ public class Reference {
 	public static final String PROPERTY_LANGUAGE = "lang";
 
 	public static String DEFAULT_SAVE_DIR;
+	public static String DEFAULT_EXCERSISE_DIR;
 	public static final String DEFAULT_PROFILE_DIR = SystemUtil.getUserHome();
 
 	public static final String LOGO = "/Logo.png";

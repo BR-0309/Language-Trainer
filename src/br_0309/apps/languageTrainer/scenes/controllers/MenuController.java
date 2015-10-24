@@ -3,10 +3,10 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 import br_0309.apps.languageTrainer.data.ExcersiseData;
 import br_0309.apps.languageTrainer.data.LanguageData;
-import br_0309.apps.languageTrainer.util.FXUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -43,9 +43,12 @@ public class MenuController implements Initializable, IController {
 	public Button startTraining;
 
 	private FilteredList<ExcersiseData> data;
+	private FilteredList<LanguageData> languages;
+	private ResourceBundle BUNDLE;
 
 	@Override
 	public void initialize(URL location, ResourceBundle BUNDLE) {
+		this.BUNDLE = BUNDLE;
 		initData();
 
 		table.getColumns().get(0).setSortable(false);
@@ -96,6 +99,10 @@ public class MenuController implements Initializable, IController {
 
 		});
 		tableLanguages.getColumns().get(0).setGraphic(checkbox2);
+
+		tableLanguages.onMouseClickedProperty().addListener((observable, oldVaue, newValue) -> filter());
+		search.textProperty().addListener((observable, oldValue, newValue) -> filter());
+		types.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> filter());
 	}
 
 	private void initData() {
@@ -104,7 +111,6 @@ public class MenuController implements Initializable, IController {
 
 	@Override
 	public void onExit() {
-		FXUtil.showConfirmationDialog("Confirm", "Really quit?", "DO you really want to quit?", "Ok", "Cancel");
 	}
 
 	@Override
@@ -113,8 +119,24 @@ public class MenuController implements Initializable, IController {
 
 	}
 
-	private void sort() {
+	private void filter() {
+		data.setPredicate(new Predicate<ExcersiseData>() {
 
+			@Override
+			public boolean test(ExcersiseData data) {
+				if (data.getTitle().toLowerCase().contains(search.getText().toLowerCase())
+						&& types.getSelectionModel().getSelectedItem().equals(BUNDLE.getString("generic.all"))
+						|| types.getSelectionModel().getSelectedItem().equals(data.getType())) {
+					for (LanguageData l : languages) {
+						if (data.getLanguages().contains(l.getLanguage())) {
+							return false;
+						}
+					}
+					return true;
+				}
+				return false;
+			}
+		});
 	}
 
 }

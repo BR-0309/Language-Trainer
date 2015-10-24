@@ -244,6 +244,7 @@ public class FXUtil {
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
+		alert.initOwner(LanguageTrainer.window);
 
 		ButtonType ok = new ButtonType(btnOk, ButtonData.OK_DONE);
 		ButtonType cancel = new ButtonType(btnCancel, ButtonData.CANCEL_CLOSE);
