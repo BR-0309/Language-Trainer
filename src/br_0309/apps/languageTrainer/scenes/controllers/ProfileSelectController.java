@@ -29,7 +29,7 @@ import javafx.stage.StageStyle;
 
 // FIXME: Add onClose or similar
 // TODO: Add new profile editor
-public class ProfileSelectController implements Initializable {
+public class ProfileSelectController implements Initializable, IController {
 
 	@FXML
 	public ListView<String> list;
@@ -129,6 +129,16 @@ public class ProfileSelectController implements Initializable {
 				FXUtil.showExceptionDialog("", BUNDLE.getString("profile.loadFail"), e, stage);
 			}
 		}
+	}
+
+	@Override
+	public void onExit() {
+	}
+
+	@Override
+	public void onInsert() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

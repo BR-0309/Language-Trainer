@@ -1,1 +1,11 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*.root {
+	-fx-base: rgb(70, 70, 70);
+	-fx-background: rgb(70,70,70);
+	-fx-control-inner-background: rgb(70, 70, 70);
+}*/
+/* Blue theme.root {
+    -fx-base: #7eaacc;
+    -fx-background: #7eaacc;
+    -fx-control-inner-background: white;
+}*/

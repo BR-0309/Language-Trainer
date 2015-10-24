@@ -8,16 +8,19 @@ import java.util.ResourceBundle;
 
 import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
+import br_0309.apps.languageTrainer.scenes.controllers.IController;
 import br_0309.apps.languageTrainer.scenes.controllers.ProfileSelectController;
 import br_0309.apps.languageTrainer.util.FXUtil;
 import br_0309.apps.languageTrainer.util.SystemUtil;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 // FIXME: No custom icons for installer
 // TODO: Add icons at different resolutions
@@ -26,23 +29,34 @@ public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
 	public static UniversalData universalData = new UniversalData();
+
 	public static Stage window;
+	public static IController currentController;
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
 				throwable.printStackTrace();
-				FXUtil.showExceptionDialog("", "", throwable);
+				FXUtil.showExceptionDialog("", throwable.toString(), throwable);
 			});
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
 			window = primaryStage;
 			showLogin();
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource(Reference.FXML_MENU),
-					ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+			BorderPane root = (BorderPane) loader.load();
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
 			scene.getStylesheets().add(getClass().getResource(Reference.CSS_APPLICATION).toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.sizeToScene();
+			currentController = loader.getController();
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+				@Override
+				public void handle(WindowEvent event) {
+					currentController.onExit();
+				}
+			});
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -123,4 +137,17 @@ public class LanguageTrainer extends Application {
 			System.exit(0);
 		}
 	}
+
+	public static void setScene(String sceneLoc) {
+		FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(sceneLoc), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+		try {
+			Parent root = loader.load();
+			Scene scene = new Scene(root);
+			window.setScene(scene);
+			currentController = (IController) loader.getController();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

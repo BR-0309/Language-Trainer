@@ -16,7 +16,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
-public class ProfileNewController implements Initializable {
+public class ProfileNewController implements Initializable, IController {
 
 	@FXML
 	private TextField firstName;
@@ -87,6 +87,16 @@ public class ProfileNewController implements Initializable {
 		Stage stage = (Stage) ok.getScene().getWindow();
 		profile = profileUnconfirmed;
 		stage.close();
+	}
+
+	@Override
+	public void onExit() {
+	}
+
+	@Override
+	public void onInsert() {
+		// TODO Auto-generated method stub
+
 	}
 
 }
