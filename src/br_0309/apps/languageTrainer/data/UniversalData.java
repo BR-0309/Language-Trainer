@@ -29,7 +29,7 @@ public class UniversalData {
 		try {
 			in = new ObjectInputStream(new FileInputStream(file));
 			profileLocations = (ArrayList<File>) in.readObject();
-			profileLocations = (ArrayList<File>) in.readObject();
+			excersiseLocations = (ArrayList<File>) in.readObject();
 			System.out.println("Universal data loaded");
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -48,6 +48,8 @@ public class UniversalData {
 	public void save() {
 		File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
 		if (!file.exists()) {
+			profileLocations = new ArrayList<File>();
+			excersiseLocations = new ArrayList<File>();
 			file.getParentFile().mkdirs();
 			try {
 				file.createNewFile();
@@ -105,6 +107,10 @@ public class UniversalData {
 		}
 		if (!folder.exists()) {
 			return;
+		}
+		if (excersiseLocations == null) {
+			excersiseLocations = new ArrayList<File>();
+			System.out.println("=======================================================================");
 		}
 		for (File f : excersiseLocations) {
 			if (f.equals(folder)) {

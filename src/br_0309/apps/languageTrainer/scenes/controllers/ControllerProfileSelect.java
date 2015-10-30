@@ -29,7 +29,7 @@ import javafx.stage.StageStyle;
 
 // FIXME: Add onClose or similar
 // TODO: Add new profile editor
-public class ProfileSelectController implements Initializable, IController {
+public class ControllerProfileSelect implements Initializable, IController {
 
 	@FXML
 	public ListView<String> list;
@@ -95,7 +95,7 @@ public class ProfileSelectController implements Initializable, IController {
 			e.printStackTrace();
 		}
 		stage.showAndWait();
-		ProfileNewController controller = (ProfileNewController) loader.getController();
+		ControllerProfileNew controller = (ControllerProfileNew) loader.getController();
 		File profile = controller.profile;
 		if (profile == null) {
 			return;
@@ -136,7 +136,7 @@ public class ProfileSelectController implements Initializable, IController {
 	}
 
 	@Override
-	public void onInsert() {
+	public void onInsert(char c) {
 		// TODO Auto-generated method stub
 
 	}

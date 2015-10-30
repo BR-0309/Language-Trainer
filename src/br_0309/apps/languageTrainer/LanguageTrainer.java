@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
 import br_0309.apps.languageTrainer.scenes.controllers.IController;
-import br_0309.apps.languageTrainer.scenes.controllers.ProfileSelectController;
+import br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileSelect;
 import br_0309.apps.languageTrainer.util.FXUtil;
 import br_0309.apps.languageTrainer.util.SystemUtil;
 import javafx.application.Application;
@@ -25,6 +25,7 @@ import javafx.stage.WindowEvent;
 // FIXME: No custom icons for installer
 // TODO: Add icons at different resolutions
 // TODO: Add themes
+// FIXME: Set title on main stage with version
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -88,7 +89,7 @@ public class LanguageTrainer extends Application {
 			file.mkdirs();
 			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 		}
-		Reference.DEFAULT_EXCERSISE_DIR = Reference.DEFAULT_SAVE_DIR + "excersises" + File.separator;
+		Reference.DEFAULT_EXCERSISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "excersises" + File.separator;
 		// If the application is run from anything but loose files, redirect
 		// console to log_<<time>>
 		if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
@@ -103,17 +104,15 @@ public class LanguageTrainer extends Application {
 				e.printStackTrace();
 			}
 		}
+		// FIXME: Add code to copy files over automatically on a different
+		// thread
+
 		// Set language to best suited language before user settings are loaded
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
 		printSystemInfo();
 		universalData.load();
 		File file = new File(Reference.DEFAULT_EXCERSISE_DIR);
-		file.getParentFile().mkdirs();
-		try {
-			file.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		file.mkdirs();
 		universalData.addExcersiseLocation(file);
 		launch(args);
 	}
@@ -126,7 +125,7 @@ public class LanguageTrainer extends Application {
 				+ "Java Home Dir:\t\t\t" + System.getProperty("java.home") + "\n" + "Temporary Dir:\t\t\t" + System.getProperty("java.io.tmpdir") + "\n"
 				+ "Execution Dir:\t\t\t" + System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t" + System.getProperty("user.home") + "\n"
 				+ "System language:\t\t" + System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t" + Locale.getDefault().toString() + "\n"
-				+ "Best suited locale:\t\t" + LanguageHandler.getBestLocale().toString() + "\n");
+				+ "Best suited locale:\t\t" + LanguageHandler.getBestLocale().toString() + "\nLanguage Trainer version:\t" + Reference.VERSION + "\n");
 	}
 
 	/** Shows the profile select screen */
@@ -146,7 +145,7 @@ public class LanguageTrainer extends Application {
 			e1.printStackTrace();
 		}
 		stage.showAndWait();
-		ProfileSelectController controller = (ProfileSelectController) loader.getController();
+		ControllerProfileSelect controller = (ControllerProfileSelect) loader.getController();
 		if (!controller.isProfileSelected) {
 			System.exit(0);
 		}

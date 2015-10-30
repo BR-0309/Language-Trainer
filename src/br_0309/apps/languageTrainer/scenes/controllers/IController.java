@@ -4,5 +4,5 @@ public interface IController {
 
 	public void onExit();
 
-	public void onInsert();
+	public void onInsert(char c);
 }
