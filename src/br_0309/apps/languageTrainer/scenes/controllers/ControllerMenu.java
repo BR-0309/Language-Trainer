@@ -1,19 +1,19 @@
 package br_0309.apps.languageTrainer.scenes.controllers;
 
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
 import br_0309.apps.languageTrainer.LanguageTrainer;
-import br_0309.apps.languageTrainer.data.ExcersiseData;
-import br_0309.apps.languageTrainer.data.LanguageData;
+import br_0309.apps.languageTrainer.data.ExcerciseData;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,9 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ControllerMenu implements Initializable, IController {
 
 	@FXML
-	public TableView<ExcersiseData> table;
-	@FXML
-	public TableView<LanguageData> tableLanguages;
+	public TableView<ExcerciseData> table;
 	@FXML
 	public Button createTranslationList;
 	@FXML
@@ -44,12 +42,9 @@ public class ControllerMenu implements Initializable, IController {
 	@FXML
 	public Button createVerbList;
 	@FXML
-	public TextField searchLanguages;
-	@FXML
 	public Button startTraining;
 
-	private FilteredList<ExcersiseData> data;
-	private FilteredList<LanguageData> languages;
+	private FilteredList<ExcerciseData> data;
 	private ResourceBundle BUNDLE;
 
 	@Override
@@ -67,15 +62,18 @@ public class ControllerMenu implements Initializable, IController {
 			@Override
 			public void handle(ActionEvent event) {
 				boolean isSelected = checkbox.isSelected();
-				for (ExcersiseData d : data) {
-					d.setSelected(isSelected);
+				@SuppressWarnings("unchecked")
+				Predicate<ExcerciseData> p = (Predicate<ExcerciseData>) data.getPredicate();
+				for (ExcerciseData d : data) {
+					if (p.test(d)) {
+						d.setSelected(isSelected);
+					}
 				}
 			}
 
 		});
 		table.getColumns().get(0).setGraphic(checkbox);
 
-		table.getColumns().get(0).setResizable(false);
 		table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("active"));
 		table.getColumns().get(0).setCellFactory(tc -> new CheckBoxTableCell<>());
 		table.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -91,78 +89,86 @@ public class ControllerMenu implements Initializable, IController {
 		types.setItems(FXCollections.observableList(l));
 		types.getSelectionModel().select(0);
 
-		tableLanguages.getColumns().get(0).setSortable(false);
-		tableLanguages.getColumns().get(1).setSortable(false);
-
-		// FIXME FIXME FIXME FIXME MAKE LANGUAGE TABLE WORK!!
-
-		tableLanguages.setItems(languages);
-
 		search.textProperty().addListener((observable, oldValue, newValue) -> filter());
 		types.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> filter());
+
+		filter();
 	}
 
+	// FIXME: Split up per language combo
 	private void initData() {
-		ObservableList<ExcersiseData> list = FXCollections.observableArrayList();
-		ObservableList<LanguageData> listLangs = FXCollections.observableArrayList();
-		listLangs.add(new LanguageData(false, "Deutsch"));
-
-		String translation = BUNDLE.getString("generic.translation");
-		String verbs = BUNDLE.getString("generic.verbs");
-		for (File folder : LanguageTrainer.universalData.excersiseLocations) {
-			if (!folder.exists() || folder.isFile()) {
+		final String TRANSLATION = BUNDLE.getString("generic.translation");
+		ArrayList<ExcerciseData> data = new ArrayList<ExcerciseData>();
+		// Get all excercise locations and store in File[] for loop
+		ArrayList<File> folders = LanguageTrainer.universalData.excerciseLocations;
+		// Loop through all the folders
+		for (File folder : folders) {
+			// Check for null or nonexistent folders
+			if (folder == null) {
+				System.err.println("Null reference in excercise locations!");
+				continue;
+			} else if (!folder.exists() || folder.isFile()) {
+				System.err.print(folder.getAbsolutePath() + " does not exist or is a file!");
 				continue;
 			}
-			File[] files = folder.listFiles();
-			for (File f : files) {
-				if (f.getName().endsWith(".tra")) {
-					Scanner scan = null;
-					try {
-						scan = new Scanner(f);
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					}
-					String langs = scan.nextLine();
-					scan.close();
-
-					String[] langs2 = langs.split(":");
-					Locale[] l = new Locale[langs2.length];
-					for (int i = 0; i < langs2.length; i++) {
-						l[i] = new Locale(langs2[i]);
-					}
-					String languages = "";
-					for (Locale locale : l) {
-						languages += locale.getDisplayLanguage() + " ";
-					}
-					ExcersiseData data = new ExcersiseData(false, f.getName().replaceAll("_", "").replace(".tra", ""), languages.trim(), translation, f);
-					list.add(data);
-				} else if (f.getName().endsWith(".vdt")) {
-					Scanner scan = null;
-					try {
-						scan = new Scanner(f);
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					}
-					String langs = scan.nextLine();
-					scan.close();
-
-					String[] langs2 = langs.split(":");
-					Locale[] l = new Locale[langs2.length];
-					for (int i = 0; i < langs2.length; i++) {
-						l[i] = new Locale(langs2[i]);
-					}
-					String languages = "";
-					for (Locale locale : l) {
-						languages += locale.getDisplayLanguage() + " ";
-						listLangs.add(new LanguageData(true, locale.getDisplayLanguage()));
-					}
-					ExcersiseData data = new ExcersiseData(false, f.getName().replaceAll("_", "").replace(".vdt", ""), languages.trim(), verbs, f);
-					list.add(data);
+			// Cycle through all files in the folder
+			for (File file : folder.listFiles()) {
+				// Check for null/nonexistent files
+				if (file == null) {
+					System.err.println("Null reference file!");
+					continue;
+				} else if (!file.exists() || file.isDirectory()) {
+					System.err.println(file.getAbsolutePath() + " does not exist or is a directory! Nested excersises are not supported!");
+					continue;
 				}
+				// For translation files
+				if (file.getName().endsWith(".tra")) {
+					try {
+						Scanner scan = new Scanner(file);
+						String[] langs = scan.nextLine().split(":");
+						scan.close();
+						String name = file.getName().replaceAll("_", " ").replace(".tra", "");
+						Arrays.sort(langs);
+						// For each combination of languages
+						for (int i = 0; i < langs.length - 1; i++) {
+							for (int j = i + 1; j < langs.length; j++) {
+								String lang1 = new Locale(langs[i]).getDisplayLanguage();
+								String lang2 = new Locale(langs[j]).getDisplayLanguage();
+								data.add(new ExcerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file, new String[] { langs[i], langs[j] }));
+							}
+						}
+
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
+				} else if (file.getName().endsWith("vdt")) {
+					// For verb files
+
+				}
+				this.data = new FilteredList<ExcerciseData>(FXCollections.observableList(data));
+			}
+
+		}
+	}
+
+	public void onStartTraining() {
+		ArrayList<ExcerciseData> selected = new ArrayList<ExcerciseData>();
+		for (ExcerciseData d : data) {
+			if (d.isSelected()) {
+				selected.add(d);
 			}
 		}
-		data = new FilteredList<ExcersiseData>(list);
-		languages = new FilteredList<LanguageData>(listLangs);
+		if (selected.isEmpty()) {
+			Toolkit.getDefaultToolkit().beep();
+			table.requestFocus();
+			return;
+		}
+		String translation = BUNDLE.getString("generic.translation");
+		for (ExcerciseData d : selected) {
+			if (d.getType().equals(translation)) {
+				LanguageTrainer.showTranslation(selected);
+			}
+		}
 	}
 
 	@Override
@@ -171,28 +177,25 @@ public class ControllerMenu implements Initializable, IController {
 
 	@Override
 	public void onInsert(char c) {
-		// TODO Auto-generated method stub
+		if (search.isFocused()) {
+			search.setText(search.getText() + c);
+		}
 
 	}
 
 	private void filter() {
-		data.setPredicate(new Predicate<ExcersiseData>() {
+		data.setPredicate(new Predicate<ExcerciseData>() {
 
 			@Override
-			public boolean test(ExcersiseData data) {
-				if (data.getTitle().toLowerCase().contains(search.getText().toLowerCase())
-						&& types.getSelectionModel().getSelectedItem().equals(BUNDLE.getString("generic.all"))
-						|| types.getSelectionModel().getSelectedItem().equals(data.getType())) {
-					/*
-					 * for (LanguageData l : languages) { if
-					 * (data.getLanguages().contains(l.getLanguage().get())) {
-					 * return false; } }
-					 */
-					return true;
+			public boolean test(ExcerciseData data) {
+				if (data.getTitle().toLowerCase().contains(search.getText().toLowerCase())) {
+					if (types.getSelectionModel().getSelectedIndex() == 0 || data.getType().equals(types.getSelectionModel().getSelectedItem())) { return true; }
 				}
 				return false;
+
 			}
 		});
+
 	}
 
 }

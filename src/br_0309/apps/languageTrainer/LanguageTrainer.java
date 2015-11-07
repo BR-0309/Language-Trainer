@@ -3,13 +3,17 @@ package br_0309.apps.languageTrainer;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Random;
 import java.util.ResourceBundle;
 
+import br_0309.apps.languageTrainer.data.ExcerciseData;
 import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
-import br_0309.apps.languageTrainer.scenes.controllers.IController;
 import br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileSelect;
+import br_0309.apps.languageTrainer.scenes.controllers.ControllerTranslate;
+import br_0309.apps.languageTrainer.scenes.controllers.IController;
 import br_0309.apps.languageTrainer.util.FXUtil;
 import br_0309.apps.languageTrainer.util.SystemUtil;
 import javafx.application.Application;
@@ -26,6 +30,7 @@ import javafx.stage.WindowEvent;
 // TODO: Add icons at different resolutions
 // TODO: Add themes
 // FIXME: Set title on main stage with version
+// FIXME FIXME FIXME: LEARN HOW TO SPELL EXERCISE
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -33,6 +38,8 @@ public class LanguageTrainer extends Application {
 
 	public static Stage window;
 	public static IController currentController;
+
+	public static Random random;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -55,8 +62,8 @@ public class LanguageTrainer extends Application {
 
 				@Override
 				public void handle(WindowEvent event) {
-					// OK return false for some reason despite the
-					// FXUtil.showConfirm... returns true when ok
+					// OK returns false for some reason despite
+					// FXUtil.showConfirm... returning true when OK
 					if (!showExitPrompt()) {
 						currentController.onExit();
 						event.consume();
@@ -89,7 +96,7 @@ public class LanguageTrainer extends Application {
 			file.mkdirs();
 			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 		}
-		Reference.DEFAULT_EXCERSISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "excersises" + File.separator;
+		Reference.DEFAULT_EXCERCISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "excercises" + File.separator;
 		// If the application is run from anything but loose files, redirect
 		// console to log_<<time>>
 		if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
@@ -111,9 +118,10 @@ public class LanguageTrainer extends Application {
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
 		printSystemInfo();
 		universalData.load();
-		File file = new File(Reference.DEFAULT_EXCERSISE_DIR);
+		File file = new File("C:\\Users\\Benjamin\\AppData\\Roaming\\LanguageTrainer\\excercises");
 		file.mkdirs();
-		universalData.addExcersiseLocation(file);
+		universalData.addExcerciseLocation(file);
+		random = new Random(SystemUtil.getTimeAndDate().hashCode());
 		launch(args);
 	}
 
@@ -152,14 +160,33 @@ public class LanguageTrainer extends Application {
 	}
 
 	public static void setScene(String sceneLoc) {
+		currentController.onExit();
 		FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(sceneLoc), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			window.setScene(scene);
 			currentController = (IController) loader.getController();
+			window.setScene(scene);
 		} catch (IOException e) {
 			e.printStackTrace();
+			// TODO: Add title/header
+			FXUtil.showExceptionDialog("", "", e);
+		}
+	}
+
+	public static void showMenu() {
+		currentController.onExit();
+		FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_MENU),
+				ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+		try {
+			Parent root = loader.load();
+			Scene scene = new Scene(root);
+			currentController = (IController) loader.getController();
+			window.setScene(scene);
+		} catch (IOException e) {
+			e.printStackTrace();
+			// TODO: Add title/header
+			FXUtil.showExceptionDialog("", "", e);
 		}
 	}
 
@@ -167,6 +194,35 @@ public class LanguageTrainer extends Application {
 		ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
 		return FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.reallyQuit"),
 				BUNDLE.getString("generic.confirmQuit"), BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"));
+	}
+
+	public static void playSoundCorrect() {
+
+	}
+
+	public static void playSoundIncorrect() {
+
+	}
+
+	public static void playSoundFinished() {
+
+	}
+
+	public static void showTranslation(ArrayList<ExcerciseData> selected) {
+		currentController.onExit();
+		FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_TRANSLATION),
+				ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+		try {
+			Parent root = loader.load();
+			Scene scene = new Scene(root);
+			ControllerTranslate controller = (ControllerTranslate) loader.getController();
+			controller.init(selected);
+			currentController = controller;
+			window.setScene(scene);
+		} catch (IOException e) {
+			// TODO: Add title/header
+			FXUtil.showExceptionDialog("", "", e);
+		}
 	}
 
 }

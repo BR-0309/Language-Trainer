@@ -212,8 +212,7 @@ public class SystemUtil {
 	 * @return the current time and date in format: <b>yyy-mm-dd_hhmmss</b>
 	 */
 	public static String getTimeAndDate() {
-		SimpleDateFormat format = new SimpleDateFormat("yyy-mm-dd_hhmmss");
-		return format.format(new Date());
+		return new SimpleDateFormat("yyyy-mm-dd_hhmmss").format(new Date());
 	}
 
 	/** @return the user's home directory */
@@ -224,6 +223,10 @@ public class SystemUtil {
 	/** @return the current directory */
 	public static String getCurrentDir() {
 		return System.getProperty("user.dir");
+	}
+
+	public static String getTimeAndDateFormatted() {
+		return new SimpleDateFormat("yy-mm-dd hh:mm").format(new Date());
 	}
 
 }
