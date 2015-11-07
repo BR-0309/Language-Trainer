@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.util.function.Predicate;
 
 import br_0309.apps.languageTrainer.LanguageTrainer;
-import br_0309.apps.languageTrainer.data.ExcerciseData;
+import br_0309.apps.languageTrainer.data.ExerciseData;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -30,7 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ControllerMenu implements Initializable, IController {
 
 	@FXML
-	public TableView<ExcerciseData> table;
+	public TableView<ExerciseData> table;
 	@FXML
 	public Button createTranslationList;
 	@FXML
@@ -44,7 +44,7 @@ public class ControllerMenu implements Initializable, IController {
 	@FXML
 	public Button startTraining;
 
-	private FilteredList<ExcerciseData> data;
+	private FilteredList<ExerciseData> data;
 	private ResourceBundle BUNDLE;
 
 	@Override
@@ -63,8 +63,8 @@ public class ControllerMenu implements Initializable, IController {
 			public void handle(ActionEvent event) {
 				boolean isSelected = checkbox.isSelected();
 				@SuppressWarnings("unchecked")
-				Predicate<ExcerciseData> p = (Predicate<ExcerciseData>) data.getPredicate();
-				for (ExcerciseData d : data) {
+				Predicate<ExerciseData> p = (Predicate<ExerciseData>) data.getPredicate();
+				for (ExerciseData d : data) {
 					if (p.test(d)) {
 						d.setSelected(isSelected);
 					}
@@ -98,14 +98,14 @@ public class ControllerMenu implements Initializable, IController {
 	// FIXME: Split up per language combo
 	private void initData() {
 		final String TRANSLATION = BUNDLE.getString("generic.translation");
-		ArrayList<ExcerciseData> data = new ArrayList<ExcerciseData>();
-		// Get all excercise locations and store in File[] for loop
-		ArrayList<File> folders = LanguageTrainer.universalData.excerciseLocations;
+		ArrayList<ExerciseData> data = new ArrayList<ExerciseData>();
+		// Get all exercise locations and store in File[] for loop
+		ArrayList<File> folders = LanguageTrainer.universalData.exerciseLocations;
 		// Loop through all the folders
 		for (File folder : folders) {
 			// Check for null or nonexistent folders
 			if (folder == null) {
-				System.err.println("Null reference in excercise locations!");
+				System.err.println("Null reference in exercise locations!");
 				continue;
 			} else if (!folder.exists() || folder.isFile()) {
 				System.err.print(folder.getAbsolutePath() + " does not exist or is a file!");
@@ -118,7 +118,7 @@ public class ControllerMenu implements Initializable, IController {
 					System.err.println("Null reference file!");
 					continue;
 				} else if (!file.exists() || file.isDirectory()) {
-					System.err.println(file.getAbsolutePath() + " does not exist or is a directory! Nested excersises are not supported!");
+					System.err.println(file.getAbsolutePath() + " does not exist or is a directory! Nested exersises are not supported!");
 					continue;
 				}
 				// For translation files
@@ -134,7 +134,7 @@ public class ControllerMenu implements Initializable, IController {
 							for (int j = i + 1; j < langs.length; j++) {
 								String lang1 = new Locale(langs[i]).getDisplayLanguage();
 								String lang2 = new Locale(langs[j]).getDisplayLanguage();
-								data.add(new ExcerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file, new String[] { langs[i], langs[j] }));
+								data.add(new ExerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file, new String[] { langs[i], langs[j] }));
 							}
 						}
 
@@ -145,15 +145,15 @@ public class ControllerMenu implements Initializable, IController {
 					// For verb files
 
 				}
-				this.data = new FilteredList<ExcerciseData>(FXCollections.observableList(data));
+				this.data = new FilteredList<ExerciseData>(FXCollections.observableList(data));
 			}
 
 		}
 	}
 
 	public void onStartTraining() {
-		ArrayList<ExcerciseData> selected = new ArrayList<ExcerciseData>();
-		for (ExcerciseData d : data) {
+		ArrayList<ExerciseData> selected = new ArrayList<ExerciseData>();
+		for (ExerciseData d : data) {
 			if (d.isSelected()) {
 				selected.add(d);
 			}
@@ -164,7 +164,7 @@ public class ControllerMenu implements Initializable, IController {
 			return;
 		}
 		String translation = BUNDLE.getString("generic.translation");
-		for (ExcerciseData d : selected) {
+		for (ExerciseData d : selected) {
 			if (d.getType().equals(translation)) {
 				LanguageTrainer.showTranslation(selected);
 			}
@@ -184,10 +184,10 @@ public class ControllerMenu implements Initializable, IController {
 	}
 
 	private void filter() {
-		data.setPredicate(new Predicate<ExcerciseData>() {
+		data.setPredicate(new Predicate<ExerciseData>() {
 
 			@Override
-			public boolean test(ExcerciseData data) {
+			public boolean test(ExerciseData data) {
 				if (data.getTitle().toLowerCase().contains(search.getText().toLowerCase())) {
 					if (types.getSelectionModel().getSelectedIndex() == 0 || data.getType().equals(types.getSelectionModel().getSelectedItem())) { return true; }
 				}

@@ -2,7 +2,7 @@ package br_0309.apps.languageTrainer.data;
 
 import br_0309.apps.languageTrainer.LanguageTrainer;
 
-public class VocabularyData extends ExcerciseData {
+public class VocabularyData extends ExerciseData {
 
 	private final String[] words1;
 	private final String[] words2;

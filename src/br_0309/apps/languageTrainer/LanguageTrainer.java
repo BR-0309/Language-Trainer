@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import br_0309.apps.languageTrainer.data.ExcerciseData;
+import br_0309.apps.languageTrainer.data.ExerciseData;
 import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
 import br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileSelect;
@@ -30,7 +30,6 @@ import javafx.stage.WindowEvent;
 // TODO: Add icons at different resolutions
 // TODO: Add themes
 // FIXME: Set title on main stage with version
-// FIXME FIXME FIXME: LEARN HOW TO SPELL EXERCISE
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -96,7 +95,7 @@ public class LanguageTrainer extends Application {
 			file.mkdirs();
 			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 		}
-		Reference.DEFAULT_EXCERCISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "excercises" + File.separator;
+		Reference.DEFAULT_EXERCISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "exercises" + File.separator;
 		// If the application is run from anything but loose files, redirect
 		// console to log_<<time>>
 		if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
@@ -118,9 +117,9 @@ public class LanguageTrainer extends Application {
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
 		printSystemInfo();
 		universalData.load();
-		File file = new File("C:\\Users\\Benjamin\\AppData\\Roaming\\LanguageTrainer\\excercises");
+		File file = new File(Reference.DEFAULT_EXERCISE_DIR);
 		file.mkdirs();
-		universalData.addExcerciseLocation(file);
+		universalData.addExerciseLocation(file);
 		random = new Random(SystemUtil.getTimeAndDate().hashCode());
 		launch(args);
 	}
@@ -208,7 +207,7 @@ public class LanguageTrainer extends Application {
 
 	}
 
-	public static void showTranslation(ArrayList<ExcerciseData> selected) {
+	public static void showTranslation(ArrayList<ExerciseData> selected) {
 		currentController.onExit();
 		FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_TRANSLATION),
 				ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));

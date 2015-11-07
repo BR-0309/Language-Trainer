@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 import br_0309.apps.languageTrainer.LanguageTrainer;
-import br_0309.apps.languageTrainer.data.ExcerciseData;
+import br_0309.apps.languageTrainer.data.ExerciseData;
 import br_0309.apps.languageTrainer.data.ListStatistics;
 import br_0309.apps.languageTrainer.data.VocabularyData;
 import javafx.fxml.FXML;
@@ -43,7 +43,7 @@ public class ControllerTranslate implements Initializable, IController {
 	private ArrayList<VocabularyData> words = new ArrayList<VocabularyData>();
 	private ArrayList<VocabularyData> cheated = new ArrayList<VocabularyData>();
 	private ArrayList<ListStatistics> stats = new ArrayList<ListStatistics>();
-	private ArrayList<ExcerciseData> rest = new ArrayList<ExcerciseData>();
+	private ArrayList<ExerciseData> rest = new ArrayList<ExerciseData>();
 	private int correct;
 	private int incorrect;
 	private int skipped;
@@ -91,7 +91,7 @@ public class ControllerTranslate implements Initializable, IController {
 		txtAnswer.setText(txtAnswer.getText() + c);
 	}
 
-	public void init(ArrayList<ExcerciseData> lists) {
+	public void init(ArrayList<ExerciseData> lists) {
 
 	}
 

@@ -6,7 +6,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class ExcerciseData implements Comparable<ExcerciseData> {
+public class ExerciseData implements Comparable<ExerciseData> {
 
 	private SimpleBooleanProperty selected;
 	private SimpleStringProperty title;
@@ -15,10 +15,10 @@ public class ExcerciseData implements Comparable<ExcerciseData> {
 	public File file;
 	public String[] langs;
 
-	public ExcerciseData() {
+	public ExerciseData() {
 	}
 
-	public ExcerciseData(boolean selected, String title, String languages, String type, File file, String[] langs2) {
+	public ExerciseData(boolean selected, String title, String languages, String type, File file, String[] langs2) {
 		this.selected = new SimpleBooleanProperty(selected);
 		this.title = new SimpleStringProperty(title);
 		this.languages = new SimpleStringProperty(languages);
@@ -44,7 +44,7 @@ public class ExcerciseData implements Comparable<ExcerciseData> {
 	}
 
 	@Override
-	public int compareTo(ExcerciseData o) {
+	public int compareTo(ExerciseData o) {
 		int last = title.get().compareTo(o.getTitle());
 		return last;
 	}

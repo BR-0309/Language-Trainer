@@ -13,7 +13,7 @@ import br_0309.apps.languageTrainer.Reference;
 public class UniversalData {
 
 	public ArrayList<File> profileLocations;
-	public ArrayList<File> excerciseLocations;
+	public ArrayList<File> exerciseLocations;
 
 	@SuppressWarnings("unchecked")
 	public void load() {
@@ -21,7 +21,7 @@ public class UniversalData {
 		if (!file.exists()) {
 			System.out.println("File does not exist");
 			profileLocations = new ArrayList<File>();
-			excerciseLocations = new ArrayList<File>();
+			exerciseLocations = new ArrayList<File>();
 			save();
 			return;
 		}
@@ -29,7 +29,7 @@ public class UniversalData {
 		try {
 			in = new ObjectInputStream(new FileInputStream(file));
 			profileLocations = (ArrayList<File>) in.readObject();
-			excerciseLocations = (ArrayList<File>) in.readObject();
+			exerciseLocations = (ArrayList<File>) in.readObject();
 			System.out.println("Universal data loaded");
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -49,7 +49,7 @@ public class UniversalData {
 		File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
 		if (!file.exists()) {
 			profileLocations = new ArrayList<File>();
-			excerciseLocations = new ArrayList<File>();
+			exerciseLocations = new ArrayList<File>();
 			file.getParentFile().mkdirs();
 			try {
 				file.createNewFile();
@@ -61,7 +61,7 @@ public class UniversalData {
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(file));
 			out.writeObject(profileLocations);
-			out.writeObject(excerciseLocations);
+			out.writeObject(exerciseLocations);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -89,7 +89,7 @@ public class UniversalData {
 		save();
 	}
 
-	public void addExcerciseLocation(File file) {
+	public void addExerciseLocation(File file) {
 		File folder;
 		if (file.isDirectory()) {
 			folder = file;
@@ -98,13 +98,13 @@ public class UniversalData {
 			if (folder == null) { return; }
 		}
 		if (!folder.exists()) { return; }
-		if (excerciseLocations == null) {
-			excerciseLocations = new ArrayList<File>();
+		if (exerciseLocations == null) {
+			exerciseLocations = new ArrayList<File>();
 		}
-		for (File f : excerciseLocations) {
+		for (File f : exerciseLocations) {
 			if (f.equals(folder)) { return; }
 		}
-		excerciseLocations.add(folder);
+		exerciseLocations.add(folder);
 		save();
 	}
 
