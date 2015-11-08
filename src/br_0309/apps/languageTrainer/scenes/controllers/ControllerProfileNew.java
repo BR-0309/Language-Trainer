@@ -40,24 +40,20 @@ public class ControllerProfileNew implements Initializable, IController {
 	public void initialize(URL url, ResourceBundle resources) {
 		location.setText(Reference.DEFAULT_PROFILE_DIR);
 		BUNDLE = resources;
+		// Focus may not be on the textfields so that one can read the prompt
+		// text
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 				ok.requestFocus();
 			}
 		});
+		firstName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
+		lastName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
+		profileUnconfirmed = new File(Reference.DEFAULT_PROFILE_DIR + File.separator + "_.ltd");
 	}
 
 	public void onBrowse() {
-		if (firstName.getText().trim().equals("")) {
-			firstName.requestFocus();
-			Toolkit.getDefaultToolkit().beep();
-			return;
-		} else if (lastName.getText().trim().equals("")) {
-			lastName.requestFocus();
-			Toolkit.getDefaultToolkit().beep();
-			return;
-		}
 		FileChooser chooser = new FileChooser();
 		String filename = firstName.getText().trim() + "_" + lastName.getText().trim() + ".ltd";
 		if (filename != null && !filename.equals("_.ltd")) {
@@ -65,16 +61,26 @@ public class ControllerProfileNew implements Initializable, IController {
 		}
 		chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd"));
 		File defaultFolder = new File(location.getText());
-		if (!defaultFolder.exists()) {
+		if (defaultFolder.isFile() && !defaultFolder.getParentFile().exists()) {
 			defaultFolder = new File(Reference.DEFAULT_PROFILE_DIR);
-		} else if (defaultFolder.isFile()) {
+		} else if (defaultFolder.isFile() && defaultFolder.getParentFile().exists()) {
 			defaultFolder = defaultFolder.getParentFile();
+		} else if (!defaultFolder.exists()) {
+			defaultFolder = new File(Reference.DEFAULT_PROFILE_DIR);
 		}
 		chooser.setInitialDirectory(defaultFolder);
 		File file = chooser.showSaveDialog(LanguageTrainer.window);
 		if (file != null) {
 			location.setText(file.getAbsolutePath());
 			profileUnconfirmed = file;
+			try {
+				String name = file.getName().replace(".ltd", "").replace(" ", "_");
+				String[] names = name.split("_");
+				firstName.setText(names[0].replace(".ltd", ""));
+				lastName.setText(names[1].replace(".ltd", ""));
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.err.println("User entered invalid filename. Because it's sooo hard to use the textfield.");
+			}
 		}
 	}
 
@@ -84,9 +90,23 @@ public class ControllerProfileNew implements Initializable, IController {
 	}
 
 	public void onOk() {
+		if (firstName.getText().trim().equals("")) {
+			firstName.requestFocus();
+			Toolkit.getDefaultToolkit().beep();
+			return;
+		} else if (lastName.getText().trim().equals("")) {
+			lastName.requestFocus();
+			Toolkit.getDefaultToolkit().beep();
+			return;
+		}
 		Stage stage = (Stage) ok.getScene().getWindow();
 		profile = profileUnconfirmed;
 		stage.close();
+	}
+
+	private void updateLocation() {
+		location.setText(
+				profileUnconfirmed.getParentFile().getAbsolutePath() + File.separator + firstName.getText().trim() + "_" + lastName.getText().trim() + ".ltd");
 	}
 
 	@Override
@@ -95,8 +115,12 @@ public class ControllerProfileNew implements Initializable, IController {
 
 	@Override
 	public void onInsert(char c) {
-		// TODO Auto-generated method stub
-
+		if (firstName.isFocused()) {
+			firstName.setText(firstName.getText() + c);
+		} else if (lastName.isFocused()) {
+			lastName.setText(lastName.getText() + c);
+		} else if (location.isFocused()) {
+			location.setText(location.getText() + c);
+		}
 	}
-
 }
