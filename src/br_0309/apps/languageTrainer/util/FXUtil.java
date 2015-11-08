@@ -48,7 +48,7 @@ public class FXUtil {
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
-		alert.initOwner(LanguageTrainer.window);
+		alert.initOwner(LanguageTrainer.window.getOwner());
 		alert.showAndWait();
 	}
 
@@ -62,7 +62,7 @@ public class FXUtil {
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
-		alert.initOwner(LanguageTrainer.window);
+		alert.initOwner(LanguageTrainer.window.getOwner());
 		alert.showAndWait();
 	}
 
@@ -88,7 +88,7 @@ public class FXUtil {
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
-		alert.initOwner(LanguageTrainer.window);
+		alert.initOwner(LanguageTrainer.window.getOwner());
 		alert.showAndWait();
 	}
 
@@ -110,7 +110,7 @@ public class FXUtil {
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(exception.getLocalizedMessage());
-		alert.initOwner(LanguageTrainer.window);
+		alert.initOwner(LanguageTrainer.window.getOwner());
 
 		StringWriter stringWriter = new StringWriter();
 		PrintWriter printWriter = new PrintWriter(stringWriter);
@@ -177,7 +177,7 @@ public class FXUtil {
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(throwable.getLocalizedMessage());
-		alert.initOwner(LanguageTrainer.window);
+		alert.initOwner(LanguageTrainer.window.getOwner());
 
 		StringWriter stringWriter = new StringWriter();
 		PrintWriter printWriter = new PrintWriter(stringWriter);
@@ -244,7 +244,7 @@ public class FXUtil {
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
-		alert.initOwner(LanguageTrainer.window);
+		alert.initOwner(LanguageTrainer.window.getOwner());
 
 		ButtonType ok = new ButtonType(btnOk, ButtonData.OK_DONE);
 		ButtonType cancel = new ButtonType(btnCancel, ButtonData.CANCEL_CLOSE);

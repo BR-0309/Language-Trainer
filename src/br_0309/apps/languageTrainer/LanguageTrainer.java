@@ -29,7 +29,6 @@ import javafx.stage.WindowEvent;
 // FIXME: No custom icons for installer
 // TODO: Add icons at different resolutions
 // TODO: Add themes
-// FIXME: Set title on main stage with version
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -56,6 +55,8 @@ public class LanguageTrainer extends Application {
 			scene.getStylesheets().add(getClass().getResource(Reference.CSS_APPLICATION).toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
+			primaryStage
+					.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") + " " + Reference.VERSION);
 			currentController = loader.getController();
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 
@@ -110,8 +111,10 @@ public class LanguageTrainer extends Application {
 				e.printStackTrace();
 			}
 		}
-		// FIXME: Add code to copy files over automatically on a different
-		// thread
+		/*
+		 * FIXME: Add code to copy files over automatically on a different
+		 * thread
+		 */
 
 		// Set language to best suited language before user settings are loaded
 		LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());

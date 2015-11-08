@@ -83,7 +83,7 @@ public class UserData implements Serializable {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (NullPointerException e) {
-				// TODO: Find out why in.close causes NPE
+				// XXX: Find out why in.close causes NPE
 				// e.printStackTrace();
 			}
 		}

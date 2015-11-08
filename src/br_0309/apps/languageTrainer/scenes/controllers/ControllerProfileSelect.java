@@ -6,7 +6,6 @@ import java.net.URL;
 import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.Locale;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br_0309.apps.languageTrainer.LanguageTrainer;
@@ -18,17 +17,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-// FIXME: Add onClose or similar
-// TODO: Add new profile editor
+// FIXME: Add onDelete
 public class ControllerProfileSelect implements Initializable, IController {
 
 	@FXML
@@ -66,14 +61,8 @@ public class ControllerProfileSelect implements Initializable, IController {
 	}
 
 	public void onCancel() {
-		// FIXME: Use FXUtil here
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle(BUNDLE.getString("generic.confirm"));
-		alert.setHeaderText(BUNDLE.getString("generic.confirmQuit"));
-		alert.initOwner(LanguageTrainer.window.getOwner());
-		alert.initModality(Modality.APPLICATION_MODAL);
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
+		if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"), null, BUNDLE.getString("generic.ok"),
+				BUNDLE.getString("generic.cancel"))) {
 			System.exit(0);
 		}
 	}
@@ -97,9 +86,7 @@ public class ControllerProfileSelect implements Initializable, IController {
 		stage.showAndWait();
 		ControllerProfileNew controller = (ControllerProfileNew) loader.getController();
 		File profile = controller.profile;
-		if (profile == null) {
-			return;
-		}
+		if (profile == null) { return; }
 		System.out.println(profile.getAbsolutePath());
 		profile.getParentFile().mkdirs();
 		Stage stage2 = (Stage) newProfile.getScene().getWindow();
@@ -117,7 +104,7 @@ public class ControllerProfileSelect implements Initializable, IController {
 
 	public void onGo() {
 		String name = list.getSelectionModel().getSelectedItem();
-		// TODO: Find out why go returns nul
+		// XXX: Find out why go returns nul
 		Stage stage = (Stage) newProfile.getScene().getWindow();
 		if (name != null && !list.equals("")) {
 			try {
@@ -133,12 +120,12 @@ public class ControllerProfileSelect implements Initializable, IController {
 
 	@Override
 	public void onExit() {
+		// If exit, no data has been exchanged anyway
 	}
 
 	@Override
 	public void onInsert(char c) {
-		// TODO Auto-generated method stub
-
+		// No dialogue button yet...
 	}
 
 }

@@ -2,7 +2,6 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 
 import java.awt.Toolkit;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -98,6 +97,7 @@ public class ControllerMenu implements Initializable, IController {
 	// FIXME: Split up per language combo
 	private void initData() {
 		final String TRANSLATION = BUNDLE.getString("generic.translation");
+		final String VERBS = BUNDLE.getString("generic.verbs");
 		ArrayList<ExerciseData> data = new ArrayList<ExerciseData>();
 		// Get all exercise locations and store in File[] for loop
 		ArrayList<File> folders = LanguageTrainer.universalData.exerciseLocations;
@@ -138,16 +138,30 @@ public class ControllerMenu implements Initializable, IController {
 							}
 						}
 
-					} catch (FileNotFoundException e) {
+					} catch (Exception e) {
+						System.err.print("Something went wrong while trying to read: " + file.getAbsolutePath());
 						e.printStackTrace();
+						continue;
 					}
 				} else if (file.getName().endsWith("vdt")) {
 					// For verb files
-
+					try {
+						Scanner scan = new Scanner(file);
+						String lang = scan.nextLine();
+						scan.close();
+						if (lang.length() > 3) {
+							System.err.printf("Invalid lang code (%s) in file %s. Skipping.\n", lang, file.getAbsolutePath());
+							continue;
+						}
+						data.add(new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""), new Locale(lang).getDisplayLanguage(), VERBS,
+								file, new String[] { lang }));
+					} catch (Exception e) {
+						e.printStackTrace();
+						continue;
+					}
 				}
-				this.data = new FilteredList<ExerciseData>(FXCollections.observableList(data));
 			}
-
+			this.data = new FilteredList<ExerciseData>(FXCollections.observableList(data));
 		}
 	}
 
