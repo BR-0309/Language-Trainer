@@ -6,8 +6,8 @@ public class Reference {
 
 	public static final String FXML_MENU = "/br_0309/apps/languageTrainer/scenes/Menu.fxml";
 	public static final String FXML_PROFILE_SELECT = "/br_0309/apps/languageTrainer/scenes/ProfileSelect.fxml";
-	public static final String FXML_PROFILE_NEW = "/br_0309/apps/LanguageTrainer/scenes/ProfileNew.fxml";
-	public static final String FXML_TRANSLATION = "/br_03099/apps/languageTrainer/scenes/Translate.fxml";
+	public static final String FXML_PROFILE_NEW = "/br_0309/apps/languageTrainer/scenes/ProfileNew.fxml";
+	public static final String FXML_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/Translate.fxml";
 
 	public static final String CSS_APPLICATION = "/br_0309/apps/languageTrainer/application.css";
 

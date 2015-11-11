@@ -209,10 +209,10 @@ public class SystemUtil {
 	}
 
 	/**
-	 * @return the current time and date in format: <b>yyy-mm-dd_hhmmss</b>
+	 * @return the current time and date in format: <b>yyy-MM-dd_hhmmss</b>
 	 */
 	public static String getTimeAndDate() {
-		return new SimpleDateFormat("yyyy-mm-dd_hhmmss").format(new Date());
+		return new SimpleDateFormat("yyyy-MM-dd_hhmmss").format(new Date());
 	}
 
 	/** @return the user's home directory */
@@ -225,8 +225,12 @@ public class SystemUtil {
 		return System.getProperty("user.dir");
 	}
 
+	/**
+	 * For use in GUI's. @return the tima and date in format: <b>yy-MM-dd
+	 * hh:mm</b>
+	 */
 	public static String getTimeAndDateFormatted() {
-		return new SimpleDateFormat("yy-mm-dd hh:mm").format(new Date());
+		return new SimpleDateFormat("yy-MM-dd hh:mm").format(new Date());
 	}
 
 }

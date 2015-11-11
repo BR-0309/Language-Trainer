@@ -28,7 +28,7 @@
             <HBox layoutY="6.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
                <children>
                   <Button fx:id="newProfile" mnemonicParsing="false" onAction="#onNewProfile" text="%profileSelect.newProfile" />
-                  <Button mnemonicParsing="false" text="%generic.delete">
+                  <Button mnemonicParsing="false" onAction="#onDelete" text="%generic.delete">
                      <HBox.margin>
                         <Insets left="2.0" />
                      </HBox.margin></Button>

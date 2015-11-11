@@ -9,15 +9,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
+import br_0309.apps.languageTrainer.LanguageHandler;
 import br_0309.apps.languageTrainer.Reference;
 
 public class UserData implements Serializable {
 
 	private static final long serialVersionUID = 2362898497407984692L;
-	public List<String> map = new ArrayList<String>();
+	public ArrayList<ListStatistics> stats = new ArrayList<ListStatistics>();
 	public Properties properties;
 	public File file;
 
@@ -32,7 +32,7 @@ public class UserData implements Serializable {
 
 	private Properties getDefaults() {
 		Properties p = new Properties();
-		p.setProperty(Reference.PROPERTY_LANGUAGE, "en");
+		p.setProperty(Reference.PROPERTY_LANGUAGE, LanguageHandler.getBestLocale().getLanguage());
 		return p;
 	}
 
@@ -46,7 +46,7 @@ public class UserData implements Serializable {
 			}
 			out = new ObjectOutputStream(new FileOutputStream(file));
 			out.writeObject(properties);
-			out.writeObject(map);
+			out.writeObject(stats);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -70,7 +70,7 @@ public class UserData implements Serializable {
 			in = new ObjectInputStream(new FileInputStream(file));
 
 			properties = (Properties) in.readObject();
-			map = (ArrayList<String>) in.readObject();
+			stats = (ArrayList<ListStatistics>) in.readObject();
 		} catch (EOFException e) {
 			System.out.println("EOFException. Saving");
 			save();
@@ -91,6 +91,11 @@ public class UserData implements Serializable {
 
 	public String getLanguage() {
 		return properties.getProperty(Reference.PROPERTY_LANGUAGE);
+	}
+
+	public void putStats(ArrayList<ListStatistics> list) {
+		stats.addAll(list);
+		save();
 	}
 
 }

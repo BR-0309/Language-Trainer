@@ -118,6 +118,10 @@ public class ControllerProfileSelect implements Initializable, IController {
 		}
 	}
 
+	public void onDelete() {
+
+	}
+
 	@Override
 	public void onExit() {
 		// If exit, no data has been exchanged anyway

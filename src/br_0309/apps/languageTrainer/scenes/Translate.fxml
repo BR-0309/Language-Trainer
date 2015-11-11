@@ -34,12 +34,12 @@
       </Label>
       <HBox alignment="CENTER_RIGHT" layoutX="7.0" layoutY="226.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="140.0">
          <children>
-            <Button fx:id="btnNext" defaultButton="true" mnemonicParsing="false" text="%generic.btnNext">
+            <Button fx:id="btnNext" defaultButton="true" mnemonicParsing="false" onAction="#onNext" text="%generic.btnNext">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnExit" mnemonicParsing="false" text="%generic.btnExit" />
+            <Button fx:id="btnExit" mnemonicParsing="false" onAction="#onExit" text="%generic.btnExit" />
          </children>
       </HBox>
       <Label fx:id="lblTask" layoutX="14.0" layoutY="59.0" prefHeight="28.0" prefWidth="353.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="65.0">

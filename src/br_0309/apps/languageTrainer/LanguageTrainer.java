@@ -29,6 +29,7 @@ import javafx.stage.WindowEvent;
 // FIXME: No custom icons for installer
 // TODO: Add icons at different resolutions
 // TODO: Add themes
+// TODO: I18nize Copyrights.txt
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -52,6 +53,7 @@ public class LanguageTrainer extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			BorderPane root = (BorderPane) loader.load();
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
+			// TODO: Set to user defined stylesheet
 			scene.getStylesheets().add(getClass().getResource(Reference.CSS_APPLICATION).toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
@@ -167,6 +169,8 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
+			// TODO: Set to user defined stylesheet
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_APPLICATION).toExternalForm());
 			currentController = (IController) loader.getController();
 			window.setScene(scene);
 		} catch (IOException e) {
@@ -183,8 +187,12 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
+			// TODO: Set to user defined stylesheet
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_APPLICATION).toExternalForm());
 			currentController = (IController) loader.getController();
 			window.setScene(scene);
+			window.setMinHeight(400);
+			window.setMinWidth(425);
 		} catch (IOException e) {
 			e.printStackTrace();
 			// TODO: Add title/header
@@ -217,6 +225,8 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
+			// TODO: Set to user defined stylesheet
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_APPLICATION).toExternalForm());
 			ControllerTranslate controller = (ControllerTranslate) loader.getController();
 			controller.init(selected);
 			currentController = controller;

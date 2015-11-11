@@ -1,8 +1,10 @@
 package br_0309.apps.languageTrainer.data;
 
+import java.util.Locale;
+
 import br_0309.apps.languageTrainer.LanguageTrainer;
 
-public class VocabularyData extends ExerciseData {
+public class VocabularyData {
 
 	private final String[] words1;
 	private final String[] words2;
@@ -14,13 +16,13 @@ public class VocabularyData extends ExerciseData {
 	public VocabularyData(String[] words1, String[] words2, String[] langs) {
 		this.words1 = words1;
 		this.words2 = words2;
-		lang1 = langs[0];
-		lang2 = langs[1];
+		lang1 = new Locale(langs[0]).getDisplayLanguage();
+		lang2 = new Locale(langs[1]).getDisplayLanguage();
 		fromOne = LanguageTrainer.random.nextBoolean();
 		if (fromOne) {
-			q = LanguageTrainer.random.nextInt(words1.length - 1);
+			q = LanguageTrainer.random.nextInt(words1.length);
 		} else {
-			q = LanguageTrainer.random.nextInt(words1.length - 1);
+			q = LanguageTrainer.random.nextInt(words1.length);
 		}
 	}
 
