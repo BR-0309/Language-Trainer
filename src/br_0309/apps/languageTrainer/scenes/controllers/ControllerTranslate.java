@@ -46,6 +46,7 @@ public class ControllerTranslate implements Initializable, IController {
 	private ArrayList<VocabularyData> words = new ArrayList<VocabularyData>();
 	private ArrayList<ExerciseData> rest = new ArrayList<ExerciseData>();
 	private ArrayList<ListStatistics> stats = new ArrayList<ListStatistics>();
+	private ArrayList<VocabularyData> wrong = new ArrayList<VocabularyData>();
 	private int correct;
 	private int incorrect;
 
@@ -56,6 +57,45 @@ public class ControllerTranslate implements Initializable, IController {
 
 	public void onNext() {
 		// FIXME: Implement onNext
+		VocabularyData word = words.get(0);
+		if (word.isCorrect(txtAnswer.getText().trim())) {
+			LanguageTrainer.playSoundCorrect();
+			correct++;
+			for (ListStatistics stat : stats) {
+				if (stat.listName.equals(word.list) && stat.langCodes.equals(word.langs)) {
+					stat.correct++;
+					break;
+				}
+			}
+			words.remove(0);
+		} else {
+			LanguageTrainer.playSoundIncorrect();
+			// If the word is wrong for the first time
+			if (!wrong.contains(word)) {
+				incorrect++;
+				wrong.add(word);
+				// Look for relevant statistic and increase the statistic
+				for (ListStatistics stat : stats) {
+					if (stat.listName.equals(word.list) && stat.langCodes.equals(word.langs)) {
+						stat.incorrect++;
+						break;
+					}
+				}
+			} else {
+
+			}
+			Collections.shuffle(words, LanguageTrainer.random);
+		}
+
+		// FIXME FIXME: Check for empty list
+
+		VocabularyData d = words.get(0);
+		lblTitle.setText(BUNDLE.getString("translate.task").replace("{1}", d.getFrom()).replace("{2}", d.getTo()));
+		lblTask.setText(d.getQuestion());
+		lblCorrect.setText(Integer.toString(correct));
+		lblIncorrect.setText(Integer.toString(incorrect));
+		txtAnswer.setText("");
+		updateProgressBar();
 	}
 
 	@Override
@@ -82,6 +122,7 @@ public class ControllerTranslate implements Initializable, IController {
 				File file = eData.file;
 				String lang1 = eData.langs[0];
 				String lang2 = eData.langs[1];
+				String name = file.getName().replaceAll("_", " ").replace(".tra", "");
 				int left = 0, right = 1;
 				Scanner scan = null;
 				try {
@@ -99,8 +140,10 @@ public class ControllerTranslate implements Initializable, IController {
 					while (scan.hasNextLine()) {
 						String line = scan.nextLine();
 						String[] words = line.split("=");
-						this.words.add(new VocabularyData(words[left].split(";"), words[right].split(";"), eData.langs));
+						this.words.add(new VocabularyData(words[left].split(";"), words[right].split(";"), eData.langs, name));
 					}
+
+					stats.add(new ListStatistics(name, true, eData.langs));
 
 				} catch (FileNotFoundException e) {
 					System.err.println("Can't find file: " + file.getName());

@@ -12,15 +12,17 @@ public class ListStatistics implements Serializable {
 	public int cheated = 0;
 	public final String listName;
 	public final boolean listType;
+	public final String[] langCodes;
 	public final String time = SystemUtil.getTimeAndDateFormatted();
 
 	/**
 	 * @param listType
 	 *            true: translation. false: verbs
 	 */
-	public ListStatistics(String listName, boolean listType) {
+	public ListStatistics(String listName, boolean listType, String[] langCodes) {
 		this.listName = listName;
 		this.listType = listType;
+		this.langCodes = langCodes;
 	}
 
 }

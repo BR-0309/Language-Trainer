@@ -30,6 +30,9 @@ import javafx.stage.WindowEvent;
 // TODO: Add icons at different resolutions
 // TODO: Add themes
 // TODO: I18nize Copyrights.txt
+// FIXME FIXME: GET DEPLOYMENT WORKING!!
+// FIXME: _Add Settings button to Menu and change buttons to be in columns of 3
+// and to
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -54,7 +57,7 @@ public class LanguageTrainer extends Application {
 			BorderPane root = (BorderPane) loader.load();
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
 			// TODO: Set to user defined stylesheet
-			scene.getStylesheets().add(getClass().getResource(Reference.CSS_APPLICATION).toExternalForm());
+			scene.getStylesheets().add(getClass().getResource(Reference.CSS_DEFAULT).toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
 			primaryStage
@@ -150,6 +153,7 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = (Parent) loader.load();
 			Scene scene = new Scene(root);
+			scene.getStylesheets().add(Reference.CSS_DEFAULT);
 			stage.setMinWidth(350);
 			stage.setMinHeight(400);
 			stage.setScene(scene);
@@ -170,7 +174,7 @@ public class LanguageTrainer extends Application {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			// TODO: Set to user defined stylesheet
-			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_APPLICATION).toExternalForm());
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_DEFAULT).toExternalForm());
 			currentController = (IController) loader.getController();
 			window.setScene(scene);
 		} catch (IOException e) {
@@ -187,8 +191,8 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			// TODO: Set to user defined stylesheet
-			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_APPLICATION).toExternalForm());
+			// TODO: Set to user defined style sheet
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_DEFAULT).toExternalForm());
 			currentController = (IController) loader.getController();
 			window.setScene(scene);
 			window.setMinHeight(400);
@@ -207,15 +211,15 @@ public class LanguageTrainer extends Application {
 	}
 
 	public static void playSoundCorrect() {
-
+		// FIXME: IMPLEMENT CORRECT SOUND
 	}
 
 	public static void playSoundIncorrect() {
-
+		// FIXME: IMPLEMENT INCORRECT SOUND
 	}
 
 	public static void playSoundFinished() {
-
+		// FIXME: IMPLEMENT FINSIHED SOUND
 	}
 
 	public static void showTranslation(ArrayList<ExerciseData> selected) {
@@ -226,7 +230,7 @@ public class LanguageTrainer extends Application {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			// TODO: Set to user defined stylesheet
-			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_APPLICATION).toExternalForm());
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_DEFAULT).toExternalForm());
 			ControllerTranslate controller = (ControllerTranslate) loader.getController();
 			controller.init(selected);
 			currentController = controller;

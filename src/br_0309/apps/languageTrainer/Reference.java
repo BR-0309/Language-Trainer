@@ -8,8 +8,11 @@ public class Reference {
 	public static final String FXML_PROFILE_SELECT = "/br_0309/apps/languageTrainer/scenes/ProfileSelect.fxml";
 	public static final String FXML_PROFILE_NEW = "/br_0309/apps/languageTrainer/scenes/ProfileNew.fxml";
 	public static final String FXML_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/Translate.fxml";
+	public static final String FXML_SETTINGS = "/br_0309/apps/languageTrainer/scenes/Settings.fxml";
 
-	public static final String CSS_APPLICATION = "/br_0309/apps/languageTrainer/application.css";
+	public static final String CSS_DEFAULT = "/stylesheets/default.css";
+	public static final String CSS_DARK = "/stylesheets/dark.css";
+	public static final String CSS_BLUE = "/stylesheets/blue.css";
 
 	public static final String BUNDLE_LOC = "lang/Locale";
 
@@ -19,7 +22,7 @@ public class Reference {
 	public static String DEFAULT_EXERCISE_DIR;
 	public static final String DEFAULT_PROFILE_DIR = SystemUtil.getUserHome();
 
-	public static final String LOGO = "/Logo.png";
+	public static final String LOGO = "/icons/Logo.png";
 
 	public static final String VERSION = "0.6.0";
 

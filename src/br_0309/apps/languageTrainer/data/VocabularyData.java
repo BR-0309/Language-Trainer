@@ -10,19 +10,23 @@ public class VocabularyData {
 	private final String[] words2;
 	private final String lang1;
 	private final String lang2;
+	public final String list;
+	public final String[] langs;
 	private final boolean fromOne;
 	private final int q;
 
-	public VocabularyData(String[] words1, String[] words2, String[] langs) {
+	public VocabularyData(String[] words1, String[] words2, String[] langs, String list) {
 		this.words1 = words1;
 		this.words2 = words2;
 		lang1 = new Locale(langs[0]).getDisplayLanguage();
 		lang2 = new Locale(langs[1]).getDisplayLanguage();
+		this.list = list;
+		this.langs = langs;
 		fromOne = LanguageTrainer.random.nextBoolean();
 		if (fromOne) {
 			q = LanguageTrainer.random.nextInt(words1.length);
 		} else {
-			q = LanguageTrainer.random.nextInt(words1.length);
+			q = LanguageTrainer.random.nextInt(words2.length);
 		}
 	}
 
