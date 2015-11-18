@@ -2,6 +2,7 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,13 +12,18 @@ import java.util.Scanner;
 import java.util.function.Predicate;
 
 import br_0309.apps.languageTrainer.LanguageTrainer;
+import br_0309.apps.languageTrainer.Reference;
 import br_0309.apps.languageTrainer.data.ExerciseData;
+import br_0309.apps.languageTrainer.util.FXUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -25,6 +31,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ControllerMenu implements Initializable, IController {
 
@@ -210,6 +219,36 @@ public class ControllerMenu implements Initializable, IController {
 			}
 		});
 
+	}
+
+	public void onSettings() {
+		Stage stage = new Stage(StageStyle.UTILITY);
+		stage.initOwner(LanguageTrainer.window);
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.sizeToScene();
+		try {
+			Parent parent = FXMLLoader.load(getClass().getResource(Reference.FXML_SETTINGS),
+					ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+			Scene scene = new Scene(parent);
+			scene.getStylesheets().add(Reference.CSS_DEFAULT);
+			stage.setScene(scene);
+		} catch (IOException e) {
+			e.printStackTrace();
+			FXUtil.showExceptionDialog("", "", e);
+		}
+		stage.showAndWait();
+	}
+
+	public void onStatistics() {
+		// FIXME: Implement statistics
+	}
+
+	public void onTranslationList() {
+		// FIXME: Implement translation list editor
+	}
+
+	public void onVerbList() {
+		// FIXME: Implement verb list editor
 	}
 
 }

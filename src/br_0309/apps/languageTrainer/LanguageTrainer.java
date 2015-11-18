@@ -26,13 +26,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-// FIXME: No custom icons for installer
 // TODO: Add icons at different resolutions
 // TODO: Add themes
 // TODO: I18nize Copyrights.txt
 // FIXME FIXME: GET DEPLOYMENT WORKING!!
-// FIXME: _Add Settings button to Menu and change buttons to be in columns of 3
-// and to
 public class LanguageTrainer extends Application {
 
 	public static UserData userData = new UserData();
@@ -45,11 +42,11 @@ public class LanguageTrainer extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
+			throwable.printStackTrace();
+			FXUtil.showExceptionDialog("", throwable.toString(), throwable);
+		});
 		try {
-			Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
-				throwable.printStackTrace();
-				FXUtil.showExceptionDialog("", throwable.toString(), throwable);
-			});
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
 			window = primaryStage;
 			showLogin();
@@ -78,6 +75,7 @@ public class LanguageTrainer extends Application {
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
+			FXUtil.showExceptionDialog("", "", e);
 		}
 	}
 

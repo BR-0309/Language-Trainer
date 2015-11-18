@@ -3,14 +3,39 @@ All rights reserved.
 
 Below are individual copyright statements of used API's or files. Any file not included below is property of Benjamin Raison.
 
-==============================================================================================================================================================================================
-File						Author					License							Link															Note														
+===========================================================================================================================================================================================================
+File											Author					License							Link															Note														
 	
-correct.wav					erfelda					Creative Commons 0				http://freesound.org/people/ertfelda/sounds/243701/
-powerup-success.wav			GabrielAraujo			Creative Commons Attribution	http://freesound.org/people/GabrielAraujo/sounds/242501/
-game-sound-correct-v2.wav	Bertrof					Creative Commons Attribution	http://freesound.org/people/Bertrof/sounds/131662/
-correct2.wav				erfelda					Creative Commons 0				http://freesound.org/people/ertfelda/sounds/243701/
-jingle-4.wav				spazzo_1493				Creative Commons Attribution	http://freesound.org/people/spazzo_1493/sounds/74983/
+correct.wav										erfelda					Creative Commons 0				http://freesound.org/people/ertfelda/sounds/243701/				Modified filename
+powerup-success.wav								GabrielAraujo			Creative Commons Attribution	http://freesound.org/people/GabrielAraujo/sounds/242501/		Modified filename
+game-sound-correct-v2.wav						Bertrof					Creative Commons Attribution	http://freesound.org/people/Bertrof/sounds/131662/				Modified filename
+correct2.wav									erfelda					Creative Commons 0				http://freesound.org/people/ertfelda/sounds/243701/				Modified filename
+jingle-4.wav									spazzo_1493				Creative Commons Attribution	http://freesound.org/people/spazzo_1493/sounds/74983/			Modified filename
 
-speaker.png					G. Hagedorn				Public Domain					https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg	Modified size
-speaker_white.png			G. Hagedorn				Public Domain					https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg	Modified size & colour
+negativebeep.wav								Splashdust				Creative Commons 0				http://freesound.org/people/Splashdust/sounds/67454/			Modified filename
+incorrect.wav									ertfelda				Creative Commons 0				http://freesound.org/people/ertfelda/sounds/243700/				Modified filename
+negative-beeps.wav								themusicalnomad			Creative Commons 0				http://freesound.org/people/themusicalnomad/sounds/253886/		Modified filename
+negative.wav									mo_damage				Creative Commons 0				http://freesound.org/people/mo_damage/sounds/101100/			Modified filename
+misslyckad-bana-v5.wav							simon.rue				Creative Commons 0				http://freesound.org/people/simon.rue/sounds/49948/				Modified filename
+sine-negative-beep.wav							pan14					Creative Commons 0				http://freesound.org/people/pan14/sounds/263123/				Modified filename extensively
+
+3-men-cheering.wav								jbeetle					Creative Commons 0				http://freesound.org/people/jbeetle/sounds/274510/				Modified filename
+smallcrowd.wav									sagetyrtle				Creative Commons 0				http://freesound.org/people/sagetyrtle/sounds/32260/			Modified filename
+melo4.wav										DABROmusic				Creative Commons 0				http://freesound.org/people/DABROmusic/sounds/269507/			Modified filename extensively
+summertime-stab.wav								kasa90					Creative Commons 0				http://freesound.org/people/kasa90/sounds/156871/				Modified filename
+loop1.wav										kasa90					Creative Commons 0				http://freesound.org/people/kasa90/sounds/143206/				Modified filename
+sine-melody-2.wav								kasa90					Creative Commons 0				http://freesound.org/people/kasa90/sounds/143203/				Modified filename
+sine-melody.wav									kasa90					Creative Commons 0				http://freesound.org/people/kasa90/sounds/143123/				Modified filename
+applause-2.wav									Sandermotions			Creative Commons 0				http://freesound.org/people/Sandermotions/sounds/277021/		Modified filename
+
+speaker.png										G. Hagedorn				Public domain					https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg	Modified size & filename
+speaker_white.png								G. Hagedorn				Public domain					https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg	Modified size, colour and filename
+
+===========================================================================================================================================================================================================
+Licenses
+--------
+Creative Commons 0				https://creativecommons.org/publicdomain/zero/1.0/
+Creative Commons Attribution	https://creativecommons.org/licenses/by/3.0/
+Public dmain					https://en.wikipedia.org/wiki/Public_domain
+
+Note: In this context, Public domain means the author has given up all rights to his/her work.

@@ -21,7 +21,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-// TODO: Check StageStyle.UNIFIED on other platforms
 // TODO: Add more dialogs
 // TODO: Add default dialogs
 public class FXUtil {
@@ -58,7 +57,7 @@ public class FXUtil {
 		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 		stage.setAlwaysOnTop(true);
 		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initStyle(StageStyle.UNIFIED);
+		stage.initStyle(StageStyle.UTILITY);
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
@@ -84,7 +83,7 @@ public class FXUtil {
 		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 		stage.setAlwaysOnTop(true);
 		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initStyle(StageStyle.UNIFIED);
+		stage.initStyle(StageStyle.UTILITY);
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
@@ -243,6 +242,7 @@ public class FXUtil {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle(title);
 		alert.setHeaderText(header);
+		alert.initStyle(StageStyle.UTILITY);
 		alert.setContentText(msg);
 		alert.initOwner(LanguageTrainer.window.getOwner());
 

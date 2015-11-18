@@ -33,6 +33,10 @@ public class UserData implements Serializable {
 	private Properties getDefaults() {
 		Properties p = new Properties();
 		p.setProperty(Reference.PROPERTY_LANGUAGE, LanguageHandler.getBestLocale().getLanguage());
+		p.setProperty(Reference.PROPERTY_SOUND_CORRECT, Reference.SOUNDS_CORRECT[0]);
+		p.setProperty(Reference.PROPERTY_SOUND_INCORRECT, Reference.SOUNDS_INCORRECT[0]);
+		p.setProperty(Reference.PROPERTY_SOUND_FINISHED, Reference.SOUNDS_FINISHED[0]);
+		p.setProperty(Reference.PROPERTY_PLAY_SOUNDS, "true");
 		return p;
 	}
 
