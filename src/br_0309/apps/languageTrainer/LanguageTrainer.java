@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 // TODO: Add icons at different resolutions
-// TODO: Add themes
+// TODO: Make themes less terrible
 // TODO: I18nize Copyrights.txt
 // FIXME FIXME: GET DEPLOYMENT WORKING!!
 public class LanguageTrainer extends Application {
@@ -50,11 +50,11 @@ public class LanguageTrainer extends Application {
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
 			window = primaryStage;
 			showLogin();
+			LanguageHandler.setDisplayLanguage(userData.getLanguage());
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			BorderPane root = (BorderPane) loader.load();
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
-			// TODO: Set to user defined stylesheet
-			scene.getStylesheets().add(getClass().getResource(Reference.CSS_DEFAULT).toExternalForm());
+			scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
 			primaryStage
@@ -89,7 +89,7 @@ public class LanguageTrainer extends Application {
 			Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 
 		} else if (SystemUtil.isMac()) {
-			// TODO: Check Mac application support directory
+			// FIXME: Find out proper mac data directory
 			System.setProperty("apple.laf.useScreenMenuBar", "true");
 			File file = new File(System.getProperty("user.home") + File.separator + "Libraries" + File.separator + "ApplicationSupport" + File.separator);
 			file.mkdirs();
@@ -115,8 +115,7 @@ public class LanguageTrainer extends Application {
 			}
 		}
 		/*
-		 * FIXME: Add code to copy files over automatically on a different
-		 * thread
+		 * TODO: Add code to copy files over automatically on a different thread
 		 */
 
 		// Set language to best suited language before user settings are loaded
@@ -151,7 +150,7 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = (Parent) loader.load();
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(Reference.CSS_DEFAULT);
+			scene.getStylesheets().add(Reference.THEMES[0]);
 			stage.setMinWidth(350);
 			stage.setMinHeight(400);
 			stage.setScene(scene);
@@ -171,8 +170,7 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			// TODO: Set to user defined stylesheet
-			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_DEFAULT).toExternalForm());
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
 			currentController = (IController) loader.getController();
 			window.setScene(scene);
 		} catch (IOException e) {
@@ -189,8 +187,7 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			// TODO: Set to user defined style sheet
-			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_DEFAULT).toExternalForm());
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
 			currentController = (IController) loader.getController();
 			window.setScene(scene);
 			window.setMinHeight(400);
@@ -210,6 +207,9 @@ public class LanguageTrainer extends Application {
 
 	public static void playSoundCorrect() {
 		// FIXME: IMPLEMENT CORRECT SOUND
+		if (userData.getPlaySounds()) {
+
+		}
 	}
 
 	public static void playSoundIncorrect() {
@@ -227,8 +227,7 @@ public class LanguageTrainer extends Application {
 		try {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			// TODO: Set to user defined stylesheet
-			scene.getStylesheets().add(LanguageTrainer.class.getResource(Reference.CSS_DEFAULT).toExternalForm());
+			scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
 			ControllerTranslate controller = (ControllerTranslate) loader.getController();
 			controller.init(selected);
 			currentController = controller;

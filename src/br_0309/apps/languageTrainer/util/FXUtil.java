@@ -13,6 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Control;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
@@ -40,7 +41,9 @@ public class FXUtil {
 	/** Shows an Information Dialog */
 	public static void showInformationDialog(String title, String header, String msg) {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		DialogPane pane = alert.getDialogPane();
+		pane.getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+		Stage stage = (Stage) pane.getScene().getWindow();
 		stage.setAlwaysOnTop(true);
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.initStyle(StageStyle.UNIFIED);
@@ -54,7 +57,9 @@ public class FXUtil {
 	/** Show an error dialog */
 	public static void showErrorDialog(String title, String header, String msg) {
 		Alert alert = new Alert(AlertType.ERROR);
-		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		DialogPane pane = alert.getDialogPane();
+		pane.getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+		Stage stage = (Stage) pane.getScene().getWindow();
 		stage.setAlwaysOnTop(true);
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.initStyle(StageStyle.UTILITY);
@@ -80,7 +85,9 @@ public class FXUtil {
 	/** Show a warning dialog */
 	public static void showWarningDialog(String title, String header, String msg) {
 		Alert alert = new Alert(AlertType.WARNING);
-		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		DialogPane pane = alert.getDialogPane();
+		pane.getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+		Stage stage = (Stage) pane.getScene().getWindow();
 		stage.setAlwaysOnTop(true);
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.initStyle(StageStyle.UTILITY);
@@ -133,6 +140,7 @@ public class FXUtil {
 		expContent.add(textArea, 0, 1);
 		alert.getDialogPane().setExpandableContent(expContent);
 		alert.initModality(Modality.APPLICATION_MODAL);
+		alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
 		alert.showAndWait();
 	}
 
@@ -166,6 +174,7 @@ public class FXUtil {
 		expContent.add(textArea, 0, 1);
 		alert.getDialogPane().setExpandableContent(expContent);
 		alert.initModality(Modality.APPLICATION_MODAL);
+		alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
 		alert.showAndWait();
 	}
 
@@ -200,6 +209,7 @@ public class FXUtil {
 		expContent.add(textArea, 0, 1);
 		alert.getDialogPane().setExpandableContent(expContent);
 		alert.initModality(Modality.APPLICATION_MODAL);
+		alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
 		alert.showAndWait();
 	}
 
@@ -234,6 +244,7 @@ public class FXUtil {
 		expContent.add(textArea, 0, 1);
 		alert.getDialogPane().setExpandableContent(expContent);
 		alert.initModality(Modality.APPLICATION_MODAL);
+		alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
 		alert.showAndWait();
 	}
 
@@ -244,6 +255,7 @@ public class FXUtil {
 		alert.setHeaderText(header);
 		alert.initStyle(StageStyle.UTILITY);
 		alert.setContentText(msg);
+		alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
 		alert.initOwner(LanguageTrainer.window.getOwner());
 
 		ButtonType ok = new ButtonType(btnOk, ButtonData.OK_DONE);

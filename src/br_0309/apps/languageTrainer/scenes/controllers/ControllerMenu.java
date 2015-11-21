@@ -103,7 +103,6 @@ public class ControllerMenu implements Initializable, IController {
 		filter();
 	}
 
-	// FIXME: Split up per language combo
 	private void initData() {
 		final String TRANSLATION = BUNDLE.getString("generic.translation");
 		final String VERBS = BUNDLE.getString("generic.verbs");
@@ -230,7 +229,7 @@ public class ControllerMenu implements Initializable, IController {
 			Parent parent = FXMLLoader.load(getClass().getResource(Reference.FXML_SETTINGS),
 					ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
 			Scene scene = new Scene(parent);
-			scene.getStylesheets().add(Reference.CSS_DEFAULT);
+			scene.getStylesheets().add(LanguageTrainer.userData.getTheme());
 			stage.setScene(scene);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -6,12 +6,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerSettings">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="325.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerSettings">
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnOK" defaultButton="true" mnemonicParsing="false" text="%generic.ok" />
-            <Button fx:id="btnCancel" cancelButton="true" mnemonicParsing="false" text="%generic.cancel">
+            <Button fx:id="btnOK" defaultButton="true" mnemonicParsing="false" onAction="#onOK" text="%generic.ok" />
+            <Button mnemonicParsing="false" onAction="#onReset" style="-fx-background-color: #FF4444;" text="Button" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnCancel" cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
@@ -29,8 +34,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ComboBox fx:id="boxTheme" layoutX="115.0" layoutY="14.0" prefWidth="150.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="10.0" />
-                        <Label layoutX="7.0" layoutY="18.0" text="%settings.theme" />
+                        <ComboBox fx:id="boxTheme" layoutX="117.0" layoutY="47.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="50.0">
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding></ComboBox>
+                        <Label layoutX="9.0" layoutY="48.0" text="%settings.theme" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding></Label>
+                        <Label layoutX="14.0" layoutY="14.0" text="%settings.language" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0" />
+                        <ComboBox fx:id="boxLanguage" layoutX="117.0" layoutY="19.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.topAnchor="15.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -39,11 +52,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ComboBox fx:id="boxCorrect" layoutX="80.0" layoutY="15.0" prefWidth="125.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="15.0" />
+                        <ComboBox fx:id="boxCorrect" layoutX="80.0" layoutY="15.0" prefHeight="25.0" prefWidth="175.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="15.0" />
                         <Button layoutX="246.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="speaker-button" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0" />
-                        <ComboBox fx:id="boxIncorrect" prefWidth="125.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="50.0" />
+                        <ComboBox fx:id="boxIncorrect" prefHeight="25.0" prefWidth="175.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="50.0" />
                         <Button layoutX="244.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="speaker-button" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0" />
-                        <ComboBox fx:id="boxFinished" layoutX="85.0" layoutY="79.0" prefWidth="125.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="85.0" />
+                        <ComboBox fx:id="boxFinished" layoutX="85.0" layoutY="79.0" prefHeight="25.0" prefWidth="175.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="85.0" />
                         <Button layoutX="244.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="speaker-button" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="85.0" />
                         <Label layoutX="14.0" layoutY="19.0" text="%settings.soundCorrect" AnchorPane.leftAnchor="10.0" />
                         <Label layoutX="14.0" layoutY="54.0" text="%settings.soundIncorrect" AnchorPane.leftAnchor="10.0" />

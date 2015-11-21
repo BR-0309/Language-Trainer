@@ -4,10 +4,11 @@ import java.util.Locale;
 
 public class LanguageHandler {
 
-	private final static Locale[] INTERFACE_LANGS = { Locale.GERMANY, Locale.UK };
+	public final static Locale[] INTERFACE_LANGS = { Locale.UK, Locale.GERMANY };
 	// TODO: Add flags
 	/*
-	 * SCOT and WAL are made up to represent Scotland and Wales, respectively
+	 * SCOT, WAL and INT are made up to represent Scotland, Wales and
+	 * international, respectively
 	 */
 	public static final Locale[] LANGUAGES = { new Locale("af", "ZA"), new Locale("an", "ES"), new Locale("ay", "BO"), new Locale("bi", "VU"),
 			new Locale("br", "FR"), new Locale("ca", "ES"), new Locale("ch", "US"), new Locale("co", "FR"), new Locale("cs", "CZ"), new Locale("da", "DK"),
