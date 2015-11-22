@@ -2,7 +2,7 @@
 .root{
 	-fx-base: rgb(70, 70, 70);
 	-fx-background: rgb(70,70,70);
-	-fx-control-inner-background: rgb(70, 70, 70);
+	-fx-control-inner-background: rgb(100, 100, 100);
 }
 .speaker-button{
 	-fx-graphic: url(/icons/speaker_white.png)

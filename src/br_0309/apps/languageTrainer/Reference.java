@@ -34,8 +34,8 @@ public class Reference {
 	public static final String[] SOUNDS_INCORRECT = { "/sounds/incorrect/incorrect.wav", "/sounds/incorrect/misslyckad-bana-v5.wav",
 			"/sounds/incorrect/negative-beeps.wav", "/sounds/incorrect/negative.wav", "/sounds/incorrect/negativebeep.wav",
 			"/sounds/incorrect/sine-negative-beep.wav" };
-	public static final String[] SOUNDS_FINISHED = { "/sounds/finshed/3-men-cheering.wav", "/sounds/finshed/applause-2.wav", "/sounds/finshed/loop1.wav",
-			"/sounds/finshed/melo4.wav", "/sounds/finshed/sine-melody.wav", "/sounds/finshed/sine-melody-2.wav", "/sounds/finshed/smallcrowd.wav",
-			"/sounds/finshed/summertime-stab" };
+	public static final String[] SOUNDS_FINISHED = { "/sounds/finished/3-men-cheering.wav", "/sounds/finished/applause-2.wav", "/sounds/finished/loop1.wav",
+			"/sounds/finished/melo4.wav", "/sounds/finished/sine-melody.wav", "/sounds/finished/sine-melody-2.wav", "/sounds/finished/smallcrowd.wav",
+			"/sounds/finished/summertime-stab.wav" };
 
 }

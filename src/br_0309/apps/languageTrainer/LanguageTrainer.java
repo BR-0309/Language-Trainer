@@ -8,6 +8,12 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import br_0309.apps.languageTrainer.data.ExerciseData;
 import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
@@ -81,7 +87,7 @@ public class LanguageTrainer extends Application {
 
 	/** Main method */
 	public static void main(String[] args) {
-		// Syste-specific settings
+		// System-specific settings
 		if (SystemUtil.isWindows()) {
 			File file = new File(System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" + File.separator + "LanguageTrainer"
 					+ File.separator);
@@ -201,23 +207,71 @@ public class LanguageTrainer extends Application {
 
 	public static boolean showExitPrompt() {
 		ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
-		return FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.reallyQuit"),
+		return FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"),
 				BUNDLE.getString("generic.confirmQuit"), BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"));
 	}
 
 	public static void playSoundCorrect() {
 		// FIXME: IMPLEMENT CORRECT SOUND
 		if (userData.getPlaySounds()) {
-
+			AudioInputStream audioIn = null;
+			try {
+				audioIn = AudioSystem.getAudioInputStream(LanguageTrainer.class.getResource(userData.getSoundCorrect()));
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioIn);
+				clip.start();
+			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					audioIn.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 
 	public static void playSoundIncorrect() {
 		// FIXME: IMPLEMENT INCORRECT SOUND
+		if (userData.getPlaySounds()) {
+			AudioInputStream audioIn = null;
+			try {
+				audioIn = AudioSystem.getAudioInputStream(LanguageTrainer.class.getResource(userData.getSoundIncorrect()));
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioIn);
+				clip.start();
+			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					audioIn.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	public static void playSoundFinished() {
 		// FIXME: IMPLEMENT FINSIHED SOUND
+		if (userData.getPlaySounds()) {
+			AudioInputStream audioIn = null;
+			try {
+				audioIn = AudioSystem.getAudioInputStream(LanguageTrainer.class.getResource(userData.getSoundFinished()));
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioIn);
+				clip.start();
+			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					audioIn.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	public static void showTranslation(ArrayList<ExerciseData> selected) {

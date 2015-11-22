@@ -1,9 +1,19 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .root {
-    -fx-base: #7eaacc;
-    -fx-background: #7eaacc;
+    -fx-base: #33CCFF;
+    -fx-background: #33CCFF;
     -fx-control-inner-background: white;
 }
 .speaker-button{
 	-fx-graphic: url(/icons/speaker.png)
+}
+.button {
+	-fx-background-color: linear-gradient(#00ACE6, #0085B3)
+}
+.button:hover{
+	-fx-background-color: linear-gradient(#0099CC, #00ACE6)
+
+}
+.combo-box-base{
+	-fx-background-color: linear-gradient(#00ACE6, #0085B3)
 }
