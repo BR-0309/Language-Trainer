@@ -104,9 +104,6 @@ public class ControllerTranslate implements Initializable, IController {
 
 			}
 		}
-
-		// FIXME FIXME: Check for empty list
-
 		if (words.isEmpty()) {
 			if (rest.isEmpty()) {
 				LanguageTrainer.playSoundFinished();

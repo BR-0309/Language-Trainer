@@ -38,4 +38,5 @@ public class Reference {
 			"/sounds/finished/melo4.wav", "/sounds/finished/sine-melody.wav", "/sounds/finished/sine-melody-2.wav", "/sounds/finished/smallcrowd.wav",
 			"/sounds/finished/summertime-stab.wav" };
 
+	public static final String FLAG_DIR = "/icons/flags/";
 }

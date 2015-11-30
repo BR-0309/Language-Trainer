@@ -244,6 +244,7 @@ public class ControllerMenu implements Initializable, IController {
 
 	public void onTranslationList() {
 		// FIXME: Implement translation list editor
+		// FIXME: SHOW LANGUAGE SELECTION DIALOG
 	}
 
 	public void onVerbList() {

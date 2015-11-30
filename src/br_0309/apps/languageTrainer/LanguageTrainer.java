@@ -212,7 +212,6 @@ public class LanguageTrainer extends Application {
 	}
 
 	public static void playSoundCorrect() {
-		// FIXME: IMPLEMENT CORRECT SOUND
 		if (userData.getPlaySounds()) {
 			AudioInputStream audioIn = null;
 			try {
@@ -233,7 +232,6 @@ public class LanguageTrainer extends Application {
 	}
 
 	public static void playSoundIncorrect() {
-		// FIXME: IMPLEMENT INCORRECT SOUND
 		if (userData.getPlaySounds()) {
 			AudioInputStream audioIn = null;
 			try {
@@ -254,7 +252,6 @@ public class LanguageTrainer extends Application {
 	}
 
 	public static void playSoundFinished() {
-		// FIXME: IMPLEMENT FINSIHED SOUND
 		if (userData.getPlaySounds()) {
 			AudioInputStream audioIn = null;
 			try {
