@@ -1,0 +1,3 @@
+*Generate ant build file
+*Add root to ant classpath (right-click on build(right), properties, classpath, add)
+*Profit!

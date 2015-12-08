@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="language-trainer" default="all" basedir=".">
+
+
+    <property file="language-trainer.properties"/>
+    <!-- Uncomment the following property if no tests compilation is needed -->
+    <!--
+    <property name="skip.tests" value="true"/>
+     -->
+
+    <!-- Compiler options -->
+
+    <property name="compiler.debug" value="on"/>
+    <property name="compiler.generate.no.warnings" value="off"/>
+    <property name="compiler.args" value=""/>
+    <property name="compiler.max.memory" value="700m"/>
+    <patternset id="ignored.files">
+        <exclude name="**/*.hprof/**"/>
+        <exclude name="**/*.pyc/**"/>
+        <exclude name="**/*.pyo/**"/>
+        <exclude name="**/*.rbc/**"/>
+        <exclude name="**/*~/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.git/**"/>
+        <exclude name="**/.hg/**"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="**/CVS/**"/>
+        <exclude name="**/RCS/**"/>
+        <exclude name="**/SCCS/**"/>
+        <exclude name="**/__pycache__/**"/>
+        <exclude name="**/_svn/**"/>
+        <exclude name="**/rcs/**"/>
+        <exclude name="**/vssver.scc/**"/>
+        <exclude name="**/vssver2.scc/**"/>
+    </patternset>
+    <patternset id="library.patterns">
+        <include name="*.war"/>
+        <include name="*.swc"/>
+        <include name="*.apk"/>
+        <include name="*.zip"/>
+        <include name="*.ear"/>
+        <include name="*.egg"/>
+        <include name="*.ane"/>
+        <include name="*.jar"/>
+    </patternset>
+    <patternset id="compiler.resources">
+        <exclude name="**/?*.java"/>
+        <exclude name="**/?*.form"/>
+        <exclude name="**/?*.class"/>
+        <exclude name="**/?*.groovy"/>
+        <exclude name="**/?*.scala"/>
+        <exclude name="**/?*.flex"/>
+        <exclude name="**/?*.kt"/>
+        <exclude name="**/?*.clj"/>
+        <exclude name="**/?*.aj"/>
+    </patternset>
+
+    <!-- JDK definitions -->
+
+    <property name="jdk.bin.1.8_(1)" value="${jdk.home.1.8_(1)}/bin"/>
+    <path id="jdk.classpath.1.8_(1)">
+        <fileset dir="${jdk.home.1.8_(1)}">
+            <include name="jre/lib/charsets.jar"/>
+            <include name="jre/lib/deploy.jar"/>
+            <include name="jre/lib/ext/access-bridge-64.jar"/>
+            <include name="jre/lib/ext/cldrdata.jar"/>
+            <include name="jre/lib/ext/dnsns.jar"/>
+            <include name="jre/lib/ext/jaccess.jar"/>
+            <include name="jre/lib/ext/jfxrt.jar"/>
+            <include name="jre/lib/ext/localedata.jar"/>
+            <include name="jre/lib/ext/nashorn.jar"/>
+            <include name="jre/lib/ext/sunec.jar"/>
+            <include name="jre/lib/ext/sunjce_provider.jar"/>
+            <include name="jre/lib/ext/sunmscapi.jar"/>
+            <include name="jre/lib/ext/sunpkcs11.jar"/>
+            <include name="jre/lib/ext/zipfs.jar"/>
+            <include name="jre/lib/javaws.jar"/>
+            <include name="jre/lib/jce.jar"/>
+            <include name="jre/lib/jfr.jar"/>
+            <include name="jre/lib/jfxswt.jar"/>
+            <include name="jre/lib/jsse.jar"/>
+            <include name="jre/lib/management-agent.jar"/>
+            <include name="jre/lib/plugin.jar"/>
+            <include name="jre/lib/resources.jar"/>
+            <include name="jre/lib/rt.jar"/>
+        </fileset>
+    </path>
+
+    <property name="project.jdk.home" value="${jdk.home.1.8_(1)}"/>
+    <property name="project.jdk.bin" value="${jdk.bin.1.8_(1)}"/>
+    <property name="project.jdk.classpath" value="jdk.classpath.1.8_(1)"/>
+    <!-- Register Custom Compiler Taskdefs -->
+    <property name="javac2.home" value="${idea.home}/lib"/>
+    <path id="javac2.classpath">
+        <pathelement location="${javac2.home}/javac2.jar"/>
+        <pathelement location="${javac2.home}/jdom.jar"/>
+        <pathelement location="${javac2.home}/asm-all.jar"/>
+        <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+    </path>
+    <target name="register.custom.compilers">
+        <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+        <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions"
+                 classpathref="javac2.classpath"/>
+    </target>
+
+    <!-- Modules -->
+
+
+    <!-- Module Language-Trainer -->
+
+    <dirname property="module.language-trainer.basedir" file="${ant.file}"/>
+
+
+    <property name="module.jdk.home.language-trainer" value="${jdk.home.1.8_(1)}"/>
+    <property name="module.jdk.bin.language-trainer" value="${jdk.bin.1.8_(1)}"/>
+    <property name="module.jdk.classpath.language-trainer" value="jdk.classpath.1.8_(1)"/>
+
+    <property name="compiler.args.language-trainer" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+
+    <property name="language-trainer.output.dir"
+              value="${module.language-trainer.basedir}/out/production/Language-Trainer"/>
+    <property name="language-trainer.testoutput.dir"
+              value="${module.language-trainer.basedir}/out/test/Language-Trainer"/>
+
+    <path id="language-trainer.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+
+    <path id="language-trainer.module.production.classpath">
+        <path refid="${module.jdk.classpath.language-trainer}"/>
+    </path>
+
+    <path id="language-trainer.runtime.production.module.classpath">
+        <pathelement location="${language-trainer.output.dir}"/>
+    </path>
+
+    <path id="language-trainer.module.classpath">
+        <path refid="${module.jdk.classpath.language-trainer}"/>
+        <pathelement location="${language-trainer.output.dir}"/>
+    </path>
+
+    <path id="language-trainer.runtime.module.classpath">
+        <pathelement location="${language-trainer.testoutput.dir}"/>
+        <pathelement location="${language-trainer.output.dir}"/>
+    </path>
+
+
+    <patternset id="excluded.from.module.language-trainer">
+        <patternset refid="ignored.files"/>
+    </patternset>
+
+    <patternset id="excluded.from.compilation.language-trainer">
+        <patternset refid="excluded.from.module.language-trainer"/>
+    </patternset>
+
+    <path id="language-trainer.module.sourcepath">
+        <dirset dir="${module.language-trainer.basedir}">
+            <include name="src"/>
+            <include name="resources"/>
+        </dirset>
+    </path>
+
+
+    <target name="compile.module.language-trainer"
+            depends="compile.module.language-trainer.production,compile.module.language-trainer.tests"
+            description="Compile module Language-Trainer"/>
+
+    <target name="compile.module.language-trainer.production" depends="register.custom.compilers"
+            description="Compile module Language-Trainer; production classes">
+        <mkdir dir="${language-trainer.output.dir}"/>
+        <javac2 destdir="${language-trainer.output.dir}" debug="${compiler.debug}"
+                nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"
+                executable="${module.jdk.bin.language-trainer}/javac">
+            <compilerarg line="${compiler.args.language-trainer}"/>
+            <bootclasspath refid="language-trainer.module.bootclasspath"/>
+            <classpath refid="language-trainer.module.production.classpath"/>
+            <src refid="language-trainer.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.language-trainer"/>
+        </javac2>
+
+        <copy todir="${language-trainer.output.dir}">
+            <fileset dir="${module.language-trainer.basedir}/src">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${module.language-trainer.basedir}/resources">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="compile.module.language-trainer.tests"
+            depends="register.custom.compilers,compile.module.language-trainer.production"
+            description="compile module Language-Trainer; test classes" unless="skip.tests"/>
+
+    <target name="clean.module.language-trainer" description="cleanup module">
+        <delete dir="${language-trainer.output.dir}"/>
+        <delete dir="${language-trainer.testoutput.dir}"/>
+    </target>
+
+    <target name="init" description="Build initialization">
+        <!-- Perform any build initialization in this target -->
+    </target>
+
+    <target name="clean" depends="clean.module.language-trainer, clean.artifact.language-trainer"
+            description="cleanup all"/>
+
+    <target name="build.modules" depends="init, clean, compile.module.language-trainer"
+            description="build all modules"/>
+
+    <target name="init.artifacts">
+        <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+        <property name="artifact.output.language-trainer" value="${basedir}/out/artifacts/Language_Trainer"/>
+        <mkdir dir="${artifacts.temp.dir}"/>
+        <property name="artifact.temp.output.Language_Trainer" value="${artifacts.temp.dir}/Language_Trainer.jar"/>
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant"
+                 classpath="${jdk.home.1.8_(1)}/lib/ant-javafx.jar"/>
+    </target>
+
+    <target name="clean.artifact.language-trainer" description="clean Language-Trainer artifact output">
+        <delete dir="C:\Users\Benjamin\OneDrive\Coding\Projects\Language-Trainer\out\artifacts\Language_Trainer"/>
+    </target>
+
+    <target name="artifact.language-trainer" depends="init.artifacts, compile.module.language-trainer"
+            description="Build &#39;Language-Trainer&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+        <mkdir dir="${artifact.output.language-trainer}"/>
+        <copy todir="${artifact.temp.output.Language_Trainer}">
+            <fileset dir="${language-trainer.output.dir}"/>
+        </copy>
+        <fx:fileset id="all_but_Language_Trainer" dir="${artifact.temp.output.Language_Trainer}" includes="**/*.jar">
+            <exclude name="Language_Trainer.jar"/>
+        </fx:fileset>
+        <fx:fileset id="all_Language_Trainer" dir="${artifact.temp.output.Language_Trainer}" includes="**/*.jar"/>
+        <fx:application id="Language_Trainer_id" name="Language-Trainer"
+                        mainClass="br_0309.apps.languageTrainer.LanguageTrainer" version="${app.version}"/>
+        <fx:csstobin outdir="${artifact.temp.output.Language_Trainer}">
+            <fileset dir="${artifact.temp.output.Language_Trainer}" includes="**/*.css"/>
+        </fx:csstobin>
+        <fx:jar destfile="${artifact.temp.output.Language_Trainer}\Language_Trainer.jar">
+            <fx:application refid="Language_Trainer_id"/>
+            <fileset dir="${artifact.temp.output.Language_Trainer}" excludes="**/*.jar"/>
+            <fx:resources>
+                <fx:fileset refid="all_but_Language_Trainer"/>
+            </fx:resources>
+            <manifest/>
+        </fx:jar>
+        <fx:deploy width="600" height="400" updatemode="background"
+                   outdir="${artifact.temp.output.Language_Trainer}\deploy" outfile="Language_Trainer"
+                   nativeBundles="exe" verbose="true">
+            <fx:application refid="Language_Trainer_id"/>
+            <fx:info title="Language Trainer" vendor="Benjamin Raison" description="Practice Languages"/>
+            <fx:resources>
+                <fx:fileset refid="all_Language_Trainer"/>
+            </fx:resources>
+        </fx:deploy>
+        <copy todir="${artifact.output.language-trainer}">
+            <fileset dir="${artifact.temp.output.Language_Trainer}/deploy"/>
+        </copy>
+        <delete includeemptydirs="true">
+            <fileset dir="${artifact.temp.output.Language_Trainer}"/>
+        </delete>
+    </target>
+
+    <target name="build.all.artifacts" depends="artifact.language-trainer" description="Build all artifacts">
+
+        <!-- Delete temporary files -->
+        <delete dir="${artifacts.temp.dir}"/>
+    </target>
+
+    <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

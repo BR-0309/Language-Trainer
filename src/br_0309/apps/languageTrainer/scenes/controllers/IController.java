@@ -2,7 +2,7 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 
 public interface IController {
 
-	public void onExit();
+    void onExit();
 
-	public void onInsert(char c);
+    void onInsert(char c);
 }
