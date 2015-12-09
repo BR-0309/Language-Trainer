@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.BorderPane?>
-
 <BorderPane minHeight="400.0" minWidth="425.0" prefHeight="500.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerMenu">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="%generic.file">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="%generic.restart" />
-              <MenuItem mnemonicParsing="false" text="%generic.close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="%generic.help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="%generic.about" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
    <bottom>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="106.0" prefWidth="665.0" style="-fx-border-color: gray; -fx-border-insets: 5;" BorderPane.alignment="CENTER">
          <children>

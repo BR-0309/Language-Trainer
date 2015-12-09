@@ -36,7 +36,8 @@ ArchitecturesInstallIn64BitMode=x64
 
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 
 [Files]
 Source: "Language-Trainer\Language-Trainer.exe"; DestDir: "{app}"; Flags: ignoreversion

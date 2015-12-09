@@ -51,7 +51,7 @@ public class LanguageTrainer extends Application {
             window = primaryStage;
             showLogin();
             LanguageHandler.setDisplayLanguage(userData.getLanguage());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_LANGUAGE_ADD), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
             scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
@@ -63,7 +63,11 @@ public class LanguageTrainer extends Application {
             primaryStage.setOnCloseRequest(event -> {
                 // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK
                 if (!askForExit()) {
-                    currentController.onExit();
+                    try {
+                        currentController.onExit();
+                    } catch (NullPointerException e) {
+                        System.err.println("Scene does not have assigned controller!");
+                    }
                     event.consume();
                 }
             });
@@ -111,9 +115,9 @@ public class LanguageTrainer extends Application {
                 e.printStackTrace();
             }
         }
-        /*
-         * TODO: Add code to copy files over automatically on a different thread
-		 */
+
+        // TODO: Add code to copy files over automatically on a different thread
+
 
         // Set language to best suited language before user settings are loaded
         LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
@@ -130,13 +134,13 @@ public class LanguageTrainer extends Application {
      * Print all relevant information about the system, user and languages
      */
     private static void printSystemInfo() {
-        System.out.println("Operating System:\t\t" + System.getProperty("os.name") + "\n" + "Operating System Version:\t" + System.getProperty("os.version")
-                + "\n" + "Architecture:\t\t\t" + System.getProperty("os.arch") + "\n" + "Java Version:\t\t\t" + System.getProperty("java.version") + "\n"
-                + "Java Vendor:\t\t\t" + System.getProperty("java.vendor") + "\n" + "JavaFX Version:\t\t\t" + System.getProperty("javafx.version") + "\n"
-                + "Java Home Dir:\t\t\t" + System.getProperty("java.home") + "\n" + "Temporary Dir:\t\t\t" + System.getProperty("java.io.tmpdir") + "\n"
-                + "Execution Dir:\t\t\t" + System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t" + System.getProperty("user.home") + "\n"
-                + "System language:\t\t" + System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t" + Locale.getDefault() + "\n"
-                + "Best suited locale:\t\t" + LanguageHandler.getBestLocale() + "\nLanguage Trainer version:\t" + Reference.VERSION + "\n");
+        System.out.println("Operating System:\t\t\t" + System.getProperty("os.name") + "\n" + "Operating System Version:\t" + System.getProperty("os.version")
+                + "\n" + "Architecture:\t\t\t\t" + System.getProperty("os.arch") + "\n" + "Java Version:\t\t\t\t" + System.getProperty("java.version") + "\n"
+                + "Java Vendor:\t\t\t\t" + System.getProperty("java.vendor") + "\n" + "JavaFX Version:\t\t\t\t" + System.getProperty("javafx.version") + "\n"
+                + "Java Home Dir:\t\t\t\t" + System.getProperty("java.home") + "\n" + "Temporary Dir:\t\t\t\t" + System.getProperty("java.io.tmpdir") + "\n"
+                + "Execution Dir:\t\t\t\t" + System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t\t" + System.getProperty("user.home") + "\n"
+                + "System language:\t\t\t" + System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t\t" + Locale.getDefault() + "\n"
+                + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() + "\nLanguage Trainer version:\t" + Reference.VERSION + "\n");
     }
 
     /**

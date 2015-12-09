@@ -100,7 +100,7 @@ public class ControllerMenu implements Initializable, IController {
                 System.err.println("Null reference in exercise locations!");
                 continue;
             } else if (!folder.exists() || folder.isFile()) {
-                System.err.print(folder.getAbsolutePath() + " does not exist or is a file!");
+                System.err.println(folder.getAbsolutePath() + " does not exist or is a file!");
                 continue;
             }
             // Cycle through all files in the folder
@@ -126,12 +126,13 @@ public class ControllerMenu implements Initializable, IController {
                             for (int j = i + 1; j < langs.length; j++) {
                                 String lang1 = new Locale(langs[i]).getDisplayLanguage();
                                 String lang2 = new Locale(langs[j]).getDisplayLanguage();
-                                data.add(new ExerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file, new String[]{langs[i], langs[j]}));
+                                data.add(new ExerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file, new String[]{
+                                        langs[i], langs[j]}));
                             }
                         }
 
                     } catch (Exception e) {
-                        System.err.print("Something went wrong while trying to read: " + file.getAbsolutePath());
+                        System.err.println("Something went wrong while trying to read: " + file.getAbsolutePath());
                         e.printStackTrace();
                     }
                 } else if (file.getName().endsWith("vdt")) {
@@ -141,7 +142,7 @@ public class ControllerMenu implements Initializable, IController {
                         String lang = scan.nextLine();
                         scan.close();
                         if (lang.length() > 3) {
-                            System.err.printf("Invalid lang code (%s) in file %s. Skipping.\n", lang, file.getAbsolutePath());
+                            System.err.printf("Invalid lang code (%s) in file %s. Skipping.\n", lang, file.getAbsolutePath() + "\n");
                             continue;
                         }
                         data.add(new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""), new Locale(lang).getDisplayLanguage(), VERBS,
@@ -224,7 +225,7 @@ public class ControllerMenu implements Initializable, IController {
 
     public void onTranslationList() {
         // FIXME: Implement translation list editor
-        // FIXME: SHOW LANGUAGE SELECTION DIALOG
+        LanguageTrainer.setScene(Reference.FXML_CREATE_TRANSLATION);
     }
 
     public void onVerbList() {

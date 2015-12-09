@@ -9,8 +9,11 @@ public class Reference {
     public static final String FXML_PROFILE_NEW = "/br_0309/apps/languageTrainer/scenes/ProfileNew.fxml";
     public static final String FXML_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/Translate.fxml";
     public static final String FXML_SETTINGS = "/br_0309/apps/languageTrainer/scenes/Settings.fxml";
+    public static final String FXML_CREATE_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/CreateTranslationList.fxml";
+    public static final String FXML_LANGUAGE_ADD = "/br_0309/apps/languageTrainer/scenes/LanguageAdd.fxml";
 
-    public static final String[] THEMES = {"/stylesheets/default.css", "/stylesheets/dark.css", "/stylesheets/blue.css"};
+    public static final String[] THEMES = {"/stylesheets/default.css", "/stylesheets/dark.css",
+            "/stylesheets/blue.css"};
 
     public static final String BUNDLE_LOC = "lang/Locale";
 
