@@ -51,7 +51,7 @@ public class LanguageTrainer extends Application {
             window = primaryStage;
             showLogin();
             LanguageHandler.setDisplayLanguage(userData.getLanguage());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_LANGUAGE_ADD), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
             scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());

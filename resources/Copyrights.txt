@@ -1,44 +1,88 @@
-Copyright (c) 2015 Benjamin Raison and others.
-All rights reserved.
+Copyright (c) 2015 Benjamin Raison and others. All rights reserved.
 
-Below are individual copyright statements of used API's or files. Any file not included below is property of Benjamin Raison.
+Below are individual copyright statements of files. Any file not included below is property of Benjamin Raison.
 
-===========================================================================================================================================================================================================
-File						Author					License							Link																Notes													
-	
-correct.wav					erfelda					Creative Commons 0				http://freesound.org/people/ertfelda/sounds/243701/					Modified filename
-powerup-success.wav			GabrielAraujo			Creative Commons Attribution	http://freesound.org/people/GabrielAraujo/sounds/242501/			Modified filename
-game-sound-correct-v2.wav	Bertrof					Creative Commons Attribution	http://freesound.org/people/Bertrof/sounds/131662/					Modified filename
-correct2.wav				erfelda					Creative Commons 0				http://freesound.org/people/ertfelda/sounds/243701/					Modified filename
-jingle-4.wav				spazzo_1493				Creative Commons Attribution	http://freesound.org/people/spazzo_1493/sounds/74983/				Modified filename
+====================================================================================================================================================================================================================
+File                        Author                  License                         Link                                                                                        Notes
 
-negativebeep.wav			Splashdust				Creative Commons 0				http://freesound.org/people/Splashdust/sounds/67454/				Modified filename
-incorrect.wav				ertfelda				Creative Commons 0				http://freesound.org/people/ertfelda/sounds/243700/					Modified filename
-negative-beeps.wav			themusicalnomad			Creative Commons 0				http://freesound.org/people/themusicalnomad/sounds/253886/			Modified filename
-negative.wav				mo_damage				Creative Commons 0				http://freesound.org/people/mo_damage/sounds/101100/				Modified filename
-misslyckad-bana-v5.wav		simon.rue				Creative Commons 0				http://freesound.org/people/simon.rue/sounds/49948/					Modified filename
-sine-negative-beep.wav		pan14					Creative Commons 0				http://freesound.org/people/pan14/sounds/263123/					Modified filename extensively, changed bit depth
+correct.wav                 erfelda                     Creative Commons 0              http://freesound.org/people/ertfelda/sounds/243701/                                         Modified filename
+powerup-success.wav         GabrielAraujo               Creative Commons Attribution    http://freesound.org/people/GabrielAraujo/sounds/242501/                                    Modified filename
+game-sound-correct-v2.wav   Bertrof                     Creative Commons Attribution    http://freesound.org/people/Bertrof/sounds/131662/                                          Modified filename
+correct2.wav                erfelda                     Creative Commons 0              http://freesound.org/people/ertfelda/sounds/243701/                                         Modified filename
+jingle-4.wav                spazzo_1493                 Creative Commons Attribution    http://freesound.org/people/spazzo_1493/sounds/74983/                                       Modified filename
 
-3-men-cheering.wav			jbeetle					Creative Commons 0				http://freesound.org/people/jbeetle/sounds/274510/					Modified filename, changed bit depth
-smallcrowd.wav				sagetyrtle				Creative Commons 0				http://freesound.org/people/sagetyrtle/sounds/32260/				Modified filename
-melo4.wav					DABROmusic				Creative Commons 0				http://freesound.org/people/DABROmusic/sounds/269507/				Modified filename extensively, changed bit depth
-summertime-stab.wav			kasa90					Creative Commons 0				http://freesound.org/people/kasa90/sounds/156871/					Modified filename
-loop1.wav					kasa90					Creative Commons 0				http://freesound.org/people/kasa90/sounds/143206/					Modified filename
-sine-melody-2.wav			kasa90					Creative Commons 0				http://freesound.org/people/kasa90/sounds/143203/					Modified filename
-sine-melody.wav				kasa90					Creative Commons 0				http://freesound.org/people/kasa90/sounds/143123/					Modified filename
-applause-2.wav				Sandermotions			Creative Commons 0				http://freesound.org/people/Sandermotions/sounds/277021/			Modified filename
+negativebeep.wav            Splashdust                  Creative Commons 0              http://freesound.org/people/Splashdust/sounds/67454/                                        Modified filename
+incorrect.wav               ertfelda                    Creative Commons 0              http://freesound.org/people/ertfelda/sounds/243700/                                         Modified filename
+negative-beeps.wav          themusicalnomad             Creative Commons 0              http://freesound.org/people/themusicalnomad/sounds/253886/                                  Modified filename
+negative.wav                mo_damage                   Creative Commons 0              http://freesound.org/people/mo_damage/sounds/101100/                                        Modified filename
+misslyckad-bana-v5.wav      simon.rue                   Creative Commons 0              http://freesound.org/people/simon.rue/sounds/49948/                                         Modified filename
+sine-negative-beep.wav      pan14                       Creative Commons 0              http://freesound.org/people/pan14/sounds/263123/                                            Modified filename extensively, changed bit depth
 
-speaker.png					G. Hagedorn				Public domain					https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg		Modified size & filename
-speaker_white.png			G. Hagedorn				Public domain					https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg		Modified size, colour and filename
+3-men-cheering.wav          jbeetle                     Creative Commons 0              http://freesound.org/people/jbeetle/sounds/274510/                                          Modified filename, changed bit depth
+smallcrowd.wav              sagetyrtle                  Creative Commons 0              http://freesound.org/people/sagetyrtle/sounds/32260/                                        Modified filename
+melo4.wav                   DABROmusic                  Creative Commons 0              http://freesound.org/people/DABROmusic/sounds/269507/                                       Modified filename extensively, changed bit depth
+summertime-stab.wav         kasa90                      Creative Commons 0              http://freesound.org/people/kasa90/sounds/156871/                                           Modified filename
+loop1.wav                   kasa90                      Creative Commons 0              http://freesound.org/people/kasa90/sounds/143206/                                           Modified filename
+sine-melody-2.wav           kasa90                      Creative Commons 0              http://freesound.org/people/kasa90/sounds/143203/                                           Modified filename
+sine-melody.wav             kasa90                      Creative Commons 0              http://freesound.org/people/kasa90/sounds/143123/                                           Modified filename
+applause-2.wav              Sandermotions               Creative Commons 0              http://freesound.org/people/Sandermotions/sounds/277021/                                    Modified filename
 
-DE.png						Anomie					Public domain					https://en.wikipedia.org/wiki/File:Flag_of_Germany.svg				Modified size, filename and type
-GB.png						Anomie					Public domain					https://en.wikipedia.org/wiki/File:Flag_of_the_United_Kingdom.svg	Modified size, filename and type
+speaker.png                 G. Hagedorn                 Public domain                   https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg                               Modified size & filename
+speaker_white.png           G. Hagedorn                 Public domain                   https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg                               Modified size, colour and filename
 
-===========================================================================================================================================================================================================
+DE.png                      Anomie                      Public domain                   https://en.wikipedia.org/wiki/File:Flag_of_Germany.svg                                      Modified size, filename and type
+GB.png                      Anomie                      Public domain                   https://en.wikipedia.org/wiki/File:Flag_of_the_United_Kingdom.svg                           Modified size, filename and type
+INT.png                     Oskar Pernefeldt            Public domain                   https://commons.wikimedia.org/wiki/File:International_Flag_of_Planet_Earth.svg              Modified size, filename and type
+ES.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Spain_(WFB_2004).gif
+BO.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Bolivia_(WFB_2004).gif                      Modified size, filename and type
+VU.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Vanuatu_(WFB_2004).gif                      Modified size, filename and type
+FR.png                      Wester                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_France_(7x10).svg                           Modified size, filename and type
+US.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_the_United_States_(WFB_2004).gif            Modified size, filename and type
+CZ.png                      Phroziac, -xfi, Zirland     Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_the_Czech_Republic.svg                      Modified size, filename and type
+DK.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Denmark_(WFB_2004).gif                      Modified size, filename and type
+EE.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Estonia_(WFB_2004).gif                      Modified size, filename and type
+PY.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Paraguay_(WFB_2004).gif                     Modified size, filename and type
+HT.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Haiti_(WFB_2004).gif                        Modified size, filename and type
+PG.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Papua_New_Guinea_(WFB_2004).gif             Modified size, filename and type
+FI.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Finland_(WFB_2004).gif                      Modified size, filename and type
+FJ.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Fiji_(WFB_2004).gif                         Modified size, filename and type
+FO.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_the_Faroe_Islands_(WFB_2004).gif            Modified size, filename and type
+HR.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Croatia_(WFB_2004).gif                      Modified size, filename and type
+IS.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Iceland_(WFB_2004).gif                      Modified size, filename and type
+IT.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Italy_(WFB_2004).gif                        Modified size, filename and type
+CD.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_the_Republic_of_the_Congo_(WFB_2004).gif    Modified size, filename and type
+LU.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Luxembourg_(WFB_2004).gif                   Modified size, filename and type
+NZ.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_New_Zealand_(WFB_2004).gif                  Modified size, filename and type
+MG.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Madagascar_(WFB_2004).gif                   Modified size, filename and type
+MT.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Malta_(WFB_2004).gif                        Modified size, filename and type
+NO.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Norway_(WFB_2004).gif                       Modified size, filename and type
+PL.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Poland_(WFB_2004).gif                       Modified size, filename and type
+PT.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Portugal_(WFB_2004).gif                     Modified size, filename and type
+NL.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Netherlands_(WFB_2004).gif                  Modified size, filename and type
+CH.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Switzerland_(WFB_2004).gif                  Modified size, filename and type
+RO.png                      AdiJapan                    Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Romania.svg                                 Modified size, filename and type
+SCOT.png                    Unknown                     Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Scotland.svg                                Modified size, filename and type
+SK.png                      SKopp                       Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Slovakia.svg                                Modified size, filename and type
+SL.png                      Zscout370                   Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Sierra_Leone.svg                            Modified size, filename and type
+LS.png                      Zscout370                   Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Lesotho.svg                                 Modified size, filename and type
+AL.png                      Dbenbenn and others         Public domaain                  https://commons.wikimedia.org/wiki/File:Flag_of_Albania.svg                                 Modified size, filename and type
+KE.png                      Pumbaa80                    Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Kenya.svg                                   Modified size, filename and type
+SE.png                      Anomie                      Public domain                   https://en.wikipedia.org/wiki/File:Flag_of_Sweden.svg                                       Modified size, filename and type
+SZ.png                      Nightstallion               Creative Commons 0              https://commons.wikimedia.org/wiki/File:Flag_of_Swaziland.svg                               Modified size, filename and type
+BW.png                      SKopp, Gabbe, Madden        Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Botswana.svg                                Modified size, filename and type
+TO.png                      Nightstallion               Creative Commons 0              https://commons.wikimedia.org/wiki/File:Flag_of_Tonga.svg                                   Modified size, filename and type
+TR.png                      David Benbennick            Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Turkey.svg                                  Modified size, filename and type
+ZA.png                      Frederick Brownell, others  Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_South_Africa.svg                            Modified size, filename and type
+BE.png                      Dnenbenn and others         Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Belgium.svg                                 Modified size, filename and type
+WAL.png                     Unknown, Tobias Jakobs      Creative Commons 0              https://commons.wikimedia.org/wiki/File:Flag_of_Wales_2.svg                                 Modified size, filename and type
+SN.png                      Nighstallion                Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Senegal.svg                                 Modified size, filename and type
+
+
+====================================================================================================================================================================================================================
 Licenses
 --------
-Creative Commons 0				https://creativecommons.org/publicdomain/zero/1.0/
-Creative Commons Attribution	https://creativecommons.org/licenses/by/3.0/
-Public domain					https://en.wikipedia.org/wiki/Public_domain
+Creative Commons 0              https://creativecommons.org/publicdomain/zero/1.0/
+Creative Commons Attribution    https://creativecommons.org/licenses/by/3.0/
+Public domain                   https://en.wikipedia.org/wiki/Public_domain
 
-Note: In this context, Public domain means the author has given up all rights to his/her work.
+Note: In this context, Public domain refers to the author haven given up all rights to his/her work.
