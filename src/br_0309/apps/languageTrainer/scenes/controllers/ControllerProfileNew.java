@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class ControllerProfileNew implements Initializable, IController {
 
+    public File profile;
     @FXML
     private TextField firstName;
     @FXML
@@ -28,8 +29,6 @@ public class ControllerProfileNew implements Initializable, IController {
     private Button ok;
     @FXML
     private Button cancel;
-
-    public File profile;
     private File profileUnconfirmed;
 
     private ResourceBundle BUNDLE;
@@ -47,6 +46,7 @@ public class ControllerProfileNew implements Initializable, IController {
     }
 
     public void onBrowse() {
+        // FIXME: File chooser returns invalid filename (.ltd..)
         FileChooser chooser = new FileChooser();
         String filename = firstName.getText().trim() + "_" + lastName.getText().trim() + ".ltd";
         if (!filename.equals("_.ltd")) {
@@ -65,14 +65,14 @@ public class ControllerProfileNew implements Initializable, IController {
         File file = chooser.showSaveDialog(LanguageTrainer.window);
         if (file != null) {
             location.setText(file.getAbsolutePath());
-            profileUnconfirmed = file;
+            profileUnconfirmed = new File(location.getText());
             try {
                 String name = file.getName().replace(".ltd", "").replace(" ", "_");
                 String[] names = name.split("_");
                 firstName.setText(names[0].replace(".ltd", ""));
                 lastName.setText(names[1].replace(".ltd", ""));
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.err.println("User entered invalid filename. Because it's sooo hard to use the textfield.");
+                System.err.println("User entered invalid filename. Because it's so hard to use the text fields.");
             }
         }
     }
