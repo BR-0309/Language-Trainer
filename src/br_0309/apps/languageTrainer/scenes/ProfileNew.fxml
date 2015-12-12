@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.effect.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="184.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileNew">
-   <children>
-      <TextField fx:id="firstName" layoutX="14.0" layoutY="42.0" prefHeight="25.0" prefWidth="222.0" promptText="%profile.firstName" />
-      <TextField fx:id="lastName" layoutX="14.0" layoutY="75.0" prefHeight="25.0" prefWidth="222.0" promptText="%profile.lastName" />
-      <TextField fx:id="location" layoutX="14.0" layoutY="107.0" prefHeight="25.0" prefWidth="198.0" />
-      <Button fx:id="browse" focusTraversable="false" layoutX="212.0" layoutY="107.0" mnemonicParsing="false" onAction="#onBrowse" text="..." />
-      <HBox alignment="BASELINE_RIGHT" layoutX="19.0" layoutY="145.0" prefHeight="25.0" prefWidth="222.0">
-         <children>
-            <Button fx:id="ok" defaultButton="true" mnemonicParsing="false" onAction="#onOk" text="%generic.ok">
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="cancel" cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel" />
-         </children>
-      </HBox>
-      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefWidth="222.0" text="%profileSelect.newProfile" textAlignment="CENTER">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-   </children>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="184.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileNew">
+    <children>
+        <TextField fx:id="firstName" layoutX="14.0" layoutY="42.0" prefHeight="25.0" prefWidth="222.0"
+                   promptText="%profile.firstName"/>
+        <TextField fx:id="lastName" layoutX="14.0" layoutY="75.0" prefHeight="25.0" prefWidth="222.0"
+                   promptText="%profile.lastName"/>
+        <TextField fx:id="location" layoutX="14.0" layoutY="107.0" prefHeight="25.0" prefWidth="198.0"/>
+        <Button fx:id="browse" focusTraversable="false" layoutX="212.0" layoutY="107.0" mnemonicParsing="false"
+                onAction="#onBrowse" text="..."/>
+        <HBox alignment="BASELINE_RIGHT" layoutX="19.0" layoutY="145.0" prefHeight="25.0" prefWidth="222.0">
+            <children>
+                <Button fx:id="ok" defaultButton="true" mnemonicParsing="false" onAction="#onOk" text="%generic.ok">
+                    <HBox.margin>
+                        <Insets right="5.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="cancel" cancelButton="true" mnemonicParsing="false" onAction="#onCancel"
+                        text="%generic.cancel"/>
+            </children>
+        </HBox>
+        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefWidth="222.0" text="%profileSelect.newProfile"
+               textAlignment="CENTER">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 // TODO: Add icons at different resolutions
 // TODO: Make themes less terrible
-// TODO: I18nize Copyrights.txt
+// TODO: Internationalise Copyrights.txt
 public class LanguageTrainer extends Application {
 
     public static UserData userData = new UserData();
@@ -38,46 +38,6 @@ public class LanguageTrainer extends Application {
     public static IController currentController;
 
     public static Random random;
-
-    @Override
-    public void start(Stage primaryStage) {
-        Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
-            throwable.printStackTrace();
-            FXUtil.showExceptionDialog("", throwable.toString(), throwable);
-        });
-        try {
-            window = primaryStage;
-            window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
-            showLogin();
-            LanguageHandler.setDisplayLanguage(userData.getLanguage());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
-            BorderPane root = loader.load();
-            Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
-            scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
-            window.setScene(scene);
-            window
-                    .setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") + " " + Reference.VERSION);
-            currentController = loader.getController();
-            window.setOnCloseRequest(event -> {
-                // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK
-                if (!askForExit()) {
-                    try {
-                        currentController.onExit();
-                    } catch (NullPointerException e) {
-                        System.err.println("Scene does not have assigned controller!");
-                    }
-                    event.consume();
-                }
-            });
-            window.sizeToScene();
-            window.show();
-            window.setMinWidth(window.getWidth());
-            window.setMinHeight(window.getHeight());
-        } catch (IOException e) {
-            e.printStackTrace();
-            FXUtil.showExceptionDialog("", "", e);
-        }
-    }
 
     /**
      * Main method
@@ -143,54 +103,24 @@ public class LanguageTrainer extends Application {
                 + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() + "\nLanguage Trainer version:\t" + Reference.VERSION + "\n");
     }
 
-    /**
-     * Shows the profile select screen
-     */
-    private void showLogin() {
-        Stage stage = new Stage();
-        // TODO: Add more images for better resolutions
-        stage.getIcons().add(new Image(Reference.LOGO));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT),
-                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(Reference.THEMES[0]);
-            stage.setScene(scene);
-            stage.sizeToScene();
-            stage.setResizable(false);
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        stage.showAndWait();
-        ControllerProfileSelect controller = loader.getController();
-        if (!controller.isProfileSelected) {
-            System.exit(0);
-        }
-    }
-
     public static void setScene(String sceneLoc) {
         currentController.onExit();
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(sceneLoc), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
-            double width = window.getWidth();
-            double height = window.getHeight();
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
             currentController = loader.getController();
             window.setScene(scene);
+            window.setMinWidth(0);
+            window.setMinHeight(0);
             window.sizeToScene();
             window.setMinWidth(window.getWidth());
             window.setMinHeight(window.getHeight());
-            if (window.getWidth() >= width && window.getHeight() >= height) {
-                window.setWidth(width);
-                window.setHeight(height);
-            }
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: Add title/header
-            FXUtil.showExceptionDialog("", "", e);
+            ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+            FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", sceneLoc), e.getLocalizedMessage(), e);
         }
     }
 
@@ -199,24 +129,21 @@ public class LanguageTrainer extends Application {
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_MENU),
                 ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
-            double width = window.getWidth();
-            double height = window.getHeight();
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
             currentController = loader.getController();
             window.setScene(scene);
+            window.setMinWidth(0);
+            window.setMinHeight(0);
             window.sizeToScene();
             window.setMinWidth(window.getWidth());
             window.setMinHeight(window.getHeight());
-            if (window.getWidth() >= width && window.getHeight() >= height) {
-                window.setWidth(width);
-                window.setHeight(height);
-            }
+
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: Add title/header
-            FXUtil.showExceptionDialog("", "", e);
+            ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+            FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", Reference.FXML_MENU), e.getLocalizedMessage(), e);
         }
     }
 
@@ -300,8 +227,6 @@ public class LanguageTrainer extends Application {
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_TRANSLATION),
                 ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
-            double width = window.getWidth();
-            double height = window.getHeight();
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
@@ -309,16 +234,79 @@ public class LanguageTrainer extends Application {
             controller.init(selected);
             currentController = controller;
             window.setScene(scene);
+            window.setMinWidth(0);
+            window.setMinHeight(0);
             window.sizeToScene();
             window.setMinWidth(window.getWidth());
             window.setMinHeight(window.getHeight());
-            if (window.getWidth() >= width && window.getHeight() >= height) {
-                window.setWidth(width);
-                window.setHeight(height);
-            }
         } catch (IOException e) {
-            // TODO: Add title/header
+            ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+            FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", Reference.FXML_TRANSLATION), e.getLocalizedMessage(), e);
+        }
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
+            throwable.printStackTrace();
+            FXUtil.showExceptionDialog("", throwable.toString(), throwable);
+        });
+        try {
+            window = primaryStage;
+            window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
+            showLogin();
+            LanguageHandler.setDisplayLanguage(userData.getLanguage());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+            BorderPane root = loader.load();
+            Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
+            scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
+            window.setScene(scene);
+            window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") + " " + Reference.VERSION);
+            currentController = loader.getController();
+            window.setOnCloseRequest(event -> {
+                // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK
+                if (!askForExit()) {
+                    try {
+                        currentController.onExit();
+                    } catch (NullPointerException e) {
+                        System.err.println("Scene does not have assigned controller!");
+                    }
+                    event.consume();
+                }
+            });
+            window.sizeToScene();
+            window.show();
+            window.setMinWidth(window.getWidth());
+            window.setMinHeight(window.getHeight());
+        } catch (IOException e) {
+            e.printStackTrace();
             FXUtil.showExceptionDialog("", "", e);
+        }
+    }
+
+    /**
+     * Shows the profile select screen
+     */
+    private void showLogin() {
+        Stage stage = new Stage();
+        // TODO: Add more images for better resolutions
+        stage.getIcons().add(new Image(Reference.LOGO));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT),
+                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(Reference.THEMES[0]);
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.setResizable(false);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        stage.showAndWait();
+        ControllerProfileSelect controller = loader.getController();
+        if (!controller.isProfileSelected) {
+            System.exit(0);
         }
     }
 

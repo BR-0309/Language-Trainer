@@ -60,7 +60,7 @@ public class SystemUtil {
     }
 
     /**
-     * Launches a mac app bunlde
+     * Launches a mac app bundle
      */
     public static void launchMacApp(String dir) throws IOException {
         if (isMac()) {
@@ -100,7 +100,7 @@ public class SystemUtil {
     }
 
     /**
-     * Launches a mac app bunlde
+     * Launches a mac app bundle
      */
     public static void launchMacApp(File file) throws IOException {
         if (isMac()) {

@@ -5,7 +5,6 @@ import java.util.Locale;
 public class LanguageHandler {
 
     public final static Locale[] INTERFACE_LANGS = {Locale.UK, Locale.GERMANY};
-    // TODO: Add flags
     /*
      * SCOT, WAL and INT are made up to represent Scotland, Wales and
      * international, respectively
@@ -50,7 +49,7 @@ public class LanguageHandler {
     public static void setDisplayLanguage(Locale language) {
         Locale set = null;
         for (Locale l : INTERFACE_LANGS) {
-            if (l.getLanguage().equals(language.getLanguage())) {
+            if (l.getDisplayLanguage().equals(language.getDisplayLanguage())) {
                 set = l;
                 break;
             }

@@ -7,41 +7,47 @@
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="295.0"
             xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileSelect">
-   <top>
-      <Label text="%profileSelect.title" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-   </top>
-   <center>
-      <ListView fx:id="list" BorderPane.alignment="CENTER" />
-   </center>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-   <bottom>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="29.0" prefWidth="315.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox layoutY="6.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
-               <children>
-                  <Button fx:id="newProfile" mnemonicParsing="false" onAction="#onNewProfile" text="%profileSelect.newProfile" />
-                  <Button mnemonicParsing="false" onAction="#onDelete" text="%generic.delete">
-                     <HBox.margin>
-                        <Insets left="2.0" />
-                     </HBox.margin></Button>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_RIGHT" layoutX="185.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
-               <children>
-                  <Button defaultButton="true" mnemonicParsing="false" onAction="#onGo" text="%generic.go" />
-                  <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel">
-                     <HBox.margin>
-                        <Insets left="2.0" />
-                     </HBox.margin></Button>
-               </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-   </bottom>
+    <top>
+        <Label text="%profileSelect.title" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Label>
+    </top>
+    <center>
+        <ListView fx:id="list" BorderPane.alignment="CENTER"/>
+    </center>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+    <bottom>
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
+                    prefHeight="29.0" prefWidth="315.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox layoutY="6.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0"
+                      AnchorPane.topAnchor="6.0">
+                    <children>
+                        <Button fx:id="newProfile" mnemonicParsing="false" onAction="#onNewProfile"
+                                text="%profileSelect.newProfile"/>
+                        <Button mnemonicParsing="false" onAction="#onDelete" text="%generic.delete">
+                            <HBox.margin>
+                                <Insets left="2.0"/>
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_RIGHT" layoutX="185.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0"
+                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                    <children>
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#onGo" text="%generic.go"/>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel">
+                            <HBox.margin>
+                                <Insets left="2.0"/>
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </bottom>
 </BorderPane>

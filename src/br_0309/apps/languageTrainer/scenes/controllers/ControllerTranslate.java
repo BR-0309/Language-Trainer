@@ -111,11 +111,14 @@ public class ControllerTranslate implements Initializable, IController {
                 MessageFormat format = new MessageFormat("");
                 format.applyPattern(BUNDLE.getString("exercise.finishedMsg"));
                 double[] answersCorrect = {1, 2};
-                String[] answersCorrectStrings = {BUNDLE.getString("exercise.answer"), BUNDLE.getString("exercise.answers")};
+                String[] answersCorrectStrings = {BUNDLE.getString("exercise.answer"),
+                        BUNDLE.getString("exercise.answers")};
                 ChoiceFormat formatAnswer = new ChoiceFormat(answersCorrect, answersCorrectStrings);
                 double[] times = {0, 1, 2};
-                String[] timesStrings = {BUNDLE.getString("exercise.times"), BUNDLE.getString("exercise.time"), BUNDLE.getString("exercise.times")};
-                Format[] formats = {NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(),
+                String[] timesStrings = {BUNDLE.getString("exercise.times"), BUNDLE.getString("exercise.time"),
+                        BUNDLE.getString("exercise.times")};
+                Format[] formats = {NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(), formatAnswer,
+                        NumberFormat.getInstance(),
                         new ChoiceFormat(times, timesStrings)};
                 format.setFormats(formats);
                 String msg = format.format(new Object[]{correct, correct, incorrect, incorrect, cheated, cheated});

@@ -72,7 +72,7 @@ public class ControllerProfileNew implements Initializable, IController {
                 firstName.setText(names[0].replace(".ltd", ""));
                 lastName.setText(names[1].replace(".ltd", ""));
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.err.println("User entered invalid filename. Because it's sooo hard to use the textfield.");
+                System.err.println("User entered invalid filename. Because it's so hard to use the text fields.");
             }
         }
     }

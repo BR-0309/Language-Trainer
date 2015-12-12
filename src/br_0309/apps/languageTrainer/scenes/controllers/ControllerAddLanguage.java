@@ -40,8 +40,8 @@ public class ControllerAddLanguage implements Initializable, IController {
                 return new ListCell<Locale>() {
                     // Render everything in a HBox
                     private final HBox cell;
-                    Label text = new Label();
-                    Label icon = new Label();
+                    final Label text = new Label();
+                    final Label icon = new Label();
 
                     {
                         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
