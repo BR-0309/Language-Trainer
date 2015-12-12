@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileSelect">
+<?import javafx.scene.text.Font?>
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="295.0"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileSelect">
    <top>
       <Label text="%profileSelect.title" BorderPane.alignment="CENTER">
          <font>

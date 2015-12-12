@@ -28,13 +28,9 @@ public class ControllerAddLanguage implements Initializable, IController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Initializing");
-        // FIXME: ADD FLAGS!!!!!
         objects = new FilteredList<>(FXCollections.observableList(Arrays.asList(LanguageHandler.LANGUAGES)));
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            objects.setPredicate(locale -> {
-                return locale.getDisplayLanguage().contains(newValue.trim());
-            });
+            objects.setPredicate(locale -> locale.getDisplayLanguage().contains(newValue.trim()));
         });
         list.setItems(objects);
         list.setCellFactory(new Callback<ListView<Locale>, ListCell<Locale>>() {
@@ -42,10 +38,10 @@ public class ControllerAddLanguage implements Initializable, IController {
             @Override
             public ListCell<Locale> call(ListView<Locale> param) {
                 return new ListCell<Locale>() {
-                    Label text = new Label();
-                    Label icon = new Label();
                     // Render everything in a HBox
                     private final HBox cell;
+                    Label text = new Label();
+                    Label icon = new Label();
 
                     {
                         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
@@ -63,7 +59,6 @@ public class ControllerAddLanguage implements Initializable, IController {
                             setGraphic(null);
                         } else {
                             text.setText(item.getDisplayLanguage());
-                            System.out.println(LanguageHandler.getFlag(item));
                             icon.setGraphic(new ImageView(LanguageHandler.getFlag(item)));
                             setGraphic(cell);
                         }

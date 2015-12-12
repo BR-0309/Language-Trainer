@@ -3,7 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane minHeight="400.0" minWidth="425.0" prefHeight="500.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerMenu">
+<BorderPane minHeight="520.0" minWidth="590.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerMenu">
    <bottom>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="106.0" prefWidth="665.0" style="-fx-border-color: gray; -fx-border-insets: 5;" BorderPane.alignment="CENTER">
          <children>
