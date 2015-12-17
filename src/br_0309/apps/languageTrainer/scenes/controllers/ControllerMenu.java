@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ControllerMenu implements Initializable, IController {
 
@@ -110,7 +111,7 @@ public class ControllerMenu implements Initializable, IController {
                     System.err.println("Null reference file!");
                     continue;
                 } else if (!file.exists() || file.isDirectory()) {
-                    System.err.println(file.getAbsolutePath() + " does not exist or is a directory! Nested exersises are not supported!");
+                    System.err.println(file.getAbsolutePath() + " does not exist or is a directory! Nested exercises are not supported!");
                     continue;
                 }
                 // For translation files
@@ -157,23 +158,15 @@ public class ControllerMenu implements Initializable, IController {
     }
 
     public void onStartTraining() {
-        ArrayList<ExerciseData> selected = new ArrayList<>();
-        for (ExerciseData d : data) {
-            if (d.isSelected()) {
-                selected.add(d);
-            }
-        }
+        // Copies selected items
+        ArrayList<ExerciseData> selected = data.stream().filter(d -> d.isSelected()).collect(Collectors.toCollection(ArrayList::new));
         if (selected.isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
             table.requestFocus();
             return;
         }
         String translation = BUNDLE.getString("generic.translation");
-        for (ExerciseData d : selected) {
-            if (d.getType().equals(translation)) {
-                LanguageTrainer.showTranslation(selected);
-            }
-        }
+        selected.stream().filter(d -> d.getType().equals(translation)).forEach(d -> LanguageTrainer.showTranslation(selected));
     }
 
     @Override

@@ -3,52 +3,66 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane minHeight="400.0" minWidth="425.0" prefHeight="500.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerMenu">
-   <bottom>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="106.0" prefWidth="665.0" style="-fx-border-color: gray; -fx-border-insets: 5;" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="search" layoutX="17.0" layoutY="17.0" prefWidth="195.0" promptText="%generic.search" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <ComboBox fx:id="types" layoutX="17.0" layoutY="50.0" prefWidth="196.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
-            <VBox alignment="CENTER" focusTraversable="true" layoutX="450.0" layoutY="17.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="10.0">
-               <children>
-                  <Button fx:id="startTraining" mnemonicParsing="false" onAction="#onStartTraining" prefWidth="175.0" text="%menu.startTraining">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin></Button>
-                  <Button fx:id="viewStatistics" mnemonicParsing="false" onAction="#onStatistics" prefWidth="175.0" text="%menu.viewStatistics">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#onSettings" prefWidth="175.0" text="%menu.settings" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" layoutX="476.0" layoutY="23.0" prefHeight="83.0" prefWidth="175.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-               <children>
-                  <Button fx:id="createTranslationList" mnemonicParsing="false" onAction="#onTranslationList" prefWidth="175.0" text="%menu.createTranslationList">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="createVerbList" mnemonicParsing="false" onAction="#onVerbList" prefWidth="175.0" text="%menu.createVerbList">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-         </children></AnchorPane>
-   </bottom>
-   <center>
-      <TableView fx:id="table" editable="true" BorderPane.alignment="CENTER">
-        <columns>
-            <TableColumn maxWidth="23.0" minWidth="23.0" prefWidth="23.0" />
-          <TableColumn prefWidth="198.0" text="%menu.title" />
-          <TableColumn prefWidth="174.0" text="%menu.languages" />
-            <TableColumn prefWidth="165.0" text="%menu.type" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-   </center>
+<BorderPane minHeight="520.0" minWidth="590.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerMenu">
+    <bottom>
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="106.0"
+                    prefWidth="665.0" style="-fx-border-color: gray; -fx-border-insets: 5;"
+                    BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="search" layoutX="17.0" layoutY="17.0" prefWidth="195.0" promptText="%generic.search"
+                           AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0"/>
+                <ComboBox fx:id="types" layoutX="17.0" layoutY="50.0" prefWidth="196.0" AnchorPane.leftAnchor="10.0"
+                          AnchorPane.topAnchor="40.0"/>
+                <VBox alignment="CENTER" focusTraversable="true" layoutX="450.0" layoutY="17.0"
+                      AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="10.0">
+                    <children>
+                        <Button fx:id="startTraining" mnemonicParsing="false" onAction="#onStartTraining"
+                                prefWidth="175.0" text="%menu.startTraining">
+                            <VBox.margin>
+                                <Insets bottom="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="viewStatistics" mnemonicParsing="false" onAction="#onStatistics"
+                                prefWidth="175.0" text="%menu.viewStatistics">
+                            <VBox.margin>
+                                <Insets bottom="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onSettings" prefWidth="175.0" text="%menu.settings"/>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="476.0" layoutY="23.0" prefHeight="83.0" prefWidth="175.0"
+                      AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <children>
+                        <Button fx:id="createTranslationList" mnemonicParsing="false" onAction="#onTranslationList"
+                                prefWidth="175.0" text="%menu.createTranslationList">
+                            <VBox.margin>
+                                <Insets bottom="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="createVerbList" mnemonicParsing="false" onAction="#onVerbList" prefWidth="175.0"
+                                text="%menu.createVerbList">
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </bottom>
+    <center>
+        <TableView fx:id="table" editable="true" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn maxWidth="23.0" minWidth="23.0" prefWidth="23.0"/>
+                <TableColumn prefWidth="198.0" text="%menu.title"/>
+                <TableColumn prefWidth="174.0" text="%menu.languages"/>
+                <TableColumn prefWidth="165.0" text="%menu.type"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </center>
 </BorderPane>

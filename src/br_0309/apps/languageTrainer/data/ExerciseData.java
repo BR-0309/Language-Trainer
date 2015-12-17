@@ -42,8 +42,7 @@ public class ExerciseData implements Comparable<ExerciseData> {
 
     @Override
     public int compareTo(ExerciseData o) {
-        int last = title.get().compareTo(o.getTitle());
-        return last;
+        return title.get().compareTo(o.getTitle());
     }
 
     public void setSelected(boolean value) {
@@ -51,9 +50,11 @@ public class ExerciseData implements Comparable<ExerciseData> {
     }
 
     /**
-     * @returns BooleanProperty isActive for table. <br>
+     * isActive for table. <br>
      * On table: column.setCellValueFactory(new
      * PropertyValueFactory<>("active"));
+     *
+     * @returns BooleanProperty
      */
     public BooleanProperty activeProperty() {
         return selected;

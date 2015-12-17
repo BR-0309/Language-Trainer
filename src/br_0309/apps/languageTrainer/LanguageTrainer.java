@@ -28,8 +28,7 @@ import java.util.ResourceBundle;
 
 // TODO: Add icons at different resolutions
 // TODO: Make themes less terrible
-// TODO: I18nize Copyrights.txt
-// FIXME FIXME: GET DEPLOYMENT WORKING!!
+// TODO: Internationalise Copyrights.txt
 public class LanguageTrainer extends Application {
 
     public static UserData userData = new UserData();
@@ -52,7 +51,6 @@ public class LanguageTrainer extends Application {
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 
         } else if (SystemUtil.isMac()) {
-            // FIXME: Find out proper mac data directory
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             File file = new File(System.getProperty("user.home") + File.separator + "Library" + File.separator + "Application Support" + File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
@@ -66,7 +64,7 @@ public class LanguageTrainer extends Application {
         // If the application is run from anything but loose files, redirect
         // console to log_<<time>>
         if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
-            File log = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate() + ".txt");
+            File log = new File(Reference.DEFAULT_SAVE_DIR + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate());
             try {
                 log.getParentFile().mkdirs();
                 log.createNewFile();
@@ -114,10 +112,15 @@ public class LanguageTrainer extends Application {
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
             currentController = loader.getController();
             window.setScene(scene);
+            window.setMinWidth(0);
+            window.setMinHeight(0);
+            window.sizeToScene();
+            window.setMinWidth(window.getWidth());
+            window.setMinHeight(window.getHeight());
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: Add title/header
-            FXUtil.showExceptionDialog("", "", e);
+            ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+            FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", sceneLoc), e.getLocalizedMessage(), e);
         }
     }
 
@@ -131,12 +134,16 @@ public class LanguageTrainer extends Application {
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
             currentController = loader.getController();
             window.setScene(scene);
-            window.setMinHeight(400);
-            window.setMinWidth(425);
+            window.setMinWidth(0);
+            window.setMinHeight(0);
+            window.sizeToScene();
+            window.setMinWidth(window.getWidth());
+            window.setMinHeight(window.getHeight());
+
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: Add title/header
-            FXUtil.showExceptionDialog("", "", e);
+            ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+            FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", Reference.FXML_MENU), e.getLocalizedMessage(), e);
         }
     }
 
@@ -227,9 +234,14 @@ public class LanguageTrainer extends Application {
             controller.init(selected);
             currentController = controller;
             window.setScene(scene);
+            window.setMinWidth(0);
+            window.setMinHeight(0);
+            window.sizeToScene();
+            window.setMinWidth(window.getWidth());
+            window.setMinHeight(window.getHeight());
         } catch (IOException e) {
-            // TODO: Add title/header
-            FXUtil.showExceptionDialog("", "", e);
+            ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+            FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", Reference.FXML_TRANSLATION), e.getLocalizedMessage(), e);
         }
     }
 
@@ -240,20 +252,18 @@ public class LanguageTrainer extends Application {
             FXUtil.showExceptionDialog("", throwable.toString(), throwable);
         });
         try {
-            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
             window = primaryStage;
+            window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
             showLogin();
             LanguageHandler.setDisplayLanguage(userData.getLanguage());
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
             scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
-            primaryStage.setScene(scene);
-            primaryStage.sizeToScene();
-            primaryStage
-                    .setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") + " " + Reference.VERSION);
+            window.setScene(scene);
+            window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") + " " + Reference.VERSION);
             currentController = loader.getController();
-            primaryStage.setOnCloseRequest(event -> {
+            window.setOnCloseRequest(event -> {
                 // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK
                 if (!askForExit()) {
                     try {
@@ -264,7 +274,10 @@ public class LanguageTrainer extends Application {
                     event.consume();
                 }
             });
-            primaryStage.show();
+            window.sizeToScene();
+            window.show();
+            window.setMinWidth(window.getWidth());
+            window.setMinHeight(window.getHeight());
         } catch (IOException e) {
             e.printStackTrace();
             FXUtil.showExceptionDialog("", "", e);
@@ -284,9 +297,9 @@ public class LanguageTrainer extends Application {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(Reference.THEMES[0]);
-            stage.setMinWidth(350);
-            stage.setMinHeight(400);
             stage.setScene(scene);
+            stage.sizeToScene();
+            stage.setResizable(false);
         } catch (IOException e1) {
             e1.printStackTrace();
         }

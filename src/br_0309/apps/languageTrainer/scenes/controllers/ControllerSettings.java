@@ -57,8 +57,8 @@ public class ControllerSettings implements Initializable {
             @Override
             public ListCell<Language> call(ListView<Language> param) {
                 return new ListCell<Language>() {
-                    Label text = new Label();
-                    Label icon = new Label();
+                    final Label text = new Label();
+                    final Label icon = new Label();
                     // Render everything in a HBox
                     private final HBox cell;
 
@@ -193,15 +193,12 @@ public class ControllerSettings implements Initializable {
     }
 
     public void playCorrect() {
-        System.out.println("Playing correct sound: " + map.get(boxCorrect.getSelectionModel().getSelectedItem()));
         AudioInputStream audioIn = null;
         try {
             BufferedInputStream in = new BufferedInputStream(getClass().getResourceAsStream(map.get(boxCorrect.getSelectionModel().getSelectedItem())));
             audioIn = AudioSystem.getAudioInputStream(in);
             Clip clip = AudioSystem.getClip();
-            System.out.println("Opening clip");
             clip.open(audioIn);
-            System.out.println("Opened clip");
             clip.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
@@ -219,7 +216,7 @@ public class ControllerSettings implements Initializable {
     public void playIncorrect() {
         AudioInputStream audioIn = null;
         try {
-            BufferedInputStream in = new BufferedInputStream(getClass().getResourceAsStream(map.get(boxCorrect.getSelectionModel().getSelectedItem())));
+            BufferedInputStream in = new BufferedInputStream(getClass().getResourceAsStream(map.get(boxIncorrect.getSelectionModel().getSelectedItem())));
             audioIn = AudioSystem.getAudioInputStream(in);
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
@@ -240,7 +237,7 @@ public class ControllerSettings implements Initializable {
     public void playFinished() {
         AudioInputStream audioIn = null;
         try {
-            BufferedInputStream in = new BufferedInputStream(getClass().getResourceAsStream(map.get(boxCorrect.getSelectionModel().getSelectedItem())));
+            BufferedInputStream in = new BufferedInputStream(getClass().getResourceAsStream(map.get(boxFinished.getSelectionModel().getSelectedItem())));
             audioIn = AudioSystem.getAudioInputStream(in);
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
