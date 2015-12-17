@@ -1,13 +1,10 @@
 package br_0309.apps.languageTrainer.util;
 
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// TODO: Add Linux stuff
 public class SystemUtil {
 
     /**
@@ -60,117 +57,6 @@ public class SystemUtil {
     }
 
     /**
-     * Launches a mac app bundle
-     */
-    public static void launchMacApp(String dir) throws IOException {
-        if (isMac()) {
-            if (Desktop.isDesktopSupported()) {
-                File file = new File(dir);
-                if (!file.exists()) {
-                    System.err.println("[ERROR]: File \"" + file.getAbsolutePath() + "\" does not exist!");
-                    return;
-                }
-                Desktop.getDesktop().open(file);
-            } else {
-                System.err.println("[ERROR]: Desktop not supported!");
-            }
-        } else {
-            System.err.println("[ERROR]: .app's can only be run on OS X!");
-        }
-    }
-
-    /**
-     * Launches a windows exe file
-     */
-    public static void launchExe(String dir) throws IOException {
-        if (isWindows()) {
-            if (Desktop.isDesktopSupported()) {
-                File file = new File(dir);
-                if (!file.exists() || !file.getName().endsWith(".exe")) {
-                    System.err.println("[ERROR]: File \"" + file.getAbsolutePath() + "\" does not exist!");
-                    return;
-                }
-                Desktop.getDesktop().open(file);
-            } else {
-                System.err.println("[ERROR]: Desktop not supported!");
-            }
-        } else {
-            System.err.println("[ERROR]: EXE's can only be run on windows!");
-        }
-    }
-
-    /**
-     * Launches a mac app bundle
-     */
-    public static void launchMacApp(File file) throws IOException {
-        if (isMac()) {
-            if (Desktop.isDesktopSupported()) {
-                if (!file.exists()) {
-                    System.err.println("[ERROR]: File \"" + file.getAbsolutePath() + "\" does not exist!");
-                    return;
-                }
-                Desktop.getDesktop().open(file);
-            } else {
-                System.err.println("[ERROR]: Desktop not supported!");
-            }
-        } else {
-            System.err.println("[ERROR]: .app's can only be run on OS X!");
-        }
-    }
-
-    /**
-     * Launches a windows exe file
-     */
-    public static void launchExe(File file) throws IOException {
-        if (isWindows()) {
-            if (Desktop.isDesktopSupported()) {
-                if (!file.exists() || !file.getName().endsWith(".exe")) {
-                    System.err.println("[ERROR]: File \"" + file.getAbsolutePath() + "\" does not exist!");
-                    return;
-                }
-                Desktop.getDesktop().open(file);
-            } else {
-                System.err.println("[ERROR]: Desktop not supported!");
-            }
-        } else {
-            System.err.println("[ERROR]: EXE's can only be run on windows!");
-        }
-    }
-
-    /**
-     * Launches a jar file
-     */
-    public static void launchJar(String dir) {
-        File file = new File(dir);
-        if (file.getName().endsWith(".jar")) {
-            try {
-                ProcessBuilder builder = new ProcessBuilder("java -jar " + file.getAbsolutePath());
-                builder.start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.err.println("File is not of type JAR");
-        }
-    }
-
-    /**
-     * Launches a jar file
-     */
-    public static void launchJar(File file) {
-        if (file.getName().endsWith(".jar")) {
-            try {
-                ProcessBuilder builder = new ProcessBuilder("java -jar " + file.getAbsolutePath());
-                builder.start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.err.println("File is not of type JAR");
-        }
-    }
-
-    /**
      * @return is running on a mac
      */
     public static boolean isMac() {
@@ -189,35 +75,6 @@ public class SystemUtil {
      */
     public static File getFile() throws URISyntaxException {
         return new File(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-    }
-
-    /**
-     * Restarts the application
-     */
-    public static void restart() {
-        // TODO: Add linux restart
-        if (isExe()) {
-            try {
-                launchExe(getFile());
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
-            System.exit(0);
-        } else if (isMacApp()) {
-            try {
-                launchMacApp(getFile());
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
-            System.exit(0);
-        } else if (isJar()) {
-            try {
-                launchJar(getFile());
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-            System.exit(0);
-        }
     }
 
     /**

@@ -39,6 +39,45 @@ public class LanguageTrainer extends Application {
 
     public static Random random;
 
+    @Override
+    public void start(Stage primaryStage) {
+        Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
+            throwable.printStackTrace();
+            FXUtil.showExceptionDialog("", throwable.toString(), throwable);
+        });
+        try {
+            window = primaryStage;
+            window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
+            showLogin();
+            LanguageHandler.setDisplayLanguage(userData.getLanguage());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+            BorderPane root = loader.load();
+            Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
+            scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
+            window.setScene(scene);
+            window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") + " " + Reference.VERSION);
+            currentController = loader.getController();
+            window.setOnCloseRequest(event -> {
+                // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK
+                if (!askForExit()) {
+                    try {
+                        currentController.onExit();
+                    } catch (NullPointerException e) {
+                        System.err.println("Scene does not have assigned controller!");
+                    }
+                    event.consume();
+                }
+            });
+            window.sizeToScene();
+            window.show();
+            window.setMinWidth(window.getWidth());
+            window.setMinHeight(window.getHeight());
+        } catch (IOException e) {
+            e.printStackTrace();
+            FXUtil.showExceptionDialog("", "", e);
+        }
+    }
+
     /**
      * Main method
      */
@@ -242,45 +281,6 @@ public class LanguageTrainer extends Application {
         } catch (IOException e) {
             ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
             FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", Reference.FXML_TRANSLATION), e.getLocalizedMessage(), e);
-        }
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-        Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
-            throwable.printStackTrace();
-            FXUtil.showExceptionDialog("", throwable.toString(), throwable);
-        });
-        try {
-            window = primaryStage;
-            window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
-            showLogin();
-            LanguageHandler.setDisplayLanguage(userData.getLanguage());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
-            BorderPane root = loader.load();
-            Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
-            scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
-            window.setScene(scene);
-            window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") + " " + Reference.VERSION);
-            currentController = loader.getController();
-            window.setOnCloseRequest(event -> {
-                // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK
-                if (!askForExit()) {
-                    try {
-                        currentController.onExit();
-                    } catch (NullPointerException e) {
-                        System.err.println("Scene does not have assigned controller!");
-                    }
-                    event.consume();
-                }
-            });
-            window.sizeToScene();
-            window.show();
-            window.setMinWidth(window.getWidth());
-            window.setMinHeight(window.getHeight());
-        } catch (IOException e) {
-            e.printStackTrace();
-            FXUtil.showExceptionDialog("", "", e);
         }
     }
 

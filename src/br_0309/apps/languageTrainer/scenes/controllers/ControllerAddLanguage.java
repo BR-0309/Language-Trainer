@@ -13,11 +13,13 @@ import javafx.scene.layout.Priority;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ControllerAddLanguage implements Initializable, IController {
+// No IController since it's in it's own stage
+public class ControllerAddLanguage implements Initializable {
 
     @FXML
     public TextField txtSearch;
@@ -28,22 +30,18 @@ public class ControllerAddLanguage implements Initializable, IController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        objects = new FilteredList<>(FXCollections.observableList(Arrays.asList(LanguageHandler.LANGUAGES)));
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            objects.setPredicate(locale -> locale.getDisplayLanguage().contains(newValue.trim()));
+            objects.setPredicate(locale -> locale.getDisplayLanguage().toLowerCase().trim().contains(newValue.toLowerCase().trim()));
         });
-        list.setItems(objects);
         list.setCellFactory(new Callback<ListView<Locale>, ListCell<Locale>>() {
 
             @Override
             public ListCell<Locale> call(ListView<Locale> param) {
                 return new ListCell<Locale>() {
-                    Label text = new Label();
-                    Label icon = new Label();
-                    // Render everything in a HBox
-                    private final HBox cell;
                     final Label text = new Label();
                     final Label icon = new Label();
+                    // Render everything in a HBox
+                    private final HBox cell;
 
                     {
                         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
@@ -70,13 +68,11 @@ public class ControllerAddLanguage implements Initializable, IController {
         });
     }
 
-    @Override
-    public void onExit() {
-
+    public void addLocales(ArrayList<Locale> locales) {
+        List<Locale> l = new ArrayList<>();
+        for (Locale locale : LanguageHandler.LANGUAGES) if (!locales.contains(locale)) l.add(locale);
+        objects = new FilteredList<>(FXCollections.observableList(l));
+        list.setItems(objects);
     }
 
-    @Override
-    public void onInsert(char c) {
-
-    }
 }

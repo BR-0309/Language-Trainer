@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="419.0"
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="498.0"
             xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerCreateTranslationList">
     <center>
@@ -13,31 +14,41 @@
         </TableView>
     </center>
     <bottom>
-        <AnchorPane prefHeight="45.0" BorderPane.alignment="CENTER">
+        <AnchorPane BorderPane.alignment="CENTER">
             <children>
-                <TextField layoutX="8.0" layoutY="13.0" promptText="Search" AnchorPane.bottomAnchor="35.0"
-                           AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
-                <AnchorPane layoutX="5.0" layoutY="53.0" prefHeight="25.0" prefWidth="150.0"
-                            AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
+                <VBox layoutX="268.0" layoutY="35.0" spacing="5.0" AnchorPane.bottomAnchor="5.0"
+                      AnchorPane.rightAnchor="5.0">
                     <children>
-                        <Button mnemonicParsing="false" text="%generic.next"/>
-                        <Button layoutX="89.0" mnemonicParsing="false" text="%generic.previous"/>
+                        <TextField promptText="Title"/>
+                        <HBox layoutX="169.0" layoutY="35.0" spacing="5.0" AnchorPane.bottomAnchor="5.0"
+                              AnchorPane.rightAnchor="5.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#open" text="%generic.open"/>
+                                <Button mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="75.0"
+                                        text="%generic.save"/>
+                                <Button mnemonicParsing="false" onAction="#addLanguage"
+                                        text="%createTranslation.addLanguage"/>
+                                <Button mnemonicParsing="false" onAction="#exit" text="%generic.btnExit"/>
+                            </children>
+                        </HBox>
                     </children>
-                </AnchorPane>
-                <TextField layoutX="425.0" layoutY="13.0" prefHeight="25.0" prefWidth="255.0" promptText="Title"
-                           AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
-                <AnchorPane layoutX="425.0" layoutY="53.0" prefHeight="25.0" prefWidth="250.0"
-                            AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                </VBox>
+                <VBox spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
                     <children>
-                        <Button layoutX="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0"
-                                text="%generic.open"/>
-                        <Button layoutX="75.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0"
-                                text="%generic.save"/>
-                        <Button layoutX="151.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0"
-                                text="%createTranslation.addLanguage"/>
+                        <TextField promptText="Search"/>
+                        <AnchorPane>
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#next" text="%generic.next"/>
+                                <Button mnemonicParsing="false" onAction="#previous" text="%generic.previous"
+                                        AnchorPane.rightAnchor="0.0"/>
+                            </children>
+                        </AnchorPane>
                     </children>
-                </AnchorPane>
+                </VBox>
             </children>
+            <BorderPane.margin>
+                <Insets top="5.0"/>
+            </BorderPane.margin>
         </AnchorPane>
     </bottom>
 </BorderPane>
