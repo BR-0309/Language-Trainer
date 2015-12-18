@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -27,6 +28,7 @@ public class ControllerAddLanguage implements Initializable {
     public ListView<Locale> list;
 
     private FilteredList<Locale> objects;
+    public Locale newLocale = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -73,6 +75,17 @@ public class ControllerAddLanguage implements Initializable {
         for (Locale locale : LanguageHandler.LANGUAGES) if (!locales.contains(locale)) l.add(locale);
         objects = new FilteredList<>(FXCollections.observableList(l));
         list.setItems(objects);
+    }
+
+    public void ok() {
+        newLocale = list.getSelectionModel().getSelectedItem();
+        Stage stage = (Stage) txtSearch.getScene().getWindow();
+        stage.close();
+    }
+
+    public void cancel() {
+        Stage stage = (Stage) txtSearch.getScene().getWindow();
+        stage.close();
     }
 
 }
