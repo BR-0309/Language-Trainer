@@ -1,4 +1,13 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .speaker-button{
-	-fx-graphic: url(/icons/speaker.png)
+    -fx-graphic: url(/icons/speaker.png)
+}
+.table-view {
+    -fx-table-cell-border-color: C0C0C0;
+}
+.text-input {
+    -fx-prompt-text-fill: derive(-fx-text-fill, +50%);
+}
+.list-view{
+    -fx-table-cell-border-color: #C0C0C0;
 }

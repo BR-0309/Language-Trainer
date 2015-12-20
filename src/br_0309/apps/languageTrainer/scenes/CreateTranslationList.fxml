@@ -19,7 +19,7 @@
                 <VBox layoutX="268.0" layoutY="35.0" spacing="5.0" AnchorPane.bottomAnchor="5.0"
                       AnchorPane.rightAnchor="5.0">
                     <children>
-                        <TextField promptText="Title"/>
+                        <TextField fx:id="txtTitle" promptText="Title"/>
                         <HBox layoutX="169.0" layoutY="35.0" spacing="5.0" AnchorPane.bottomAnchor="5.0"
                               AnchorPane.rightAnchor="5.0">
                             <children>
@@ -35,7 +35,7 @@
                 </VBox>
                 <VBox spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
                     <children>
-                        <TextField promptText="Search"/>
+                        <TextField fx:id="txtSearch" promptText="Search"/>
                         <AnchorPane>
                             <children>
                                 <Button mnemonicParsing="false" onAction="#next" text="%generic.next"/>

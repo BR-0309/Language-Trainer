@@ -1,9 +1,21 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .root{
-	-fx-base: rgb(70, 70, 70);
-	-fx-background: rgb(70,70,70);
-	-fx-control-inner-background: rgb(100, 100, 100);
+    -fx-base: #404040;
+    -fx-background: #404040;
+    -fx-control-inner-background: #404040;
+    -fx-text-fill: #D8D8D8;
 }
 .speaker-button{
-	-fx-graphic: url(/icons/speaker_white.png)
+    -fx-graphic: url(/icons/speaker_white.png)
+}
+.table-view {
+    -fx-table-cell-border-color: #D8D8D8;
+    -fx-control-inner-background: #4d4d4d;
+}
+.text-input {
+    -fx-prompt-text-fill: derive(-fx-text-fill, -30%);
+}
+.list-view{
+    -fx-table-cell-border-color: #D8D8D8;
+    -fx-control-inner-background: #4d4d4d;
 }
