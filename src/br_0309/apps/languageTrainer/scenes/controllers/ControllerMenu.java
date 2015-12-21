@@ -159,7 +159,7 @@ public class ControllerMenu implements Initializable, IController {
 
     public void onStartTraining() {
         // Copies selected items
-        ArrayList<ExerciseData> selected = data.stream().filter(d -> d.isSelected()).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<ExerciseData> selected = data.stream().filter(ExerciseData::isSelected).collect(Collectors.toCollection(ArrayList::new));
         if (selected.isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
             table.requestFocus();
@@ -217,7 +217,6 @@ public class ControllerMenu implements Initializable, IController {
     }
 
     public void onTranslationList() {
-        // FIXME: Implement translation list editor
         LanguageTrainer.setScene(Reference.FXML_CREATE_TRANSLATION);
     }
 

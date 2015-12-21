@@ -17,8 +17,6 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-// TODO: Add more dialogs
-// TODO: Add default dialogs
 public class FXUtil {
 
     /**
@@ -112,7 +110,7 @@ public class FXUtil {
      */
     public static void showWarningDialog(String header, String msg) {
         ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
-        showErrorDialog(BUNDLE.getString("generic.error"), header, msg);
+        showWarningDialog(BUNDLE.getString("generic.warning"), header, msg);
     }
 
     /**
@@ -120,13 +118,14 @@ public class FXUtil {
      */
     public static void showWarningDialog(String msg) {
         ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
-        showErrorDialog(BUNDLE.getString("generic.error"), null, msg);
+        showWarningDialog(BUNDLE.getString("generic.warning"), null, msg);
     }
 
     /**
      * Show an error dialog with an expandable stack trace
      */
     public static void showExceptionDialog(String title, String header, Exception exception) {
+        ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -138,7 +137,7 @@ public class FXUtil {
         exception.printStackTrace(printWriter);
         String exceptionText = stringWriter.toString();
 
-        Label label = new Label("Stacktrace:");
+        Label label = new Label(BUNDLE.getString(""));
 
         TextArea textArea = new TextArea(exceptionText);
         textArea.setEditable(false);

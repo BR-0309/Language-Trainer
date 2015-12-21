@@ -29,6 +29,7 @@ import java.util.ResourceBundle;
 // TODO: Add icons at different resolutions
 // TODO: Make themes less terrible
 // TODO: Internationalise Copyrights.txt
+// FIXME: If window is maximised, keep it so
 public class LanguageTrainer extends Application {
 
     public static UserData userData = new UserData();
@@ -81,6 +82,7 @@ public class LanguageTrainer extends Application {
     /**
      * Main method
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void main(String[] args) {
         // System-specific settings
         if (SystemUtil.isWindows()) {

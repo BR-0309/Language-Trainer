@@ -19,13 +19,15 @@ import java.text.ChoiceFormat;
 import java.text.Format;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
 
 public class ControllerTranslate implements Initializable, IController {
 
+    private final ArrayList<VocabularyData> words = new ArrayList<>();
+    private final ArrayList<ExerciseData> rest = new ArrayList<>();
+    private final ArrayList<ListStatistics> stats = new ArrayList<>();
+    private final ArrayList<VocabularyData> wrong = new ArrayList<>();
+    private final int cheated = 0;
     @FXML
     public Label lblCorrect;
     @FXML
@@ -46,15 +48,9 @@ public class ControllerTranslate implements Initializable, IController {
     public Label lblTask;
     @FXML
     public TextField txtAnswer;
-
     private ResourceBundle BUNDLE;
-    private final ArrayList<VocabularyData> words = new ArrayList<>();
-    private final ArrayList<ExerciseData> rest = new ArrayList<>();
-    private final ArrayList<ListStatistics> stats = new ArrayList<>();
-    private final ArrayList<VocabularyData> wrong = new ArrayList<>();
     private int correct;
     private int incorrect;
-    private final int cheated = 0;
     private int length;
     private int solvedCorrectly = 0;
 
@@ -80,7 +76,7 @@ public class ControllerTranslate implements Initializable, IController {
             if (!wrong.contains(word)) {
                 correct++;
                 for (ListStatistics stat : stats) {
-                    if (stat.listName.equals(word.list) && stat.langCodes.equals(word.langs)) {
+                    if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
                         stat.correct++;
                         break;
                     }
@@ -95,13 +91,13 @@ public class ControllerTranslate implements Initializable, IController {
                 wrong.add(word);
                 // Look for relevant statistic and increase the statistic
                 for (ListStatistics stat : stats) {
-                    if (stat.listName.equals(word.list) && stat.langCodes.equals(word.langs)) {
+                    if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
                         stat.incorrect++;
                         break;
                     }
                 }
             } else {
-
+                // FIXME: Add something here
             }
         }
         if (words.isEmpty()) {
@@ -156,6 +152,8 @@ public class ControllerTranslate implements Initializable, IController {
         txtAnswer.setText(txtAnswer.getText() + c);
     }
 
+    // FIXME: Possible issue, check for one-word lines
+    // FIXME: Read UTF-8
     public void init(ArrayList<ExerciseData> lists) {
         String TRANSLATION = BUNDLE.getString("generic.translation");
         // Cycle through all selected exercises
