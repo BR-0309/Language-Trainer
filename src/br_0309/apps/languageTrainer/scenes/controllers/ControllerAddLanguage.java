@@ -26,9 +26,8 @@ public class ControllerAddLanguage implements Initializable {
     public TextField txtSearch;
     @FXML
     public ListView<Locale> list;
-
-    private FilteredList<Locale> objects;
     public Locale newLocale = null;
+    private FilteredList<Locale> objects;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -71,9 +70,22 @@ public class ControllerAddLanguage implements Initializable {
     }
 
     public void addLocales(ArrayList<Locale> locales) {
-        List<Locale> l = new ArrayList<>();
-        for (Locale locale : LanguageHandler.LANGUAGES) if (!locales.contains(locale)) l.add(locale);
-        objects = new FilteredList<>(FXCollections.observableList(l));
+        List<Locale> localeList = new ArrayList<>();
+        for (Locale locale : LanguageHandler.LANGUAGES) {
+            String lang = locale.getLanguage();
+            // b to please compiler
+            boolean b = true;
+            for (Locale l : locales) {
+                if (l.getLanguage().equals(lang)) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b) {
+                localeList.add(locale);
+            }
+        }
+        objects = new FilteredList<>(FXCollections.observableList(localeList));
         list.setItems(objects);
     }
 
