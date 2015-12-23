@@ -111,7 +111,8 @@ public class ControllerMenu implements Initializable, IController {
                     System.err.println("Null reference file!");
                     continue;
                 } else if (!file.exists() || file.isDirectory()) {
-                    System.err.println(file.getAbsolutePath() + " does not exist or is a directory! Nested exercises are not supported!");
+                    System.err.println(file.getAbsolutePath() +
+                                       " does not exist or is a directory! Nested exercises are not supported!");
                     continue;
                 }
                 // For translation files
@@ -127,8 +128,9 @@ public class ControllerMenu implements Initializable, IController {
                             for (int j = i + 1; j < langs.length; j++) {
                                 String lang1 = new Locale(langs[i]).getDisplayLanguage();
                                 String lang2 = new Locale(langs[j]).getDisplayLanguage();
-                                data.add(new ExerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file, new String[]{
-                                        langs[i], langs[j]}));
+                                data.add(new ExerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file,
+                                                          new String[]{
+                                                                  langs[i], langs[j]}));
                             }
                         }
 
@@ -143,11 +145,13 @@ public class ControllerMenu implements Initializable, IController {
                         String lang = scan.nextLine();
                         scan.close();
                         if (lang.length() > 3) {
-                            System.err.printf("Invalid lang code (%s) in file %s. Skipping.\n", lang, file.getAbsolutePath() + "\n");
+                            System.err.printf("Invalid lang code (%s) in file %s. Skipping.\n", lang,
+                                              file.getAbsolutePath() + "\n");
                             continue;
                         }
-                        data.add(new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""), new Locale(lang).getDisplayLanguage(), VERBS,
-                                file, new String[]{lang}));
+                        data.add(new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""),
+                                                  new Locale(lang).getDisplayLanguage(), VERBS,
+                                                  file, new String[]{lang}));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -159,14 +163,16 @@ public class ControllerMenu implements Initializable, IController {
 
     public void onStartTraining() {
         // Copies selected items
-        ArrayList<ExerciseData> selected = data.stream().filter(ExerciseData::isSelected).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<ExerciseData> selected =
+                data.stream().filter(ExerciseData::isSelected).collect(Collectors.toCollection(ArrayList::new));
         if (selected.isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
             table.requestFocus();
             return;
         }
         String translation = BUNDLE.getString("generic.translation");
-        selected.stream().filter(d -> d.getType().equals(translation)).forEach(d -> LanguageTrainer.showTranslation(selected));
+        selected.stream().filter(d -> d.getType().equals(translation))
+                .forEach(d -> LanguageTrainer.showTranslation(selected));
     }
 
     @Override
@@ -184,7 +190,8 @@ public class ControllerMenu implements Initializable, IController {
     private void filter() {
         data.setPredicate(data1 -> {
             if (data1.getTitle().toLowerCase().contains(search.getText().toLowerCase())) {
-                if (types.getSelectionModel().getSelectedIndex() == 0 || data1.getType().equals(types.getSelectionModel().getSelectedItem())) {
+                if (types.getSelectionModel().getSelectedIndex() == 0 ||
+                    data1.getType().equals(types.getSelectionModel().getSelectedItem())) {
                     return true;
                 }
             }
@@ -201,7 +208,7 @@ public class ControllerMenu implements Initializable, IController {
         stage.sizeToScene();
         try {
             Parent parent = FXMLLoader.load(getClass().getResource(Reference.FXML_SETTINGS),
-                    ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+                                            ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             Scene scene = new Scene(parent);
             scene.getStylesheets().add(LanguageTrainer.userData.getTheme());
             stage.setScene(scene);
@@ -213,7 +220,7 @@ public class ControllerMenu implements Initializable, IController {
     }
 
     public void onStatistics() {
-        // FIXME: Implement statistics
+        LanguageTrainer.setScene(Reference.FXML_STATISTICS);
     }
 
     public void onTranslationList() {

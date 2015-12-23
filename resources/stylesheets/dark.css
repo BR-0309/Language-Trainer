@@ -19,3 +19,7 @@
     -fx-table-cell-border-color: #D8D8D8;
     -fx-control-inner-background: #4d4d4d;
 }
+.cheat-button{
+    -fx-graphic: url(/icons/key_white.png);
+    -fx-background-color: transparent;
+}

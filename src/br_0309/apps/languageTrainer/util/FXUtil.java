@@ -49,7 +49,7 @@ public class FXUtil {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(msg);
-        alert.initOwner(LanguageTrainer.window.getOwner());
+        alert.initOwner(LanguageTrainer.window);
         alert.showAndWait();
     }
 
@@ -67,7 +67,7 @@ public class FXUtil {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(msg);
-        alert.initOwner(LanguageTrainer.window.getOwner());
+        alert.initOwner(LanguageTrainer.window);
         alert.showAndWait();
     }
 
@@ -101,7 +101,7 @@ public class FXUtil {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(msg);
-        alert.initOwner(LanguageTrainer.window.getOwner());
+        alert.initOwner(LanguageTrainer.window);
         alert.showAndWait();
     }
 
@@ -130,14 +130,14 @@ public class FXUtil {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(exception.getLocalizedMessage());
-        alert.initOwner(LanguageTrainer.window.getOwner());
+        alert.initOwner(LanguageTrainer.window);
 
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
         exception.printStackTrace(printWriter);
         String exceptionText = stringWriter.toString();
 
-        Label label = new Label(BUNDLE.getString(""));
+        Label label = new Label(BUNDLE.getString("util.stacktrace"));
 
         TextArea textArea = new TextArea(exceptionText);
         textArea.setEditable(false);
@@ -154,7 +154,8 @@ public class FXUtil {
         expContent.add(textArea, 0, 1);
         alert.getDialogPane().setExpandableContent(expContent);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.getDialogPane().getStylesheets()
+             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         alert.showAndWait();
     }
 
@@ -162,6 +163,7 @@ public class FXUtil {
      * Show an error dialog with an expandable stack trace
      */
     public static void showExceptionDialog(String title, String header, Exception exception, Stage stage) {
+        ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -173,7 +175,7 @@ public class FXUtil {
         exception.printStackTrace(printWriter);
         String exceptionText = stringWriter.toString();
 
-        Label label = new Label("Stacktrace:");
+        Label label = new Label(BUNDLE.getString("util.stacktrace"));
 
         TextArea textArea = new TextArea(exceptionText);
         textArea.setEditable(false);
@@ -190,7 +192,8 @@ public class FXUtil {
         expContent.add(textArea, 0, 1);
         alert.getDialogPane().setExpandableContent(expContent);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.getDialogPane().getStylesheets()
+             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         alert.showAndWait();
     }
 
@@ -203,7 +206,7 @@ public class FXUtil {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(throwable.getLocalizedMessage());
-        alert.initOwner(LanguageTrainer.window.getOwner());
+        alert.initOwner(LanguageTrainer.window);
 
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
@@ -227,7 +230,8 @@ public class FXUtil {
         expContent.add(textArea, 0, 1);
         alert.getDialogPane().setExpandableContent(expContent);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.getDialogPane().getStylesheets()
+             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         alert.showAndWait();
     }
 
@@ -264,7 +268,8 @@ public class FXUtil {
         expContent.add(textArea, 0, 1);
         alert.getDialogPane().setExpandableContent(expContent);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.getDialogPane().getStylesheets()
+             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         alert.showAndWait();
     }
 
@@ -277,8 +282,9 @@ public class FXUtil {
         alert.setHeaderText(header);
         alert.initStyle(StageStyle.UTILITY);
         alert.setContentText(msg);
-        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
-        alert.initOwner(LanguageTrainer.window.getOwner());
+        alert.getDialogPane().getStylesheets()
+             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.initOwner(LanguageTrainer.window);
 
         ButtonType ok = new ButtonType(btnOk, ButtonData.OK_DONE);
         ButtonType cancel = new ButtonType(btnCancel, ButtonData.CANCEL_CLOSE);

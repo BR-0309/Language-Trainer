@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0"
@@ -28,6 +29,13 @@
                         <Font size="30.0"/>
                     </font>
                 </Label>
+                <Button fx:id="btnCheat" focusTraversable="false" layoutX="57.0" layoutY="45.0" mnemonicParsing="false"
+                        onAction="#onCheat" styleClass="cheat-button" AnchorPane.leftAnchor="20.0"
+                        AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
             </children>
         </AnchorPane>
         <TextField fx:id="txtAnswer" layoutX="14.0" layoutY="190.0" prefHeight="25.0" prefWidth="353.0"

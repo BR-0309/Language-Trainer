@@ -9,11 +9,13 @@ public class Reference {
     public static final String FXML_PROFILE_NEW = "/br_0309/apps/languageTrainer/scenes/ProfileNew.fxml";
     public static final String FXML_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/Translate.fxml";
     public static final String FXML_SETTINGS = "/br_0309/apps/languageTrainer/scenes/Settings.fxml";
-    public static final String FXML_CREATE_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/CreateTranslationList.fxml";
+    public static final String FXML_CREATE_TRANSLATION =
+            "/br_0309/apps/languageTrainer/scenes/CreateTranslationList.fxml";
     public static final String FXML_LANGUAGE_ADD = "/br_0309/apps/languageTrainer/scenes/LanguageAdd.fxml";
+    public static final String FXML_STATISTICS = "/br_0309/apps/languageTrainer/scenes/Statistics.fxml";
 
     public static final String[] THEMES = {"/stylesheets/default.css", "/stylesheets/dark.css",
-            "/stylesheets/blue.css"};
+                                           "/stylesheets/blue.css"};
 
     public static final String BUNDLE_LOC = "lang/Locale";
 
@@ -33,18 +35,21 @@ public class Reference {
     public static final String VERSION = "0.6.0";
 
     public static final String[] SOUNDS_CORRECT = {"/sounds/correct/correct.wav", "/sounds/correct/correct2.wav",
-            "/sounds/correct/game-sound-correct-v2.wav",
-            "/sounds/correct/jingle-4.wav", "/sounds/correct/powerup-success.wav"};
+                                                   "/sounds/correct/game-sound-correct-v2.wav",
+                                                   "/sounds/correct/jingle-4.wav",
+                                                   "/sounds/correct/powerup-success.wav"};
     public static final String[] SOUNDS_INCORRECT = {"/sounds/incorrect/incorrect.wav",
-            "/sounds/incorrect/misslyckad-bana-v5.wav",
-            "/sounds/incorrect/negative-beeps.wav", "/sounds/incorrect/negative.wav",
-            "/sounds/incorrect/negativebeep.wav",
-            "/sounds/incorrect/sine-negative-beep.wav"};
+                                                     "/sounds/incorrect/misslyckad-bana-v5.wav",
+                                                     "/sounds/incorrect/negative-beeps.wav",
+                                                     "/sounds/incorrect/negative.wav",
+                                                     "/sounds/incorrect/negativebeep.wav",
+                                                     "/sounds/incorrect/sine-negative-beep.wav"};
     public static final String[] SOUNDS_FINISHED = {"/sounds/finished/3-men-cheering.wav",
-            "/sounds/finished/applause-2.wav", "/sounds/finished/loop1.wav",
-            "/sounds/finished/melo4.wav", "/sounds/finished/sine-melody.wav", "/sounds/finished/sine-melody-2.wav",
-            "/sounds/finished/smallcrowd.wav",
-            "/sounds/finished/summertime-stab.wav"};
+                                                    "/sounds/finished/applause-2.wav", "/sounds/finished/loop1.wav",
+                                                    "/sounds/finished/melo4.wav", "/sounds/finished/sine-melody.wav",
+                                                    "/sounds/finished/sine-melody-2.wav",
+                                                    "/sounds/finished/smallcrowd.wav",
+                                                    "/sounds/finished/summertime-stab.wav"};
 
     public static final String FLAG_DIR = "/icons/flags/";
 }

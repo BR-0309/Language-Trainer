@@ -11,3 +11,7 @@
 .list-view{
     -fx-table-cell-border-color: #C0C0C0;
 }
+.cheat-button{
+    -fx-graphic: url(/icons/key.png);
+    -fx-background-color: transparent;
+}

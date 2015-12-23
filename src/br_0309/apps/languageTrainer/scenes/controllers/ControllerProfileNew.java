@@ -99,7 +99,8 @@ public class ControllerProfileNew implements Initializable, IController {
 
     private void updateLocation() {
         location.setText(
-                profileUnconfirmed.getParentFile().getAbsolutePath() + File.separator + firstName.getText().trim() + "_" + lastName.getText().trim() + ".ltd");
+                profileUnconfirmed.getParentFile().getAbsolutePath() + File.separator + firstName.getText().trim() +
+                "_"                                                                                                +                                                                                              lastName.getText().trim() + ".ltd");
     }
 
     @Override

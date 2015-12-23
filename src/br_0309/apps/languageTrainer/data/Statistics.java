@@ -1,10 +1,9 @@
 package br_0309.apps.languageTrainer.data;
 
-import br_0309.apps.languageTrainer.util.SystemUtil;
-
 import java.io.Serializable;
+import java.util.Date;
 
-public class ListStatistics implements Serializable {
+public class Statistics implements Serializable, Comparable<Statistics> {
 
     private static final long serialVersionUID = -2484107990886936920L;
     public int correct = 0;
@@ -13,15 +12,19 @@ public class ListStatistics implements Serializable {
     public final String listName;
     public final boolean listType;
     public final String[] langCodes;
-    public final String time = SystemUtil.getTimeAndDateFormatted();
+    public final Date date = new Date();
 
     /**
      * @param listType true: translation. false: verbs
      */
-    public ListStatistics(String listName, boolean listType, String[] langCodes) {
+    public Statistics(String listName, boolean listType, String[] langCodes) {
         this.listName = listName;
         this.listType = listType;
         this.langCodes = langCodes;
     }
 
+    @Override
+    public int compareTo(Statistics o) {
+        return date.compareTo(o.date);
+    }
 }

@@ -54,7 +54,7 @@ public class ExerciseData implements Comparable<ExerciseData> {
      * On table: column.setCellValueFactory(new
      * PropertyValueFactory<>("active"));
      *
-     * @returns BooleanProperty
+     * @return BooleanProperty
      */
     public BooleanProperty activeProperty() {
         return selected;

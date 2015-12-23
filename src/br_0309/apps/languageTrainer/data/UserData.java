@@ -10,8 +10,9 @@ import java.util.Properties;
 
 public class UserData implements Serializable {
 
+    public static final Properties DEFAULT_PROPERTIES = getDefaults();
     private static final long serialVersionUID = 2362898497407984692L;
-    public ArrayList<ListStatistics> stats = new ArrayList<>();
+    public ArrayList<Statistics> stats = new ArrayList<>();
     public Properties properties;
     public File file;
 
@@ -19,7 +20,7 @@ public class UserData implements Serializable {
      * Creates a UserData object with only the defaults
      */
     public UserData() {
-        properties = new Properties(getDefaults());
+        properties = new Properties(DEFAULT_PROPERTIES);
     }
 
     /**
@@ -33,7 +34,7 @@ public class UserData implements Serializable {
     /**
      * Returns all the default values
      */
-    private Properties getDefaults() {
+    private static Properties getDefaults() {
         Properties p = new Properties();
         p.setProperty(Reference.PROPERTY_LANGUAGE, LanguageHandler.getBestLocale().getLanguage());
         p.setProperty(Reference.PROPERTY_LANGUAGE_REGION, LanguageHandler.getBestLocale().getCountry());
@@ -48,6 +49,7 @@ public class UserData implements Serializable {
     /**
      * Saves to a file
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void save() {
         ObjectOutputStream out = null;
         try {
@@ -63,15 +65,19 @@ public class UserData implements Serializable {
             e.printStackTrace();
         } finally {
             try {
-                out.close();
+                if (out != null) {
+                    out.close();
+                }
             } catch (IOException | NullPointerException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    /**
+     * Loads from a file
+     */
     @SuppressWarnings("unchecked")
-    /** Loads from a file */
     public void load() {
         ObjectInputStream in = null;
         try {
@@ -82,16 +88,18 @@ public class UserData implements Serializable {
             in = new ObjectInputStream(new FileInputStream(file));
 
             properties = (Properties) in.readObject();
-            stats = (ArrayList<ListStatistics>) in.readObject();
+            stats = (ArrayList<Statistics>) in.readObject();
         } catch (EOFException e) {
-            System.out.println("EOFException. Saving");
+            System.out.println("No data in file. Saving defaults.");
             save();
             load();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {
-                in.close();
+                if (in != null) {
+                    in.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (NullPointerException e) {
@@ -104,7 +112,8 @@ public class UserData implements Serializable {
                 properties = new Properties(getDefaults());
             }
             // For each, set property and value
-            defaults.entrySet().stream().filter(entry -> !properties.containsKey(entry.getKey())).forEach(entry -> properties.setProperty(entry.getKey().toString(), entry.getValue().toString()));
+            defaults.entrySet().stream().filter(entry -> !properties.containsKey(entry.getKey()))
+                    .forEach(entry -> properties.setProperty(entry.getKey().toString(), entry.getValue().toString()));
         }
     }
 
@@ -112,85 +121,8 @@ public class UserData implements Serializable {
      * Returns the language the user chose, or best suited
      */
     public Locale getLanguage() {
-        return new Locale(properties.getProperty(Reference.PROPERTY_LANGUAGE), properties.getProperty(Reference.PROPERTY_LANGUAGE_REGION));
-    }
-
-    /**
-     * Adds all ListStatistics in list
-     */
-    public void putStats(ArrayList<ListStatistics> list) {
-        stats.addAll(list);
-        save();
-    }
-
-    /**
-     * @return if sounds should be played
-     */
-    public boolean getPlaySounds() {
-        return Boolean.parseBoolean(properties.getProperty(Reference.PROPERTY_PLAY_SOUNDS));
-    }
-
-    /**
-     * @return the theme the user chose, or default
-     */
-    public String getTheme() {
-        return properties.getProperty(Reference.PROPERTY_THEME);
-    }
-
-    /**
-     * @return the selected sound for correct answers
-     */
-    public String getSoundCorrect() {
-        return properties.getProperty(Reference.PROPERTY_SOUND_CORRECT);
-    }
-
-    /**
-     * @return the selected sound for incorrect answers
-     */
-    public String getSoundIncorrect() {
-        return properties.getProperty(Reference.PROPERTY_SOUND_INCORRECT);
-    }
-
-    /**
-     * @return the sound for a finished exercise
-     */
-    public String getSoundFinished() {
-        return properties.getProperty(Reference.PROPERTY_SOUND_FINISHED);
-    }
-
-    /**
-     * Sets the value of playSounds. <b>Does not save.</b>
-     */
-    public void setPlaySounds(boolean value) {
-        properties.setProperty(Reference.PROPERTY_PLAY_SOUNDS, Boolean.toString(value));
-    }
-
-    /**
-     * Sets the theme. <b>Does not save.</b>
-     */
-    public void setTheme(String theme) {
-        properties.setProperty(Reference.PROPERTY_THEME, theme);
-    }
-
-    /**
-     * Sets the correct sound. <b>Does not save.</b>
-     */
-    public void setSoundCorrect(String sound) {
-        properties.setProperty(Reference.PROPERTY_SOUND_CORRECT, sound);
-    }
-
-    /**
-     * Sets the incorrect sound. <b>Does not save.</b>
-     */
-    public void setSoundIncorrect(String sound) {
-        properties.setProperty(Reference.PROPERTY_SOUND_INCORRECT, sound);
-    }
-
-    /**
-     * Sets the finished sound. <b>Does not save.</b>
-     */
-    public void setSoundFinished(String sound) {
-        properties.setProperty(Reference.PROPERTY_SOUND_FINISHED, sound);
+        return new Locale(properties.getProperty(Reference.PROPERTY_LANGUAGE),
+                          properties.getProperty(Reference.PROPERTY_LANGUAGE_REGION));
     }
 
     /**
@@ -201,6 +133,85 @@ public class UserData implements Serializable {
         properties.setProperty(Reference.PROPERTY_LANGUAGE, locale.getLanguage());
         properties.setProperty(Reference.PROPERTY_LANGUAGE_REGION, locale.getCountry());
         LanguageHandler.setDisplayLanguage(locale);
+    }
+
+    /**
+     * Adds all Statistics in list
+     */
+    public void putStats(ArrayList<Statistics> list) {
+        stats.addAll(list);
+        save();
+    }
+
+    /**
+     * @return if sounds should be played
+     */
+    @SuppressWarnings("BooleanMethodNameMustStartWithQuestion")
+    public boolean getPlaySounds() {
+        return Boolean.parseBoolean(properties.getProperty(Reference.PROPERTY_PLAY_SOUNDS));
+    }
+
+    /**
+     * Sets the value of playSounds. <b>Does not save.</b>
+     */
+    public void setPlaySounds(boolean value) {
+        properties.setProperty(Reference.PROPERTY_PLAY_SOUNDS, Boolean.toString(value));
+    }
+
+    /**
+     * @return the theme the user chose, or default
+     */
+    public String getTheme() {
+        return properties.getProperty(Reference.PROPERTY_THEME);
+    }
+
+    /**
+     * Sets the theme. <b>Does not save.</b>
+     */
+    public void setTheme(String theme) {
+        properties.setProperty(Reference.PROPERTY_THEME, theme);
+    }
+
+    /**
+     * @return the selected sound for correct answers
+     */
+    public String getSoundCorrect() {
+        return properties.getProperty(Reference.PROPERTY_SOUND_CORRECT);
+    }
+
+    /**
+     * Sets the correct sound. <b>Does not save.</b>
+     */
+    public void setSoundCorrect(String sound) {
+        properties.setProperty(Reference.PROPERTY_SOUND_CORRECT, sound);
+    }
+
+    /**
+     * @return the selected sound for incorrect answers
+     */
+    public String getSoundIncorrect() {
+        return properties.getProperty(Reference.PROPERTY_SOUND_INCORRECT);
+    }
+
+    /**
+     * Sets the incorrect sound. <b>Does not save.</b>
+     */
+    public void setSoundIncorrect(String sound) {
+        properties.setProperty(Reference.PROPERTY_SOUND_INCORRECT, sound);
+    }
+
+    /**
+     * @return the sound for a finished exercise
+     */
+    public String getSoundFinished() {
+        return properties.getProperty(Reference.PROPERTY_SOUND_FINISHED);
+    }
+
+    /**
+     * Sets the finished sound. <b>Does not save.</b>
+     */
+    public void setSoundFinished(String sound) {
+        properties.setProperty(Reference.PROPERTY_SOUND_FINISHED, sound);
     }
 
 }

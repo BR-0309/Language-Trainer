@@ -6,12 +6,12 @@ import java.util.Locale;
 
 public class VocabularyData {
 
+    public final String list;
+    public final String[] langs;
     private final String[] words1;
     private final String[] words2;
     private final String lang1;
     private final String lang2;
-    public final String list;
-    public final String[] langs;
     private final boolean fromOne;
     private final int q;
 

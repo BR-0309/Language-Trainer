@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0"
+            prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerStatistics">
+    <center>
+        <TabPane side="RIGHT" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Untitled Tab 1">
+                    <content>
+                        <LineChart fx:id="lineChart" title="%statistics.development">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT"/>
+                            </yAxis>
+                        </LineChart>
+                    </content>
+                </Tab>
+                <Tab text="Untitled Tab 2">
+                    <content>
+                        <PieChart fx:id="pieChart"/>
+                    </content>
+                </Tab>
+                <Tab text="Untitled Tab">
+                    <content>
+                        <BarChart fx:id="barChart">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT"/>
+                            </yAxis>
+                        </BarChart>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    <left>
+        <ListView fx:id="list" prefWidth="180.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets left="5.0"/>
+            </BorderPane.margin>
+        </ListView>
+    </left>
+    <bottom>
+        <AnchorPane BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="txtSearch" prefWidth="180.0" promptText="%generic.search"
+                           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#exit" text="%generic.ok"
+                        AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>

@@ -247,9 +247,9 @@
         </fx:jar>
         <fx:deploy width="600" height="400" updatemode="background"
                    outdir="${artifact.temp.output.Language_Trainer}\deploy" outfile="Language_Trainer"
-                   nativeBundles="exe" verbose="true">
+                   nativeBundles="exe">
             <fx:application refid="Language_Trainer_id"/>
-            <fx:info title="Language Trainer" vendor="Benjamin Raison" description="Practice Languages"/>
+            <fx:info title="Language Trainer" vendor="Benjamin Raison" description=""/>
             <fx:resources>
                 <fx:fileset refid="all_Language_Trainer"/>
             </fx:resources>

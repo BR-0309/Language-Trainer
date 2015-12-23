@@ -30,7 +30,9 @@ public class UniversalData {
             e.printStackTrace();
         } finally {
             try {
-                in.close();
+                if (in != null) {
+                    in.close();
+                }
             } catch (IOException | NullPointerException e) {
                 e.printStackTrace();
             }
@@ -40,6 +42,7 @@ public class UniversalData {
         }
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void save() {
         File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
         if (!file.exists()) {
@@ -61,7 +64,9 @@ public class UniversalData {
             e.printStackTrace();
         } finally {
             try {
-                out.close();
+                if (out != null) {
+                    out.close();
+                }
             } catch (IOException | NullPointerException e) {
                 e.printStackTrace();
             }

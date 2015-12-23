@@ -32,7 +32,8 @@ public class ControllerAddLanguage implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            objects.setPredicate(locale -> locale.getDisplayLanguage().toLowerCase().trim().contains(newValue.toLowerCase().trim()));
+            objects.setPredicate(
+                    locale -> locale.getDisplayLanguage().toLowerCase().trim().contains(newValue.toLowerCase().trim()));
         });
         list.setCellFactory(new Callback<ListView<Locale>, ListCell<Locale>>() {
 

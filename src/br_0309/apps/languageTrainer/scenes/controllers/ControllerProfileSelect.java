@@ -57,8 +57,9 @@ public class ControllerProfileSelect implements Initializable, IController {
     }
 
     public void onCancel() {
-        if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"), null, BUNDLE.getString("generic.ok"),
-                BUNDLE.getString("generic.cancel"))) {
+        if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"),
+                                          null, BUNDLE.getString("generic.ok"),
+                                          BUNDLE.getString("generic.cancel"))) {
             System.exit(0);
         }
     }
@@ -66,7 +67,7 @@ public class ControllerProfileSelect implements Initializable, IController {
     public void onNewProfile() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_NEW),
-                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);

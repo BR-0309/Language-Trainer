@@ -12,7 +12,8 @@ public class SystemUtil {
      */
     public static boolean isJar() {
         try {
-            return new File(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().endsWith(".jar");
+            return new File(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName()
+                                                                                                         .endsWith(".jar");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -24,7 +25,8 @@ public class SystemUtil {
      */
     public static boolean isExe() {
         try {
-            return new File(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().endsWith(".exe");
+            return new File(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName()
+                                                                                                         .endsWith(".exe");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

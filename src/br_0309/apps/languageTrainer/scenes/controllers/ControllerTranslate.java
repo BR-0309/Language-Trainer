@@ -2,11 +2,12 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 
 import br_0309.apps.languageTrainer.LanguageTrainer;
 import br_0309.apps.languageTrainer.data.ExerciseData;
-import br_0309.apps.languageTrainer.data.ListStatistics;
+import br_0309.apps.languageTrainer.data.Statistics;
 import br_0309.apps.languageTrainer.data.VocabularyData;
 import br_0309.apps.languageTrainer.util.FXUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -25,9 +26,8 @@ public class ControllerTranslate implements Initializable, IController {
 
     private final ArrayList<VocabularyData> words = new ArrayList<>();
     private final ArrayList<ExerciseData> rest = new ArrayList<>();
-    private final ArrayList<ListStatistics> stats = new ArrayList<>();
+    private final ArrayList<Statistics> stats = new ArrayList<>();
     private final ArrayList<VocabularyData> wrong = new ArrayList<>();
-    private final int cheated = 0;
     @FXML
     public Label lblCorrect;
     @FXML
@@ -48,9 +48,12 @@ public class ControllerTranslate implements Initializable, IController {
     public Label lblTask;
     @FXML
     public TextField txtAnswer;
+    @FXML
+    public Button btnCheat;
     private ResourceBundle BUNDLE;
     private int correct;
     private int incorrect;
+    private int cheated = 0;
     private int length;
     private int solvedCorrectly = 0;
 
@@ -58,11 +61,14 @@ public class ControllerTranslate implements Initializable, IController {
     public void initialize(URL arg0, ResourceBundle bundle) {
         BUNDLE = bundle;
         btnExit.setOnAction(value -> {
-            if (FXUtil.showConfirmationDialog(bundle.getString("generic.confirm"), bundle.getString("generic.confirmQuit"), "", bundle.getString("generic.ok"),
-                    bundle.getString("generic.cancel"))) {
+            if (FXUtil.showConfirmationDialog(bundle.getString("generic.confirm"),
+                                              bundle.getString("generic.confirmQuit"), "",
+                                              bundle.getString("generic.ok"),
+                                              bundle.getString("generic.cancel"))) {
                 LanguageTrainer.showMenu();
             }
         });
+        btnCheat.setPadding(Insets.EMPTY);
     }
 
     public void onNext() {
@@ -75,7 +81,7 @@ public class ControllerTranslate implements Initializable, IController {
             // If solved correctly on first try
             if (!wrong.contains(word)) {
                 correct++;
-                for (ListStatistics stat : stats) {
+                for (Statistics stat : stats) {
                     if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
                         stat.correct++;
                         break;
@@ -90,7 +96,7 @@ public class ControllerTranslate implements Initializable, IController {
                 incorrect++;
                 wrong.add(word);
                 // Look for relevant statistic and increase the statistic
-                for (ListStatistics stat : stats) {
+                for (Statistics stat : stats) {
                     if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
                         stat.incorrect++;
                         break;
@@ -108,14 +114,15 @@ public class ControllerTranslate implements Initializable, IController {
                 format.applyPattern(BUNDLE.getString("exercise.finishedMsg"));
                 double[] answersCorrect = {1, 2};
                 String[] answersCorrectStrings = {BUNDLE.getString("exercise.answer"),
-                        BUNDLE.getString("exercise.answers")};
+                                                  BUNDLE.getString("exercise.answers")};
                 ChoiceFormat formatAnswer = new ChoiceFormat(answersCorrect, answersCorrectStrings);
                 double[] times = {0, 1, 2};
                 String[] timesStrings = {BUNDLE.getString("exercise.times"), BUNDLE.getString("exercise.time"),
-                        BUNDLE.getString("exercise.times")};
-                Format[] formats = {NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(), formatAnswer,
-                        NumberFormat.getInstance(),
-                        new ChoiceFormat(times, timesStrings)};
+                                         BUNDLE.getString("exercise.times")};
+                Format[] formats =
+                        {NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(), formatAnswer,
+                         NumberFormat.getInstance(),
+                         new ChoiceFormat(times, timesStrings)};
                 format.setFormats(formats);
                 String msg = format.format(new Object[]{correct, correct, incorrect, incorrect, cheated, cheated});
                 FXUtil.showInformationDialog(BUNDLE.getString("exercise.finishedHeader"), msg);
@@ -129,10 +136,12 @@ public class ControllerTranslate implements Initializable, IController {
             Collections.shuffle(words, LanguageTrainer.random);
         }
         VocabularyData d = words.get(0);
-        lblTitle.setText(BUNDLE.getString("translate.task").replace("{1}", d.getFrom()).replace("{2}", d.getTo()));
+        lblTitle.setText(
+                BUNDLE.getString("translate.task").replace("{1}", d.getFrom()).replace("{2}", d.getTo()));
         lblTask.setText(d.getQuestion());
         lblCorrect.setText(Integer.toString(correct));
         lblIncorrect.setText(Integer.toString(incorrect));
+        lblList.setText(d.list);
         txtAnswer.setText("");
         updateProgressBar();
     }
@@ -142,14 +151,28 @@ public class ControllerTranslate implements Initializable, IController {
         LanguageTrainer.userData.putStats(stats);
     }
 
-    public void onCheat() {
-        // FIXME: Implement onCheat
-        // FIXME: Add cheat button
-    }
-
     @Override
     public void onInsert(char c) {
         txtAnswer.setText(txtAnswer.getText() + c);
+    }
+
+    public void onCheat() {
+        //FIXME: Make key look less terrible
+        cheated++;
+        VocabularyData word = words.get(0);
+        String[] answers = word.getSolutions();
+        String answer = "";
+        for (String s : answers) {
+            answer += s + "\n";
+        }
+        for (Statistics stat : stats) {
+            if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
+                stat.cheated++;
+                break;
+            }
+        }
+        FXUtil.showInformationDialog(BUNDLE.getString("exercise.solution"), BUNDLE.getString("exercise.solutions"),
+                                     answer);
     }
 
     // FIXME: Possible issue, check for one-word lines
@@ -179,10 +202,11 @@ public class ControllerTranslate implements Initializable, IController {
                     while (scan.hasNextLine()) {
                         String line = scan.nextLine();
                         String[] words = line.split("=");
-                        this.words.add(new VocabularyData(words[left].split(";"), words[right].split(";"), eData.langs, name));
+                        this.words.add(new VocabularyData(words[left].split(";"), words[right].split(";"),
+                                                          eData.langs, name));
                     }
 
-                    stats.add(new ListStatistics(name, true, eData.langs));
+                    stats.add(new Statistics(name, true, eData.langs));
 
                 } catch (FileNotFoundException e) {
                     System.err.println("Can't find file: " + file.getName());
@@ -197,14 +221,17 @@ public class ControllerTranslate implements Initializable, IController {
         }
         Collections.shuffle(words, LanguageTrainer.random);
         VocabularyData d = words.get(0);
-        lblTitle.setText(BUNDLE.getString("translate.task").replace("{1}", d.getFrom()).replace("{2}", d.getTo()));
+        lblTitle.setText(
+                BUNDLE.getString("translate.task").replace("{1}", d.getFrom()).replace("{2}", d.getTo()));
         lblTask.setText(d.getQuestion());
+        lblList.setText(d.list);
         updateProgressBar();
     }
 
     private void updateProgressBar() {
         progressBar.setProgress((double) solvedCorrectly / length);
-        lblProgress.setText(solvedCorrectly + "/" + Integer.toString(length) + " " + new Double(progressBar.getProgress() * 100).intValue() + "%");
+        lblProgress.setText(solvedCorrectly + "/" + Integer.toString(length) + " " +
+                            new Double(progressBar.getProgress() * 100).intValue() + "%");
     }
 
 }
