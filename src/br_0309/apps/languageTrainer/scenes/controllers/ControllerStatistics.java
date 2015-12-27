@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 
 // FIXME: Fix empty lists being shown
 // FIXME: Make line chart show percentages
+// FIXME: Fix empty attemps being shown
 public class ControllerStatistics implements Initializable, IController {
 
     private final ArrayList<Statistics> allStatistics = new ArrayList<>();
@@ -182,10 +183,16 @@ public class ControllerStatistics implements Initializable, IController {
         XYChart.Series<String, Integer> seriesCheated = new XYChart.Series<>();
         seriesCheated.setName(BUNDLE.getString("statistics.cheated"));
 
+        seriesCorrect.getData().add(new XYChart.Data<>("", 0));
+        seriesIncorrect.getData().add(new XYChart.Data<>("", 0));
+        seriesCheated.getData().add(new XYChart.Data<>("", 0));
 
         DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
         int num = 1;
         for (Statistics s : stats) {
+            if (s.correct == 0 && s.incorrect == 0 && s.cheated == 0) {
+                continue;
+            }
             totalCorrect += s.correct;
             totalIncorrect += s.incorrect;
             totalCheated += s.cheated;
