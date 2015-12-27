@@ -21,3 +21,18 @@
     -fx-graphic: url(/icons/key.png);
     -fx-background-color: transparent;
 }
+/*Line chart colours*/
+.default-color0.chart-series-line { -fx-stroke: #00FF00; }
+.default-color1.chart-series-line { -fx-stroke: #FF0000; }
+.default-color2.chart-series-line { -fx-stroke: #FFAF00; }
+.default-color0.chart-line-symbol { -fx-background-color: #00FF00 }
+.default-color1.chart-line-symbol { -fx-background-color: #FF0000 }
+.default-color2.chart-line-symbol { -fx-background-color: #FFAF00 }
+/*Pie chart colours*/
+.data0.chart-pie { -fx-pie-color: #00FF00 }
+.data1.chart-pie { -fx-pie-color: #FF0000 }
+.data2.chart-pie { -fx-pie-color: #FFAF00 }
+/*Bar chart colours*/
+.default-color0.chart-bar { -fx-bar-fill: #00FF00 }
+.default-color1.chart-bar { -fx-bar-fill: #FF0000 }
+.default-color2.chart-bar { -fx-bar-fill: #FFAF00 }

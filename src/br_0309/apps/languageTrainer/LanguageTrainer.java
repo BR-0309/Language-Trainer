@@ -45,17 +45,19 @@ public class LanguageTrainer extends Application {
         if (SystemUtil.isWindows()) {
             File file = new File(
                     System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" +
-                    File.separator + "LanguageTrainer" + File.separator);
+                            File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 
-        } else if (SystemUtil.isMac()) {
+        }
+        else if (SystemUtil.isMac()) {
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             File file = new File(System.getProperty("user.home") + File.separator + "Library" + File.separator +
-                                 "Application Support" + File.separator + "LanguageTrainer" + File.separator);
+                                         "Application Support" + File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
-        } else {
+        }
+        else {
             File file = new File(
                     System.getProperty("user.home") + File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
@@ -96,19 +98,18 @@ public class LanguageTrainer extends Application {
      * Print all relevant information about the system, user and languages
      */
     private static void printSystemInfo() {
-        System.out.println(
-                "Operating System:\t\t\t" + System.getProperty("os.name") + "\n" + "Operating System Version:\t" +
-                System.getProperty("os.version")                                                                 +                                                               "\n" + "Architecture:\t\t\t\t" +
-                System.getProperty("os.arch")                                                                    +                                                                  "\n"                                                             + "Java Version:\t\t\t\t" +
-                System.getProperty("java.version")                                                               + "\n"                                                        +                                                      "Java Vendor:\t\t\t\t" +
-                System.getProperty("java.vendor")                                                                + "\n"                                                         +                                                       "Java Home Dir:\t\t\t\t" +
-                System.getProperty("java.home")                                                                  +                                                                "\n" + "Temporary Dir:\t\t\t\t" +
-                System.getProperty("java.io.tmpdir")                                                             + "\n" + "Execution Dir:\t\t\t\t" +
-                System.getProperty("user.dir")                                                                   +                                                                 "\n"                                                            + "User Home Dir:\t\t\t\t" +
-                System.getProperty("user.home")                                                                  +                                                                "\n" + "System language:\t\t\t" +
-                System.getProperty("user.language")                                                              +                                                            "\n" +                                                     "JVM Default Locale:\t\t\t" +
-                Locale.getDefault()                                                                              +                                                                            "\n" + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() +
-                "\nLanguage Trainer version:\t"                                                                  + Reference.VERSION + "\n");
+        System.out.println("Operating System:\t\t\t" + System.getProperty("os.name") + "\n" + "Operating System Version:\t" +
+                                   System.getProperty("os.version") + "\n" + "Architecture:\t\t\t\t" +
+                                   System.getProperty("os.arch") + "\n" + "Java Version:\t\t\t\t" +
+                                   System.getProperty("java.version") + "\n" + "Java Vendor:\t\t\t\t" +
+                                   System.getProperty("java.vendor") + "\n" + "Java Home Dir:\t\t\t\t" +
+                                   System.getProperty("java.home") + "\n" + "Temporary Dir:\t\t\t\t" +
+                                   System.getProperty("java.io.tmpdir") + "\n" + "Execution Dir:\t\t\t\t" +
+                                   System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t\t" +
+                                   System.getProperty("user.home") + "\n" + "System language:\t\t\t" +
+                                   System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t\t" +
+                                   Locale.getDefault() + "\n" + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() +
+                                   "\nLanguage Trainer version:\t" + Reference.VERSION + "\n");
     }
 
     public static void setScene(String sceneLoc) {
@@ -289,7 +290,7 @@ public class LanguageTrainer extends Application {
             window.setTitle(
                     ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault())
                                   .getString("generic.windowTitle") +
-                    " "                                             + Reference.VERSION);
+                            " " + Reference.VERSION);
             currentController = loader.getController();
             window.setOnCloseRequest(event -> {
                 // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK

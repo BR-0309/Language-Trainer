@@ -9,10 +9,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -24,11 +21,11 @@ import java.text.DateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-// FIXME: Make charts have the correct colors (ha ha)
 // FIXME: Fix empty lists being shown
+// FIXME: Make line chart show percentages
 public class ControllerStatistics implements Initializable, IController {
 
-    private ResourceBundle BUNDLE;
+    private final ArrayList<Statistics> allStatistics = new ArrayList<>();
     @FXML
     public ListView<Statistics> list;
     @FXML
@@ -36,10 +33,14 @@ public class ControllerStatistics implements Initializable, IController {
     @FXML
     public PieChart pieChart;
     @FXML
-    public BarChart<String, Integer> barChart;
+    public StackedBarChart<String, Number> barChart;
     @FXML
     public TextField txtSearch;
-    private final ArrayList<Statistics> allStatistics = new ArrayList<>();
+    @FXML
+    public CategoryAxis xAxis;
+    @FXML
+    public NumberAxis yAxis;
+    private ResourceBundle BUNDLE;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,7 +60,7 @@ public class ControllerStatistics implements Initializable, IController {
 
         FilteredList<Statistics> listData = new FilteredList<>(FXCollections.observableList(tempList));
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            listData.setPredicate(s -> s.listName.trim().contains(newValue.toLowerCase().trim()));
+            listData.setPredicate(s -> s.listName.trim().toLowerCase().contains(newValue.toLowerCase().trim()));
         });
         list.setItems(listData);
         txtSearch.requestFocus();
@@ -106,6 +107,55 @@ public class ControllerStatistics implements Initializable, IController {
                 };
             }
         });
+        // Set up bar chart
+        ArrayList<ArrayList<Statistics>> list = new ArrayList<>();
+        for (Statistics stat : allStatistics) {
+            boolean cont = false;
+            for (ArrayList<Statistics> l : list) {
+                for (Statistics s : l) {
+                    if (s.listName.equals(stat.listName) && Arrays.equals(s.langCodes, stat.langCodes)) {
+                        l.add(stat);
+                        cont = true;
+                        break;
+                    }
+                }
+                if (cont) {
+                    break;
+                }
+            }
+            if (!cont) {
+                ArrayList<Statistics> l = new ArrayList<>();
+                l.add(stat);
+                list.add(l);
+            }
+        }
+        XYChart.Series<String, Number> seriesCorrect = new XYChart.Series<>();
+        seriesCorrect.setName(BUNDLE.getString("statistics.correct"));
+        XYChart.Series<String, Number> seriesIncorrect = new XYChart.Series<>();
+        seriesIncorrect.setName(BUNDLE.getString("statistics.incorrect"));
+        XYChart.Series<String, Number> seriesCheated = new XYChart.Series<>();
+        seriesCheated.setName(BUNDLE.getString("statistics.cheated"));
+        Set<String> categories = new HashSet<>();
+        for (ArrayList<Statistics> l : list) {
+            int total, correct = 0, incorrect = 0, cheated = 0;
+            for (Statistics stat : l) {
+                correct += stat.correct;
+                incorrect += stat.incorrect;
+                cheated += stat.cheated;
+            }
+            total = correct + incorrect + cheated;
+            Statistics stat = l.get(0);
+            String title = stat.listName + " " + Character.toUpperCase(stat.langCodes[0].charAt(0)) + "/" + Character.toUpperCase(stat.langCodes[1].charAt(0));
+            seriesCorrect.getData().add(new XYChart.Data<>(title, ((double) correct / total) * 100));
+            seriesIncorrect.getData().add(new XYChart.Data<>(title, ((double) incorrect / total) * 100));
+            seriesCheated.getData().add(new XYChart.Data<>(title, ((double) cheated / total) * 100));
+            categories.add(title);
+        }
+        xAxis.setCategories(FXCollections.observableArrayList(categories));
+        yAxis.setUpperBound(100d);
+        //noinspection unchecked
+        barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);
+
     }
 
     public void exit() {
@@ -122,23 +172,27 @@ public class ControllerStatistics implements Initializable, IController {
         Collections.sort(stats);
         lineChart.getData().clear();
         pieChart.getData().clear();
-        barChart.getData().clear();
         int totalCorrect = 0;
         int totalIncorrect = 0;
         int totalCheated = 0;
         XYChart.Series<String, Integer> seriesCorrect = new XYChart.Series<>();
+        seriesCorrect.setName(BUNDLE.getString("statistics.correct"));
         XYChart.Series<String, Integer> seriesIncorrect = new XYChart.Series<>();
+        seriesIncorrect.setName(BUNDLE.getString("statistics.incorrect"));
         XYChart.Series<String, Integer> seriesCheated = new XYChart.Series<>();
+        seriesCheated.setName(BUNDLE.getString("statistics.cheated"));
 
 
         DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
+        int num = 1;
         for (Statistics s : stats) {
             totalCorrect += s.correct;
             totalIncorrect += s.incorrect;
             totalCheated += s.cheated;
-            seriesCorrect.getData().add(new XYChart.Data<>(formatter.format(s.date), s.correct));
-            seriesIncorrect.getData().add(new XYChart.Data<>(formatter.format(s.date), s.incorrect));
-            seriesCheated.getData().add(new XYChart.Data<>(formatter.format(s.date), s.cheated));
+            seriesCorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), s.correct));
+            seriesIncorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), s.incorrect));
+            seriesCheated.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), s.cheated));
+            num++;
         }
         //noinspection unchecked
         lineChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);
@@ -146,14 +200,6 @@ public class ControllerStatistics implements Initializable, IController {
                                                                                   new PieChart.Data(BUNDLE.getString("statistics.incorrect"), totalIncorrect),
                                                                                   new PieChart.Data(BUNDLE.getString("statistics.cheated"), totalCheated));
         pieChart.getData().addAll(pieData);
-        XYChart.Series<String, Integer> barSeriesCorrect = new XYChart.Series<>();
-        barSeriesCorrect.getData().add(new XYChart.Data<>(BUNDLE.getString("statistics.correct"), totalCorrect));
-        XYChart.Series<String, Integer> barSeriesIncorrect = new XYChart.Series<>();
-        barSeriesIncorrect.getData().add(new XYChart.Data<>(BUNDLE.getString("statistics.incorrect"), totalIncorrect));
-        XYChart.Series<String, Integer> barSeriesCheated = new XYChart.Series<>();
-        barSeriesCheated.getData().add(new XYChart.Data<>(BUNDLE.getString("statistics.cheated"), totalCheated));
-        //noinspection unchecked
-        barChart.getData().addAll(barSeriesCorrect, barSeriesIncorrect, barSeriesCheated);
     }
 
     @Override
