@@ -23,14 +23,13 @@ import java.util.stream.Collectors;
 
 // FIXME: Fix empty lists being shown
 // FIXME: Make line chart show percentages
-// FIXME: Fix empty attemps being shown
 public class ControllerStatistics implements Initializable, IController {
 
     private final ArrayList<Statistics> allStatistics = new ArrayList<>();
     @FXML
     public ListView<Statistics> list;
     @FXML
-    public LineChart<String, Integer> lineChart;
+    public LineChart<String, Number> lineChart;
     @FXML
     public PieChart pieChart;
     @FXML
@@ -38,9 +37,11 @@ public class ControllerStatistics implements Initializable, IController {
     @FXML
     public TextField txtSearch;
     @FXML
-    public CategoryAxis xAxis;
+    public CategoryAxis xAxisBar;
     @FXML
-    public NumberAxis yAxis;
+    public NumberAxis yAxisBar;
+    @FXML
+    public NumberAxis yAxisLine;
     private ResourceBundle BUNDLE;
 
     @Override
@@ -152,11 +153,13 @@ public class ControllerStatistics implements Initializable, IController {
             seriesCheated.getData().add(new XYChart.Data<>(title, ((double) cheated / total) * 100));
             categories.add(title);
         }
-        xAxis.setCategories(FXCollections.observableArrayList(categories));
-        yAxis.setUpperBound(100d);
+        xAxisBar.setCategories(FXCollections.observableArrayList(categories));
+        yAxisBar.setUpperBound(100d);
+        yAxisBar.setLowerBound(0d);
         //noinspection unchecked
         barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);
-
+        yAxisLine.setUpperBound(100d);
+        yAxisLine.setLowerBound(0d);
     }
 
     public void exit() {
@@ -164,6 +167,11 @@ public class ControllerStatistics implements Initializable, IController {
     }
 
     public void prepareCharts(Statistics stat) {
+        // Never called but fixes NPE?!
+        if (stat == null) {
+            list.getSelectionModel().selectFirst();
+            return;
+        }
         ArrayList<Statistics> stats = allStatistics.stream().filter(s -> s.listType == stat.listType && s.listName.equals(stat.listName) &&
                                                                          Arrays.equals(s.langCodes, stat.langCodes))
                                                    .collect(Collectors.toCollection(ArrayList::new));
@@ -176,16 +184,12 @@ public class ControllerStatistics implements Initializable, IController {
         int totalCorrect = 0;
         int totalIncorrect = 0;
         int totalCheated = 0;
-        XYChart.Series<String, Integer> seriesCorrect = new XYChart.Series<>();
+        XYChart.Series<String, Number> seriesCorrect = new XYChart.Series<>();
         seriesCorrect.setName(BUNDLE.getString("statistics.correct"));
-        XYChart.Series<String, Integer> seriesIncorrect = new XYChart.Series<>();
+        XYChart.Series<String, Number> seriesIncorrect = new XYChart.Series<>();
         seriesIncorrect.setName(BUNDLE.getString("statistics.incorrect"));
-        XYChart.Series<String, Integer> seriesCheated = new XYChart.Series<>();
+        XYChart.Series<String, Number> seriesCheated = new XYChart.Series<>();
         seriesCheated.setName(BUNDLE.getString("statistics.cheated"));
-
-        seriesCorrect.getData().add(new XYChart.Data<>("", 0));
-        seriesIncorrect.getData().add(new XYChart.Data<>("", 0));
-        seriesCheated.getData().add(new XYChart.Data<>("", 0));
 
         DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault());
         int num = 1;
@@ -196,9 +200,10 @@ public class ControllerStatistics implements Initializable, IController {
             totalCorrect += s.correct;
             totalIncorrect += s.incorrect;
             totalCheated += s.cheated;
-            seriesCorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), s.correct));
-            seriesIncorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), s.incorrect));
-            seriesCheated.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), s.cheated));
+            int total = s.correct + s.incorrect + s.cheated;
+            seriesCorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.correct / total * 100));
+            seriesIncorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.incorrect / total * 100));
+            seriesCheated.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.cheated / total * 100));
             num++;
         }
         //noinspection unchecked

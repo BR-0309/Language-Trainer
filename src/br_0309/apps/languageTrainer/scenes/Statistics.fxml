@@ -10,14 +10,14 @@
     <center>
         <TabPane side="RIGHT" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
-                <Tab text="Untitled Tab 1">
+                <Tab text="%statistics.improvement">
                     <content>
                         <LineChart fx:id="lineChart" title="%statistics.development">
                             <xAxis>
                                 <CategoryAxis side="BOTTOM"/>
                             </xAxis>
                             <yAxis>
-                                <NumberAxis side="LEFT"/>
+                                <NumberAxis fx:id="yAxisLine" autoRanging="false" side="LEFT"/>
                             </yAxis>
                         </LineChart>
                     </content>
@@ -27,14 +27,14 @@
                         <PieChart fx:id="pieChart"/>
                     </content>
                 </Tab>
-                <Tab text="Untitled Tab">
+                <Tab text="%statistics.comparison">
                     <content>
                         <StackedBarChart fx:id="barChart">
                             <xAxis>
-                                <CategoryAxis side="BOTTOM" fx:id="xAxis"/>
+                                <CategoryAxis side="BOTTOM" fx:id="xAxisBar"/>
                             </xAxis>
                             <yAxis>
-                                <NumberAxis fx:id="yAxis" autoRanging="false" side="LEFT"/>
+                                <NumberAxis fx:id="yAxisBar" autoRanging="false" side="LEFT"/>
                             </yAxis>
                         </StackedBarChart>
                     </content>

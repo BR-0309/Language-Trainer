@@ -284,8 +284,11 @@ public class FXUtil {
         alert.setContentText(msg);
         alert.getDialogPane().getStylesheets()
              .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
-        alert.initOwner(LanguageTrainer.window);
-
+        try {
+            alert.initOwner(LanguageTrainer.window);
+        } catch (NullPointerException e) {
+            System.err.println("No owner!");
+        }
         ButtonType ok = new ButtonType(btnOk, ButtonData.OK_DONE);
         ButtonType cancel = new ButtonType(btnCancel, ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(ok, cancel);

@@ -1,17 +1,14 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-.speaker-button{
+.speaker-button {
     -fx-graphic: url(/icons/speaker.png)
 }
 .table-view {
-    -fx-table-cell-border-color: C0C0C0;
+    -fx-table-cell-border-color: #999999;
 }
 .text-input {
     -fx-prompt-text-fill: derive(-fx-text-fill, +50%);
 }
-.list-view{
-    -fx-table-cell-border-color: #C0C0C0;
-}
-.cheat-button{
+.cheat-button {
     -fx-graphic: url(/icons/key.png);
     -fx-background-color: transparent;
 }
@@ -22,6 +19,13 @@
 .default-color0.chart-line-symbol { -fx-background-color: #00FF00 }
 .default-color1.chart-line-symbol { -fx-background-color: #FF0000 }
 .default-color2.chart-line-symbol { -fx-background-color: #FFAF00 }
+/*Line chart grid*/
+.chart-vertical-grid-lines {
+    -fx-stroke: #999999;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #999999;
+}
 /*Pie chart colours*/
 .data0.chart-pie { -fx-pie-color: #00FF00 }
 .data1.chart-pie { -fx-pie-color: #FF0000 }
