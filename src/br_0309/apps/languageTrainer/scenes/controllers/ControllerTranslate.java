@@ -129,7 +129,7 @@ public class ControllerTranslate implements Initializable, IController {
                 LanguageTrainer.showMenu();
                 return;
             } else {
-                // FIXME: Show verbs
+                // FIXME: Show br_0309.apps.languageTrainer.verbs
             }
             return;
         } else {

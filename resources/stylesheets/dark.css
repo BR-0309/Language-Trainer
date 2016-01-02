@@ -14,6 +14,8 @@
 }
 .text-input {
     -fx-prompt-text-fill: derive(-fx-text-fill, -30%);
+    -fx-background-color: #505050;
+    -fx-border-color: #303030;
 }
 .list-view{
     -fx-table-cell-border-color: #D8D8D8;

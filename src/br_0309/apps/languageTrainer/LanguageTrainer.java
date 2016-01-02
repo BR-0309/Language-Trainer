@@ -8,6 +8,7 @@ import br_0309.apps.languageTrainer.scenes.controllers.ControllerTranslate;
 import br_0309.apps.languageTrainer.scenes.controllers.IController;
 import br_0309.apps.languageTrainer.util.FXUtil;
 import br_0309.apps.languageTrainer.util.SystemUtil;
+import br_0309.apps.languageTrainer.verbs.VerbEnglish;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -41,6 +42,14 @@ public class LanguageTrainer extends Application {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void main(String[] args) {
+        VerbEnglish v = VerbEnglish.conjugate("walk");
+        System.out.println(v.infinitive + "\n");
+        for (String s : v.presntSimple) {
+
+        }
+
+
+
         // System-specific settings
         if (SystemUtil.isWindows()) {
             File file = new File(
@@ -273,7 +282,8 @@ public class LanguageTrainer extends Application {
     public void start(Stage primaryStage) {
         Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
             throwable.printStackTrace();
-            FXUtil.showExceptionDialog("", throwable.toString(), throwable);
+            FXUtil.showExceptionDialog(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.error"), throwable.toString(),
+                                       throwable);
         });
         try {
             window = primaryStage;

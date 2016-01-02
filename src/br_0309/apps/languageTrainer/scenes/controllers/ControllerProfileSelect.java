@@ -64,6 +64,7 @@ public class ControllerProfileSelect implements Initializable, IController {
         }
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void onNewProfile() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_NEW),
@@ -96,7 +97,8 @@ public class ControllerProfileSelect implements Initializable, IController {
             isProfileSelected = true;
             stage2.close();
         } catch (IOException e) {
-            FXUtil.showExceptionDialog("", BUNDLE.getString("profile.createFail"), e, stage2);
+            FXUtil.showExceptionDialog(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.error"),
+                                       BUNDLE.getString("profile.createFail"), e, stage2);
         }
     }
 
@@ -110,7 +112,8 @@ public class ControllerProfileSelect implements Initializable, IController {
                 isProfileSelected = true;
                 stage.close();
             } catch (Exception e) {
-                FXUtil.showExceptionDialog("", BUNDLE.getString("profile.loadFail"), e, stage);
+                FXUtil.showExceptionDialog(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.error"),
+                                           BUNDLE.getString("profile.loadFail"), e, stage);
             }
         }
     }

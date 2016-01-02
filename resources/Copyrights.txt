@@ -1,4 +1,4 @@
-Copyright (c) 2015 Benjamin Raison and others. All rights reserved.
+Copyright (c) 2015, 2016 Benjamin Raison and others. All rights reserved.
 
 Below are individual copyright statements of files. Any file not included below is property of Benjamin Raison.
 
@@ -85,4 +85,7 @@ Creative Commons 0              https://creativecommons.org/publicdomain/zero/1.
 Creative Commons Attribution    https://creativecommons.org/licenses/by/3.0/
 Public domain                   https://en.wikipedia.org/wiki/Public_domain
 
-Note: In this context, Public domain refers to the author haven given up all rights to his/her work.
+Note: Public domain refers to:
+    * the expiration of copyright pursuant to the Bern Convention
+    * the author dedicated their work to the public domain, thereby losing all rights to their work or, where forbidden by law,
+    * the license irrevocably grants as many rights as possible in their jurisdiction

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0"
+            prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="5.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button defaultButton="true" mnemonicParsing="false" text="%generic.ok"/>
+                <Button cancelButton="true" mnemonicParsing="false" text="%generic.cancel"/>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="5.0" right="5.0" top="5.0"/>
+            </BorderPane.margin>
+        </HBox>
+    </bottom>
+    <center>
+        <Accordion BorderPane.alignment="CENTER">
+            <panes>
+                <TitledPane text="Present">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Present simple" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField layoutX="88.0" layoutY="172.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
+                                            AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Present perfect" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I have" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You have" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It has" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We have" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You have" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They have" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.topAnchor="250.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Present continuous" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I am" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You are" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It is" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We are" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You are" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They are" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
+                                            AnchorPane.topAnchor="250.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Present perfect continuous"
+                                               AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0"
+                                               AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It has been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane expanded="false" text="Past">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Past simple" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField layoutX="88.0" layoutY="172.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
+                                            AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Past perfect" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I had" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You had" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It had" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We had" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You had" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They had" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.topAnchor="250.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Past continuous" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I was" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You were" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It was" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We were" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You were" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They were" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
+                                            AnchorPane.topAnchor="250.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Past perfect continuous"
+                                               AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0"
+                                               AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I had been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You had been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It had been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We had been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You had been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They had been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane expanded="false" text="Future">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Future" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I will" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You will" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It will" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We will" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You will" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They will" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField layoutX="88.0" layoutY="172.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
+                                            AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Future perfect" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I will have" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You will have" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It will have" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We will have" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You will have" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They will have" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.topAnchor="250.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Future continuous" AnchorPane.leftAnchor="1.0"
+                                               AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I will be" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You will be" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He/She/It will be" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We will be" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You will be" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They will be" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
+                                            AnchorPane.topAnchor="250.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Future perfect continuous"
+                                               AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0"
+                                               AnchorPane.topAnchor="5.0">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="I will have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="35.0"/>
+                                        <Label text="You will have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="70.0"/>
+                                        <Label text="He will have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="105.0"/>
+                                        <Label text="We will have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="140.0"/>
+                                        <Label text="You will have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="175.0"/>
+                                        <Label text="They will have been" AnchorPane.leftAnchor="5.0"
+                                               AnchorPane.topAnchor="210.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="30.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="65.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="100.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="135.0"/>
+                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="170.0"/>
+                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+            </panes>
+        </Accordion>
+    </center>
+    <top>
+        <HBox>
+            <children>
+                <Label text="Infinitive:">
+                    <HBox.margin>
+                        <Insets right="5.0" top="5.0"/>
+                    </HBox.margin>
+                </Label>
+                <TextField/>
+                <Label text="Present Participle:">
+                    <padding>
+                        <Insets top="5.0"/>
+                    </padding>
+                    <HBox.margin>
+                        <Insets left="5.0" right="5.0"/>
+                    </HBox.margin>
+                </Label>
+                <TextField prefHeight="25.0"/>
+                <Label text="Past Participle:">
+                    <padding>
+                        <Insets top="5.0"/>
+                    </padding>
+                    <HBox.margin>
+                        <Insets left="5.0" right="5.0"/>
+                    </HBox.margin>
+                </Label>
+                <TextField prefHeight="25.0"/>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </BorderPane.margin>
+        </HBox>
+    </top>
+</BorderPane>

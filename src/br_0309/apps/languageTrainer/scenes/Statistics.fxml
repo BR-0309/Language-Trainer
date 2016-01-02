@@ -17,7 +17,7 @@
                                 <CategoryAxis side="BOTTOM"/>
                             </xAxis>
                             <yAxis>
-                                <NumberAxis fx:id="yAxisLine" autoRanging="false" side="LEFT"/>
+                                <NumberAxis fx:id="yAxisLine" autoRanging="false" label="\%" side="LEFT"/>
                             </yAxis>
                         </LineChart>
                     </content>
@@ -34,7 +34,7 @@
                                 <CategoryAxis side="BOTTOM" fx:id="xAxisBar"/>
                             </xAxis>
                             <yAxis>
-                                <NumberAxis fx:id="yAxisBar" autoRanging="false" side="LEFT"/>
+                                <NumberAxis fx:id="yAxisBar" autoRanging="false" label="\%" side="LEFT"/>
                             </yAxis>
                         </StackedBarChart>
                     </content>

@@ -15,7 +15,7 @@ public class Statistics implements Serializable, Comparable<Statistics> {
     public final Date date = new Date();
 
     /**
-     * @param listType true: translation. false: verbs
+     * @param listType true: translation. false: br_0309.apps.languageTrainer.verbs
      */
     public Statistics(String listName, boolean listType, String[] langCodes) {
         this.listName = listName;
