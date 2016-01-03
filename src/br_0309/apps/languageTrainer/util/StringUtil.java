@@ -43,7 +43,7 @@ public class StringUtil {
             return true;
         }
         else if (i == 2) {
-            if (word.contains("ue") || word.contains("ie") || word.contains("ou") || word.contains("ee") || word.contains("oo")) {
+            if (word.contains("ie") || word.contains("ou") || word.contains("ee") || word.contains("oo")) {
                 return true;
             }
         }

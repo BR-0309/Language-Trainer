@@ -8,7 +8,6 @@ import br_0309.apps.languageTrainer.scenes.controllers.ControllerTranslate;
 import br_0309.apps.languageTrainer.scenes.controllers.IController;
 import br_0309.apps.languageTrainer.util.FXUtil;
 import br_0309.apps.languageTrainer.util.SystemUtil;
-import br_0309.apps.languageTrainer.verbs.VerbEnglish;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,14 +41,12 @@ public class LanguageTrainer extends Application {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void main(String[] args) {
-        VerbEnglish v = VerbEnglish.conjugate("walk");
-        System.out.println(v.infinitive + "\n");
-        for (String s : v.presntSimple) {
-
-        }
-
-
-
+        // Error handler for main thread, just in case
+        Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
+            throwable.printStackTrace();
+            FXUtil.showExceptionDialog(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.error"), throwable.toString(),
+                                       throwable);
+        });
         // System-specific settings
         if (SystemUtil.isWindows()) {
             File file = new File(
@@ -58,15 +55,13 @@ public class LanguageTrainer extends Application {
             file.mkdirs();
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 
-        }
-        else if (SystemUtil.isMac()) {
+        } else if (SystemUtil.isMac()) {
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             File file = new File(System.getProperty("user.home") + File.separator + "Library" + File.separator +
                                          "Application Support" + File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
-        }
-        else {
+        } else {
             File file = new File(
                     System.getProperty("user.home") + File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
@@ -75,7 +70,7 @@ public class LanguageTrainer extends Application {
         Reference.DEFAULT_EXERCISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "exercises" + File.separator;
         // If the application is run from anything but loose files, redirect
         // console to log_<<time>>
-        if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
+        if (! SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
             File log = new File(
                     Reference.DEFAULT_SAVE_DIR + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate());
             try {
@@ -304,7 +299,7 @@ public class LanguageTrainer extends Application {
             currentController = loader.getController();
             window.setOnCloseRequest(event -> {
                 // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK
-                if (!askForExit()) {
+                if (! askForExit()) {
                     try {
                         currentController.onExit();
                     } catch (NullPointerException e) {
@@ -344,8 +339,7 @@ public class LanguageTrainer extends Application {
             e1.printStackTrace();
         }
         stage.showAndWait();
-        ControllerProfileSelect controller = loader.getController();
-        if (!controller.isProfileSelected) {
+        ControllerProfileSelect controller = loader.getController(); if (! controller.isProfileSelected) {
             System.exit(0);
         }
     }
