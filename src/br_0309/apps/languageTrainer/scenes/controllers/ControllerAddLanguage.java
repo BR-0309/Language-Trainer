@@ -14,10 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 // No IController since it's in it's own stage
 public class ControllerAddLanguage implements Initializable {
@@ -85,7 +82,8 @@ public class ControllerAddLanguage implements Initializable {
             if (b) {
                 localeList.add(locale);
             }
-        }
+        } Comparator<Locale> comparator = (locale1, locale2) -> locale1.getDisplayLanguage().compareTo(locale2.getDisplayLanguage());
+        Collections.sort(localeList, comparator);
         objects = new FilteredList<>(FXCollections.observableList(localeList));
         list.setItems(objects);
     }

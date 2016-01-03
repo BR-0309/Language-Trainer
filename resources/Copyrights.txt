@@ -76,7 +76,7 @@ ZA.png                      Frederick Brownell, others  Public domain           
 BE.png                      Dnenbenn and others         Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Belgium.svg                                 Modified size, filename and type
 WAL.png                     Unknown, Tobias Jakobs      Creative Commons 0              https://commons.wikimedia.org/wiki/File:Flag_of_Wales_2.svg                                 Modified size, filename and type
 SN.png                      Nighstallion                Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Senegal.svg                                 Modified size, filename and type
-
+IE.png                      SKopp                       Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Ireland.svg                                 Modified size, filename and type
 
 ====================================================================================================================================================================================================================
 Licenses
