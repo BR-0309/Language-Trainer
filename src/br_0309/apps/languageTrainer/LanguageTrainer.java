@@ -70,9 +70,8 @@ public class LanguageTrainer extends Application {
         Reference.DEFAULT_EXERCISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "exercises" + File.separator;
         // If the application is run from anything but loose files, redirect
         // console to log_<<time>>
-        if (! SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
-            File log = new File(
-                    Reference.DEFAULT_SAVE_DIR + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate());
+        if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
+            File log = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate());
             try {
                 log.getParentFile().mkdirs();
                 log.createNewFile();
