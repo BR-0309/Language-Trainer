@@ -298,12 +298,13 @@ public class LanguageTrainer extends Application {
             currentController = loader.getController();
             window.setOnCloseRequest(event -> {
                 // OK returns false for some reason despite FXUtil.showConfirm... returning true when OK
-                if (! askForExit()) {
+                if (askForExit()) {
                     try {
                         currentController.onExit();
                     } catch (NullPointerException e) {
                         System.err.println("Scene does not have assigned controller!");
                     }
+                }else{
                     event.consume();
                 }
             });
@@ -313,6 +314,7 @@ public class LanguageTrainer extends Application {
             window.setMinHeight(window.getHeight());
         } catch (IOException e) {
             e.printStackTrace();
+            // FIXME: Add text here
             FXUtil.showExceptionDialog("", "", e);
         }
     }
