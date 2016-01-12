@@ -13,6 +13,7 @@ public class Reference {
             "/br_0309/apps/languageTrainer/scenes/CreateTranslationList.fxml";
     public static final String FXML_LANGUAGE_ADD = "/br_0309/apps/languageTrainer/scenes/LanguageAdd.fxml";
     public static final String FXML_STATISTICS = "/br_0309/apps/languageTrainer/scenes/Statistics.fxml";
+    public static final String FXML_VERB_ENGLISH = "/br_0309/apps/languageTrainer/scenes/VerbEnglish.fxml";
 
     public static final String[] THEMES = {"/stylesheets/default.css", "/stylesheets/dark.css",
                                            "/stylesheets/blue.css"};

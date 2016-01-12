@@ -3,7 +3,6 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 import br_0309.apps.languageTrainer.LanguageHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -19,18 +18,16 @@ import java.util.*;
 // No IController since it's in it's own stage
 public class ControllerAddLanguage implements Initializable {
 
-    @FXML
     public TextField txtSearch;
-    @FXML
     public ListView<Locale> list;
+
     public Locale newLocale = null;
     private FilteredList<Locale> objects;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            objects.setPredicate(
-                    locale -> locale.getDisplayLanguage().toLowerCase().trim().contains(newValue.toLowerCase().trim()));
+            objects.setPredicate(locale -> locale.getDisplayLanguage().toLowerCase().trim().contains(newValue.toLowerCase().trim()));
         });
         list.setCellFactory(new Callback<ListView<Locale>, ListCell<Locale>>() {
 

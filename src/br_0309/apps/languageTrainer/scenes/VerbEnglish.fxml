@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0"
-            prefWidth="705.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+            prefWidth="715.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerNewVerbEnglish">
     <bottom>
         <HBox alignment="CENTER_RIGHT" spacing="5.0" BorderPane.alignment="CENTER">
-            <children>
-                <Button defaultButton="true" mnemonicParsing="false" text="%generic.ok"/>
-                <Button cancelButton="true" mnemonicParsing="false" text="%generic.cancel"/>
-            </children>
             <BorderPane.margin>
                 <Insets bottom="5.0" right="5.0" top="5.0"/>
             </BorderPane.margin>
+            <children>
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#onOK" text="%generic.ok"/>
+                <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel"/>
+            </children>
         </HBox>
     </bottom>
     <center>
@@ -41,18 +41,20 @@
                                         <Label text="We" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
                                         <Label text="You" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0"/>
                                         <Label text="They" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField layoutX="88.0" layoutY="172.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtPresentSimpleI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtPresentSimpleYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtPresentSimpleHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtPresentSimpleWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtPresentSimpleYouPlural" layoutX="88.0" layoutY="172.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="172.0"/>
+                                        <TextField fx:id="txtPresentSimpleThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
@@ -73,18 +75,19 @@
                                                AnchorPane.topAnchor="175.0"/>
                                         <Label text="They have" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtPresentPerfectI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtPresentPerfectYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtPresentPerfectHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtPresentPerfectWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtPresentPerfectYouPlural" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0"/>
+                                        <TextField fx:id="txtPresentPerfectThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
@@ -104,18 +107,19 @@
                                         <Label text="You are" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0"/>
                                         <Label text="They are" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtPresentContinuousI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtPresentContinuousYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtPresentContinuousHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtPresentContinuousWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtPresentContinuousYouPlural" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0"/>
+                                        <TextField fx:id="txtPresentContinuousThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
@@ -140,18 +144,20 @@
                                                AnchorPane.topAnchor="175.0"/>
                                         <Label text="They have been" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                        <TextField fx:id="txtPresentPerfectContinuousI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtPresentPerfectContinuousYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtPresentPerfectContinuousHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtPresentPerfectContinuousWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtPresentPerfectContinuousYouPlural"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
                                                    AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtPresentPerfectContinuousThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -178,18 +184,20 @@
                                         <Label text="We" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0"/>
                                         <Label text="You" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0"/>
                                         <Label text="They" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField layoutX="88.0" layoutY="172.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtPastSimpleI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtPastSimpleYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtPastSimpleHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtPastSimpleWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtPastSimpleYouPlural" layoutX="88.0" layoutY="172.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="172.0"/>
+                                        <TextField fx:id="txtPastSimpleThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
@@ -209,18 +217,19 @@
                                         <Label text="You had" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0"/>
                                         <Label text="They had" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtPastPerfectI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtPastPerfectYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtPastPerfectHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtPastPerfectWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtPastPerfectYouPlural" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0"/>
+                                        <TextField fx:id="txtPastPerfectThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
@@ -241,18 +250,19 @@
                                                AnchorPane.topAnchor="175.0"/>
                                         <Label text="They were" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtPastContinuousI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtPastContinuousYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtPastContinuousHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtPastContinuousWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtPastContinuousYouPlural" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0"/>
+                                        <TextField fx:id="txtPastContinuousThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
@@ -277,18 +287,20 @@
                                                AnchorPane.topAnchor="175.0"/>
                                         <Label text="They had been" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                        <TextField fx:id="txtPastPerfectContinuousI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtPastPerfectContinuousYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtPastPerfectContinuousHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtPastPerfectContinuousWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtPastPerfectContinuousYouPlural"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
                                                    AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtPastPerfectContinuousThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -317,18 +329,20 @@
                                                AnchorPane.topAnchor="175.0"/>
                                         <Label text="They will" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField layoutX="88.0" layoutY="172.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtFutureI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtFutureYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtFutureHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtFutureWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtFutureYouPlural" layoutX="88.0" layoutY="172.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="172.0"/>
+                                        <TextField fx:id="txtFutureThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
@@ -352,18 +366,19 @@
                                                AnchorPane.topAnchor="175.0"/>
                                         <Label text="They will have" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtFuturePerfectI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtFuturePerfectYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtFuturePerfectHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtFuturePerfectWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtFuturePerfectYouPlural" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0"/>
+                                        <TextField fx:id="txtFuturePerfectThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0"
@@ -387,18 +402,19 @@
                                                AnchorPane.topAnchor="175.0"/>
                                         <Label text="They will be" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtFutureContinuousI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtFutureContinuousYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtFutureContinuousHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtFutureContinuousWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtFutureContinuousYouPlural" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0"/>
+                                        <TextField fx:id="txtFutureContinuousThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0"
@@ -423,18 +439,20 @@
                                                AnchorPane.topAnchor="175.0"/>
                                         <Label text="They will have been" AnchorPane.leftAnchor="5.0"
                                                AnchorPane.topAnchor="210.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="30.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="65.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="100.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
-                                                   AnchorPane.topAnchor="135.0"/>
-                                        <TextField AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                        <TextField fx:id="txtFuturePerfectContinuousI" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0"/>
+                                        <TextField fx:id="txtFuturePerfectContinuousYou" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0"/>
+                                        <TextField fx:id="txtFuturePerfectContinuousHe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0"/>
+                                        <TextField fx:id="txtFuturePerfectContinuousWe" AnchorPane.leftAnchor="110.0"
+                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0"/>
+                                        <TextField fx:id="txtFuturePerfectContinuousYouPlural"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
                                                    AnchorPane.topAnchor="170.0"/>
-                                        <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="110.0"
-                                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0"/>
+                                        <TextField fx:id="txtFuturePerfectContinuousThey" AnchorPane.bottomAnchor="5.0"
+                                                   AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0"
+                                                   AnchorPane.topAnchor="205.0"/>
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -452,7 +470,7 @@
                         <Insets right="5.0" top="5.0"/>
                     </HBox.margin>
                 </Label>
-                <TextField/>
+                <TextField fx:id="txtInfinitive"/>
                 <Label text="Present Participle:">
                     <padding>
                         <Insets top="5.0"/>
@@ -461,7 +479,7 @@
                         <Insets left="5.0" right="5.0"/>
                     </HBox.margin>
                 </Label>
-                <TextField prefHeight="25.0"/>
+                <TextField fx:id="txtPresentParticiple" prefHeight="25.0"/>
                 <Label text="Past Participle:">
                     <padding>
                         <Insets top="5.0"/>
@@ -470,7 +488,7 @@
                         <Insets left="5.0" right="5.0"/>
                     </HBox.margin>
                 </Label>
-                <TextField prefHeight="25.0"/>
+                <TextField fx:id="txtPastParticiple" prefHeight="25.0"/>
             </children>
             <BorderPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>

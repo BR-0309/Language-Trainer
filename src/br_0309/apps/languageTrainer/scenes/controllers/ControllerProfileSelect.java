@@ -4,7 +4,6 @@ import br_0309.apps.languageTrainer.LanguageTrainer;
 import br_0309.apps.languageTrainer.Reference;
 import br_0309.apps.languageTrainer.data.UserData;
 import br_0309.apps.languageTrainer.util.FXUtil;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -24,24 +23,23 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 // FIXME: Add onDelete
-public class ControllerProfileSelect implements Initializable, IController {
+// IController not going to get called anyway
+public class ControllerProfileSelect implements Initializable {
 
-    @FXML
-    public ListView<String> list;
-    @FXML
-    public Button newProfile;
-    @FXML
-    public Button cancel;
-
-    private ResourceBundle BUNDLE;
     private final Hashtable<String, File> profiles = new Hashtable<>();
+    public ListView<String> list;
+    public Button newProfile;
+    public Button cancel;
     public boolean isProfileSelected = false;
+    private ResourceBundle BUNDLE;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         BUNDLE = resources;
         for (File file : LanguageTrainer.universalData.profileLocations) {
-            for (File f : file.listFiles()) {
+            File[] files = file.listFiles(); if (files == null) {
+                continue;
+            } for (File f : files) {
                 if (f.getName().endsWith(".ltd")) {
                     String name = f.getName().replace(".ltd", "").replaceAll("_", " ");
                     profiles.put(name, new File(f.getAbsolutePath()));
@@ -57,8 +55,7 @@ public class ControllerProfileSelect implements Initializable, IController {
     }
 
     public void onCancel() {
-        if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"),
-                                          null, BUNDLE.getString("generic.ok"),
+        if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"), null, BUNDLE.getString("generic.ok"),
                                           BUNDLE.getString("generic.cancel"))) {
             System.exit(0);
         }
@@ -105,8 +102,7 @@ public class ControllerProfileSelect implements Initializable, IController {
     public void onGo() {
         String name = list.getSelectionModel().getSelectedItem();
         // XXX: Find out why go returns nul
-        Stage stage = (Stage) newProfile.getScene().getWindow();
-        if (name != null && !name.equals("")) {
+        Stage stage = (Stage) newProfile.getScene().getWindow(); if (name != null && ! name.equals("")) {
             try {
                 LanguageTrainer.userData = new UserData(profiles.get(name));
                 isProfileSelected = true;
@@ -121,15 +117,4 @@ public class ControllerProfileSelect implements Initializable, IController {
     public void onDelete() {
 
     }
-
-    @Override
-    public void onExit() {
-        // If exit, no data has been exchanged anyway
-    }
-
-    @Override
-    public void onInsert(char c) {
-        // No dialogue button yet...
-    }
-
 }

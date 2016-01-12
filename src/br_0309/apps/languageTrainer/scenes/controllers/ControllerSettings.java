@@ -5,7 +5,6 @@ import br_0309.apps.languageTrainer.LanguageTrainer;
 import br_0309.apps.languageTrainer.Reference;
 import br_0309.apps.languageTrainer.data.UserData;
 import br_0309.apps.languageTrainer.util.FXUtil;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -26,26 +25,18 @@ import java.util.ResourceBundle;
 // No need for IController since it wouldn't be called anyway
 public class ControllerSettings implements Initializable {
 
-    @FXML
-    public Button btnOK;
-    @FXML
-    public Button btnCancel;
-    @FXML
-    public ComboBox<String> boxCorrect;
-    @FXML
-    public ComboBox<String> boxIncorrect;
-    @FXML
-    public ComboBox<String> boxFinished;
-    @FXML
-    public ComboBox<String> boxTheme;
-    @FXML
-    public ComboBox<Language> boxLanguage;
-    @FXML
-    public CheckBox checkboxPlaySounds;
-
     private final HashMap<String, String> map = new HashMap<>();
     private final HashMap<String, Locale> mapLanguages = new HashMap<>();
     private final HashMap<String, String> mapReversed = new HashMap<>();
+
+    public Button btnOK;
+    public Button btnCancel;
+    public ComboBox<String> boxCorrect;
+    public ComboBox<String> boxIncorrect;
+    public ComboBox<String> boxFinished;
+    public ComboBox<String> boxTheme;
+    public ComboBox<Language> boxLanguage;
+    public CheckBox checkboxPlaySounds;
     private ResourceBundle BUNDLE;
 
     @Override
@@ -89,7 +80,7 @@ public class ControllerSettings implements Initializable {
         boxLanguage.setButtonCell(new ListCell<Language>() {
             @Override
             protected void updateItem(Language item, boolean isEmpty) {
-                if (item != null || !isEmpty) {
+                if (item != null || ! isEmpty) {
                     if (item != null) {
                         setText(item.getText());
                     }
@@ -121,8 +112,7 @@ public class ControllerSettings implements Initializable {
             mapReversed.put(sound, s);
         }
         for (Locale l : LanguageHandler.INTERFACE_LANGS) {
-            boxLanguage.getItems()
-                       .add(new Language(l.getDisplayName(), new ImageView(Reference.FLAG_DIR + l.getCountry() + ".png")));
+            boxLanguage.getItems().add(new Language(l.getDisplayName(), new ImageView(Reference.FLAG_DIR + l.getCountry() + ".png")));
             mapLanguages.put(l.getDisplayName(), l);
         }
 
@@ -137,9 +127,8 @@ public class ControllerSettings implements Initializable {
 
         // Select correct language by cycling through all of them
         Language l = new Language(LanguageTrainer.userData.getLanguage().getDisplayName(),
-                                  new ImageView(
-                                          Reference.FLAG_DIR + LanguageTrainer.userData.getLanguage().getCountry() +
-                                          ".png"));
+                                  new ImageView(Reference.FLAG_DIR + LanguageTrainer.userData.getLanguage().getCountry() +
+                                                ".png"));
         boxLanguage.getSelectionModel().selectFirst();
         for (int i = 0; i < boxLanguage.getItems().size(); i++) {
             Language l2 = boxLanguage.getItems().get(i);
@@ -158,8 +147,7 @@ public class ControllerSettings implements Initializable {
 
     public void onOK() {
         LanguageTrainer.userData.setPlaySounds(checkboxPlaySounds.isSelected());
-        LanguageTrainer.userData
-                .setLanguage(mapLanguages.get(boxLanguage.getSelectionModel().getSelectedItem().getText()));
+        LanguageTrainer.userData.setLanguage(mapLanguages.get(boxLanguage.getSelectionModel().getSelectedItem().getText()));
         LanguageTrainer.userData.setTheme(map.get(boxTheme.getSelectionModel().getSelectedItem()));
         LanguageTrainer.userData.setSoundCorrect(map.get(boxCorrect.getSelectionModel().getSelectedItem()));
         LanguageTrainer.userData.setSoundIncorrect(map.get(boxIncorrect.getSelectionModel().getSelectedItem()));
@@ -171,22 +159,16 @@ public class ControllerSettings implements Initializable {
         LanguageTrainer.showMenu();
     }
 
+    // FIXME: Reverts to wrong language
     public void onReset() {
-        if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmReset"),
-                                          BUNDLE.getString("generic.noUndo"),
+        if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmReset"), BUNDLE.getString("generic.noUndo"),
                                           BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"))) {
             UserData userData = new UserData();
             boxTheme.getSelectionModel().select(BUNDLE.getString(userData.getTheme()));
             boxCorrect.getSelectionModel().select(mapReversed.get(userData.getSoundCorrect()));
             boxIncorrect.getSelectionModel().select(mapReversed.get(userData.getSoundIncorrect()));
             boxFinished.getSelectionModel().select(mapReversed.get(userData.getSoundFinished()));
-            Label lbl = new Label(userData.getLanguage().getDisplayName(),
-                                  new ImageView(Reference.FLAG_DIR + userData.getLanguage().getCountry() + ".png"));
-            lbl.getStyleClass().add("label-langs");
-            Language l = new Language(LanguageTrainer.userData.getLanguage().getDisplayName(),
-                                      new ImageView(
-                                              Reference.FLAG_DIR + LanguageTrainer.userData.getLanguage().getCountry() +
-                                              ".png"));
+            Language l = new Language(LanguageTrainer.userData.getLanguage().getDisplayName(), new ImageView(LanguageHandler.getFlag(userData.getLanguage())));
             boxLanguage.getSelectionModel().selectFirst();
             for (int i = 0; i < boxLanguage.getItems().size(); i++) {
                 Language l2 = boxLanguage.getItems().get(i);
@@ -203,8 +185,7 @@ public class ControllerSettings implements Initializable {
     public void playCorrect() {
         AudioInputStream audioIn = null;
         try {
-            BufferedInputStream in = new BufferedInputStream(
-                    getClass().getResourceAsStream(map.get(boxCorrect.getSelectionModel().getSelectedItem())));
+            BufferedInputStream in = new BufferedInputStream(getClass().getResourceAsStream(map.get(boxCorrect.getSelectionModel().getSelectedItem())));
             audioIn = AudioSystem.getAudioInputStream(in);
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
@@ -225,8 +206,7 @@ public class ControllerSettings implements Initializable {
     public void playIncorrect() {
         AudioInputStream audioIn = null;
         try {
-            BufferedInputStream in = new BufferedInputStream(
-                    getClass().getResourceAsStream(map.get(boxIncorrect.getSelectionModel().getSelectedItem())));
+            BufferedInputStream in = new BufferedInputStream(getClass().getResourceAsStream(map.get(boxIncorrect.getSelectionModel().getSelectedItem())));
             audioIn = AudioSystem.getAudioInputStream(in);
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
@@ -247,8 +227,7 @@ public class ControllerSettings implements Initializable {
     public void playFinished() {
         AudioInputStream audioIn = null;
         try {
-            BufferedInputStream in = new BufferedInputStream(
-                    getClass().getResourceAsStream(map.get(boxFinished.getSelectionModel().getSelectedItem())));
+            BufferedInputStream in = new BufferedInputStream(getClass().getResourceAsStream(map.get(boxFinished.getSelectionModel().getSelectedItem())));
             audioIn = AudioSystem.getAudioInputStream(in);
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);

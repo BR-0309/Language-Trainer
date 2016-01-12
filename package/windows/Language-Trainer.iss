@@ -7,10 +7,7 @@ AppVersion=0.6.5
 AppVerName=Language Trainer 0.6.5
 AppPublisher=Benjamin Raison
 AppComments=Language Trainer
-AppCopyright=Copyright (C) 2015
-;AppPublisherURL=http://java.com/
-;AppSupportURL=http://java.com/
-;AppUpdatesURL=http://java.com/
+AppCopyright=Copyright (C) 2015, 2016
 DefaultDirName={localappdata}\Language-Trainer
 DisableStartupPrompt=Yes
 DisableDirPage=auto
@@ -20,7 +17,7 @@ DisableFinishedPage=No
 DisableWelcomePage=No
 DefaultGroupName=Benjamin Raison
 ;Optional License
-LicenseFile=
+LicenseFile=C:\Users\Benjamin\OneDrive\Coding\Projects\Language-Trainer\package\windows\License.txt
 ;WinXP or above
 MinVersion=0,5.1 
 OutputBaseFilename=Language-Trainer-0.6.5
@@ -51,7 +48,7 @@ Name: "{commondesktop}\Language Trainer"; Filename: "{app}\Language-Trainer.exe"
 [Run]
 Filename: "{app}\Language-Trainer.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
 Filename: "{app}\Language-Trainer.exe"; Description: "{cm:LaunchProgram,Language-Trainer}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-Filename: "{app}\Language-Trainer.exe"; Parameters: "-install -svcName ""Language-Trainer"" -svcDesc ""Practice Languages"" -mainExe ""Language-Trainer.exe""  "; Check: returnFalse()
+Filename: "{app}\Language-Trainer.exe"; Parameters: "-install -svcName ""Language-Trainer"" -mainExe ""Language-Trainer.exe""  "; Check: returnFalse()
 
 [UninstallRun]
 Filename: "{app}\Language-Trainer.exe "; Parameters: "-uninstall -svcName Language-Trainer -stopOnUninstall"; Check: returnFalse()

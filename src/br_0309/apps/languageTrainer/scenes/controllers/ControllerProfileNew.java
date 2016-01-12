@@ -3,7 +3,6 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 import br_0309.apps.languageTrainer.LanguageTrainer;
 import br_0309.apps.languageTrainer.Reference;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -16,18 +15,15 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerProfileNew implements Initializable, IController {
+// IController won't be called anyway
+public class ControllerProfileNew implements Initializable {
 
     public File profile;
-    @FXML
+
     private TextField firstName;
-    @FXML
     private TextField lastName;
-    @FXML
     private TextField location;
-    @FXML
     private Button ok;
-    @FXML
     private Button cancel;
     private File profileUnconfirmed;
 
@@ -47,18 +43,16 @@ public class ControllerProfileNew implements Initializable, IController {
 
     public void onBrowse() {
         // FIXME: File chooser returns invalid filename (.ltd..)
-        FileChooser chooser = new FileChooser();
-        String filename = firstName.getText().trim() + "_" + lastName.getText().trim() + ".ltd";
-        if (!filename.equals("_.ltd")) {
+        FileChooser chooser = new FileChooser(); String filename = firstName.getText().trim() + "_" + lastName.getText().trim() + ".ltd";
+        if (! filename.equals("_.ltd")) {
             chooser.setInitialFileName(filename);
         }
-        chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd"));
-        File defaultFolder = new File(location.getText());
-        if (defaultFolder.isFile() && !defaultFolder.getParentFile().exists()) {
+        chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd")); File defaultFolder = new File(location.getText());
+        if (defaultFolder.isFile() && ! defaultFolder.getParentFile().exists()) {
             defaultFolder = new File(Reference.DEFAULT_PROFILE_DIR);
         } else if (defaultFolder.isFile() && defaultFolder.getParentFile().exists()) {
             defaultFolder = defaultFolder.getParentFile();
-        } else if (!defaultFolder.exists()) {
+        } else if (! defaultFolder.exists()) {
             defaultFolder = new File(Reference.DEFAULT_PROFILE_DIR);
         }
         chooser.setInitialDirectory(defaultFolder);
@@ -98,23 +92,7 @@ public class ControllerProfileNew implements Initializable, IController {
     }
 
     private void updateLocation() {
-        location.setText(
-                profileUnconfirmed.getParentFile().getAbsolutePath() + File.separator + firstName.getText().trim() +
-                "_"                                                                                                +                                                                                              lastName.getText().trim() + ".ltd");
-    }
-
-    @Override
-    public void onExit() {
-    }
-
-    @Override
-    public void onInsert(char c) {
-        if (firstName.isFocused()) {
-            firstName.setText(firstName.getText() + c);
-        } else if (lastName.isFocused()) {
-            lastName.setText(lastName.getText() + c);
-        } else if (location.isFocused()) {
-            location.setText(location.getText() + c);
-        }
+        location.setText(profileUnconfirmed.getParentFile().getAbsolutePath() + File.separator + firstName.getText().trim() +
+                         "_" + lastName.getText().trim() + ".ltd");
     }
 }

@@ -6,7 +6,6 @@ import br_0309.apps.languageTrainer.data.Statistics;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.chart.*;
@@ -22,26 +21,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 // FIXME: Fix empty lists being shown
-// FIXME: Make line chart show percentages
 public class ControllerStatistics implements Initializable, IController {
 
     private final ArrayList<Statistics> allStatistics = new ArrayList<>();
-    @FXML
+
     public ListView<Statistics> list;
-    @FXML
     public LineChart<String, Number> lineChart;
-    @FXML
     public PieChart pieChart;
-    @FXML
     public StackedBarChart<String, Number> barChart;
-    @FXML
     public TextField txtSearch;
-    @FXML
     public CategoryAxis xAxisBar;
-    @FXML
     public NumberAxis yAxisBar;
-    @FXML
     public NumberAxis yAxisLine;
+
     private ResourceBundle BUNDLE;
 
     @Override
@@ -124,8 +116,7 @@ public class ControllerStatistics implements Initializable, IController {
                 if (cont) {
                     break;
                 }
-            }
-            if (!cont) {
+            } if (! cont) {
                 ArrayList<Statistics> l = new ArrayList<>();
                 l.add(stat);
                 list.add(l);
