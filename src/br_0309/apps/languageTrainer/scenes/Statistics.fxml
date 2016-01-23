@@ -24,14 +24,14 @@
                 </Tab>
                 <Tab text="Untitled Tab 2">
                     <content>
-                        <PieChart fx:id="pieChart"/>
+                        <PieChart fx:id="pieChart" labelsVisible="false"/>
                     </content>
                 </Tab>
                 <Tab text="%statistics.comparison">
                     <content>
                         <StackedBarChart fx:id="barChart">
                             <xAxis>
-                                <CategoryAxis side="BOTTOM" fx:id="xAxisBar"/>
+                                <CategoryAxis side="BOTTOM" tickLabelRotation="90.0" fx:id="xAxisBar"/>
                             </xAxis>
                             <yAxis>
                                 <NumberAxis fx:id="yAxisBar" autoRanging="false" label="\%" side="LEFT"/>

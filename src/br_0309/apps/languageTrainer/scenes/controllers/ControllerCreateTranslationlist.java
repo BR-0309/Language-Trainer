@@ -10,7 +10,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -40,12 +39,11 @@ public class ControllerCreateTranslationList implements Initializable, IControll
 
     private final ArrayList<Locale> locales = new ArrayList<>();
     private final ObservableList<VocabularyListData> data = FXCollections.observableArrayList();
-    @FXML
+
     public TableView<VocabularyListData> table;
-    @FXML
     public TextField txtSearch;
-    @FXML
     public TextField txtTitle;
+
     private ResourceBundle BUNDLE;
 
     @SuppressWarnings("unchecked")
@@ -61,9 +59,9 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                 return;
             }
             if (table.getEditingCell() == null) {
-                if (!event.getCode().isArrowKey() && !event.getCode().isFunctionKey() &&
-                        !event.getCode().isMediaKey() && !event.getCode().isModifierKey() &&
-                        !event.getCode().equals(KeyCode.CAPS)) {
+                if (! event.getCode().isArrowKey() && ! event.getCode().isFunctionKey() &&
+                    ! event.getCode().isMediaKey() && ! event.getCode().isModifierKey() &&
+                    ! event.getCode().equals(KeyCode.CAPS)) {
                     TablePosition cellPos = table.getFocusModel().getFocusedCell();
                     table.edit(cellPos.getRow(), cellPos.getTableColumn());
                 }
@@ -71,12 +69,9 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         });
         table.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                TablePosition pos = table.getFocusModel().getFocusedCell();
-                if (pos.getRow() == -1) {
+                TablePosition pos = table.getFocusModel().getFocusedCell(); if (pos.getRow() == - 1) {
                     table.getSelectionModel().select(0);
-                }
-                else if (pos.getRow() == table.getItems().size() - 1 &&
-                        pos.getColumn() == table.getColumns().size() - 1) {
+                } else if (pos.getRow() == table.getItems().size() - 1 && pos.getColumn() == table.getColumns().size() - 1) {
                     // Ignore error message shown regarding maxCellCount
                     data.add(new VocabularyListData());
                     table.scrollTo(data.size() - 1);
@@ -85,7 +80,16 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         });
         table.setEditable(true);
         table.setItems(data);
-        data.add(new VocabularyListData());
+        data.add(new VocabularyListData()); txtTitle.textProperty().addListener((observable, oldValue, newValue) -> {
+            for (char c : Reference.INVALID_FILE_CHARS) {
+                if (newValue.contains(c + "")) {
+                    txtTitle.setText(oldValue); Toolkit.getDefaultToolkit().beep(); String chars = ""; for (char d : Reference.INVALID_FILE_CHARS) {
+                        chars += d + " ";
+                    } FXUtil.showWarningDialog(BUNDLE.getString("generic.warning"), BUNDLE.getString("warnings.invalidCharHeader"),
+                                               BUNDLE.getString("warnings.invalidCharMessage").replace("{0}", chars)); return;
+                }
+            }
+        });
     }
 
     public void exit() {
@@ -127,7 +131,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                 data.add(d);
             }
         } catch (IOException e) {
-            //FIXME: Add error dialog
+            FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.openFailed"), e.getLocalizedMessage());
             e.printStackTrace();
             return;
         } finally {
@@ -145,23 +149,18 @@ public class ControllerCreateTranslationList implements Initializable, IControll
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void save() {
         if (table.getColumns().size() < 2) {
-            FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"),
-                                   BUNDLE.getString("createList.requirement"));
+            FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.requirement"));
             return;
         }
         if (txtTitle.getText().trim().isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
-            txtTitle.requestFocus();
-            FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"),
-                                   BUNDLE.getString("createList.enterTitle"));
+            txtTitle.requestFocus(); FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.enterTitle"));
             return;
         }
-        BufferedWriter writer = null;
-        File file = new File(
-                Reference.DEFAULT_EXERCISE_DIR + File.separator + txtTitle.getText().trim().replaceAll(" ", "_") +
-                        ".tra");
+        BufferedWriter writer = null; File file = new File(Reference.DEFAULT_EXERCISE_DIR + File.separator + txtTitle.getText().trim().replaceAll(" ", "_") +
+                                                           ".tra");
         try {
-            if (!file.exists()) {
+            if (! file.exists()) {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
             }
@@ -182,7 +181,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                 // Make sure there are at least two values in the array
                 int counter = 0;
                 for (String s : words) {
-                    if (!s.equals("")) {
+                    if (! s.equals("")) {
                         counter++;
                     }
                     if (counter > 1) break;
@@ -196,8 +195,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                 writer.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            // TODO: Add error dialog
+            e.printStackTrace(); FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
             return;
         } finally {
             try {
@@ -207,7 +205,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                // TODO: Add error dialog
+                FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
             }
         }
 
@@ -247,11 +245,9 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         int i = 0;
         TablePosition p = table.getFocusModel().getFocusedCell();
         while (i < (data.size() - 1) * table.getColumns().size() - 1) {
-            if (table.getSelectionModel()
-                     .isSelected(data.size() - 1, table.getColumns().get(table.getColumns().size() - 1))) {
+            if (table.getSelectionModel().isSelected(data.size() - 1, table.getColumns().get(table.getColumns().size() - 1))) {
                 table.getSelectionModel().select(0, table.getColumns().get(0));
-            }
-            else {
+            } else {
                 table.getSelectionModel().selectNext();
             }
             ObservableList<TablePosition> positions = table.getSelectionModel().getSelectedCells();
@@ -275,8 +271,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         while (i < (data.size() - 1) * table.getColumns().size() - 1) {
             if (table.getSelectionModel().isSelected(0, table.getColumns().get(0))) {
                 table.getSelectionModel().selectLast();
-            }
-            else {
+            } else {
                 table.getSelectionModel().selectPrevious();
             }
             ObservableList<TablePosition> positions = table.getSelectionModel().getSelectedCells();
