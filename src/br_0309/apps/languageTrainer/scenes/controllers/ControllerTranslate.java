@@ -192,8 +192,11 @@ public class ControllerTranslate implements Initializable, IController {
             }
             length = words.size();
         } if (words.size() == 0) {
+            if (rest.size() > 0) {
+                // TODO: Show verbs
+                return;
+            }
             // TODO: Add dialog
-            // TODO: Respect verbs
             LanguageTrainer.showMenu();
         } Collections.shuffle(words, LanguageTrainer.random); VocabularyData d = words.get(0);
         lblTitle.setText(BUNDLE.getString("translate.task").replace("{0}", d.getFrom()).replace("{1}", d.getTo()));

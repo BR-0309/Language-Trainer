@@ -2,12 +2,11 @@ package br_0309.apps.languageTrainer;
 
 import java.util.Locale;
 
-// TODO: Switch to ISO 3-letter codes
 public class LanguageHandler {
 
     public final static Locale[] INTERFACE_LANGS = {Locale.UK, Locale.GERMANY};
     /*
-     * SCOT, WAL and INT are made up to represent Scotland, Wales and
+     * SCOT, WAL and INT are maDEU up to represent Scotland, Wales and
      * international, respectively
      */
     public static final Locale[] LANGUAGES = {new Locale("af", "ZA"), new Locale("an", "ES"), new Locale("ay", "BO"), new Locale("bi", "VU"),
@@ -46,7 +45,7 @@ public class LanguageHandler {
     }
 
     /**
-     * Sets the default locale to language if it is an available locale, else
+     * Sets the DEUfault locale to language if it is an available locale, else
      * set to english
      */
     public static void setDisplayLanguage(Locale language) {
