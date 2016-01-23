@@ -14,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +23,6 @@ import java.util.Hashtable;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-// FIXME: Add onDelete
 // IController not going to get called anyway
 public class ControllerProfileSelect implements Initializable {
 
@@ -101,7 +101,7 @@ public class ControllerProfileSelect implements Initializable {
 
     public void onGo() {
         String name = list.getSelectionModel().getSelectedItem();
-        // XXX: Find out why go returns nul
+        // TODO: Find out why go returns nul
         Stage stage = (Stage) newProfile.getScene().getWindow(); if (name != null && ! name.equals("")) {
             try {
                 LanguageTrainer.userData = new UserData(profiles.get(name));
@@ -115,6 +115,20 @@ public class ControllerProfileSelect implements Initializable {
     }
 
     public void onDelete() {
-
+        if (list.getSelectionModel().getSelectedItem() == null) {
+            Toolkit.getDefaultToolkit().beep(); return;
+        } String name = list.getSelectionModel().getSelectedItem(); if (FXUtil
+                .showConfirmationDialog(BUNDLE.getString("profileSelect.deleteTitle"), BUNDLE.getString("profileSelect.deleteHeader").replace("{0}", name),
+                                        BUNDLE.getString("profileSelect.deleteMsg"), "Yes", "No")) {
+            File file = profiles.get(name); System.out.println("Deleting profile at: " + file.getAbsolutePath()); try {
+                if (file.delete()) {
+                    System.out.println("Profile deleted at: " + file.getAbsolutePath()); list.getItems().remove(name);
+                } else {
+                    System.out.println("Failed to delete profile at: " + file.getAbsolutePath());
+                }
+            } catch (SecurityException e) {
+                e.printStackTrace(); FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("error.accessDenied"), e.getLocalizedMessage());
+            }
+        }
     }
 }

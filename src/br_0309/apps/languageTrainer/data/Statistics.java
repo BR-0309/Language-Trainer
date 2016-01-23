@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Statistics implements Serializable, Comparable<Statistics> {
 
-    private static final long serialVersionUID = -2484107990886936920L;
+    private static final long serialVersionUID = - 2484107990886936920L;
     public int correct = 0;
     public int incorrect = 0;
     public int cheated = 0;

@@ -53,7 +53,7 @@ public class UserData implements Serializable {
     public void save() {
         ObjectOutputStream out = null;
         try {
-            if (!file.exists()) {
+            if (! file.exists()) {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
                 properties = new Properties(getDefaults());
@@ -81,7 +81,7 @@ public class UserData implements Serializable {
     public void load() {
         ObjectInputStream in = null;
         try {
-            if (!file.exists()) {
+            if (! file.exists()) {
                 save();
                 return;
             }
@@ -112,7 +112,7 @@ public class UserData implements Serializable {
                 properties = new Properties(getDefaults());
             }
             // For each, set property and value
-            defaults.entrySet().stream().filter(entry -> !properties.containsKey(entry.getKey()))
+            defaults.entrySet().stream().filter(entry -> ! properties.containsKey(entry.getKey()))
                     .forEach(entry -> properties.setProperty(entry.getKey().toString(), entry.getValue().toString()));
         }
     }
@@ -121,8 +121,7 @@ public class UserData implements Serializable {
      * Returns the language the user chose, or best suited
      */
     public Locale getLanguage() {
-        return new Locale(properties.getProperty(Reference.PROPERTY_LANGUAGE),
-                          properties.getProperty(Reference.PROPERTY_LANGUAGE_REGION));
+        return new Locale(properties.getProperty(Reference.PROPERTY_LANGUAGE), properties.getProperty(Reference.PROPERTY_LANGUAGE_REGION));
     }
 
     /**

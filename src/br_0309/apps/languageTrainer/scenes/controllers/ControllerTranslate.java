@@ -97,8 +97,7 @@ public class ControllerTranslate implements Initializable, IController {
             if (rest.isEmpty()) {
                 LanguageTrainer.playSoundFinished();
 
-                MessageFormat format = new MessageFormat("");
-                format.applyPattern(BUNDLE.getString("exercise.finishedMsg")); double[] answersCorrect = {1, 2};
+                MessageFormat format = new MessageFormat(""); format.applyPattern(BUNDLE.getString("exercise.finishedMsg")); double[] answersCorrect = {1, 2};
                 String[] answersCorrectStrings = {BUNDLE.getString("exercise.answer"), BUNDLE.getString("exercise.answers")};
                 ChoiceFormat formatAnswer = new ChoiceFormat(answersCorrect, answersCorrectStrings);
                 double[] times = {0, 1, 2};
@@ -115,7 +114,7 @@ public class ControllerTranslate implements Initializable, IController {
             return;
         } else {
             Collections.shuffle(words, LanguageTrainer.random);
-        } VocabularyData d = words.get(0); lblTitle.setText(BUNDLE.getString("translate.task").replace("{1}", d.getFrom()).replace("{2}", d.getTo()));
+        } VocabularyData d = words.get(0); lblTitle.setText(BUNDLE.getString("translate.task").replace("{0}", d.getFrom()).replace("{1}", d.getTo()));
         lblTask.setText(d.getQuestion());
         lblCorrect.setText(Integer.toString(correct));
         lblIncorrect.setText(Integer.toString(incorrect));
@@ -150,7 +149,7 @@ public class ControllerTranslate implements Initializable, IController {
         } FXUtil.showInformationDialog(BUNDLE.getString("exercise.solution"), BUNDLE.getString("exercise.solutions"), answer);
     }
 
-    // FIXME: Possible issue, check for one-word lines
+    // FIXME: Empty values are seen as correct
     public void init(ArrayList<ExerciseData> lists) {
         String TRANSLATION = BUNDLE.getString("generic.translation");
         // Cycle through all selected exercises
@@ -158,9 +157,8 @@ public class ControllerTranslate implements Initializable, IController {
             // If it is of type "Translation"
             if (eData.getType().equals(TRANSLATION)) {
                 File file = eData.file;
-                String lang1 = eData.langs[0];
-                String lang2 = eData.langs[1];
-                String name = file.getName().replaceAll("_", " ").replace(".tra", ""); int left = 0, right = 1;
+                String lang1 = eData.langs[0]; String lang2 = eData.langs[1]; String name = file.getName().replaceAll("_", " ").replace(".tra", "");
+                int left = 0, right = 1;
                 try (Scanner scan = new Scanner(new FileInputStream(file), "UTF-8")) {
                     String[] langs = scan.nextLine().split(":");
                     // Find the indices of the selected languages
@@ -173,9 +171,11 @@ public class ControllerTranslate implements Initializable, IController {
                     }
                     // Cycle through all lines
                     while (scan.hasNextLine()) {
-                        String line = scan.nextLine();
-                        String[] words = line.split("=");
-                        this.words.add(new VocabularyData(words[left].split(";"), words[right].split(";"), eData.langs, name));
+                        String line = scan.nextLine(); String[] words = line.split("="); try {
+                            this.words.add(new VocabularyData(words[left].split(";"), words[right].split(";"), eData.langs, name));
+                        } catch (ArrayIndexOutOfBoundsException ignored) {
+
+                        }
                     }
 
                     stats.add(new Statistics(name, true, eData.langs));
@@ -194,9 +194,8 @@ public class ControllerTranslate implements Initializable, IController {
             // TODO: Add dialog
             // TODO: Respect verbs
             LanguageTrainer.showMenu();
-        }
-        Collections.shuffle(words, LanguageTrainer.random); VocabularyData d = words.get(0);
-        lblTitle.setText(BUNDLE.getString("translate.task").replace("{1}", d.getFrom()).replace("{2}", d.getTo()));
+        } Collections.shuffle(words, LanguageTrainer.random); VocabularyData d = words.get(0);
+        lblTitle.setText(BUNDLE.getString("translate.task").replace("{0}", d.getFrom()).replace("{1}", d.getTo()));
         lblTask.setText(d.getQuestion());
         lblList.setText(d.list);
         updateProgressBar();

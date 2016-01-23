@@ -20,11 +20,11 @@ public class ControllerProfileNew implements Initializable {
 
     public File profile;
 
-    private TextField firstName;
-    private TextField lastName;
-    private TextField location;
-    private Button ok;
-    private Button cancel;
+    public TextField firstName;
+    public TextField lastName;
+    public TextField location;
+    public Button ok;
+    public Button cancel;
     private File profileUnconfirmed;
 
     private ResourceBundle BUNDLE;
@@ -46,8 +46,7 @@ public class ControllerProfileNew implements Initializable {
         FileChooser chooser = new FileChooser(); String filename = firstName.getText().trim() + "_" + lastName.getText().trim() + ".ltd";
         if (! filename.equals("_.ltd")) {
             chooser.setInitialFileName(filename);
-        }
-        chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd")); File defaultFolder = new File(location.getText());
+        } chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd")); File defaultFolder = new File(location.getText());
         if (defaultFolder.isFile() && ! defaultFolder.getParentFile().exists()) {
             defaultFolder = new File(Reference.DEFAULT_PROFILE_DIR);
         } else if (defaultFolder.isFile() && defaultFolder.getParentFile().exists()) {

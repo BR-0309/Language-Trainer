@@ -41,8 +41,7 @@ public class StringUtil {
         }
         if (i == 1) {
             return true;
-        }
-        else if (i == 2) {
+        } else if (i == 2) {
             if (word.contains("ie") || word.contains("ou") || word.contains("ee") || word.contains("oo")) {
                 return true;
             }

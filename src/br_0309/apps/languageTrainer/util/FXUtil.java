@@ -154,8 +154,7 @@ public class FXUtil {
         expContent.add(textArea, 0, 1);
         alert.getDialogPane().setExpandableContent(expContent);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.getDialogPane().getStylesheets()
-             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         alert.showAndWait();
     }
 
@@ -192,8 +191,7 @@ public class FXUtil {
         expContent.add(textArea, 0, 1);
         alert.getDialogPane().setExpandableContent(expContent);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.getDialogPane().getStylesheets()
-             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         alert.showAndWait();
     }
 
@@ -230,8 +228,7 @@ public class FXUtil {
         expContent.add(textArea, 0, 1);
         alert.getDialogPane().setExpandableContent(expContent);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.getDialogPane().getStylesheets()
-             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         alert.showAndWait();
     }
 
@@ -268,8 +265,7 @@ public class FXUtil {
         expContent.add(textArea, 0, 1);
         alert.getDialogPane().setExpandableContent(expContent);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.getDialogPane().getStylesheets()
-             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         alert.showAndWait();
     }
 
@@ -280,10 +276,8 @@ public class FXUtil {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle(title);
         alert.setHeaderText(header);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.setContentText(msg);
-        alert.getDialogPane().getStylesheets()
-             .add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+        alert.initStyle(StageStyle.UTILITY); alert.setContentText(msg);
+        alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         try {
             alert.initOwner(LanguageTrainer.window);
         } catch (NullPointerException e) {

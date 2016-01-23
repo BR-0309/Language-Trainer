@@ -40,7 +40,7 @@ public class VerbEnglish implements Serializable {
             pastParticiple = infinitive + "ed";
         } else if (StringUtil.isOneSyllable(infinitive) && infinitive.length() > 2) {
             if (StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 3)) && StringUtil.isVowel(infinitive.charAt(infinitive.length() - 2)) &&
-                    StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
+                StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
                 String s = infinitive + infinitive.charAt(infinitive.length() - 1); presentParticiple = s + "ing"; pastParticiple = s + "ed";
             } else {
                 presentParticiple = infinitive + "ing";

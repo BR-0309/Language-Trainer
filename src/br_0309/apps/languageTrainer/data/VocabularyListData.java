@@ -7,9 +7,7 @@ public class VocabularyListData {
     private final HashMap<String, String> map = new HashMap<>();
 
     public String get(String key) {
-        String s = map.get(key);
-        if (s == null) return "";
-        else return s;
+        String s = map.get(key); if (s == null) { return ""; } else return s;
     }
 
     public void set(String key, String value) {

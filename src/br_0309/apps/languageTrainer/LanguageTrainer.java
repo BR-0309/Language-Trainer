@@ -30,6 +30,8 @@ import java.util.ResourceBundle;
 // TODO: Make themes less terrible
 // TODO: Internationalise Copyrights.txt
 // FIXME: If window is maximised, keep it so
+// FIXME: Statistics bar chart should be in scroll pane
+// TODO: Get a system for bundle keys
 public class LanguageTrainer extends Application {
 
     public static final UniversalData universalData = new UniversalData();
@@ -57,7 +59,7 @@ public class LanguageTrainer extends Application {
         } else if (SystemUtil.isMac()) {
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             File file = new File(System.getProperty("user.home") + File.separator + "Library" + File.separator +
-                                         "Application Support" + File.separator + "LanguageTrainer" + File.separator);
+                                 "Application Support" + File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
         } else {
@@ -100,17 +102,17 @@ public class LanguageTrainer extends Application {
      */
     private static void printSystemInfo() {
         System.out.println("Operating System:\t\t\t" + System.getProperty("os.name") + "\n" + "Operating System Version:\t" +
-                                   System.getProperty("os.version") + "\n" + "Architecture:\t\t\t\t" +
-                                   System.getProperty("os.arch") + "\n" + "Java Version:\t\t\t\t" +
-                                   System.getProperty("java.version") + "\n" + "Java Vendor:\t\t\t\t" +
-                                   System.getProperty("java.vendor") + "\n" + "Java Home Dir:\t\t\t\t" +
-                                   System.getProperty("java.home") + "\n" + "Temporary Dir:\t\t\t\t" +
-                                   System.getProperty("java.io.tmpdir") + "\n" + "Execution Dir:\t\t\t\t" +
-                                   System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t\t" +
-                                   System.getProperty("user.home") + "\n" + "System language:\t\t\t" +
-                                   System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t\t" +
-                                   Locale.getDefault() + "\n" + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() +
-                                   "\nLanguage Trainer version:\t" + Reference.VERSION + "\n");
+                           System.getProperty("os.version") + "\n" + "Architecture:\t\t\t\t" +
+                           System.getProperty("os.arch") + "\n" + "Java Version:\t\t\t\t" +
+                           System.getProperty("java.version") + "\n" + "Java Vendor:\t\t\t\t" +
+                           System.getProperty("java.vendor") + "\n" + "Java Home Dir:\t\t\t\t" +
+                           System.getProperty("java.home") + "\n" + "Temporary Dir:\t\t\t\t" +
+                           System.getProperty("java.io.tmpdir") + "\n" + "Execution Dir:\t\t\t\t" +
+                           System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t\t" +
+                           System.getProperty("user.home") + "\n" + "System language:\t\t\t" +
+                           System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t\t" +
+                           Locale.getDefault() + "\n" + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() +
+                           "\nLanguage Trainer version:\t" + Reference.VERSION + "\n");
     }
 
     public static void setScene(String sceneLoc) {
@@ -119,8 +121,7 @@ public class LanguageTrainer extends Application {
         try {
             boolean maximised = window.isMaximized();
             Parent root = loader.load();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
+            Scene scene = new Scene(root); scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
             currentController = loader.getController(); window.setScene(scene); if (maximised) {
                 window.setMaximized(true);
             } else {
@@ -140,8 +141,7 @@ public class LanguageTrainer extends Application {
         try {
             boolean maximised = window.isMaximized(); System.out.println(maximised);
             Parent root = loader.load();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
+            Scene scene = new Scene(root); scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
             currentController = loader.getController(); window.setScene(scene); if (maximised) {
                 window.setMaximized(true);
             } else {
@@ -240,9 +240,8 @@ public class LanguageTrainer extends Application {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
-            ControllerTranslate controller = loader.getController();
-            controller.init(selected);
-            currentController = controller; window.setScene(scene); if (maximised) {
+            ControllerTranslate controller = loader.getController(); controller.init(selected); currentController = controller; window.setScene(scene);
+            if (maximised) {
                 window.setMaximized(true); window.hide(); window.show(); System.out.println("Maximised");
             } else {
                 window.setMinWidth(0); window.setMinHeight(0); window.sizeToScene(); window.setMinWidth(window.getWidth());
@@ -262,10 +261,8 @@ public class LanguageTrainer extends Application {
                                        throwable);
         });
         try {
-            window = primaryStage;
-            window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
-            showLogin(); LanguageHandler.setDisplayLanguage(userData.getLanguage());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_VERB_ENGLISH),
+            window = primaryStage; window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO))); showLogin();
+            LanguageHandler.setDisplayLanguage(userData.getLanguage()); FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU),
                                                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
