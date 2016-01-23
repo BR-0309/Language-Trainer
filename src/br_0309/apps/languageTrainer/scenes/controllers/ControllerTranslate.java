@@ -149,15 +149,14 @@ public class ControllerTranslate implements Initializable, IController {
         } FXUtil.showInformationDialog(BUNDLE.getString("exercise.solution"), BUNDLE.getString("exercise.solutions"), answer);
     }
 
-    // FIXME: Empty values are seen as correct
     public void init(ArrayList<ExerciseData> lists) {
         String TRANSLATION = BUNDLE.getString("generic.translation");
         // Cycle through all selected exercises
         for (ExerciseData eData : lists) {
             // If it is of type "Translation"
             if (eData.getType().equals(TRANSLATION)) {
-                File file = eData.file;
-                String lang1 = eData.langs[0]; String lang2 = eData.langs[1]; String name = file.getName().replaceAll("_", " ").replace(".tra", "");
+                File file = eData.file; String lang1 = eData.langs[0]; String lang2 = eData.langs[1];
+                String name = file.getName().replaceAll("_", " ").replace(".tra", "");
                 int left = 0, right = 1;
                 try (Scanner scan = new Scanner(new FileInputStream(file), "UTF-8")) {
                     String[] langs = scan.nextLine().split(":");
@@ -172,7 +171,9 @@ public class ControllerTranslate implements Initializable, IController {
                     // Cycle through all lines
                     while (scan.hasNextLine()) {
                         String line = scan.nextLine(); String[] words = line.split("="); try {
-                            this.words.add(new VocabularyData(words[left].split(";"), words[right].split(";"), eData.langs, name));
+                            String[] leftWords = words[left].split(";"); String[] rightWords = words[right].split(";");
+                            if (leftWords[0].equals("") || rightWords[0].equals("")) continue;
+                            this.words.add(new VocabularyData(leftWords, rightWords, eData.langs, name));
                         } catch (ArrayIndexOutOfBoundsException ignored) {
 
                         }

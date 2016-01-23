@@ -30,7 +30,6 @@ import java.util.ResourceBundle;
 // TODO: Make themes less terrible
 // TODO: Internationalise Copyrights.txt
 // FIXME: If window is maximised, keep it so
-// FIXME: Statistics bar chart should be in scroll pane
 // TODO: Get a system for bundle keys
 public class LanguageTrainer extends Application {
 
