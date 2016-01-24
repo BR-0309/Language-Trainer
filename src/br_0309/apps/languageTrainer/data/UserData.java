@@ -51,26 +51,19 @@ public class UserData implements Serializable {
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void save() {
-        ObjectOutputStream out = null;
-        try {
-            if (! file.exists()) {
+        if (! file.exists()) {
+            try {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
                 properties = new Properties(getDefaults());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            out = new ObjectOutputStream(new FileOutputStream(file));
+        } try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
             out.writeObject(properties);
             out.writeObject(stats);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-            } catch (IOException | NullPointerException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -79,14 +72,11 @@ public class UserData implements Serializable {
      */
     @SuppressWarnings("unchecked")
     public void load() {
-        ObjectInputStream in = null;
-        try {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
             if (! file.exists()) {
                 save();
                 return;
             }
-            in = new ObjectInputStream(new FileInputStream(file));
-
             properties = (Properties) in.readObject();
             stats = (ArrayList<Statistics>) in.readObject();
         } catch (EOFException e) {
@@ -96,16 +86,6 @@ public class UserData implements Serializable {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (NullPointerException e) {
-                // XXX: Find out why in.close causes NPE
-                // e.printStackTrace();
-            }
             // Fill in default properties to prevent updates braking profiles
             Properties defaults = getDefaults();
             if (properties == null) {
@@ -145,7 +125,6 @@ public class UserData implements Serializable {
     /**
      * @return if sounds should be played
      */
-    @SuppressWarnings("BooleanMethodNameMustStartWithQuestion")
     public boolean getPlaySounds() {
         return Boolean.parseBoolean(properties.getProperty(Reference.PROPERTY_PLAY_SOUNDS));
     }

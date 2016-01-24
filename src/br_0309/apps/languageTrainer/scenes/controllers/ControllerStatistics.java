@@ -85,9 +85,8 @@ public class ControllerStatistics implements Initializable, IController {
                     }
 
                     @Override
-                    protected void updateItem(Statistics item, boolean isEmpty) {
-                        super.updateItem(item, isEmpty);
-                        if (item == null || isEmpty) {
+                    protected void updateItem(Statistics item, boolean empty) {
+                        super.updateItem(item, empty); if (item == null || empty) {
                             setGraphic(null);
                         } else {
                             text.setText(item.listName);
@@ -138,19 +137,16 @@ public class ControllerStatistics implements Initializable, IController {
             }
             total = correct + incorrect + cheated;
             Statistics stat = l.get(0);
+            //noinspection HardcodedFileSeparator
             String title = stat.listName + " " + Character.toUpperCase(stat.langCodes[0].charAt(0)) + "/" + Character.toUpperCase(stat.langCodes[1].charAt(0));
             seriesCorrect.getData().add(new XYChart.Data<>(title, ((double) correct / total) * 100));
             seriesIncorrect.getData().add(new XYChart.Data<>(title, ((double) incorrect / total) * 100));
             seriesCheated.getData().add(new XYChart.Data<>(title, ((double) cheated / total) * 100));
             categories.add(title);
         }
-        xAxisBar.setCategories(FXCollections.observableArrayList(categories));
-        yAxisBar.setUpperBound(100d);
-        yAxisBar.setLowerBound(0d);
+        xAxisBar.setCategories(FXCollections.observableArrayList(categories)); yAxisBar.setUpperBound(100.0d); yAxisBar.setLowerBound(0.0d);
         //noinspection unchecked
-        barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);
-        yAxisLine.setUpperBound(100d);
-        yAxisLine.setLowerBound(0d);
+        barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated); yAxisLine.setUpperBound(100.0d); yAxisLine.setLowerBound(0.0d);
     }
 
     public void exit() {

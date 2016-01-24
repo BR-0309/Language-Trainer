@@ -20,9 +20,9 @@ public class ControllerProfileNew implements Initializable {
 
     public File profile;
 
-    public TextField firstName;
-    public TextField lastName;
-    public TextField location;
+    public TextField txtFirstName;
+    public TextField txtLastName;
+    public TextField txtLocation;
     public Button ok;
     public Button cancel;
     private File profileUnconfirmed;
@@ -30,23 +30,22 @@ public class ControllerProfileNew implements Initializable {
     private ResourceBundle BUNDLE;
 
     @Override
-    public void initialize(URL url, ResourceBundle resources) {
-        location.setText(Reference.DEFAULT_PROFILE_DIR);
+    public void initialize(URL location, ResourceBundle resources) {
+        txtLocation.setText(Reference.DEFAULT_PROFILE_DIR);
         BUNDLE = resources;
         // Focus may not be on the text fields so that one can read the prompt
         // text
-        Platform.runLater(() -> ok.requestFocus());
-        firstName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
-        lastName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
+        Platform.runLater(() -> ok.requestFocus()); txtFirstName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
+        txtLastName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
         profileUnconfirmed = new File(Reference.DEFAULT_PROFILE_DIR + File.separator + "_.ltd");
     }
 
     public void onBrowse() {
         // FIXME: File chooser returns invalid filename (.ltd..)
-        FileChooser chooser = new FileChooser(); String filename = firstName.getText().trim() + "_" + lastName.getText().trim() + ".ltd";
+        FileChooser chooser = new FileChooser(); String filename = txtFirstName.getText().trim() + "_" + txtLastName.getText().trim() + ".ltd";
         if (! filename.equals("_.ltd")) {
             chooser.setInitialFileName(filename);
-        } chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd")); File defaultFolder = new File(location.getText());
+        } chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd")); File defaultFolder = new File(txtLocation.getText());
         if (defaultFolder.isFile() && ! defaultFolder.getParentFile().exists()) {
             defaultFolder = new File(Reference.DEFAULT_PROFILE_DIR);
         } else if (defaultFolder.isFile() && defaultFolder.getParentFile().exists()) {
@@ -57,13 +56,10 @@ public class ControllerProfileNew implements Initializable {
         chooser.setInitialDirectory(defaultFolder);
         File file = chooser.showSaveDialog(LanguageTrainer.window);
         if (file != null) {
-            location.setText(file.getAbsolutePath());
-            profileUnconfirmed = new File(location.getText());
+            txtLocation.setText(file.getAbsolutePath()); profileUnconfirmed = new File(txtLocation.getText());
             try {
                 String name = file.getName().replace(".ltd", "").replace(" ", "_");
-                String[] names = name.split("_");
-                firstName.setText(names[0].replace(".ltd", ""));
-                lastName.setText(names[1].replace(".ltd", ""));
+                String[] names = name.split("_"); txtFirstName.setText(names[0].replace(".ltd", "")); txtLastName.setText(names[1].replace(".ltd", ""));
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.err.println("User entered invalid filename. Because it's so hard to use the text fields.");
             }
@@ -76,12 +72,12 @@ public class ControllerProfileNew implements Initializable {
     }
 
     public void onOk() {
-        if (firstName.getText().trim().equals("")) {
-            firstName.requestFocus();
+        if (txtFirstName.getText().trim().equals("")) {
+            txtFirstName.requestFocus();
             Toolkit.getDefaultToolkit().beep();
             return;
-        } else if (lastName.getText().trim().equals("")) {
-            lastName.requestFocus();
+        } else if (txtLastName.getText().trim().equals("")) {
+            txtLastName.requestFocus();
             Toolkit.getDefaultToolkit().beep();
             return;
         }
@@ -91,7 +87,7 @@ public class ControllerProfileNew implements Initializable {
     }
 
     private void updateLocation() {
-        location.setText(profileUnconfirmed.getParentFile().getAbsolutePath() + File.separator + firstName.getText().trim() +
-                         "_" + lastName.getText().trim() + ".ltd");
+        txtLocation.setText(profileUnconfirmed.getParentFile().getAbsolutePath() + File.separator + txtFirstName.getText().trim() +
+                            "_" + txtLastName.getText().trim() + ".ltd");
     }
 }

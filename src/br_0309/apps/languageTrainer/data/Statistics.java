@@ -6,13 +6,13 @@ import java.util.Date;
 public class Statistics implements Serializable, Comparable<Statistics> {
 
     private static final long serialVersionUID = - 2484107990886936920L;
-    public int correct = 0;
-    public int incorrect = 0;
-    public int cheated = 0;
     public final String listName;
     public final boolean listType;
     public final String[] langCodes;
     public final Date date = new Date();
+    public int correct = 0;
+    public int incorrect = 0;
+    public int cheated = 0;
 
     /**
      * @param listType true: translation. false: br_0309.apps.languageTrainer.verbs

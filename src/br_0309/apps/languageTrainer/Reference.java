@@ -2,6 +2,7 @@ package br_0309.apps.languageTrainer;
 
 import br_0309.apps.languageTrainer.util.SystemUtil;
 
+@SuppressWarnings("HardcodedFileSeparator")
 public class Reference {
 
     public static final String FXML_MENU = "/br_0309/apps/languageTrainer/scenes/Menu.fxml";
@@ -12,6 +13,7 @@ public class Reference {
     public static final String FXML_CREATE_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/CreateTranslationList.fxml";
     public static final String FXML_LANGUAGE_ADD = "/br_0309/apps/languageTrainer/scenes/LanguageAdd.fxml";
     public static final String FXML_STATISTICS = "/br_0309/apps/languageTrainer/scenes/Statistics.fxml";
+    public static final String FXML_ABOUT = "/br_0309/apps/languageTrainer/scenes/About.fxml";
     public static final String FXML_VERB_ENGLISH = "/br_0309/apps/languageTrainer/scenes/VerbEnglish.fxml";
 
     public static final String[] THEMES = {"/stylesheets/default.css", "/stylesheets/dark.css", "/stylesheets/blue.css"};

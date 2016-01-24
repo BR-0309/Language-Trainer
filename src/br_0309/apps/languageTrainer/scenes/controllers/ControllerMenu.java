@@ -42,8 +42,8 @@ public class ControllerMenu implements Initializable, IController {
     private ResourceBundle BUNDLE;
 
     @Override
-    public void initialize(URL location, ResourceBundle BUNDLE) {
-        this.BUNDLE = BUNDLE;
+    public void initialize(URL location, ResourceBundle resources) {
+        BUNDLE = resources;
         initData();
 
         table.getColumns().get(0).setSortable(false);
@@ -108,10 +108,8 @@ public class ControllerMenu implements Initializable, IController {
                 }
                 // For translation files
                 if (file.getName().endsWith(".tra")) {
-                    try {
-                        Scanner scan = new Scanner(new FileInputStream(file), "UTF-8");
+                    try (Scanner scan = new Scanner(new FileInputStream(file), "UTF-8")) {
                         String[] langs = scan.nextLine().split(":");
-                        scan.close();
                         String name = file.getName().replaceAll("_", " ").replace(".tra", "");
                         Arrays.sort(langs);
                         // For each combination of languages
@@ -129,12 +127,11 @@ public class ControllerMenu implements Initializable, IController {
                     }
                 } else if (file.getName().endsWith("vdt")) {
                     // For verb files
-                    try {
-                        Scanner scan = new Scanner(new FileInputStream(file), "UTF-8");
+                    try (Scanner scan = new Scanner(new FileInputStream(file), "UTF-8")) {
                         String lang = scan.nextLine();
-                        scan.close();
                         if (lang.length() > 3) {
-                            System.err.printf("Invalid lang code (%s) in file %s. Skipping.\n", lang, file.getAbsolutePath() + "\n");
+                            System.err.printf("Invalid lang code (%s) in file %s. Skipping." + System.lineSeparator(), lang,
+                                              file.getAbsolutePath() + System.lineSeparator());
                             continue;
                         } data.add(
                                 new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""), new Locale(lang).getDisplayLanguage(), VERBS,
@@ -189,18 +186,17 @@ public class ControllerMenu implements Initializable, IController {
         Stage stage = new Stage(StageStyle.UTILITY);
         stage.initOwner(LanguageTrainer.window);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.sizeToScene();
         try {
             Parent parent = FXMLLoader
                     .load(getClass().getResource(Reference.FXML_SETTINGS), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             Scene scene = new Scene(parent);
             scene.getStylesheets().add(LanguageTrainer.userData.getTheme());
-            stage.setScene(scene);
+            stage.setScene(scene); stage.sizeToScene(); stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
+            //TODO: Add title and header
             FXUtil.showExceptionDialog("", "", e);
         }
-        stage.showAndWait();
     }
 
     public void onStatistics() {
@@ -213,6 +209,18 @@ public class ControllerMenu implements Initializable, IController {
 
     public void onVerbList() {
         // FIXME: Implement verb list editor
+    }
+
+    public void onAbout() {
+        Stage stage = new Stage(StageStyle.UTILITY); stage.initOwner(LanguageTrainer.window); stage.initModality(Modality.APPLICATION_MODAL); try {
+            Parent parent = FXMLLoader.load(getClass().getResource(Reference.FXML_ABOUT), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+            Scene scene = new Scene(parent); scene.getStylesheets().add(LanguageTrainer.userData.getTheme()); stage.setScene(scene); stage.sizeToScene();
+            stage.setResizable(false); stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            //TODO: Add title and header
+            FXUtil.showExceptionDialog("", "", e);
+        }
     }
 
 }

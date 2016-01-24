@@ -67,10 +67,9 @@ public class LanguageTrainer extends Application {
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
         }
         Reference.DEFAULT_EXERCISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "exercises" + File.separator;
-        // If the application is run from anything but loose files, redirect
-        // console to log_<<time>>
+        // If the application is run from anything but loose files, redirect console to log_<<time>>.txt
         if (! SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
-            File log = new File(Reference.DEFAULT_SAVE_DIR + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate());
+            File log = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate() + ".txt");
             try {
                 log.getParentFile().mkdirs();
                 log.createNewFile();
@@ -84,7 +83,7 @@ public class LanguageTrainer extends Application {
 
         // TODO: Add code to copy files over automatically on a different thread
 
-
+        System.out.println("Start time: " + SystemUtil.getTimeAndDataFormatted());
         // Set language to best suited language before user settings are loaded
         LanguageHandler.setDisplayLanguage(LanguageHandler.getBestLocale());
         printSystemInfo();
@@ -100,18 +99,18 @@ public class LanguageTrainer extends Application {
      * Print all relevant information about the system, user and languages
      */
     private static void printSystemInfo() {
-        System.out.println("Operating System:\t\t\t" + System.getProperty("os.name") + "\n" + "Operating System Version:\t" +
-                           System.getProperty("os.version") + "\n" + "Architecture:\t\t\t\t" +
-                           System.getProperty("os.arch") + "\n" + "Java Version:\t\t\t\t" +
-                           System.getProperty("java.version") + "\n" + "Java Vendor:\t\t\t\t" +
-                           System.getProperty("java.vendor") + "\n" + "Java Home Dir:\t\t\t\t" +
-                           System.getProperty("java.home") + "\n" + "Temporary Dir:\t\t\t\t" +
-                           System.getProperty("java.io.tmpdir") + "\n" + "Execution Dir:\t\t\t\t" +
-                           System.getProperty("user.dir") + "\n" + "User Home Dir:\t\t\t\t" +
-                           System.getProperty("user.home") + "\n" + "System language:\t\t\t" +
-                           System.getProperty("user.language") + "\n" + "JVM Default Locale:\t\t\t" +
-                           Locale.getDefault() + "\n" + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() +
-                           "\nLanguage Trainer version:\t" + Reference.VERSION + "\n");
+        System.out.println("Operating System:\t\t\t" + System.getProperty("os.name") + System.lineSeparator() + "Operating System Version:\t" +
+                           System.getProperty("os.version") + System.lineSeparator() + "Architecture:\t\t\t\t" +
+                           System.getProperty("os.arch") + System.lineSeparator() + "Java Version:\t\t\t\t" +
+                           System.getProperty("java.version") + System.lineSeparator() + "Java Vendor:\t\t\t\t" +
+                           System.getProperty("java.vendor") + System.lineSeparator() + "Java Home Dir:\t\t\t\t" +
+                           System.getProperty("java.home") + System.lineSeparator() + "Temporary Dir:\t\t\t\t" +
+                           System.getProperty("java.io.tmpdir") + System.lineSeparator() + "Execution Dir:\t\t\t\t" +
+                           System.getProperty("user.dir") + System.lineSeparator() + "User Home Dir:\t\t\t\t" +
+                           System.getProperty("user.home") + System.lineSeparator() + "System language:\t\t\t" +
+                           System.getProperty("user.language") + System.lineSeparator() + "JVM Default Locale:\t\t\t" +
+                           Locale.getDefault() + System.lineSeparator() + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() +
+                           System.lineSeparator() + "Language Trainer version:\t" + Reference.VERSION + System.lineSeparator());
     }
 
     public static void setScene(String sceneLoc) {
@@ -119,9 +118,9 @@ public class LanguageTrainer extends Application {
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(sceneLoc), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             boolean maximised = window.isMaximized();
-            Parent root = loader.load();
-            Scene scene = new Scene(root); scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
-            currentController = loader.getController(); window.setScene(scene); if (maximised) {
+            Parent root = loader.load(); Scene scene = new Scene(root);
+            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm()); currentController = loader.getController();
+            window.setScene(scene); if (maximised) {
                 window.setMaximized(true);
             } else {
                 window.setMinWidth(0); window.setMinHeight(0); window.sizeToScene(); window.setMinWidth(window.getWidth());
@@ -139,9 +138,9 @@ public class LanguageTrainer extends Application {
                                                                        ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             boolean maximised = window.isMaximized(); System.out.println(maximised);
-            Parent root = loader.load();
-            Scene scene = new Scene(root); scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
-            currentController = loader.getController(); window.setScene(scene); if (maximised) {
+            Parent root = loader.load(); Scene scene = new Scene(root);
+            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm()); currentController = loader.getController();
+            window.setScene(scene); if (maximised) {
                 window.setMaximized(true);
             } else {
                 window.setMinWidth(0); window.setMinHeight(0); window.sizeToScene(); window.setMinWidth(window.getWidth());
@@ -272,7 +271,7 @@ public class LanguageTrainer extends Application {
             window.setOnCloseRequest(event -> {
                 if (askForExit()) {
                     try {
-                        currentController.onExit();
+                        currentController.onExit(); System.out.println("Stop time: " + SystemUtil.getTimeAndDataFormatted());
                     } catch (NullPointerException e) {
                         System.err.println("Scene does not have assigned controller!");
                     }
@@ -309,6 +308,7 @@ public class LanguageTrainer extends Application {
         } catch (IOException e1) {
             e1.printStackTrace();
         } stage.showAndWait(); ControllerProfileSelect controller = loader.getController(); if (! controller.isProfileSelected) {
+            System.out.println("Stop time: " + SystemUtil.getTimeAndDataFormatted());
             System.exit(0);
         }
     }

@@ -40,8 +40,8 @@ public class ControllerSettings implements Initializable {
     private ResourceBundle BUNDLE;
 
     @Override
-    public void initialize(URL url, ResourceBundle bundle) {
-        BUNDLE = bundle;
+    public void initialize(URL location, ResourceBundle resources) {
+        BUNDLE = resources;
         // Set cell factory to render flags in dropdown
         boxLanguage.setCellFactory(new Callback<ListView<Language>, ListCell<Language>>() {
 
@@ -63,9 +63,8 @@ public class ControllerSettings implements Initializable {
                     }
 
                     @Override
-                    protected void updateItem(Language item, boolean isEmpty) {
-                        super.updateItem(item, isEmpty);
-                        if (item == null || isEmpty) {
+                    protected void updateItem(Language item, boolean empty) {
+                        super.updateItem(item, empty); if (item == null || empty) {
                             setGraphic(null);
                         } else {
                             text.setText(item.getText());
@@ -79,8 +78,8 @@ public class ControllerSettings implements Initializable {
         // Only show the text in the button cell
         boxLanguage.setButtonCell(new ListCell<Language>() {
             @Override
-            protected void updateItem(Language item, boolean isEmpty) {
-                if (item != null || ! isEmpty) {
+            protected void updateItem(Language item, boolean empty) {
+                if (item != null || ! empty) {
                     if (item != null) {
                         setText(item.getText());
                     }
@@ -89,23 +88,24 @@ public class ControllerSettings implements Initializable {
         });
 
         for (String theme : Reference.THEMES) {
-            boxTheme.getItems().add(bundle.getString(theme));
-            map.put(bundle.getString(theme), theme);
-            mapReversed.put(theme, bundle.getString(theme));
+            boxTheme.getItems().add(resources.getString(theme)); map.put(resources.getString(theme), theme); mapReversed.put(theme, resources.getString(theme));
         }
         for (String sound : Reference.SOUNDS_CORRECT) {
+            //noinspection HardcodedFileSeparator
             String s = sound.substring(sound.lastIndexOf("/") + 1).replace(".wav", "");
             boxCorrect.getItems().add(s);
             map.put(s, sound);
             mapReversed.put(sound, s);
         }
         for (String sound : Reference.SOUNDS_INCORRECT) {
+            //noinspection HardcodedFileSeparator
             String s = sound.substring(sound.lastIndexOf("/") + 1).replace(".wav", "");
             boxIncorrect.getItems().add(s);
             map.put(s, sound);
             mapReversed.put(sound, s);
         }
         for (String sound : Reference.SOUNDS_FINISHED) {
+            //noinspection HardcodedFileSeparator
             String s = sound.substring(sound.lastIndexOf("/") + 1).replace(".wav", "");
             boxFinished.getItems().add(s);
             map.put(s, sound);
@@ -119,7 +119,7 @@ public class ControllerSettings implements Initializable {
         String correct = LanguageTrainer.userData.getSoundCorrect();
         String incorrect = LanguageTrainer.userData.getSoundIncorrect();
         String finished = LanguageTrainer.userData.getSoundFinished();
-        boxTheme.getSelectionModel().select(bundle.getString(LanguageTrainer.userData.getTheme()));
+        boxTheme.getSelectionModel().select(resources.getString(LanguageTrainer.userData.getTheme()));
         boxCorrect.getSelectionModel().select(mapReversed.get(correct));
         boxIncorrect.getSelectionModel().select(mapReversed.get(incorrect));
         boxFinished.getSelectionModel().select(mapReversed.get(finished));
@@ -154,9 +154,9 @@ public class ControllerSettings implements Initializable {
         LanguageTrainer.userData.setSoundFinished(map.get(boxFinished.getSelectionModel().getSelectedItem()));
         LanguageTrainer.userData.save();
 
-        Stage stage = (Stage) btnOK.getScene().getWindow();
-        stage.close(); LanguageTrainer.window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") +
-                                                       " " + Reference.VERSION);
+        Stage stage = (Stage) btnOK.getScene().getWindow(); stage.close();
+        LanguageTrainer.window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") +
+                                        " " + Reference.VERSION);
         LanguageTrainer.showMenu();
     }
 

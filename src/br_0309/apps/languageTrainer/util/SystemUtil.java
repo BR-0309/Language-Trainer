@@ -8,30 +8,6 @@ import java.util.Date;
 public class SystemUtil {
 
     /**
-     * @return if the application is run as a jar file
-     */
-    public static boolean isJar() {
-        try {
-            return new File(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().endsWith(".jar");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    /**
-     * @return if the application is run as an exe file
-     */
-    public static boolean isExe() {
-        try {
-            return new File(SystemUtil.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().endsWith(".exe");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    /**
      * @return if the application is run from a directory (loose class files)
      */
     public static boolean isDirectory() {
@@ -91,19 +67,8 @@ public class SystemUtil {
         return System.getProperty("user.home");
     }
 
-    /**
-     * @return the current directory
-     */
-    public static String getCurrentDir() {
-        return System.getProperty("user.dir");
-    }
-
-    /**
-     * For use in GUI's. @return the time and date in format: <b>yy-MM-dd
-     * hh:mm</b>
-     */
-    public static String getTimeAndDateFormatted() {
-        return new SimpleDateFormat("yy-MM-dd hh:mm").format(new Date());
+    public static String getTimeAndDataFormatted() {
+        return new SimpleDateFormat("HH:mm:ss dd/MMMM/yyyy zzzz").format(new Date());
     }
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane minHeight="520.0" minWidth="590.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
@@ -45,6 +45,11 @@
                                 text="%menu.createVerbList">
                             <VBox.margin>
                                 <Insets/>
+                            </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onAbout" prefWidth="175.0" text="%generic.about">
+                            <VBox.margin>
+                                <Insets top="5.0"/>
                             </VBox.margin>
                         </Button>
                     </children>

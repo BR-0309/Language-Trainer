@@ -49,11 +49,11 @@ public class ControllerTranslate implements Initializable, IController {
     private int solvedCorrectly = 0;
 
     @Override
-    public void initialize(URL arg0, ResourceBundle bundle) {
-        BUNDLE = bundle;
+    public void initialize(URL url, ResourceBundle resources) {
+        BUNDLE = resources;
         btnExit.setOnAction(value -> {
-            if (FXUtil.showConfirmationDialog(bundle.getString("generic.confirm"), bundle.getString("generic.confirmQuit"), "", bundle.getString("generic.ok"),
-                                              bundle.getString("generic.cancel"))) {
+            if (FXUtil.showConfirmationDialog(resources.getString("generic.confirm"), resources.getString("generic.confirmQuit"), "",
+                                              resources.getString("generic.ok"), resources.getString("generic.cancel"))) {
                 LanguageTrainer.showMenu();
             }
         });
@@ -139,7 +139,7 @@ public class ControllerTranslate implements Initializable, IController {
         String[] answers = word.getSolutions();
         String answer = "";
         for (String s : answers) {
-            answer += s + "\n";
+            answer += s + System.lineSeparator();
         }
         for (Statistics stat : stats) {
             if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
@@ -207,6 +207,7 @@ public class ControllerTranslate implements Initializable, IController {
 
     private void updateProgressBar() {
         progressBar.setProgress((double) solvedCorrectly / length);
+        //noinspection HardcodedFileSeparator
         lblProgress.setText(solvedCorrectly + "/" + Integer.toString(length) + " " +
                             new Double(progressBar.getProgress() * 100).intValue() + "%");
     }

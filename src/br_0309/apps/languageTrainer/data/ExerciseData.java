@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.io.File;
 
+// TODO: Check if safe to remove languages
 public class ExerciseData implements Comparable<ExerciseData> {
 
     private final SimpleBooleanProperty selected;

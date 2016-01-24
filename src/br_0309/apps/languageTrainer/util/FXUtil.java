@@ -275,8 +275,7 @@ public class FXUtil {
     public static boolean showConfirmationDialog(String title, String header, String msg, String btnOk, String btnCancel) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.initStyle(StageStyle.UTILITY); alert.setContentText(msg);
+        alert.setHeaderText(header); alert.initStyle(StageStyle.UTILITY); alert.setContentText(msg);
         alert.getDialogPane().getStylesheets().add(FXUtil.class.getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
         try {
             alert.initOwner(LanguageTrainer.window);

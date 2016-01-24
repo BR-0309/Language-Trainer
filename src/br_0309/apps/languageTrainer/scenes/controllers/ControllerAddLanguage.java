@@ -49,9 +49,8 @@ public class ControllerAddLanguage implements Initializable {
                     }
 
                     @Override
-                    protected void updateItem(Locale item, boolean isEmpty) {
-                        super.updateItem(item, isEmpty);
-                        if (item == null || isEmpty) {
+                    protected void updateItem(Locale item, boolean empty) {
+                        super.updateItem(item, empty); if (item == null || empty) {
                             setGraphic(null);
                         } else {
                             text.setText(item.getDisplayLanguage());
