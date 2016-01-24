@@ -6,8 +6,7 @@ AppName=Language Trainer
 AppVersion=0.6.5
 AppVerName=Language Trainer 0.6.5
 AppPublisher=Benjamin Raison
-AppComments=Language Trainer
-AppCopyright=Copyright (C) 2015, 2016
+AppCopyright=Copyright (c) 2016 Benjamin Raison
 DefaultDirName={localappdata}\Language-Trainer
 DisableStartupPrompt=Yes
 DisableDirPage=auto
@@ -21,15 +20,14 @@ LicenseFile=C:\Users\Benjamin\OneDrive\Coding\Projects\Language-Trainer\package\
 ;WinXP or above
 MinVersion=0,5.1 
 OutputBaseFilename=Language-Trainer-0.6.5
-Compression=lzma
-SolidCompression=yes
+Compression=lzma2/ultra64
+SolidCompression=no
 PrivilegesRequired=lowest
 SetupIconFile=Language-Trainer\Language-Trainer.ico
 UninstallDisplayIcon={app}\Language-Trainer.ico
 UninstallDisplayName=Language-Trainer
 WizardImageStretch=No
 WizardSmallImageFile=Language-Trainer-setup-icon.bmp   
-ArchitecturesInstallIn64BitMode=x64
 
 
 [Languages]

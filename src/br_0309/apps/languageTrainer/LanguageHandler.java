@@ -6,7 +6,7 @@ public class LanguageHandler {
 
     public final static Locale[] INTERFACE_LANGS = {Locale.UK, Locale.GERMANY};
     /*
-     * SCOT, WAL and INT are maDEU up to represent Scotland, Wales and
+     * SCOT, WAL and INT are made up to represent Scotland, Wales and
      * international, respectively
      */
     public static final Locale[] LANGUAGES = {new Locale("af", "ZA"), new Locale("an", "ES"), new Locale("ay", "BO"), new Locale("bi", "VU"),
@@ -45,7 +45,7 @@ public class LanguageHandler {
     }
 
     /**
-     * Sets the DEUfault locale to language if it is an available locale, else
+     * Sets the default locale to language if it is an available locale, else
      * set to english
      */
     public static void setDisplayLanguage(Locale language) {
@@ -60,15 +60,6 @@ public class LanguageHandler {
             set = Locale.UK;
         }
         Locale.setDefault(set);
-    }
-
-    public static String getFlag(String locale) {
-        for (Locale l : LANGUAGES) {
-            if (locale.equals(l.getLanguage())) {
-                return l.getCountry().isEmpty() ? "/icons/flags/INT" : "/icons/flags/" + l.getCountry() + ".png";
-            }
-        }
-        return "/icons/flags/INT.png";
     }
 
     public static String getFlag(Locale locale) {

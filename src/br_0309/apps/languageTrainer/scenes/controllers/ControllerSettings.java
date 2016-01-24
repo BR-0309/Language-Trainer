@@ -155,7 +155,8 @@ public class ControllerSettings implements Initializable {
         LanguageTrainer.userData.save();
 
         Stage stage = (Stage) btnOK.getScene().getWindow();
-        stage.close();
+        stage.close(); LanguageTrainer.window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") +
+                                                       " " + Reference.VERSION);
         LanguageTrainer.showMenu();
     }
 
