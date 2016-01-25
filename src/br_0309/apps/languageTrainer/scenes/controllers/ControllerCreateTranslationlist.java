@@ -79,8 +79,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
             }
         });
         table.setEditable(true);
-        table.setItems(data);
-        data.add(new VocabularyListData()); txtTitle.textProperty().addListener((observable, oldValue, newValue) -> {
+        table.setItems(data); data.add(new VocabularyListData()); txtTitle.textProperty().addListener((observable, oldValue, newValue) -> {
             for (char c : Reference.INVALID_FILE_CHARS) {
                 if (newValue.contains(c + "")) {
                     txtTitle.setText(oldValue); Toolkit.getDefaultToolkit().beep(); String chars = ""; for (char d : Reference.INVALID_FILE_CHARS) {
@@ -107,10 +106,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         }
         data.clear();
         table.getColumns().clear();
-        locales.clear();
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+        locales.clear(); try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
             String langs = reader.readLine();
             String[] langs2 = langs.split(":");
             String[] keys = new String[langs2.length];
@@ -134,14 +130,6 @@ public class ControllerCreateTranslationList implements Initializable, IControll
             FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.openFailed"), e.getLocalizedMessage());
             e.printStackTrace();
             return;
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         txtTitle.setText(file.getName().replaceAll("_", " ").substring(0, file.getName().length() - 4));
     }
@@ -153,18 +141,15 @@ public class ControllerCreateTranslationList implements Initializable, IControll
             return;
         }
         if (txtTitle.getText().trim().isEmpty()) {
-            Toolkit.getDefaultToolkit().beep();
-            txtTitle.requestFocus(); FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.enterTitle"));
+            Toolkit.getDefaultToolkit().beep(); txtTitle.requestFocus();
+            FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.enterTitle"));
             return;
-        }
-        BufferedWriter writer = null; File file = new File(Reference.DEFAULT_EXERCISE_DIR + File.separator + txtTitle.getText().trim().replaceAll(" ", "_") +
-                                                           ".tra");
-        try {
+        } File file = new File(Reference.DEFAULT_EXERCISE_DIR + File.separator + txtTitle.getText().trim().replaceAll(" ", "_") + ".tra");
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
             if (! file.exists()) {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
             }
-            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
             String lang = locales.get(0).getLanguage();
             for (int i = 1; i < locales.size(); i++) {
                 lang += ":" + locales.get(i).getLanguage();
@@ -196,19 +181,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
             }
         } catch (IOException e) {
             e.printStackTrace(); FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
-            return;
-        } finally {
-            try {
-                if (writer != null) {
-                    writer.flush();
-                    writer.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
-            }
         }
-
         FXUtil.showInformationDialog(BUNDLE.getString("createList.saveSuccessful"),
                                      BUNDLE.getString("createList.savedAs").replace("{0}", file.getAbsolutePath()));
     }

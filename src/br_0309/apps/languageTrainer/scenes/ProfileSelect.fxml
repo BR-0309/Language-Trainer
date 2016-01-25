@@ -24,25 +24,25 @@
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
                     prefHeight="29.0" prefWidth="315.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox layoutY="6.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0"
-                      AnchorPane.topAnchor="6.0">
+                <HBox layoutY="6.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0"
+                      AnchorPane.topAnchor="5.0">
                     <children>
                         <Button fx:id="newProfile" mnemonicParsing="false" onAction="#onNewProfile"
                                 text="%profileSelect.newProfile"/>
                         <Button mnemonicParsing="false" onAction="#onDelete" text="%generic.delete">
                             <HBox.margin>
-                                <Insets left="2.0"/>
+                                <Insets/>
                             </HBox.margin>
                         </Button>
                     </children>
                 </HBox>
-                <HBox alignment="TOP_RIGHT" layoutX="185.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0"
+                <HBox alignment="TOP_RIGHT" layoutX="185.0" layoutY="5.0" spacing="5.0" AnchorPane.bottomAnchor="5.0"
                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                     <children>
                         <Button defaultButton="true" mnemonicParsing="false" onAction="#onGo" text="%generic.go"/>
                         <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel">
                             <HBox.margin>
-                                <Insets left="2.0"/>
+                                <Insets/>
                             </HBox.margin>
                         </Button>
                     </children>
