@@ -78,8 +78,8 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                 }
             }
         });
-        table.setEditable(true);
-        table.setItems(data); data.add(new VocabularyListData()); txtTitle.textProperty().addListener((observable, oldValue, newValue) -> {
+        table.setEditable(true); table.setItems(data); data.add(new VocabularyListData());
+        txtTitle.textProperty().addListener((observable, oldValue, newValue) -> {
             for (char c : Reference.INVALID_FILE_CHARS) {
                 if (newValue.contains(c + "")) {
                     txtTitle.setText(oldValue); Toolkit.getDefaultToolkit().beep(); String chars = ""; for (char d : Reference.INVALID_FILE_CHARS) {
@@ -105,8 +105,8 @@ public class ControllerCreateTranslationList implements Initializable, IControll
             return;
         }
         data.clear();
-        table.getColumns().clear();
-        locales.clear(); try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
+        table.getColumns().clear(); locales.clear();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
             String langs = reader.readLine();
             String[] langs2 = langs.split(":");
             String[] keys = new String[langs2.length];
@@ -294,6 +294,13 @@ public class ControllerCreateTranslationList implements Initializable, IControll
 
     @Override
     public void onInsert(char c) {
-
+        if (txtTitle.isFocused()) {
+            txtTitle.setText(txtTitle.getText() + c);
+        } else if (txtSearch.isFocused()) {
+            txtSearch.setText(txtSearch.getText() + c);
+        } else if (table.isFocused()) {
+            TablePosition pos = table.getEditingCell(); VocabularyListData data = table.getItems().get(pos.getRow());
+            String columnHeader = table.getColumns().get(pos.getColumn()).getText(); data.set(columnHeader, data.get(columnHeader) + c);
+        }
     }
 }

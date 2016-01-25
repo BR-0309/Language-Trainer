@@ -2,6 +2,7 @@ package br_0309.apps.languageTrainer.scenes.controllers;
 
 import br_0309.apps.languageTrainer.verbs.VerbEnglish;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -454,6 +455,10 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
 
     @Override
     public void onInsert(char c) {
-
+        Node node = txtInfinitive.getScene().getFocusOwner();
+        if(node instanceof TextField){
+            TextField txt = (TextField) node;
+            txt.setText(txt.getText() + c);
+        }
     }
 }

@@ -20,34 +20,28 @@
     </center>
     <bottom>
         <AnchorPane BorderPane.alignment="CENTER">
-            <children>
-                <Hyperlink onAction="#onResources" text="%about.resources" AnchorPane.bottomAnchor="5.0"
-                           AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
-                <Label text="%about.copyright" textFill="#757575" AnchorPane.bottomAnchor="5.0"
-                       AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
-            </children>
+            <Hyperlink onAction="#onResources" text="%about.resources" AnchorPane.bottomAnchor="5.0"
+                       AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+            <Label text="%about.copyright" textFill="#757575" AnchorPane.bottomAnchor="5.0"
+                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
         </AnchorPane>
     </bottom>
     <top>
         <AnchorPane>
-            <children>
-                <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
-                           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
-                           BorderPane.alignment="CENTER_LEFT">
-                    <BorderPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                    </BorderPane.margin>
-                    <image>
-                        <Image url="/icons/Logo.png"/>
-                    </image>
-                </ImageView>
-                <Label fx:id="lblTitle" layoutX="264.0" layoutY="29.0" AnchorPane.bottomAnchor="5.0"
-                       AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
-                    <font>
-                        <Font size="20.0"/>
-                    </font>
-                </Label>
-            </children>
+            <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
+                       AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+                       BorderPane.alignment="CENTER_LEFT">
+                <BorderPane.margin>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </BorderPane.margin>
+                <Image url="/icons/Logo.png"/>
+            </ImageView>
+            <Label fx:id="lblTitle" layoutX="264.0" layoutY="29.0" AnchorPane.bottomAnchor="5.0"
+                   AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
         </AnchorPane>
     </top>
 </BorderPane>
