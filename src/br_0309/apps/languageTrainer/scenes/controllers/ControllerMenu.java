@@ -189,8 +189,7 @@ public class ControllerMenu implements Initializable, IController {
         try {
             Parent parent = FXMLLoader
                     .load(getClass().getResource(Reference.FXML_SETTINGS), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
-            Scene scene = new Scene(parent);
-            scene.getStylesheets().add(LanguageTrainer.userData.getTheme());
+            Scene scene = new Scene(parent); scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
             stage.setScene(scene); stage.sizeToScene(); stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
@@ -214,8 +213,8 @@ public class ControllerMenu implements Initializable, IController {
     public void onAbout() {
         Stage stage = new Stage(StageStyle.UTILITY); stage.initOwner(LanguageTrainer.window); stage.initModality(Modality.APPLICATION_MODAL); try {
             Parent parent = FXMLLoader.load(getClass().getResource(Reference.FXML_ABOUT), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
-            Scene scene = new Scene(parent); scene.getStylesheets().add(LanguageTrainer.userData.getTheme()); stage.setScene(scene); stage.sizeToScene();
-            stage.setResizable(false); stage.showAndWait();
+            Scene scene = new Scene(parent); scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+            stage.setScene(scene); stage.sizeToScene(); stage.setResizable(false); stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
             //TODO: Add title and header

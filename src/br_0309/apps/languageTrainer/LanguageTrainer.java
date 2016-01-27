@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
 // TODO: Internationalise Copyrights.txt
 // FIXME: If window is maximised, keep it so
 // TODO: Get a system for bundle keys
+// FIXME: Copy over the copyrights in the right format
 public class LanguageTrainer extends Application {
 
     public static final UniversalData universalData = new UniversalData();
@@ -117,8 +118,7 @@ public class LanguageTrainer extends Application {
         currentController.onExit();
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(sceneLoc), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
-            boolean maximised = window.isMaximized();
-            Parent root = loader.load(); Scene scene = new Scene(root);
+            boolean maximised = window.isMaximized(); Parent root = loader.load(); Scene scene = new Scene(root);
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm()); currentController = loader.getController();
             window.setScene(scene); if (maximised) {
                 window.setMaximized(true);
@@ -137,8 +137,7 @@ public class LanguageTrainer extends Application {
         currentController.onExit(); FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_MENU),
                                                                        ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
-            boolean maximised = window.isMaximized(); System.out.println(maximised);
-            Parent root = loader.load(); Scene scene = new Scene(root);
+            boolean maximised = window.isMaximized(); System.out.println(maximised); Parent root = loader.load(); Scene scene = new Scene(root);
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm()); currentController = loader.getController();
             window.setScene(scene); if (maximised) {
                 window.setMaximized(true);

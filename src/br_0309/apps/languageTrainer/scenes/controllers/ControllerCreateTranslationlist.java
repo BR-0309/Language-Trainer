@@ -192,8 +192,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                                            ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             Parent root = loader.load();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(LanguageTrainer.userData.getTheme());
+            Scene scene = new Scene(root); scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
             stage.setScene(scene);
             stage.sizeToScene();
             stage.setResizable(false);

@@ -30,7 +30,7 @@ applause-2.wav              Sandermotions               Creative Commons 0      
 speaker.png                 G. Hagedorn                 Public domain                   https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg                               Modified size & filename
 speaker_white.png           G. Hagedorn                 Public domain                   https://commons.wikimedia.org/wiki/File:Speaker_Icon_gray.svg                               Modified size, colour and filename
 
-AL.png                      Dbenbenn and others         Public domain                  https://commons.wikimedia.org/wiki/File:Flag_of_Albania.svg                                 Modified size, filename and type
+AL.png                      Dbenbenn and others         Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Albania.svg                                 Modified size, filename and type
 BE.png                      Dnenbenn and others         Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Belgium.svg                                 Modified size, filename and type
 BO.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Bolivia_(WFB_2004).gif                      Modified size, filename and type
 BW.png                      SKopp, Gabbe, Madden        Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Botswana.svg                                Modified size, filename and type
@@ -88,6 +88,3 @@ Creative Commons Attribution    https://creativecommons.org/licenses/by/3.0/
 Public domain                   https://en.wikipedia.org/wiki/Public_domain
 
 Note: Public domain refers to:
-    * the expiration of copyright pursuant to the Bern Convention
-    * the author dedicated their work to the public domain, thereby losing all rights to their work or, where forbidden by law,
-    * the license irrevocably grants as many rights as possible in their jurisdiction

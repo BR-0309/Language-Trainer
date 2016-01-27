@@ -14,6 +14,7 @@ public class Reference {
     public static final String FXML_LANGUAGE_ADD = "/br_0309/apps/languageTrainer/scenes/LanguageAdd.fxml";
     public static final String FXML_STATISTICS = "/br_0309/apps/languageTrainer/scenes/Statistics.fxml";
     public static final String FXML_ABOUT = "/br_0309/apps/languageTrainer/scenes/About.fxml";
+    public static final String FXML_RESOURCES = "/br_0309/apps/languageTrainer/scenes/Resources.fxml";
     public static final String FXML_VERB_ENGLISH = "/br_0309/apps/languageTrainer/scenes/VerbEnglish.fxml";
 
     public static final String[] THEMES = {"/stylesheets/default.css", "/stylesheets/dark.css", "/stylesheets/blue.css"};
@@ -46,4 +47,7 @@ public class Reference {
 
     public static final String FLAG_DIR = "/icons/flags/";
     public static final char[] INVALID_FILE_CHARS = {'/', '\\', '?', '%', '*', ':', '|', '"', '<', '>', '.', ',', '&', '#'};
+
+    public static final String COPYRIGHTS_BASE_NAME = "/lang/Copyright-";
+    public static final String COPYRIGHTS_END = ".txt";
 }

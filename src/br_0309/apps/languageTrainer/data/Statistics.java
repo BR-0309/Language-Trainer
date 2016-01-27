@@ -3,6 +3,7 @@ package br_0309.apps.languageTrainer.data;
 import java.io.Serializable;
 import java.util.Date;
 
+// FIXME: Add total to prevent cheating the cheats
 public class Statistics implements Serializable, Comparable<Statistics> {
 
     private static final long serialVersionUID = - 2484107990886936920L;
