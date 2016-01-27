@@ -97,13 +97,16 @@ public class ControllerTranslate implements Initializable, IController {
             if (rest.isEmpty()) {
                 LanguageTrainer.playSoundFinished();
 
-                MessageFormat format = new MessageFormat(""); format.applyPattern(BUNDLE.getString("exercise.finishedMsg")); double[] answersCorrect = {1, 2};
+                MessageFormat format = new MessageFormat("");
+                format.applyPattern(BUNDLE.getString("exercise.finishedMsg"));
+                double[] answersCorrect = {1, 2};
                 String[] answersCorrectStrings = {BUNDLE.getString("exercise.answer"), BUNDLE.getString("exercise.answers")};
                 ChoiceFormat formatAnswer = new ChoiceFormat(answersCorrect, answersCorrectStrings);
                 double[] times = {0, 1, 2};
                 String[] timesStrings = {BUNDLE.getString("exercise.times"), BUNDLE.getString("exercise.time"), BUNDLE.getString("exercise.times")};
                 Format[] formats = {NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(),
-                                    new ChoiceFormat(times, timesStrings)}; format.setFormats(formats);
+                                    new ChoiceFormat(times, timesStrings)};
+                format.setFormats(formats);
                 String msg = format.format(new Object[] {correct, correct, incorrect, incorrect, cheated, cheated});
                 FXUtil.showInformationDialog(BUNDLE.getString("exercise.finishedHeader"), msg);
                 LanguageTrainer.showMenu();
@@ -114,7 +117,9 @@ public class ControllerTranslate implements Initializable, IController {
             return;
         } else {
             Collections.shuffle(words, LanguageTrainer.random);
-        } VocabularyData d = words.get(0); lblTitle.setText(BUNDLE.getString("translate.task").replace("{0}", d.getFrom()).replace("{1}", d.getTo()));
+        }
+        VocabularyData d = words.get(0);
+        lblTitle.setText(BUNDLE.getString("translate.task").replace("{0}", d.getFrom()).replace("{1}", d.getTo()));
         lblTask.setText(d.getQuestion());
         lblCorrect.setText(Integer.toString(correct));
         lblIncorrect.setText(Integer.toString(incorrect));
@@ -146,7 +151,8 @@ public class ControllerTranslate implements Initializable, IController {
                 stat.cheated++;
                 break;
             }
-        } FXUtil.showInformationDialog(BUNDLE.getString("exercise.solution"), BUNDLE.getString("exercise.solutions"), answer);
+        }
+        FXUtil.showInformationDialog(BUNDLE.getString("exercise.solution"), BUNDLE.getString("exercise.solutions"), answer);
     }
 
     public void init(ArrayList<ExerciseData> lists) {
@@ -155,7 +161,9 @@ public class ControllerTranslate implements Initializable, IController {
         for (ExerciseData eData : lists) {
             // If it is of type "Translation"
             if (eData.getType().equals(TRANSLATION)) {
-                File file = eData.file; String lang1 = eData.langs[0]; String lang2 = eData.langs[1];
+                File file = eData.file;
+                String lang1 = eData.langs[0];
+                String lang2 = eData.langs[1];
                 String name = file.getName().replaceAll("_", " ").replace(".tra", "");
                 int left = 0, right = 1;
                 try (Scanner scan = new Scanner(new FileInputStream(file), "UTF-8")) {
@@ -170,8 +178,11 @@ public class ControllerTranslate implements Initializable, IController {
                     }
                     // Cycle through all lines
                     while (scan.hasNextLine()) {
-                        String line = scan.nextLine(); String[] words = line.split("="); try {
-                            String[] leftWords = words[left].split(";"); String[] rightWords = words[right].split(";");
+                        String line = scan.nextLine();
+                        String[] words = line.split("=");
+                        try {
+                            String[] leftWords = words[left].split(";");
+                            String[] rightWords = words[right].split(";");
                             if (leftWords[0].equals("") || rightWords[0].equals("")) continue;
                             this.words.add(new VocabularyData(leftWords, rightWords, eData.langs, name));
                         } catch (ArrayIndexOutOfBoundsException ignored) {
@@ -191,14 +202,17 @@ public class ControllerTranslate implements Initializable, IController {
                 rest.add(eData);
             }
             length = words.size();
-        } if (words.size() == 0) {
+        }
+        if (words.size() == 0) {
             if (rest.size() > 0) {
                 // TODO: Show verbs
                 return;
             }
             // TODO: Add dialog
             LanguageTrainer.showMenu();
-        } Collections.shuffle(words, LanguageTrainer.random); VocabularyData d = words.get(0);
+        }
+        Collections.shuffle(words, LanguageTrainer.random);
+        VocabularyData d = words.get(0);
         lblTitle.setText(BUNDLE.getString("translate.task").replace("{0}", d.getFrom()).replace("{1}", d.getTo()));
         lblTask.setText(d.getQuestion());
         lblList.setText(d.list);

@@ -39,7 +39,10 @@ public class ControllerResources implements Initializable {
     @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        BUNDLE = resources; cc0 = resources.getString("about.cc0"); cca = resources.getString("about.cca"); pd = resources.getString("about.publicDomain");
+        BUNDLE = resources;
+        cc0 = resources.getString("about.cc0");
+        cca = resources.getString("about.cca");
+        pd = resources.getString("about.publicDomain");
         table.setItems(initData());
 
         TableColumn columnTitle = (TableColumn) table.getColumns().get(0);
@@ -47,45 +50,59 @@ public class ControllerResources implements Initializable {
         columnTitle.setCellValueFactory(new Callback<TableColumn.CellDataFeatures, ObservableValue>() {
             @Override
             public ObservableValue call(TableColumn.CellDataFeatures param) {
-                ResourceData data = (ResourceData) param.getValue(); return new ReadOnlyStringWrapper(data.file);
+                ResourceData data = (ResourceData) param.getValue();
+                return new ReadOnlyStringWrapper(data.file);
             }
-        }); TableColumn columnAuthor = (TableColumn) table.getColumns().get(1);
+        });
+        TableColumn columnAuthor = (TableColumn) table.getColumns().get(1);
         //noinspection Convert2Lambda
         columnAuthor.setCellValueFactory(new Callback<TableColumn.CellDataFeatures, ObservableValue>() {
             @Override
             public ObservableValue call(TableColumn.CellDataFeatures param) {
-                ResourceData data = (ResourceData) param.getValue(); return new ReadOnlyStringWrapper(data.author);
+                ResourceData data = (ResourceData) param.getValue();
+                return new ReadOnlyStringWrapper(data.author);
             }
-        }); TableColumn columnLicense = (TableColumn) table.getColumns().get(2);
+        });
+        TableColumn columnLicense = (TableColumn) table.getColumns().get(2);
         //noinspection Convert2Lambda
         columnLicense.setCellValueFactory(new Callback<TableColumn.CellDataFeatures, ObservableValue>() {
             @Override
             public ObservableValue call(TableColumn.CellDataFeatures param) {
-                ResourceData data = (ResourceData) param.getValue(); return new ReadOnlyStringWrapper(data.license);
+                ResourceData data = (ResourceData) param.getValue();
+                return new ReadOnlyStringWrapper(data.license);
             }
-        }); columnLicense.setCellFactory(column -> new TableCell<ResourceData, String>() {
+        });
+        columnLicense.setCellFactory(column -> new TableCell<ResourceData, String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty); if (item == null || empty) {
-                    setText(null); setStyle("");
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                    setStyle("");
                 } else {
                     if (item.equals(cc0)) {
-                        setText(item); setStyle("-fx-background-color: green");
+                        setText(item);
+                        setStyle("-fx-background-color: green");
                     } else if (item.equals(cca)) {
-                        setText(item); setStyle("-fx-background-color: orange");
+                        setText(item);
+                        setStyle("-fx-background-color: orange");
                     } else if (item.equals(pd)) {
-                        setText(item); setStyle("-fx-background-color: lime");
+                        setText(item);
+                        setStyle("-fx-background-color: lime");
                     } else {
-                        setText(item); setStyle("");
+                        setText(item);
+                        setStyle("");
                     }
                 }
             }
-        }); TableColumn columnNotes = (TableColumn) table.getColumns().get(3);
+        });
+        TableColumn columnNotes = (TableColumn) table.getColumns().get(3);
         //noinspection Convert2Lambda
         columnNotes.setCellValueFactory(new Callback<TableColumn.CellDataFeatures, ObservableValue>() {
             @Override
             public ObservableValue call(TableColumn.CellDataFeatures param) {
-                ResourceData data = (ResourceData) param.getValue(); return new ReadOnlyStringWrapper(data.notes);
+                ResourceData data = (ResourceData) param.getValue();
+                return new ReadOnlyStringWrapper(data.notes);
             }
         });
 
@@ -97,7 +114,8 @@ public class ControllerResources implements Initializable {
             public ObservableValue call(TableColumn.CellDataFeatures param) {
                 return new ReadOnlyObjectWrapper(param.getValue());
             }
-        }); columnLink.setCellFactory(new Callback<TableColumn<ResourceData, ResourceData>, TableCell<ResourceData, ResourceData>>() {
+        });
+        columnLink.setCellFactory(new Callback<TableColumn<ResourceData, ResourceData>, TableCell<ResourceData, ResourceData>>() {
             @Override
             public TableCell call(TableColumn param) {
                 return new TableCell<ResourceData, ResourceData>() {
@@ -105,13 +123,16 @@ public class ControllerResources implements Initializable {
 
                     @Override
                     protected void updateItem(ResourceData item, boolean empty) {
-                        super.updateItem(item, empty); if (item == null || empty) {
-                            button.setText(""); setGraphic(null);
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            button.setText("");
+                            setGraphic(null);
                         } else {
                             button.setText(BUNDLE.getString("about.visitLink"));
                             button.setStyle("-fx-background-color: transparent; -fx-text-fill: #54b9f8; -fx-underline: true");
                             button.setOnMouseEntered(event -> button.getScene().setCursor(Cursor.HAND));
-                            button.setOnMouseExited(event -> button.getScene().setCursor(Cursor.DEFAULT)); button.setOnAction(event -> {
+                            button.setOnMouseExited(event -> button.getScene().setCursor(Cursor.DEFAULT));
+                            button.setOnAction(event -> {
                                 if (Desktop.isDesktopSupported()) {
                                     try {
                                         Desktop.getDesktop().browse(new URI(item.link));
@@ -121,7 +142,8 @@ public class ControllerResources implements Initializable {
                                         FXUtil.showExceptionDialog("", "", e);
                                     }
                                 }
-                            }); setGraphic(button);
+                            });
+                            setGraphic(button);
                         }
                     }
                 };
@@ -130,20 +152,26 @@ public class ControllerResources implements Initializable {
     }
 
     private ObservableList<ResourceData> initData() {
-        ArrayList<ResourceData> list = new ArrayList<>(); try {
+        ArrayList<ResourceData> list = new ArrayList<>();
+        try {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(getClass().getResourceAsStream(Reference.COPYRIGHTS_BASE_NAME + Locale.getDefault().getLanguage() +
-                                                                         Reference.COPYRIGHTS_END))); String line = reader.readLine(); reader.close();
+                                                                         Reference.COPYRIGHTS_END)));
+            String line = reader.readLine();
+            reader.close();
 
-            String[] resources = line.split("¬"); for (String s : resources) {
-                String[] info = s.split(";"); list.add(new ResourceData(info[0], info[1], info[2], info[3], info[4]));
+            String[] resources = line.split("¬");
+            for (String s : resources) {
+                String[] info = s.split(";");
+                list.add(new ResourceData(info[0], info[1], info[2], info[3], info[4]));
             }
 
         } catch (IOException e) {
             e.printStackTrace();
             // FIXME: Add message
             FXUtil.showExceptionDialog("", "", e);
-        } return FXCollections.observableArrayList(list);
+        }
+        return FXCollections.observableArrayList(list);
     }
 
     public void onCC0() {
@@ -171,11 +199,13 @@ public class ControllerResources implements Initializable {
     }
 
     public void onPublicDomain() {
-        String URI; if (Locale.getDefault().getLanguage().equals("de")) {
+        String URI;
+        if (Locale.getDefault().getLanguage().equals("de")) {
             URI = "https://de.wikipedia.org/wiki/Gemeinfreiheit";
         } else {
             URI = "https://en.wikipedia.org/wiki/Public_domain";
-        } if (Desktop.isDesktopSupported()) {
+        }
+        if (Desktop.isDesktopSupported()) {
             try {
                 Desktop.getDesktop().browse(new URI(URI));
             } catch (IOException | URISyntaxException e) {
@@ -187,7 +217,8 @@ public class ControllerResources implements Initializable {
     }
 
     public void onOk() {
-        Stage stage = (Stage) table.getScene().getWindow(); stage.close();
+        Stage stage = (Stage) table.getScene().getWindow();
+        stage.close();
     }
 
 }

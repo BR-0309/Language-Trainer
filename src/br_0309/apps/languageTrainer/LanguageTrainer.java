@@ -118,12 +118,19 @@ public class LanguageTrainer extends Application {
         currentController.onExit();
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(sceneLoc), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
-            boolean maximised = window.isMaximized(); Parent root = loader.load(); Scene scene = new Scene(root);
-            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm()); currentController = loader.getController();
-            window.setScene(scene); if (maximised) {
+            boolean maximised = window.isMaximized();
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
+            currentController = loader.getController();
+            window.setScene(scene);
+            if (maximised) {
                 window.setMaximized(true);
             } else {
-                window.setMinWidth(0); window.setMinHeight(0); window.sizeToScene(); window.setMinWidth(window.getWidth());
+                window.setMinWidth(0);
+                window.setMinHeight(0);
+                window.sizeToScene();
+                window.setMinWidth(window.getWidth());
                 window.setMinHeight(window.getHeight());
             }
         } catch (IOException e) {
@@ -134,15 +141,24 @@ public class LanguageTrainer extends Application {
     }
 
     public static void showMenu() {
-        currentController.onExit(); FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_MENU),
-                                                                       ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+        currentController.onExit();
+        FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_MENU),
+                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
-            boolean maximised = window.isMaximized(); System.out.println(maximised); Parent root = loader.load(); Scene scene = new Scene(root);
-            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm()); currentController = loader.getController();
-            window.setScene(scene); if (maximised) {
+            boolean maximised = window.isMaximized();
+            System.out.println(maximised);
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
+            currentController = loader.getController();
+            window.setScene(scene);
+            if (maximised) {
                 window.setMaximized(true);
             } else {
-                window.setMinWidth(0); window.setMinHeight(0); window.sizeToScene(); window.setMinWidth(window.getWidth());
+                window.setMinWidth(0);
+                window.setMinHeight(0);
+                window.sizeToScene();
+                window.setMinWidth(window.getWidth());
                 window.setMinHeight(window.getHeight());
             }
 
@@ -230,18 +246,28 @@ public class LanguageTrainer extends Application {
     }
 
     public static void showTranslation(ArrayList<ExerciseData> selected) {
-        currentController.onExit(); FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_TRANSLATION),
-                                                                       ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+        currentController.onExit();
+        FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_TRANSLATION),
+                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             boolean maximised = window.isMaximized();
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
-            ControllerTranslate controller = loader.getController(); controller.init(selected); currentController = controller; window.setScene(scene);
+            ControllerTranslate controller = loader.getController();
+            controller.init(selected);
+            currentController = controller;
+            window.setScene(scene);
             if (maximised) {
-                window.setMaximized(true); window.hide(); window.show(); System.out.println("Maximised");
+                window.setMaximized(true);
+                window.hide();
+                window.show();
+                System.out.println("Maximised");
             } else {
-                window.setMinWidth(0); window.setMinHeight(0); window.sizeToScene(); window.setMinWidth(window.getWidth());
+                window.setMinWidth(0);
+                window.setMinHeight(0);
+                window.sizeToScene();
+                window.setMinWidth(window.getWidth());
                 window.setMinHeight(window.getHeight());
             }
         } catch (IOException e) {
@@ -258,19 +284,24 @@ public class LanguageTrainer extends Application {
                                        throwable);
         });
         try {
-            window = primaryStage; window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO))); showLogin();
-            LanguageHandler.setDisplayLanguage(userData.getLanguage()); FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU),
+            window = primaryStage;
+            window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
+            showLogin();
+            LanguageHandler.setDisplayLanguage(userData.getLanguage());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU),
                                                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
-            scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm()); window.setScene(scene);
+            scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
+            window.setScene(scene);
             window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") +
                             " " + Reference.VERSION);
             currentController = loader.getController();
             window.setOnCloseRequest(event -> {
                 if (askForExit()) {
                     try {
-                        currentController.onExit(); System.out.println("Stop time: " + SystemUtil.getTimeAndDataFormatted());
+                        currentController.onExit();
+                        System.out.println("Stop time: " + SystemUtil.getTimeAndDataFormatted());
                     } catch (NullPointerException e) {
                         System.err.println("Scene does not have assigned controller!");
                     }
@@ -294,9 +325,9 @@ public class LanguageTrainer extends Application {
     private void showLogin() {
         Stage stage = new Stage();
         // TODO: Add more images for better resolutions
-        stage.getIcons().add(new Image(Reference.LOGO)); FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT),
-                                                                                            ResourceBundle
-                                                                                                    .getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+        stage.getIcons().add(new Image(Reference.LOGO));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT),
+                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -306,7 +337,10 @@ public class LanguageTrainer extends Application {
             stage.setResizable(false);
         } catch (IOException e1) {
             e1.printStackTrace();
-        } stage.showAndWait(); ControllerProfileSelect controller = loader.getController(); if (! controller.isProfileSelected) {
+        }
+        stage.showAndWait();
+        ControllerProfileSelect controller = loader.getController();
+        if (! controller.isProfileSelected) {
             System.out.println("Stop time: " + SystemUtil.getTimeAndDataFormatted());
             System.exit(0);
         }

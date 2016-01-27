@@ -64,7 +64,8 @@ public class ControllerSettings implements Initializable {
 
                     @Override
                     protected void updateItem(Language item, boolean empty) {
-                        super.updateItem(item, empty); if (item == null || empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
                             setGraphic(null);
                         } else {
                             text.setText(item.getText());
@@ -88,7 +89,9 @@ public class ControllerSettings implements Initializable {
         });
 
         for (String theme : Reference.THEMES) {
-            boxTheme.getItems().add(resources.getString(theme)); map.put(resources.getString(theme), theme); mapReversed.put(theme, resources.getString(theme));
+            boxTheme.getItems().add(resources.getString(theme));
+            map.put(resources.getString(theme), theme);
+            mapReversed.put(theme, resources.getString(theme));
         }
         for (String sound : Reference.SOUNDS_CORRECT) {
             //noinspection HardcodedFileSeparator
@@ -154,7 +157,8 @@ public class ControllerSettings implements Initializable {
         LanguageTrainer.userData.setSoundFinished(map.get(boxFinished.getSelectionModel().getSelectedItem()));
         LanguageTrainer.userData.save();
 
-        Stage stage = (Stage) btnOK.getScene().getWindow(); stage.close();
+        Stage stage = (Stage) btnOK.getScene().getWindow();
+        stage.close();
         LanguageTrainer.window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") +
                                         " " + Reference.VERSION);
         LanguageTrainer.showMenu();

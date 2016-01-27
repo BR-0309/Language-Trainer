@@ -37,9 +37,11 @@ public class ControllerProfileSelect implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         BUNDLE = resources;
         for (File file : LanguageTrainer.universalData.profileLocations) {
-            File[] files = file.listFiles(); if (files == null) {
+            File[] files = file.listFiles();
+            if (files == null) {
                 continue;
-            } for (File f : files) {
+            }
+            for (File f : files) {
                 if (f.getName().endsWith(".ltd")) {
                     String name = f.getName().replace(".ltd", "").replaceAll("_", " ");
                     profiles.put(name, new File(f.getAbsolutePath()));
@@ -102,7 +104,8 @@ public class ControllerProfileSelect implements Initializable {
     public void onGo() {
         String name = list.getSelectionModel().getSelectedItem();
         // TODO: Find out why go returns nul
-        Stage stage = (Stage) newProfile.getScene().getWindow(); if (name != null && ! name.equals("")) {
+        Stage stage = (Stage) newProfile.getScene().getWindow();
+        if (name != null && ! name.equals("")) {
             try {
                 LanguageTrainer.userData = new UserData(profiles.get(name));
                 isProfileSelected = true;
@@ -116,18 +119,24 @@ public class ControllerProfileSelect implements Initializable {
 
     public void onDelete() {
         if (list.getSelectionModel().getSelectedItem() == null) {
-            Toolkit.getDefaultToolkit().beep(); return;
-        } String name = list.getSelectionModel().getSelectedItem(); if (FXUtil
-                .showConfirmationDialog(BUNDLE.getString("profileSelect.deleteTitle"), BUNDLE.getString("profileSelect.deleteHeader").replace("{0}", name),
-                                        BUNDLE.getString("profileSelect.deleteMsg"), "Yes", "No")) {
-            File file = profiles.get(name); System.out.println("Deleting profile at: " + file.getAbsolutePath()); try {
+            Toolkit.getDefaultToolkit().beep();
+            return;
+        }
+        String name = list.getSelectionModel().getSelectedItem();
+        if (FXUtil.showConfirmationDialog(BUNDLE.getString("profileSelect.deleteTitle"), BUNDLE.getString("profileSelect.deleteHeader").replace("{0}", name),
+                                          BUNDLE.getString("profileSelect.deleteMsg"), "Yes", "No")) {
+            File file = profiles.get(name);
+            System.out.println("Deleting profile at: " + file.getAbsolutePath());
+            try {
                 if (file.delete()) {
-                    System.out.println("Profile deleted at: " + file.getAbsolutePath()); list.getItems().remove(name);
+                    System.out.println("Profile deleted at: " + file.getAbsolutePath());
+                    list.getItems().remove(name);
                 } else {
                     System.out.println("Failed to delete profile at: " + file.getAbsolutePath());
                 }
             } catch (SecurityException e) {
-                e.printStackTrace(); FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("error.accessDenied"), e.getLocalizedMessage());
+                e.printStackTrace();
+                FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("error.accessDenied"), e.getLocalizedMessage());
             }
         }
     }

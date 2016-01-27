@@ -29,18 +29,26 @@ public class ControllerAbout implements Initializable, IController {
     public void initialize(URL location, ResourceBundle resources) {
         // Nodes have not been added to the scene yet, so this must be run after initialisation
         Platform.runLater(() -> {
-            Stage stage = (Stage) txtArea.getScene().getWindow(); stage.setTitle(resources.getString("about.title"));
-        }); lblTitle.setText(resources.getString("generic.windowTitle") + " " + Reference.VERSION); txtArea.setText(
-                resources.getString("about.area").replace("{0}", System.getProperty("java.version")).replace("{1}", System.getProperty("java.vendor"))
-                         .replace("{2}", Reference.DEFAULT_SAVE_DIR + File.separator + "logs"));
+            Stage stage = (Stage) txtArea.getScene().getWindow();
+            stage.setTitle(resources.getString("about.title"));
+        });
+        lblTitle.setText(resources.getString("generic.windowTitle") + " " + Reference.VERSION);
+        txtArea.setText(resources.getString("about.area").replace("{0}", System.getProperty("java.version")).replace("{1}", System.getProperty("java.vendor"))
+                                 .replace("{2}", Reference.DEFAULT_SAVE_DIR + File.separator + "logs"));
     }
 
     public void onResources() {
-        Stage stage = new Stage(StageStyle.UTILITY); try {
+        Stage stage = new Stage(StageStyle.UTILITY);
+        try {
             Parent root = FXMLLoader
                     .load(getClass().getResource(Reference.FXML_RESOURCES), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
-            Scene scene = new Scene(root); scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
-            stage.setScene(scene); stage.sizeToScene(); stage.setResizable(false); stage.initModality(Modality.APPLICATION_MODAL); stage.showAndWait();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
             // TODO: Add message

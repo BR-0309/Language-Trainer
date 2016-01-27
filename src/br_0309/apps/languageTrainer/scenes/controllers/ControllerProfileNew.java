@@ -35,17 +35,21 @@ public class ControllerProfileNew implements Initializable {
         BUNDLE = resources;
         // Focus may not be on the text fields so that one can read the prompt
         // text
-        Platform.runLater(() -> ok.requestFocus()); txtFirstName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
+        Platform.runLater(() -> ok.requestFocus());
+        txtFirstName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
         txtLastName.textProperty().addListener((observable, oldTxt, newText) -> updateLocation());
         profileUnconfirmed = new File(Reference.DEFAULT_PROFILE_DIR + File.separator + "_.ltd");
     }
 
     public void onBrowse() {
         // FIXME: File chooser returns invalid filename (.ltd..)
-        FileChooser chooser = new FileChooser(); String filename = txtFirstName.getText().trim() + "_" + txtLastName.getText().trim() + ".ltd";
+        FileChooser chooser = new FileChooser();
+        String filename = txtFirstName.getText().trim() + "_" + txtLastName.getText().trim() + ".ltd";
         if (! filename.equals("_.ltd")) {
             chooser.setInitialFileName(filename);
-        } chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd")); File defaultFolder = new File(txtLocation.getText());
+        }
+        chooser.getExtensionFilters().add(new ExtensionFilter(BUNDLE.getString("generic.ltd"), ".ltd"));
+        File defaultFolder = new File(txtLocation.getText());
         if (defaultFolder.isFile() && ! defaultFolder.getParentFile().exists()) {
             defaultFolder = new File(Reference.DEFAULT_PROFILE_DIR);
         } else if (defaultFolder.isFile() && defaultFolder.getParentFile().exists()) {
@@ -56,10 +60,13 @@ public class ControllerProfileNew implements Initializable {
         chooser.setInitialDirectory(defaultFolder);
         File file = chooser.showSaveDialog(LanguageTrainer.window);
         if (file != null) {
-            txtLocation.setText(file.getAbsolutePath()); profileUnconfirmed = new File(txtLocation.getText());
+            txtLocation.setText(file.getAbsolutePath());
+            profileUnconfirmed = new File(txtLocation.getText());
             try {
                 String name = file.getName().replace(".ltd", "").replace(" ", "_");
-                String[] names = name.split("_"); txtFirstName.setText(names[0].replace(".ltd", "")); txtLastName.setText(names[1].replace(".ltd", ""));
+                String[] names = name.split("_");
+                txtFirstName.setText(names[0].replace(".ltd", ""));
+                txtLastName.setText(names[1].replace(".ltd", ""));
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.err.println("User entered invalid filename. Because it's so hard to use the text fields.");
             }

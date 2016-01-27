@@ -59,7 +59,8 @@ public class UserData implements Serializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
+        }
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
             out.writeObject(properties);
             out.writeObject(stats);
         } catch (IOException e) {

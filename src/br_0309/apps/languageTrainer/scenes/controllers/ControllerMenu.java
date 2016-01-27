@@ -133,9 +133,9 @@ public class ControllerMenu implements Initializable, IController {
                             System.err.printf("Invalid lang code (%s) in file %s. Skipping." + System.lineSeparator(), lang,
                                               file.getAbsolutePath() + System.lineSeparator());
                             continue;
-                        } data.add(
-                                new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""), new Locale(lang).getDisplayLanguage(), VERBS,
-                                                 file, new String[] {lang}));
+                        }
+                        data.add(new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""), new Locale(lang).getDisplayLanguage(), VERBS,
+                                                  file, new String[] {lang}));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -189,8 +189,11 @@ public class ControllerMenu implements Initializable, IController {
         try {
             Parent parent = FXMLLoader
                     .load(getClass().getResource(Reference.FXML_SETTINGS), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
-            Scene scene = new Scene(parent); scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
-            stage.setScene(scene); stage.sizeToScene(); stage.showAndWait();
+            Scene scene = new Scene(parent);
+            scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
             //TODO: Add title and header
@@ -211,10 +214,17 @@ public class ControllerMenu implements Initializable, IController {
     }
 
     public void onAbout() {
-        Stage stage = new Stage(StageStyle.UTILITY); stage.initOwner(LanguageTrainer.window); stage.initModality(Modality.APPLICATION_MODAL); try {
+        Stage stage = new Stage(StageStyle.UTILITY);
+        stage.initOwner(LanguageTrainer.window);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        try {
             Parent parent = FXMLLoader.load(getClass().getResource(Reference.FXML_ABOUT), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
-            Scene scene = new Scene(parent); scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
-            stage.setScene(scene); stage.sizeToScene(); stage.setResizable(false); stage.showAndWait();
+            Scene scene = new Scene(parent);
+            scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.setResizable(false);
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
             //TODO: Add title and header

@@ -86,7 +86,8 @@ public class ControllerStatistics implements Initializable, IController {
 
                     @Override
                     protected void updateItem(Statistics item, boolean empty) {
-                        super.updateItem(item, empty); if (item == null || empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
                             setGraphic(null);
                         } else {
                             text.setText(item.listName);
@@ -115,7 +116,8 @@ public class ControllerStatistics implements Initializable, IController {
                 if (cont) {
                     break;
                 }
-            } if (! cont) {
+            }
+            if (! cont) {
                 ArrayList<Statistics> l = new ArrayList<>();
                 l.add(stat);
                 list.add(l);
@@ -144,9 +146,13 @@ public class ControllerStatistics implements Initializable, IController {
             seriesCheated.getData().add(new XYChart.Data<>(title, ((double) cheated / total) * 100));
             categories.add(title);
         }
-        xAxisBar.setCategories(FXCollections.observableArrayList(categories)); yAxisBar.setUpperBound(100.0d); yAxisBar.setLowerBound(0.0d);
+        xAxisBar.setCategories(FXCollections.observableArrayList(categories));
+        yAxisBar.setUpperBound(100.0d);
+        yAxisBar.setLowerBound(0.0d);
         //noinspection unchecked
-        barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated); yAxisLine.setUpperBound(100.0d); yAxisLine.setLowerBound(0.0d);
+        barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);
+        yAxisLine.setUpperBound(100.0d);
+        yAxisLine.setLowerBound(0.0d);
     }
 
     public void exit() {

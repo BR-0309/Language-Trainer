@@ -50,7 +50,8 @@ public class ControllerAddLanguage implements Initializable {
 
                     @Override
                     protected void updateItem(Locale item, boolean empty) {
-                        super.updateItem(item, empty); if (item == null || empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
                             setGraphic(null);
                         } else {
                             text.setText(item.getDisplayLanguage());
@@ -78,7 +79,8 @@ public class ControllerAddLanguage implements Initializable {
             if (b) {
                 localeList.add(locale);
             }
-        } Comparator<Locale> comparator = (locale1, locale2) -> locale1.getDisplayLanguage().compareTo(locale2.getDisplayLanguage());
+        }
+        Comparator<Locale> comparator = (locale1, locale2) -> locale1.getDisplayLanguage().compareTo(locale2.getDisplayLanguage());
         Collections.sort(localeList, comparator);
         objects = new FilteredList<>(FXCollections.observableList(localeList));
         list.setItems(objects);

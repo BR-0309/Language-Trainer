@@ -64,7 +64,8 @@ public class LanguageHandler {
 
     @SuppressWarnings("HardcodedFileSeparator")
     public static String getFlag(Locale locale) {
-        String country = locale.getCountry().trim(); if (! country.isEmpty()) {
+        String country = locale.getCountry().trim();
+        if (! country.isEmpty()) {
             return "/icons/flags/" + country + ".png";
         } else {
             for (Locale l : LANGUAGES) {

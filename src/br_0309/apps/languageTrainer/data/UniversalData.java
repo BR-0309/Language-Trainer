@@ -12,7 +12,8 @@ public class UniversalData {
 
     @SuppressWarnings("unchecked")
     public void load() {
-        File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat"); if (! file.exists()) {
+        File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
+        if (! file.exists()) {
             System.out.println("File does not exist");
             profileLocations = new ArrayList<>();
             exerciseLocations = new ArrayList<>();
@@ -43,7 +44,8 @@ public class UniversalData {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void save() {
-        File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat"); if (! file.exists()) {
+        File file = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "settings.dat");
+        if (! file.exists()) {
             profileLocations = new ArrayList<>();
             exerciseLocations = new ArrayList<>();
             file.getParentFile().mkdirs();
@@ -80,7 +82,8 @@ public class UniversalData {
             if (folder == null) {
                 return;
             }
-        } if (! folder.exists()) {
+        }
+        if (! folder.exists()) {
             return;
         }
         for (File f : profileLocations) {
@@ -101,7 +104,8 @@ public class UniversalData {
             if (folder == null) {
                 return;
             }
-        } if (! folder.exists()) {
+        }
+        if (! folder.exists()) {
             return;
         }
         if (exerciseLocations == null) {
