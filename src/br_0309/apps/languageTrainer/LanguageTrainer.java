@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
 // FIXME: If window is maximised, keep it so
 // TODO: Get a system for bundle keys
 // FIXME: Copy over the copyrights in the right format
+// FIXME: Make .icns logos
 public class LanguageTrainer extends Application {
 
     public static final UniversalData universalData = new UniversalData();
