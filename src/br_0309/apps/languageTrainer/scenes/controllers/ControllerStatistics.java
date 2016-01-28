@@ -45,7 +45,8 @@ public class ControllerStatistics implements Initializable, IController {
         for (Statistics stat : allStatistics) {
             boolean add = true;
             for (Statistics s : tempList) {
-                if (s.listType == stat.listType && s.listName.equals(stat.listName) && Arrays.equals(s.langCodes, stat.langCodes)) add = false;
+                if (s.listType == stat.listType && s.listName.equals(stat.listName) && Arrays.equals(s.langCodes, stat.langCodes))
+                    add = false;
             }
             if (add) {
                 tempList.add(stat);
@@ -117,7 +118,7 @@ public class ControllerStatistics implements Initializable, IController {
                     break;
                 }
             }
-            if (! cont) {
+            if (!cont) {
                 ArrayList<Statistics> l = new ArrayList<>();
                 l.add(stat);
                 list.add(l);
@@ -166,8 +167,8 @@ public class ControllerStatistics implements Initializable, IController {
             return;
         }
         ArrayList<Statistics> stats = allStatistics.stream().filter(s -> s.listType == stat.listType && s.listName.equals(stat.listName) &&
-                                                                         Arrays.equals(s.langCodes, stat.langCodes))
-                                                   .collect(Collectors.toCollection(ArrayList::new));
+                Arrays.equals(s.langCodes, stat.langCodes))
+                .collect(Collectors.toCollection(ArrayList::new));
         if (stats.isEmpty()) {
             return;
         }
@@ -202,8 +203,8 @@ public class ControllerStatistics implements Initializable, IController {
         //noinspection unchecked
         lineChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);
         ObservableList<PieChart.Data> pieData = FXCollections.observableArrayList(new PieChart.Data(BUNDLE.getString("statistics.correct"), totalCorrect),
-                                                                                  new PieChart.Data(BUNDLE.getString("statistics.incorrect"), totalIncorrect),
-                                                                                  new PieChart.Data(BUNDLE.getString("statistics.cheated"), totalCheated));
+                new PieChart.Data(BUNDLE.getString("statistics.incorrect"), totalIncorrect),
+                new PieChart.Data(BUNDLE.getString("statistics.cheated"), totalCheated));
         pieChart.getData().addAll(pieData);
     }
 

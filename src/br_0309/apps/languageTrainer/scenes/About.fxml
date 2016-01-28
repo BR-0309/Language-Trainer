@@ -8,40 +8,39 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
-            prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerAbout">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerAbout">
     <center>
         <TextArea fx:id="txtArea" editable="false" wrapText="true" BorderPane.alignment="CENTER">
             <BorderPane.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </BorderPane.margin>
         </TextArea>
     </center>
     <bottom>
         <AnchorPane BorderPane.alignment="CENTER">
-            <Hyperlink onAction="#onResources" text="%about.resources" AnchorPane.bottomAnchor="5.0"
-                       AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
-            <Label text="%about.copyright" textFill="#757575" AnchorPane.bottomAnchor="5.0"
-                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+           <children>
+               <Hyperlink onAction="#onResources" text="%about.resources" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+               <Label text="%about.copyright" textFill="#757575" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+           </children>
         </AnchorPane>
     </bottom>
     <top>
         <AnchorPane>
-            <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
-                       AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
-                       BorderPane.alignment="CENTER_LEFT">
-                <BorderPane.margin>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                </BorderPane.margin>
-                <Image url="/icons/Logo.png"/>
-            </ImageView>
-            <Label fx:id="lblTitle" layoutX="264.0" layoutY="29.0" AnchorPane.bottomAnchor="5.0"
-                   AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
-                <font>
-                    <Font size="20.0"/>
-                </font>
-            </Label>
+           <children>
+               <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" BorderPane.alignment="CENTER_LEFT">
+                   <BorderPane.margin>
+                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                   </BorderPane.margin>
+                  <image>
+                      <Image url="/icons/Logo.png" />
+                  </image>
+               </ImageView>
+               <Label fx:id="lblTitle" layoutX="264.0" layoutY="29.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+                   <font>
+                       <Font size="20.0" />
+                   </font>
+               </Label>
+           </children>
         </AnchorPane>
     </top>
 </BorderPane>

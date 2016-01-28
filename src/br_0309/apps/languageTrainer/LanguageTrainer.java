@@ -28,7 +28,6 @@ import java.util.ResourceBundle;
 
 // TODO: Add icons at different resolutions
 // TODO: Make themes less terrible
-// TODO: Internationalise Copyrights.txt
 // FIXME: If window is maximised, keep it so
 // TODO: Get a system for bundle keys
 // FIXME: Copy over the copyrights in the right format
@@ -47,19 +46,19 @@ public class LanguageTrainer extends Application {
         Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
             throwable.printStackTrace();
             FXUtil.showExceptionDialog(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.error"), throwable.toString(),
-                                       throwable);
+                    throwable);
         });
         // System-specific settings
         if (SystemUtil.isWindows()) {
             File file = new File(System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Roaming" +
-                                 File.separator + "LanguageTrainer" + File.separator);
+                    File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
 
         } else if (SystemUtil.isMac()) {
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             File file = new File(System.getProperty("user.home") + File.separator + "Library" + File.separator +
-                                 "Application Support" + File.separator + "LanguageTrainer" + File.separator);
+                    "Application Support" + File.separator + "LanguageTrainer" + File.separator);
             file.mkdirs();
             Reference.DEFAULT_SAVE_DIR = file.getAbsolutePath();
         } else {
@@ -69,7 +68,7 @@ public class LanguageTrainer extends Application {
         }
         Reference.DEFAULT_EXERCISE_DIR = Reference.DEFAULT_SAVE_DIR + File.separator + "exercises" + File.separator;
         // If the application is run from anything but loose files, redirect console to log_<<time>>.txt
-        if (! SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
+        if (!SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
             File log = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate() + ".txt");
             try {
                 log.getParentFile().mkdirs();
@@ -101,17 +100,17 @@ public class LanguageTrainer extends Application {
      */
     private static void printSystemInfo() {
         System.out.println("Operating System:\t\t\t" + System.getProperty("os.name") + System.lineSeparator() + "Operating System Version:\t" +
-                           System.getProperty("os.version") + System.lineSeparator() + "Architecture:\t\t\t\t" +
-                           System.getProperty("os.arch") + System.lineSeparator() + "Java Version:\t\t\t\t" +
-                           System.getProperty("java.version") + System.lineSeparator() + "Java Vendor:\t\t\t\t" +
-                           System.getProperty("java.vendor") + System.lineSeparator() + "Java Home Dir:\t\t\t\t" +
-                           System.getProperty("java.home") + System.lineSeparator() + "Temporary Dir:\t\t\t\t" +
-                           System.getProperty("java.io.tmpdir") + System.lineSeparator() + "Execution Dir:\t\t\t\t" +
-                           System.getProperty("user.dir") + System.lineSeparator() + "User Home Dir:\t\t\t\t" +
-                           System.getProperty("user.home") + System.lineSeparator() + "System language:\t\t\t" +
-                           System.getProperty("user.language") + System.lineSeparator() + "JVM Default Locale:\t\t\t" +
-                           Locale.getDefault() + System.lineSeparator() + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() +
-                           System.lineSeparator() + "Language Trainer version:\t" + Reference.VERSION + System.lineSeparator());
+                System.getProperty("os.version") + System.lineSeparator() + "Architecture:\t\t\t\t" +
+                System.getProperty("os.arch") + System.lineSeparator() + "Java Version:\t\t\t\t" +
+                System.getProperty("java.version") + System.lineSeparator() + "Java Vendor:\t\t\t\t" +
+                System.getProperty("java.vendor") + System.lineSeparator() + "Java Home Dir:\t\t\t\t" +
+                System.getProperty("java.home") + System.lineSeparator() + "Temporary Dir:\t\t\t\t" +
+                System.getProperty("java.io.tmpdir") + System.lineSeparator() + "Execution Dir:\t\t\t\t" +
+                System.getProperty("user.dir") + System.lineSeparator() + "User Home Dir:\t\t\t\t" +
+                System.getProperty("user.home") + System.lineSeparator() + "System language:\t\t\t" +
+                System.getProperty("user.language") + System.lineSeparator() + "JVM Default Locale:\t\t\t" +
+                Locale.getDefault() + System.lineSeparator() + "Best suited locale:\t\t\t" + LanguageHandler.getBestLocale() +
+                System.lineSeparator() + "Language Trainer version:\t" + Reference.VERSION + System.lineSeparator());
     }
 
     public static void setScene(String sceneLoc) {
@@ -143,7 +142,7 @@ public class LanguageTrainer extends Application {
     public static void showMenu() {
         currentController.onExit();
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_MENU),
-                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             boolean maximised = window.isMaximized();
             System.out.println(maximised);
@@ -173,7 +172,7 @@ public class LanguageTrainer extends Application {
         ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
         return FXUtil
                 .showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"), BUNDLE.getString("generic.confirmQuit"),
-                                        BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"));
+                        BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"));
     }
 
     public static void playSoundCorrect() {
@@ -248,7 +247,7 @@ public class LanguageTrainer extends Application {
     public static void showTranslation(ArrayList<ExerciseData> selected) {
         currentController.onExit();
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_TRANSLATION),
-                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             boolean maximised = window.isMaximized();
             Parent root = loader.load();
@@ -281,7 +280,7 @@ public class LanguageTrainer extends Application {
         Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {
             throwable.printStackTrace();
             FXUtil.showExceptionDialog(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.error"), throwable.toString(),
-                                       throwable);
+                    throwable);
         });
         try {
             window = primaryStage;
@@ -289,13 +288,13 @@ public class LanguageTrainer extends Application {
             showLogin();
             LanguageHandler.setDisplayLanguage(userData.getLanguage());
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU),
-                                               ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+                    ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
             scene.getStylesheets().add(getClass().getResource(userData.getTheme()).toExternalForm());
             window.setScene(scene);
             window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") +
-                            " " + Reference.VERSION);
+                    " " + Reference.VERSION);
             currentController = loader.getController();
             window.setOnCloseRequest(event -> {
                 if (askForExit()) {
@@ -327,7 +326,7 @@ public class LanguageTrainer extends Application {
         // TODO: Add more images for better resolutions
         stage.getIcons().add(new Image(Reference.LOGO));
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT),
-                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -340,7 +339,7 @@ public class LanguageTrainer extends Application {
         }
         stage.showAndWait();
         ControllerProfileSelect controller = loader.getController();
-        if (! controller.isProfileSelected) {
+        if (!controller.isProfileSelected) {
             System.out.println("Stop time: " + SystemUtil.getTimeAndDataFormatted());
             System.exit(0);
         }

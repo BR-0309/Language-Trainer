@@ -6,7 +6,7 @@ import java.util.Date;
 // FIXME: Add total to prevent cheating the cheats
 public class Statistics implements Serializable, Comparable<Statistics> {
 
-    private static final long serialVersionUID = - 2484107990886936920L;
+    private static final long serialVersionUID = -2484107990886936920L;
     public final String listName;
     public final boolean listType;
     public final String[] langCodes;

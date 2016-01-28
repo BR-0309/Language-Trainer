@@ -80,7 +80,7 @@ public class ControllerSettings implements Initializable {
         boxLanguage.setButtonCell(new ListCell<Language>() {
             @Override
             protected void updateItem(Language item, boolean empty) {
-                if (item != null || ! empty) {
+                if (item != null || !empty) {
                     if (item != null) {
                         setText(item.getText());
                     }
@@ -130,8 +130,8 @@ public class ControllerSettings implements Initializable {
 
         // Select correct language by cycling through all of them
         Language l = new Language(LanguageTrainer.userData.getLanguage().getDisplayName(),
-                                  new ImageView(Reference.FLAG_DIR + LanguageTrainer.userData.getLanguage().getCountry() +
-                                                ".png"));
+                new ImageView(Reference.FLAG_DIR + LanguageTrainer.userData.getLanguage().getCountry() +
+                        ".png"));
         boxLanguage.getSelectionModel().selectFirst();
         for (int i = 0; i < boxLanguage.getItems().size(); i++) {
             Language l2 = boxLanguage.getItems().get(i);
@@ -160,14 +160,14 @@ public class ControllerSettings implements Initializable {
         Stage stage = (Stage) btnOK.getScene().getWindow();
         stage.close();
         LanguageTrainer.window.setTitle(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.windowTitle") +
-                                        " " + Reference.VERSION);
+                " " + Reference.VERSION);
         LanguageTrainer.showMenu();
     }
 
     // FIXME: Reverts to wrong language
     public void onReset() {
         if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmReset"), BUNDLE.getString("generic.noUndo"),
-                                          BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"))) {
+                BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"))) {
             UserData userData = new UserData();
             boxTheme.getSelectionModel().select(BUNDLE.getString(userData.getTheme()));
             boxCorrect.getSelectionModel().select(mapReversed.get(userData.getSoundCorrect()));

@@ -8,7 +8,9 @@ public class VocabularyListData {
 
     public String get(String key) {
         String s = map.get(key);
-        if (s == null) { return ""; } else return s;
+        if (s == null) {
+            return "";
+        } else return s;
     }
 
     public void set(String key, String value) {
