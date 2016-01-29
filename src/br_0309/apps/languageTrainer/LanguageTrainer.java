@@ -30,7 +30,6 @@ import java.util.ResourceBundle;
 // TODO: Make themes less terrible
 // FIXME: If window is maximised, keep it so
 // TODO: Get a system for bundle keys
-// FIXME: Copy over the copyrights in the right format
 // FIXME: Make .icns logos
 public class LanguageTrainer extends Application {
 

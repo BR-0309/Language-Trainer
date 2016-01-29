@@ -82,13 +82,13 @@ public class ControllerResources implements Initializable {
                 } else {
                     if (item.equals(cc0)) {
                         setText(item);
-                        setStyle("-fx-background-color: green");
+                        setStyle("-fx-background-color: darkgreen");
                     } else if (item.equals(cca)) {
                         setText(item);
                         setStyle("-fx-background-color: orange");
                     } else if (item.equals(pd)) {
                         setText(item);
-                        setStyle("-fx-background-color: lime");
+                        setStyle("-fx-background-color: green");
                     } else {
                         setText(item);
                         setStyle("");

@@ -40,7 +40,7 @@ CZ.png                      Phroziac, -xfi, Zirland     Public domain           
 DE.png                      Anomie                      Public domain                   https://en.wikipedia.org/wiki/File:Flag_of_Germany.svg                                      Modified size, filename and type
 DK.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Denmark_(WFB_2004).gif                      Modified size, filename and type
 EE.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Estonia_(WFB_2004).gif                      Modified size, filename and type
-ES.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Spain_(WFB_2004).gif
+ES.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Spain_(WFB_2004).gif                        Modified size, filename and type
 FI.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Finland_(WFB_2004).gif                      Modified size, filename and type
 FJ.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Fiji_(WFB_2004).gif                         Modified size, filename and type
 FO.png                      US CIA                      Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_the_Faroe_Islands_(WFB_2004).gif            Modified size, filename and type
@@ -71,7 +71,7 @@ SCOT.png                    Unknown                     Public domain           
 SE.png                      Anomie                      Public domain                   https://en.wikipedia.org/wiki/File:Flag_of_Sweden.svg                                       Modified size, filename and type
 SK.png                      SKopp                       Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Slovakia.svg                                Modified size, filename and type
 SL.png                      Zscout370                   Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Sierra_Leone.svg                            Modified size, filename and type
-SN.png                      Nighstallion                Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Senegal.svg                                 Modified size, filename and type
+SN.png                      Nightstallion               Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Senegal.svg                                 Modified size, filename and type
 SZ.png                      Nightstallion               Creative Commons 0              https://commons.wikimedia.org/wiki/File:Flag_of_Swaziland.svg                               Modified size, filename and type
 TO.png                      Nightstallion               Creative Commons 0              https://commons.wikimedia.org/wiki/File:Flag_of_Tonga.svg                                   Modified size, filename and type
 TR.png                      David Benbennick            Public domain                   https://commons.wikimedia.org/wiki/File:Flag_of_Turkey.svg                                  Modified size, filename and type
