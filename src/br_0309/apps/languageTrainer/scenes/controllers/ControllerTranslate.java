@@ -53,7 +53,7 @@ public class ControllerTranslate implements Initializable, IController {
         BUNDLE = resources;
         btnExit.setOnAction(value -> {
             if (FXUtil.showConfirmationDialog(resources.getString("generic.confirm"), resources.getString("generic.confirmQuit"), "",
-                    resources.getString("generic.ok"), resources.getString("generic.cancel"))) {
+                                              resources.getString("generic.ok"), resources.getString("generic.cancel"))) {
                 LanguageTrainer.showMenu();
             }
         });
@@ -68,7 +68,7 @@ public class ControllerTranslate implements Initializable, IController {
             // Shown on the progress bar
             solvedCorrectly++;
             // If solved correctly on first try
-            if (!wrong.contains(word)) {
+            if (! wrong.contains(word)) {
                 correct++;
                 for (Statistics stat : stats) {
                     if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
@@ -81,7 +81,7 @@ public class ControllerTranslate implements Initializable, IController {
         } else {
             LanguageTrainer.playSoundIncorrect();
             // If the word is wrong for the first time
-            if (!wrong.contains(word)) {
+            if (! wrong.contains(word)) {
                 incorrect++;
                 wrong.add(word);
                 // Look for relevant statistic and increase the statistic
@@ -105,9 +105,9 @@ public class ControllerTranslate implements Initializable, IController {
                 double[] times = {0, 1, 2};
                 String[] timesStrings = {BUNDLE.getString("exercise.times"), BUNDLE.getString("exercise.time"), BUNDLE.getString("exercise.times")};
                 Format[] formats = {NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(), formatAnswer, NumberFormat.getInstance(),
-                        new ChoiceFormat(times, timesStrings)};
+                                    new ChoiceFormat(times, timesStrings)};
                 format.setFormats(formats);
-                String msg = format.format(new Object[]{correct, correct, incorrect, incorrect, cheated, cheated});
+                String msg = format.format(new Object[] {correct, correct, incorrect, incorrect, cheated, cheated});
                 FXUtil.showInformationDialog(BUNDLE.getString("exercise.finishedHeader"), msg);
                 LanguageTrainer.showMenu();
                 return;
@@ -223,7 +223,7 @@ public class ControllerTranslate implements Initializable, IController {
         progressBar.setProgress((double) solvedCorrectly / length);
         //noinspection HardcodedFileSeparator
         lblProgress.setText(solvedCorrectly + "/" + Integer.toString(length) + " " +
-                new Double(progressBar.getProgress() * 100).intValue() + "%");
+                            new Double(progressBar.getProgress() * 100).intValue() + "%");
     }
 
 }

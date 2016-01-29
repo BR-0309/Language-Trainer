@@ -156,7 +156,7 @@ public class ControllerResources implements Initializable {
         try {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(getClass().getResourceAsStream(Reference.COPYRIGHTS_BASE_NAME + Locale.getDefault().getLanguage() +
-                            Reference.COPYRIGHTS_END)));
+                                                                         Reference.COPYRIGHTS_END)));
             String line = reader.readLine();
             reader.close();
 

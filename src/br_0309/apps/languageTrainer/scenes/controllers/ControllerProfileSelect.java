@@ -58,7 +58,7 @@ public class ControllerProfileSelect implements Initializable {
 
     public void onCancel() {
         if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"), null, BUNDLE.getString("generic.ok"),
-                BUNDLE.getString("generic.cancel"))) {
+                                          BUNDLE.getString("generic.cancel"))) {
             System.exit(0);
         }
     }
@@ -67,7 +67,7 @@ public class ControllerProfileSelect implements Initializable {
     public void onNewProfile() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_NEW),
-                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -97,7 +97,7 @@ public class ControllerProfileSelect implements Initializable {
             stage2.close();
         } catch (IOException e) {
             FXUtil.showExceptionDialog(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.error"),
-                    BUNDLE.getString("profile.createFail"), e, stage2);
+                                       BUNDLE.getString("profile.createFail"), e, stage2);
         }
     }
 
@@ -105,14 +105,14 @@ public class ControllerProfileSelect implements Initializable {
         String name = list.getSelectionModel().getSelectedItem();
         // TODO: Find out why go returns nul
         Stage stage = (Stage) newProfile.getScene().getWindow();
-        if (name != null && !name.equals("")) {
+        if (name != null && ! name.equals("")) {
             try {
                 LanguageTrainer.userData = new UserData(profiles.get(name));
                 isProfileSelected = true;
                 stage.close();
             } catch (Exception e) {
                 FXUtil.showExceptionDialog(ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()).getString("generic.error"),
-                        BUNDLE.getString("profile.loadFail"), e, stage);
+                                           BUNDLE.getString("profile.loadFail"), e, stage);
             }
         }
     }
@@ -124,7 +124,7 @@ public class ControllerProfileSelect implements Initializable {
         }
         String name = list.getSelectionModel().getSelectedItem();
         if (FXUtil.showConfirmationDialog(BUNDLE.getString("profileSelect.deleteTitle"), BUNDLE.getString("profileSelect.deleteHeader").replace("{0}", name),
-                BUNDLE.getString("profileSelect.deleteMsg"), BUNDLE.getString("generic.yes"), BUNDLE.getString("generic.no"))) {
+                                          BUNDLE.getString("profileSelect.deleteMsg"), BUNDLE.getString("generic.yes"), BUNDLE.getString("generic.no"))) {
             File file = profiles.get(name);
             System.out.println("Deleting profile at: " + file.getAbsolutePath());
             try {

@@ -54,7 +54,7 @@ public class ControllerProfileNew implements Initializable {
             return;
         }
         Stage stage = (Stage) ok.getScene().getWindow();
-        profile = new File(txtLocation.getText() + File.separator + txtName.getText().replaceAll(" ", "_") +  ".ltd");
+        profile = new File(txtLocation.getText() + File.separator + txtName.getText().replaceAll(" ", "_") + ".ltd");
         stage.close();
     }
 }

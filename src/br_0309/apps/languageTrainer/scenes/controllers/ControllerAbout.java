@@ -34,7 +34,7 @@ public class ControllerAbout implements Initializable, IController {
         });
         lblTitle.setText(resources.getString("generic.windowTitle") + " " + Reference.VERSION);
         txtArea.setText(resources.getString("about.area").replace("{0}", System.getProperty("java.version")).replace("{1}", System.getProperty("java.vendor"))
-                .replace("{2}", Reference.DEFAULT_SAVE_DIR + File.separator + "logs"));
+                                 .replace("{2}", Reference.DEFAULT_SAVE_DIR + File.separator + "logs"));
     }
 
     public void onResources() {

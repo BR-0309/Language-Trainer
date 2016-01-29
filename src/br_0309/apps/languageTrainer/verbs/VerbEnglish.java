@@ -44,7 +44,7 @@ public class VerbEnglish implements Serializable {
             pastParticiple = infinitive + "ed";
         } else if (StringUtil.isOneSyllable(infinitive) && infinitive.length() > 2) {
             if (StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 3)) && StringUtil.isVowel(infinitive.charAt(infinitive.length() - 2)) &&
-                    StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
+                StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
                 String s = infinitive + infinitive.charAt(infinitive.length() - 1);
                 presentParticiple = s + "ing";
                 pastParticiple = s + "ed";
@@ -68,8 +68,8 @@ public class VerbEnglish implements Serializable {
         verb.infinitive = infinitive;
         verb.warning = warning;
         // Present tenses
-        verb.presentContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.presentContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                               presentParticiple};
         String thirdPersonSingular = infinitive;
         if (infinitive.endsWith("ss") || infinitive.endsWith("x") || infinitive.endsWith("ch") || infinitive.endsWith("sh") || infinitive.endsWith("o")) {
             thirdPersonSingular += "es";
@@ -78,22 +78,22 @@ public class VerbEnglish implements Serializable {
         } else {
             thirdPersonSingular += "s";
         }
-        verb.presentSimple = new String[]{infinitive, infinitive, thirdPersonSingular, infinitive, infinitive, infinitive};
-        verb.presentPerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.presentPerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.presentSimple = new String[] {infinitive, infinitive, thirdPersonSingular, infinitive, infinitive, infinitive};
+        verb.presentPerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.presentPerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                      presentParticiple};
         // Future tenses
-        verb.future = new String[]{infinitive, infinitive, infinitive, infinitive, infinitive, infinitive};
-        verb.futureContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
-        verb.futurePerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.futurePerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.future = new String[] {infinitive, infinitive, infinitive, infinitive, infinitive, infinitive};
+        verb.futureContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
+        verb.futurePerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.futurePerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                     presentParticiple};
         // Past tenses
-        verb.pastSimple = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.pastPerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.pastPerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
-        verb.pastContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
+        verb.pastSimple = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.pastPerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.pastPerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                   presentParticiple};
+        verb.pastContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
         return verb;
     }
 
@@ -115,7 +115,7 @@ public class VerbEnglish implements Serializable {
             pastParticiple = infinitive + "ed";
         } else if (StringUtil.isOneSyllable(infinitive) && infinitive.length() > 2) {
             if (StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 3)) && StringUtil.isVowel(infinitive.charAt(infinitive.length() - 2)) &&
-                    StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
+                StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
                 String s = infinitive + infinitive.charAt(infinitive.length() - 1);
                 presentParticiple = s + "ing";
                 pastParticiple = s + "ed";
@@ -139,8 +139,8 @@ public class VerbEnglish implements Serializable {
         verb.infinitive = infinitive;
         verb.warning = warning;
         // Present tenses
-        verb.presentContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.presentContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                               presentParticiple};
         String thirdPersonSingular = infinitive;
         if (infinitive.endsWith("ss") || infinitive.endsWith("x") || infinitive.endsWith("ch") || infinitive.endsWith("sh") || infinitive.endsWith("o")) {
             thirdPersonSingular += "es";
@@ -149,22 +149,22 @@ public class VerbEnglish implements Serializable {
         } else {
             thirdPersonSingular += "s";
         }
-        verb.presentSimple = new String[]{infinitive, infinitive, thirdPersonSingular, infinitive, infinitive, infinitive};
-        verb.presentPerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.presentPerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.presentSimple = new String[] {infinitive, infinitive, thirdPersonSingular, infinitive, infinitive, infinitive};
+        verb.presentPerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.presentPerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                      presentParticiple};
         // Future tenses
-        verb.future = new String[]{infinitive, infinitive, infinitive, infinitive, infinitive, infinitive};
-        verb.futureContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
-        verb.futurePerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.futurePerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.future = new String[] {infinitive, infinitive, infinitive, infinitive, infinitive, infinitive};
+        verb.futureContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
+        verb.futurePerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.futurePerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                     presentParticiple};
         // Past tenses
-        verb.pastSimple = new String[]{pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI};
-        verb.pastPerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.pastPerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
-        verb.pastContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
+        verb.pastSimple = new String[] {pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI};
+        verb.pastPerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.pastPerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                   presentParticiple};
+        verb.pastContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
         return verb;
     }
 
@@ -182,7 +182,7 @@ public class VerbEnglish implements Serializable {
             presentParticiple = infinitive + "ing";
         } else if (StringUtil.isOneSyllable(infinitive) && infinitive.length() > 2) {
             if (StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 3)) && StringUtil.isVowel(infinitive.charAt(infinitive.length() - 2)) &&
-                    StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
+                StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
                 String s = infinitive + infinitive.charAt(infinitive.length() - 1);
                 presentParticiple = s + "ing";
             } else {
@@ -202,8 +202,8 @@ public class VerbEnglish implements Serializable {
         verb.infinitive = infinitive;
         verb.warning = warning;
         // Present tenses
-        verb.presentContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.presentContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                               presentParticiple};
         String thirdPersonSingular = infinitive;
         if (infinitive.endsWith("ss") || infinitive.endsWith("x") || infinitive.endsWith("ch") || infinitive.endsWith("sh") || infinitive.endsWith("o")) {
             thirdPersonSingular += "es";
@@ -212,22 +212,22 @@ public class VerbEnglish implements Serializable {
         } else {
             thirdPersonSingular += "s";
         }
-        verb.presentSimple = new String[]{infinitive, infinitive, thirdPersonSingular, infinitive, infinitive, infinitive};
-        verb.presentPerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.presentPerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.presentSimple = new String[] {infinitive, infinitive, thirdPersonSingular, infinitive, infinitive, infinitive};
+        verb.presentPerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.presentPerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                      presentParticiple};
         // Future tenses
-        verb.future = new String[]{infinitive, infinitive, infinitive, infinitive, infinitive, infinitive};
-        verb.futureContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
-        verb.futurePerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.futurePerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.future = new String[] {infinitive, infinitive, infinitive, infinitive, infinitive, infinitive};
+        verb.futureContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
+        verb.futurePerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.futurePerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                     presentParticiple};
         // Past tenses
-        verb.pastSimple = new String[]{pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI};
-        verb.pastPerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.pastPerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
-        verb.pastContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
+        verb.pastSimple = new String[] {pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI, pastSimpleI};
+        verb.pastPerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.pastPerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                   presentParticiple};
+        verb.pastContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
         return verb;
     }
 
@@ -245,7 +245,7 @@ public class VerbEnglish implements Serializable {
             presentParticiple = infinitive + "ing";
         } else if (StringUtil.isOneSyllable(infinitive) && infinitive.length() > 2) {
             if (StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 3)) && StringUtil.isVowel(infinitive.charAt(infinitive.length() - 2)) &&
-                    StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
+                StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 1))) {
                 String s = infinitive + infinitive.charAt(infinitive.length() - 1);
                 presentParticiple = s + "ing";
             } else {
@@ -265,8 +265,8 @@ public class VerbEnglish implements Serializable {
         verb.infinitive = infinitive;
         verb.warning = warning;
         // Present tenses
-        verb.presentContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.presentContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                               presentParticiple};
         String thirdPersonSingular = infinitive;
         if (infinitive.endsWith("ss") || infinitive.endsWith("x") || infinitive.endsWith("ch") || infinitive.endsWith("sh") || infinitive.endsWith("o")) {
             thirdPersonSingular += "es";
@@ -275,22 +275,22 @@ public class VerbEnglish implements Serializable {
         } else {
             thirdPersonSingular += "s";
         }
-        verb.presentSimple = new String[]{infinitive, infinitive, thirdPersonSingular, infinitive, infinitive, infinitive};
-        verb.presentPerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.presentPerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.presentSimple = new String[] {infinitive, infinitive, thirdPersonSingular, infinitive, infinitive, infinitive};
+        verb.presentPerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.presentPerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                      presentParticiple};
         // Future tenses
-        verb.future = new String[]{infinitive, infinitive, infinitive, infinitive, infinitive, infinitive};
-        verb.futureContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
-        verb.futurePerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.futurePerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
+        verb.future = new String[] {infinitive, infinitive, infinitive, infinitive, infinitive, infinitive};
+        verb.futureContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
+        verb.futurePerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.futurePerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                     presentParticiple};
         // Past tenses
-        verb.pastSimple = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.pastPerfect = new String[]{pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
-        verb.pastPerfectContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
-                presentParticiple};
-        verb.pastContinuous = new String[]{presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
+        verb.pastSimple = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.pastPerfect = new String[] {pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple, pastParticiple};
+        verb.pastPerfectContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
+                                                   presentParticiple};
+        verb.pastContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple};
         return verb;
     }
 

@@ -92,7 +92,7 @@ public class ControllerMenu implements Initializable, IController {
             if (folder == null) {
                 System.err.println("Null reference in exercise locations!");
                 continue;
-            } else if (!folder.exists() || folder.isFile()) {
+            } else if (! folder.exists() || folder.isFile()) {
                 System.err.println(folder.getAbsolutePath() + " does not exist or is a file!");
                 continue;
             }
@@ -102,7 +102,7 @@ public class ControllerMenu implements Initializable, IController {
                 if (file == null) {
                     System.err.println("Null reference file!");
                     continue;
-                } else if (!file.exists() || file.isDirectory()) {
+                } else if (! file.exists() || file.isDirectory()) {
                     System.err.println(file.getAbsolutePath() + " does not exist or is a directory! Nested exercises are not supported!");
                     continue;
                 }
@@ -117,7 +117,7 @@ public class ControllerMenu implements Initializable, IController {
                             for (int j = i + 1; j < langs.length; j++) {
                                 String lang1 = new Locale(langs[i]).getDisplayLanguage();
                                 String lang2 = new Locale(langs[j]).getDisplayLanguage();
-                                data.add(new ExerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file, new String[]{langs[i], langs[j]}));
+                                data.add(new ExerciseData(false, name, lang1 + " " + lang2, TRANSLATION, file, new String[] {langs[i], langs[j]}));
                             }
                         }
 
@@ -131,11 +131,11 @@ public class ControllerMenu implements Initializable, IController {
                         String lang = scan.nextLine();
                         if (lang.length() > 3) {
                             System.err.printf("Invalid lang code (%s) in file %s. Skipping." + System.lineSeparator(), lang,
-                                    file.getAbsolutePath() + System.lineSeparator());
+                                              file.getAbsolutePath() + System.lineSeparator());
                             continue;
                         }
                         data.add(new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""), new Locale(lang).getDisplayLanguage(), VERBS,
-                                file, new String[]{lang}));
+                                                  file, new String[] {lang}));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

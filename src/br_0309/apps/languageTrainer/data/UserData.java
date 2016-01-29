@@ -51,7 +51,7 @@ public class UserData implements Serializable {
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void save() {
-        if (!file.exists()) {
+        if (! file.exists()) {
             try {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
@@ -74,7 +74,7 @@ public class UserData implements Serializable {
     @SuppressWarnings("unchecked")
     public void load() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
-            if (!file.exists()) {
+            if (! file.exists()) {
                 save();
                 return;
             }
@@ -93,7 +93,7 @@ public class UserData implements Serializable {
                 properties = new Properties(getDefaults());
             }
             // For each, set property and value
-            defaults.entrySet().stream().filter(entry -> !properties.containsKey(entry.getKey()))
+            defaults.entrySet().stream().filter(entry -> ! properties.containsKey(entry.getKey()))
                     .forEach(entry -> properties.setProperty(entry.getKey().toString(), entry.getValue().toString()));
         }
     }

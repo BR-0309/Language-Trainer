@@ -225,11 +225,11 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtPresentSimpleThey.getText().trim().split(";")) {
                 presentSimpleThey += array[7] + s + ";";
             }
-            verb.presentSimple = new String[]{presentSimpleI, presentSimpleYou, presentSimpleHe, presentSimpleWe, presentSimpleYouPlural, presentSimpleThey};
+            verb.presentSimple = new String[] {presentSimpleI, presentSimpleYou, presentSimpleHe, presentSimpleWe, presentSimpleYouPlural, presentSimpleThey};
 
             String presentPerfectI = "", presentPerfectYou = "", presentPerfectHe = "", presentPerfectWe = "", presentPerfectYouPlural = "",
                     presentPerfectThey = "";
-            array = new String[]{"I have ", "You have ", "He has ", "She has ", "It has ", "We have ", "You have ", "They have "};
+            array = new String[] {"I have ", "You have ", "He has ", "She has ", "It has ", "We have ", "You have ", "They have "};
             for (String s : txtPresentPerfectI.getText().trim().split(";")) {
                 presentPerfectI += array[0] + s + ";";
             }
@@ -250,12 +250,12 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtPresentPerfectThey.getText().trim().split(";")) {
                 presentPerfectThey += array[7] + s + ";";
             }
-            verb.presentPerfect = new String[]{presentPerfectI, presentPerfectYou, presentPerfectHe, presentPerfectWe, presentPerfectYouPlural,
-                    presentPerfectThey};
+            verb.presentPerfect = new String[] {presentPerfectI, presentPerfectYou, presentPerfectHe, presentPerfectWe, presentPerfectYouPlural,
+                                                presentPerfectThey};
 
             String presentContinuousI = "", presentContinuousYou = "", presentContinuousHe = "", presentContinuousWe = "", presentContinuousYouPlural = "",
                     presentContinuousThey = "";
-            array = new String[]{"I have ", "You have ", "He has ", "She has ", "It has ", "We have ", "You have ", "They have "};
+            array = new String[] {"I have ", "You have ", "He has ", "She has ", "It has ", "We have ", "You have ", "They have "};
             for (String s : txtPresentContinuousI.getText().trim().split(";")) {
                 presentContinuousI += array[0] + s + ";";
             }
@@ -276,12 +276,12 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtPresentContinuousThey.getText().trim().split(";")) {
                 presentContinuousThey += array[7] + s + ";";
             }
-            verb.presentContinuous = new String[]{presentContinuousI, presentContinuousYou, presentContinuousHe, presentContinuousWe,
-                    presentContinuousYouPlural, presentContinuousThey};
+            verb.presentContinuous = new String[] {presentContinuousI, presentContinuousYou, presentContinuousHe, presentContinuousWe,
+                                                   presentContinuousYouPlural, presentContinuousThey};
 
             String presentPerfectContinuousI = "", presentPerfectContinuousYou = "", presentPerfectContinuousHe = "", presentPerfectContinuousWe = "",
                     presentPerfectContinuousYouPlural = "", presentPerfectContinuousThey = "";
-            array = new String[]{"I have ", "You have ", "He has ", "She has ", "It has ", "We have ", "You have ", "They have "};
+            array = new String[] {"I have ", "You have ", "He has ", "She has ", "It has ", "We have ", "You have ", "They have "};
             for (String s : txtPresentPerfectContinuousI.getText().trim().split(";")) {
                 presentPerfectContinuousI += array[0] + s + ";";
             }
@@ -302,11 +302,11 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtPresentPerfectContinuousThey.getText().trim().split(";")) {
                 presentPerfectContinuousThey += array[7] + s + ";";
             }
-            verb.presentPerfectContinuous = new String[]{presentPerfectContinuousI, presentPerfectContinuousYou, presentPerfectContinuousHe,
-                    presentPerfectContinuousWe, presentPerfectContinuousYouPlural, presentPerfectContinuousThey};
+            verb.presentPerfectContinuous = new String[] {presentPerfectContinuousI, presentPerfectContinuousYou, presentPerfectContinuousHe,
+                                                          presentPerfectContinuousWe, presentPerfectContinuousYouPlural, presentPerfectContinuousThey};
 
             String pastSimpleI = "", pastSimpleYou = "", pastSimpleHe = "", pastSimpleWe = "", pastSimpleYouPlural = "", pastSimpleThey = "";
-            array = new String[]{"I ", "You ", "He ", "She ", "It ", "We ", "You ", "They "};
+            array = new String[] {"I ", "You ", "He ", "She ", "It ", "We ", "You ", "They "};
             for (String s : txtPastSimpleI.getText().trim().split(";")) {
                 pastSimpleI += array[0] + s + ";";
             }
@@ -327,10 +327,10 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtPastSimpleThey.getText().trim().split(";")) {
                 pastSimpleThey += array[7] + s + ";";
             }
-            verb.pastSimple = new String[]{pastSimpleI, pastSimpleYou, pastSimpleHe, pastSimpleWe, pastSimpleYouPlural, pastSimpleThey};
+            verb.pastSimple = new String[] {pastSimpleI, pastSimpleYou, pastSimpleHe, pastSimpleWe, pastSimpleYouPlural, pastSimpleThey};
 
             String pastPerfectI = "", pastPerfectYou = "", pastPerfectHe = "", pastPerfectWe = "", pastPerfectYouPlural = "", pastPerfectThey = "";
-            array = new String[]{"I was ", "You were ", "He was ", "She was ", "It was ", "We were ", "You were ", "They were "};
+            array = new String[] {"I was ", "You were ", "He was ", "She was ", "It was ", "We were ", "You were ", "They were "};
             for (String s : txtPastPerfectI.getText().trim().split(";")) {
                 pastPerfectI += array[0] + s + ";";
             }
@@ -351,11 +351,11 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtPastPerfectThey.getText().trim().split(";")) {
                 pastPerfectThey += array[7] + s + ";";
             }
-            verb.pastPerfect = new String[]{pastPerfectI, pastPerfectYou, pastPerfectHe, pastPerfectWe, pastPerfectYouPlural, pastPerfectThey};
+            verb.pastPerfect = new String[] {pastPerfectI, pastPerfectYou, pastPerfectHe, pastPerfectWe, pastPerfectYouPlural, pastPerfectThey};
 
             String pastContinuousI = "", pastContinuousYou = "", pastContinuousHe = "", pastContinuousWe = "", pastContinuousYouPlural = "",
                     pastContinuousThey = "";
-            array = new String[]{"I was ", "You were ", "He was ", "She was ", "It was ", "We were ", "You  were ", "They were "};
+            array = new String[] {"I was ", "You were ", "He was ", "She was ", "It was ", "We were ", "You  were ", "They were "};
             for (String s : txtPastContinuousI.getText().trim().split(";")) {
                 pastContinuousI += array[0] + s + ";";
             }
@@ -376,12 +376,12 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtPastContinuousThey.getText().trim().split(";")) {
                 pastContinuousThey += array[7] + s + ";";
             }
-            verb.pastContinuous = new String[]{pastContinuousI, pastContinuousYou, pastContinuousHe, pastContinuousWe, pastContinuousYouPlural,
-                    pastContinuousThey};
+            verb.pastContinuous = new String[] {pastContinuousI, pastContinuousYou, pastContinuousHe, pastContinuousWe, pastContinuousYouPlural,
+                                                pastContinuousThey};
 
             String pastPerfectContinuousI = "", pastPerfectContinuousYou = "", pastPerfectContinuousHe = "", pastPerfectContinuousWe = "",
                     pastPerfectContinuousYouPlural = "", pastPerfectContinuousThey = "";
-            array = new String[]{"I had been ", "You had been ", "He had been ", "She had been ", "We had been ", "You had been ", "They had been "};
+            array = new String[] {"I had been ", "You had been ", "He had been ", "She had been ", "We had been ", "You had been ", "They had been "};
             for (String s : txtPastPerfectContinuousI.getText().trim().split(";")) {
                 pastPerfectContinuousI += array[0] + s + ";";
             }
@@ -402,11 +402,11 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtPastPerfectContinuousThey.getText().trim().split(";")) {
                 pastPerfectContinuousThey += array[7] + s + ";";
             }
-            verb.pastPerfectContinuous = new String[]{pastPerfectContinuousI, pastPerfectContinuousYou, pastPerfectContinuousHe, pastPerfectContinuousWe,
-                    pastPerfectContinuousYouPlural, pastPerfectContinuousThey};
+            verb.pastPerfectContinuous = new String[] {pastPerfectContinuousI, pastPerfectContinuousYou, pastPerfectContinuousHe, pastPerfectContinuousWe,
+                                                       pastPerfectContinuousYouPlural, pastPerfectContinuousThey};
 
             String futureI = "", futureYou = "", futureHe = "", futureWe = "", futureYouPlural = "", futureThey = "";
-            array = new String[]{"I will ", "You will ", "He will ", "She will ", "It will ", "We will ", "You will ", "They will "};
+            array = new String[] {"I will ", "You will ", "He will ", "She will ", "It will ", "We will ", "You will ", "They will "};
             for (String s : txtFutureI.getText().trim().split(";")) {
                 futureI += array[0] + s + ";";
             }
@@ -427,11 +427,11 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtFutureThey.getText().trim().split(";")) {
                 futureThey += array[7] + s + ";";
             }
-            verb.future = new String[]{futureI, futureYou, futureHe, futureWe, futureYouPlural, futureThey};
+            verb.future = new String[] {futureI, futureYou, futureHe, futureWe, futureYouPlural, futureThey};
 
             String futurePerfectI = "", futurePerfectYou = "", futurePerfectHe = "", futurePerfectWe = "", futurePerfectYouPlural = "", futurePerfectThey = "";
-            array = new String[]{"I will have ", "You will have ", "He will have ", "SHe will have ", "It will have ", "We will have ", "You will have ",
-                    "They will have "};
+            array = new String[] {"I will have ", "You will have ", "He will have ", "SHe will have ", "It will have ", "We will have ", "You will have ",
+                                  "They will have "};
             for (String s : txtFuturePerfectI.getText().trim().split(";")) {
                 futurePerfectI += array[0] + s + ";";
             }
@@ -452,12 +452,12 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtFuturePerfectThey.getText().trim().split(";")) {
                 futurePerfectThey += array[7] + s + ";";
             }
-            verb.futurePerfect = new String[]{futurePerfectI, futurePerfectYou, futurePerfectHe, futurePerfectWe, futurePerfectYouPlural, futurePerfectThey};
+            verb.futurePerfect = new String[] {futurePerfectI, futurePerfectYou, futurePerfectHe, futurePerfectWe, futurePerfectYouPlural, futurePerfectThey};
 
             String futureContinuousI = "", futureContinuousYou = "", futureContinuousHe = "", futureContinuousWe = "", futureContinuousYouPlural = "",
                     futureContinuousThey = "";
-            array = new String[]{"I will have ", "You will have ", "He will have ", "She will have ", "It will have ", "We will have ", "You will have ",
-                    "They will have "};
+            array = new String[] {"I will have ", "You will have ", "He will have ", "She will have ", "It will have ", "We will have ", "You will have ",
+                                  "They will have "};
             for (String s : txtFutureContinuousI.getText().trim().split(";")) {
                 futureContinuousI += array[0] + s + ";";
             }
@@ -478,13 +478,13 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtFutureContinuousThey.getText().trim().split(";")) {
                 futureContinuousThey += array[7] + s + ";";
             }
-            verb.futureContinuous = new String[]{futureContinuousI, futureContinuousYou, futureContinuousHe, futureContinuousWe, futureContinuousYouPlural,
-                    futureContinuousThey};
+            verb.futureContinuous = new String[] {futureContinuousI, futureContinuousYou, futureContinuousHe, futureContinuousWe, futureContinuousYouPlural,
+                                                  futureContinuousThey};
 
             String futurePerfectContinuousI = "", futurePerfectContinuousYou = "", futurePerfectContinuousHe = "", futurePerfectContinuousWe = "",
                     futurePerfectContinuousYouPlural = "", futurePerfectContinuousThey = "";
-            array = new String[]{"I will have been ", "You will have been ", "He will have been ", "She will have been ", "It will have been ",
-                    "We will have" + " been", "You will have been ", "They will have "};
+            array = new String[] {"I will have been ", "You will have been ", "He will have been ", "She will have been ", "It will have been ",
+                                  "We will have" + " been", "You will have been ", "They will have "};
             for (String s : txtFuturePerfectContinuousI.getText().trim().split(";")) {
                 futurePerfectContinuousI += array[0] + s + ";";
             }
@@ -505,8 +505,8 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
             for (String s : txtFuturePerfectContinuousThey.getText().trim().split(";")) {
                 futurePerfectContinuousThey += array[7] + s + ";";
             }
-            verb.futurePerfectContinuous = new String[]{futurePerfectContinuousI, futurePerfectContinuousYou, futurePerfectContinuousHe,
-                    futurePerfectContinuousWe, futurePerfectContinuousYouPlural, futurePerfectContinuousThey};
+            verb.futurePerfectContinuous = new String[] {futurePerfectContinuousI, futurePerfectContinuousYou, futurePerfectContinuousHe,
+                                                         futurePerfectContinuousWe, futurePerfectContinuousYouPlural, futurePerfectContinuousThey};
         } else {
             Toolkit.getDefaultToolkit().beep();
         }
@@ -590,53 +590,53 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
     }
 
     private boolean areAllFilled() {
-        return !(txtPresentParticiple.getText().trim().isEmpty() || txtPastParticiple.getText().trim().isEmpty() || txtPresentSimpleI.getText().trim()
-                .isEmpty() ||
-                txtPresentSimpleYou.getText().trim().isEmpty() || txtPresentSimpleHe.getText().trim().isEmpty() || txtPresentSimpleWe.getText().trim()
-                .isEmpty()
-                || txtPresentSimpleYouPlural.getText().trim().isEmpty() || txtPresentSimpleThey.getText().trim().isEmpty() || txtPresentPerfectI.getText()
-                .trim()
-                .isEmpty()
-                || txtPresentPerfectYou.getText().trim().isEmpty() || txtPresentPerfectHe.getText().trim().isEmpty() || txtPresentPerfectWe.getText().trim()
-                .isEmpty()
-                || txtPresentPerfectYouPlural.getText().trim().isEmpty() || txtPresentPerfectThey.getText().trim().isEmpty() || txtPresentContinuousI
-                .getText().trim().isEmpty() || txtPresentContinuousYou.getText().trim().isEmpty() || txtPresentContinuousHe.getText().trim().isEmpty()
-                || txtPresentContinuousWe.getText().trim().isEmpty() || txtPresentContinuousYouPlural.getText().trim().isEmpty() || txtPresentContinuousThey
-                .getText().trim().isEmpty() || txtPresentPerfectContinuousI.getText().trim().isEmpty() || txtPresentPerfectContinuousYou.getText()
-                .trim()
-                .isEmpty()
-                || txtPresentPerfectContinuousHe.getText().trim().isEmpty() || txtPresentPerfectContinuousWe.getText().trim().isEmpty()
-                || txtPresentPerfectContinuousYouPlural.getText().trim().isEmpty() || txtPresentPerfectContinuousThey.getText().trim().isEmpty()
-                || txtPastSimpleI.getText().trim().isEmpty() || txtPastSimpleYou.getText().trim().isEmpty() || txtPastSimpleHe.getText().trim().isEmpty()
-                || txtPastSimpleWe.getText().trim().isEmpty() || txtPastSimpleYouPlural.getText().trim().isEmpty() || txtPastSimpleThey.getText().trim()
-                .isEmpty()
-                || txtPastPerfectI.getText().trim().isEmpty() || txtPastPerfectYou.getText().trim().isEmpty() || txtPastPerfectHe.getText().trim().isEmpty()
-                || txtPastPerfectWe.getText().trim().isEmpty() || txtPastPerfectYouPlural.getText().trim().isEmpty() || txtPastPerfectThey.getText().trim()
-                .isEmpty()
-                || txtPastContinuousI.getText().trim().isEmpty() || txtPastContinuousYou.getText().trim().isEmpty() || txtPastContinuousHe.getText().trim()
-                .isEmpty()
-                || txtPastContinuousWe.getText().trim().isEmpty() || txtPastContinuousYouPlural.getText().trim().isEmpty() || txtPastContinuousThey.getText()
-                .trim()
-                .isEmpty()
-                || txtPastPerfectContinuousI.getText().trim().isEmpty() || txtPastPerfectContinuousYou.getText().trim().isEmpty()
-                || txtPastPerfectContinuousHe.getText().trim().isEmpty() || txtPastPerfectContinuousWe.getText().trim().isEmpty()
-                || txtPastPerfectContinuousYouPlural.getText().trim().isEmpty() || txtPastPerfectContinuousThey.getText().trim().isEmpty() || txtFutureI
-                .getText().trim().isEmpty() || txtFutureYou.getText().trim().isEmpty() || txtFutureHe.getText().trim().isEmpty() || txtFutureWe
-                .getText().trim().isEmpty() || txtFutureYouPlural.getText().trim().isEmpty() || txtFutureThey.getText().trim().isEmpty()
-                || txtFuturePerfectI.getText().trim().isEmpty() || txtFuturePerfectYou.getText().trim().isEmpty() || txtFuturePerfectHe.getText().trim()
-                .isEmpty()
-                || txtFuturePerfectWe.getText().trim().isEmpty() || txtFuturePerfectYouPlural.getText().trim().isEmpty() || txtFuturePerfectThey.getText()
-                .trim()
-                .isEmpty()
-                || txtFutureContinuousI.getText().trim().isEmpty() || txtFutureContinuousYou.getText().trim().isEmpty() || txtFutureContinuousHe.getText()
-                .trim()
-                .isEmpty()
-                || txtFutureContinuousWe.getText().trim().isEmpty() || txtFutureContinuousYouPlural.getText().trim().isEmpty() || txtFutureContinuousThey
-                .getText().trim().isEmpty() || txtFuturePerfectContinuousI.getText().trim().isEmpty() || txtFuturePerfectContinuousYou.getText()
-                .trim()
-                .isEmpty()
-                || txtFuturePerfectContinuousHe.getText().trim().isEmpty() || txtFuturePerfectContinuousWe.getText().trim().isEmpty()
-                || txtFuturePerfectContinuousYouPlural.getText().trim().isEmpty() || txtFuturePerfectContinuousThey.getText().trim().isEmpty());
+        return ! (txtPresentParticiple.getText().trim().isEmpty() || txtPastParticiple.getText().trim().isEmpty() || txtPresentSimpleI.getText().trim()
+                                                                                                                                      .isEmpty() ||
+                  txtPresentSimpleYou.getText().trim().isEmpty() || txtPresentSimpleHe.getText().trim().isEmpty() || txtPresentSimpleWe.getText().trim()
+                                                                                                                                       .isEmpty()
+                  || txtPresentSimpleYouPlural.getText().trim().isEmpty() || txtPresentSimpleThey.getText().trim().isEmpty() || txtPresentPerfectI.getText()
+                                                                                                                                                  .trim()
+                                                                                                                                                  .isEmpty()
+                  || txtPresentPerfectYou.getText().trim().isEmpty() || txtPresentPerfectHe.getText().trim().isEmpty() || txtPresentPerfectWe.getText().trim()
+                                                                                                                                             .isEmpty()
+                  || txtPresentPerfectYouPlural.getText().trim().isEmpty() || txtPresentPerfectThey.getText().trim().isEmpty() || txtPresentContinuousI
+                          .getText().trim().isEmpty() || txtPresentContinuousYou.getText().trim().isEmpty() || txtPresentContinuousHe.getText().trim().isEmpty()
+                  || txtPresentContinuousWe.getText().trim().isEmpty() || txtPresentContinuousYouPlural.getText().trim().isEmpty() || txtPresentContinuousThey
+                          .getText().trim().isEmpty() || txtPresentPerfectContinuousI.getText().trim().isEmpty() || txtPresentPerfectContinuousYou.getText()
+                                                                                                                                                  .trim()
+                                                                                                                                                  .isEmpty()
+                  || txtPresentPerfectContinuousHe.getText().trim().isEmpty() || txtPresentPerfectContinuousWe.getText().trim().isEmpty()
+                  || txtPresentPerfectContinuousYouPlural.getText().trim().isEmpty() || txtPresentPerfectContinuousThey.getText().trim().isEmpty()
+                  || txtPastSimpleI.getText().trim().isEmpty() || txtPastSimpleYou.getText().trim().isEmpty() || txtPastSimpleHe.getText().trim().isEmpty()
+                  || txtPastSimpleWe.getText().trim().isEmpty() || txtPastSimpleYouPlural.getText().trim().isEmpty() || txtPastSimpleThey.getText().trim()
+                                                                                                                                         .isEmpty()
+                  || txtPastPerfectI.getText().trim().isEmpty() || txtPastPerfectYou.getText().trim().isEmpty() || txtPastPerfectHe.getText().trim().isEmpty()
+                  || txtPastPerfectWe.getText().trim().isEmpty() || txtPastPerfectYouPlural.getText().trim().isEmpty() || txtPastPerfectThey.getText().trim()
+                                                                                                                                            .isEmpty()
+                  || txtPastContinuousI.getText().trim().isEmpty() || txtPastContinuousYou.getText().trim().isEmpty() || txtPastContinuousHe.getText().trim()
+                                                                                                                                            .isEmpty()
+                  || txtPastContinuousWe.getText().trim().isEmpty() || txtPastContinuousYouPlural.getText().trim().isEmpty() || txtPastContinuousThey.getText()
+                                                                                                                                                     .trim()
+                                                                                                                                                     .isEmpty()
+                  || txtPastPerfectContinuousI.getText().trim().isEmpty() || txtPastPerfectContinuousYou.getText().trim().isEmpty()
+                  || txtPastPerfectContinuousHe.getText().trim().isEmpty() || txtPastPerfectContinuousWe.getText().trim().isEmpty()
+                  || txtPastPerfectContinuousYouPlural.getText().trim().isEmpty() || txtPastPerfectContinuousThey.getText().trim().isEmpty() || txtFutureI
+                          .getText().trim().isEmpty() || txtFutureYou.getText().trim().isEmpty() || txtFutureHe.getText().trim().isEmpty() || txtFutureWe
+                          .getText().trim().isEmpty() || txtFutureYouPlural.getText().trim().isEmpty() || txtFutureThey.getText().trim().isEmpty()
+                  || txtFuturePerfectI.getText().trim().isEmpty() || txtFuturePerfectYou.getText().trim().isEmpty() || txtFuturePerfectHe.getText().trim()
+                                                                                                                                         .isEmpty()
+                  || txtFuturePerfectWe.getText().trim().isEmpty() || txtFuturePerfectYouPlural.getText().trim().isEmpty() || txtFuturePerfectThey.getText()
+                                                                                                                                                  .trim()
+                                                                                                                                                  .isEmpty()
+                  || txtFutureContinuousI.getText().trim().isEmpty() || txtFutureContinuousYou.getText().trim().isEmpty() || txtFutureContinuousHe.getText()
+                                                                                                                                                  .trim()
+                                                                                                                                                  .isEmpty()
+                  || txtFutureContinuousWe.getText().trim().isEmpty() || txtFutureContinuousYouPlural.getText().trim().isEmpty() || txtFutureContinuousThey
+                          .getText().trim().isEmpty() || txtFuturePerfectContinuousI.getText().trim().isEmpty() || txtFuturePerfectContinuousYou.getText()
+                                                                                                                                                .trim()
+                                                                                                                                                .isEmpty()
+                  || txtFuturePerfectContinuousHe.getText().trim().isEmpty() || txtFuturePerfectContinuousWe.getText().trim().isEmpty()
+                  || txtFuturePerfectContinuousYouPlural.getText().trim().isEmpty() || txtFuturePerfectContinuousThey.getText().trim().isEmpty());
     }
 
     @Override
