@@ -197,8 +197,9 @@ public class ControllerStatistics implements Initializable, IController {
             seriesCheated.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.cheated / s.total * 100));
             num++;
         }
-        //noinspection unchecked
-        lineChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);
+        lineChart.getData().add(seriesCorrect);
+        lineChart.getData().add(seriesIncorrect);
+        lineChart.getData().add(seriesCheated);
         ObservableList<PieChart.Data> pieData = FXCollections.observableArrayList(new PieChart.Data(BUNDLE.getString("statistics.correct"), totalCorrect),
                                                                                   new PieChart.Data(BUNDLE.getString("statistics.incorrect"), totalIncorrect),
                                                                                   new PieChart.Data(BUNDLE.getString("statistics.cheated"), totalCheated));
