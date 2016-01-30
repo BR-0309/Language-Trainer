@@ -69,7 +69,6 @@ public class ControllerTranslate implements Initializable, IController {
             solvedCorrectly++;
             // If solved correctly on first try
             if (! wrong.contains(word)) {
-                System.out.println("Correct: " + word.getQuestion());
                 correct++;
                 for (Statistics stat : stats) {
                     if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
@@ -83,7 +82,6 @@ public class ControllerTranslate implements Initializable, IController {
             LanguageTrainer.playSoundIncorrect();
             // If the word is wrong for the first time
             if (! wrong.contains(word)) {
-                System.out.println("Incorrect: " + word.getQuestion());
                 incorrect++;
                 wrong.add(word);
                 // Look for relevant statistic and increase the statistic
@@ -144,7 +142,6 @@ public class ControllerTranslate implements Initializable, IController {
         VocabularyData word = words.get(0);
         if (! wrong.contains(word)) {
             wrong.add(word);
-            System.out.println("Cheated: " + word.getQuestion());
             cheated++;
             for (Statistics stat : stats) {
                 if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
