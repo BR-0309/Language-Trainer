@@ -59,9 +59,9 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                 return;
             }
             if (table.getEditingCell() == null) {
-                if (!event.getCode().isArrowKey() && !event.getCode().isFunctionKey() &&
-                        !event.getCode().isMediaKey() && !event.getCode().isModifierKey() &&
-                        !event.getCode().equals(KeyCode.CAPS)) {
+                if (! event.getCode().isArrowKey() && ! event.getCode().isFunctionKey() &&
+                    ! event.getCode().isMediaKey() && ! event.getCode().isModifierKey() &&
+                    ! event.getCode().equals(KeyCode.CAPS)) {
                     TablePosition cellPos = table.getFocusModel().getFocusedCell();
                     table.edit(cellPos.getRow(), cellPos.getTableColumn());
                 }
@@ -70,7 +70,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         table.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 TablePosition pos = table.getFocusModel().getFocusedCell();
-                if (pos.getRow() == -1) {
+                if (pos.getRow() == - 1) {
                     table.getSelectionModel().select(0);
                 } else if (pos.getRow() == table.getItems().size() - 1 && pos.getColumn() == table.getColumns().size() - 1) {
                     // Ignore error message shown regarding maxCellCount
@@ -92,7 +92,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                         chars += d + " ";
                     }
                     FXUtil.showWarningDialog(BUNDLE.getString("generic.warning"), BUNDLE.getString("warnings.invalidCharHeader"),
-                            BUNDLE.getString("warnings.invalidCharMessage").replace("{0}", chars));
+                                             BUNDLE.getString("warnings.invalidCharMessage").replace("{0}", chars));
                     return;
                 }
             }
@@ -157,7 +157,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         }
         File file = new File(Reference.DEFAULT_EXERCISE_DIR + File.separator + txtTitle.getText().trim().replaceAll(" ", "_") + ".tra");
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-            if (!file.exists()) {
+            if (! file.exists()) {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
             }
@@ -177,7 +177,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
                 // Make sure there are at least two values in the array
                 int counter = 0;
                 for (String s : words) {
-                    if (!s.equals("")) {
+                    if (! s.equals("")) {
                         counter++;
                     }
                     if (counter > 1) break;
@@ -195,13 +195,13 @@ public class ControllerCreateTranslationList implements Initializable, IControll
             FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
         }
         FXUtil.showInformationDialog(BUNDLE.getString("createList.saveSuccessful"),
-                BUNDLE.getString("createList.savedAs").replace("{0}", file.getAbsolutePath()));
+                                     BUNDLE.getString("createList.savedAs").replace("{0}", file.getAbsolutePath()));
     }
 
     public void addLanguage() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_LANGUAGE_ADD),
-                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);

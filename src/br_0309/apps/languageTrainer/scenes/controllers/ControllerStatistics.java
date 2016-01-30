@@ -102,11 +102,13 @@ public class ControllerStatistics implements Initializable, IController {
             }
         });
         // Set up bar chart
-        ArrayList<ArrayList<Statistics>> list = new ArrayList<>();
+        setupBarChart();
+       /* ArrayList<ArrayList<Statistics>> list = new ArrayList<>();
         for (Statistics stat : allStatistics) {
             boolean cont = false;
             for (ArrayList<Statistics> l : list) {
                 for (Statistics s : l) {
+                    System.out.println(s.listName + " Correct: " + s.correct + " Incorrect: " + s.incorrect + " Cheated: " + s.cheated + " Total: " + s.total);
                     if (s.listName.equals(stat.listName) && Arrays.equals(s.langCodes, stat.langCodes)) {
                         l.add(stat);
                         cont = true;
@@ -131,32 +133,79 @@ public class ControllerStatistics implements Initializable, IController {
         seriesCheated.setName(BUNDLE.getString("statistics.cheated"));
         Set<String> categories = new HashSet<>();
         for (ArrayList<Statistics> l : list) {
-            int total, correct = 0, incorrect = 0, cheated = 0;
+            int correct = 0, incorrect = 0, cheated = 0;
             for (Statistics stat : l) {
                 correct += stat.correct;
                 incorrect += stat.incorrect;
                 cheated += stat.cheated;
             }
-            total = correct + incorrect + cheated;
             Statistics stat = l.get(0);
             //noinspection HardcodedFileSeparator
             String title = stat.listName + " " + Character.toUpperCase(stat.langCodes[0].charAt(0)) + "/" + Character.toUpperCase(stat.langCodes[1].charAt(0));
-            seriesCorrect.getData().add(new XYChart.Data<>(title, ((double) correct / total) * 100));
-            seriesIncorrect.getData().add(new XYChart.Data<>(title, ((double) incorrect / total) * 100));
-            seriesCheated.getData().add(new XYChart.Data<>(title, ((double) cheated / total) * 100));
+            seriesCorrect.getData().add(new XYChart.Data<>(title, ((double) correct / stat.total) * 100));
+            seriesIncorrect.getData().add(new XYChart.Data<>(title, ((double) incorrect / stat.total) * 100));
+            seriesCheated.getData().add(new XYChart.Data<>(title, ((double) cheated / stat.total) * 100));
             categories.add(title);
         }
         xAxisBar.setCategories(FXCollections.observableArrayList(categories));
         yAxisBar.setUpperBound(100.0d);
         yAxisBar.setLowerBound(0.0d);
         //noinspection unchecked
-        barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);
+        barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);*/
         yAxisLine.setUpperBound(100.0d);
         yAxisLine.setLowerBound(0.0d);
     }
 
     public void exit() {
         LanguageTrainer.showMenu();
+    }
+
+    public void setupBarChart() {
+        HashMap<String, Integer> mapCorrect = new HashMap<>();
+        HashMap<String, Integer> mapIncorrect = new HashMap<>();
+        HashMap<String, Integer> mapCheated = new HashMap<>();
+        HashMap<String, Integer> mapTotal = new HashMap<>();
+        // Cycle through all statistics and add everything together
+        for (Statistics stat : allStatistics) {
+            // Add statistics to the totals
+            String name;
+            if (stat.langCodes.length == 2) {
+                //noinspection HardcodedFileSeparator
+                name = stat.listName + " " + Character.toUpperCase(stat.langCodes[0].charAt(0)) + "/" + Character.toUpperCase(stat.langCodes[1].charAt(0));
+            } else {
+                name = stat.listName + " " + Character.toUpperCase(stat.langCodes[0].charAt(0));
+            }
+            if (mapCorrect.containsKey(stat.listName)) {
+                mapCorrect.put(name, mapCorrect.get(name) + stat.correct);
+                mapIncorrect.put(name, mapIncorrect.get(name) + stat.incorrect);
+                mapCheated.put(name, mapCheated.get(name) + stat.cheated);
+                mapTotal.put(name, mapTotal.get(name) + stat.total);
+            } else {
+                // Add the statistics for the first time
+                mapCorrect.put(name, stat.correct);
+                mapIncorrect.put(name, stat.incorrect);
+                mapCheated.put(name, stat.cheated);
+                mapTotal.put(name, stat.total);
+            }
+        }
+
+        // The three series
+        XYChart.Series<String, Number> seriesCorrect = new XYChart.Series<>();
+        seriesCorrect.setName(BUNDLE.getString("statistics.correct"));
+        XYChart.Series<String, Number> seriesIncorrect = new XYChart.Series<>();
+        seriesIncorrect.setName(BUNDLE.getString("statistics.incorrect"));
+        XYChart.Series<String, Number> seriesCheated = new XYChart.Series<>();
+        seriesCheated.setName(BUNDLE.getString("statistics.cheated"));
+        // Cycle through all keys and make the bar chart
+        for (String key : mapCorrect.keySet()) {
+            seriesCorrect.getData().add(new XYChart.Data<>(key, ((double) mapCorrect.get(key) / mapTotal.get(key) * 100)));
+            seriesIncorrect.getData().add(new XYChart.Data<>(key, ((double) mapIncorrect.get(key) / mapTotal.get(key) * 100)));
+            seriesCheated.getData().add(new XYChart.Data<>(key, ((double) mapCheated.get(key) / mapTotal.get(key) * 100)));
+        }
+
+        barChart.getData().add(seriesCorrect);
+        barChart.getData().add(seriesIncorrect);
+        barChart.getData().add(seriesCheated);
     }
 
     public void prepareCharts(Statistics stat) {
@@ -193,10 +242,9 @@ public class ControllerStatistics implements Initializable, IController {
             totalCorrect += s.correct;
             totalIncorrect += s.incorrect;
             totalCheated += s.cheated;
-            int total = s.correct + s.incorrect + s.cheated;
-            seriesCorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.correct / total * 100));
-            seriesIncorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.incorrect / total * 100));
-            seriesCheated.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.cheated / total * 100));
+            seriesCorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.correct / s.total * 100));
+            seriesIncorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.incorrect / s.total * 100));
+            seriesCheated.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.cheated / s.total * 100));
             num++;
         }
         //noinspection unchecked

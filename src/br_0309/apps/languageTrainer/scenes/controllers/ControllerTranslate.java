@@ -49,7 +49,7 @@ public class ControllerTranslate implements Initializable, IController {
     private int solvedCorrectly = 0;
 
     @Override
-    public void initialize(URL url, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         BUNDLE = resources;
         btnExit.setOnAction(value -> {
             if (FXUtil.showConfirmationDialog(resources.getString("generic.confirm"), resources.getString("generic.confirmQuit"), "",
@@ -69,6 +69,7 @@ public class ControllerTranslate implements Initializable, IController {
             solvedCorrectly++;
             // If solved correctly on first try
             if (! wrong.contains(word)) {
+                System.out.println("Correct: " + word.getQuestion());
                 correct++;
                 for (Statistics stat : stats) {
                     if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
@@ -82,6 +83,7 @@ public class ControllerTranslate implements Initializable, IController {
             LanguageTrainer.playSoundIncorrect();
             // If the word is wrong for the first time
             if (! wrong.contains(word)) {
+                System.out.println("Incorrect: " + word.getQuestion());
                 incorrect++;
                 wrong.add(word);
                 // Look for relevant statistic and increase the statistic
@@ -139,18 +141,22 @@ public class ControllerTranslate implements Initializable, IController {
     }
 
     public void onCheat() {
-        cheated++;
         VocabularyData word = words.get(0);
+        if (! wrong.contains(word)) {
+            wrong.add(word);
+            System.out.println("Cheated: " + word.getQuestion());
+            cheated++;
+            for (Statistics stat : stats) {
+                if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
+                    stat.cheated++;
+                    break;
+                }
+            }
+        }
         String[] answers = word.getSolutions();
         String answer = "";
         for (String s : answers) {
             answer += s + System.lineSeparator();
-        }
-        for (Statistics stat : stats) {
-            if (stat.listName.equals(word.list) && Arrays.equals(stat.langCodes, word.langs)) {
-                stat.cheated++;
-                break;
-            }
         }
         FXUtil.showInformationDialog(BUNDLE.getString("exercise.solution"), BUNDLE.getString("exercise.solutions"), answer);
     }
@@ -177,6 +183,7 @@ public class ControllerTranslate implements Initializable, IController {
                         }
                     }
                     // Cycle through all lines
+                    int total = 0;
                     while (scan.hasNextLine()) {
                         String line = scan.nextLine();
                         String[] words = line.split("=");
@@ -185,12 +192,13 @@ public class ControllerTranslate implements Initializable, IController {
                             String[] rightWords = words[right].split(";");
                             if (leftWords[0].equals("") || rightWords[0].equals("")) continue;
                             this.words.add(new VocabularyData(leftWords, rightWords, eData.langs, name));
+                            total++;
                         } catch (ArrayIndexOutOfBoundsException ignored) {
 
                         }
                     }
 
-                    stats.add(new Statistics(name, true, eData.langs));
+                    stats.add(new Statistics(name, true, eData.langs, total));
 
                 } catch (FileNotFoundException e) {
                     System.err.println("Can't find file: " + file.getName());

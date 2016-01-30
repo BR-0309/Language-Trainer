@@ -14,14 +14,16 @@ public class Statistics implements Serializable, Comparable<Statistics> {
     public int correct = 0;
     public int incorrect = 0;
     public int cheated = 0;
+    public final int total;
 
     /**
      * @param listType true: translation. false: br_0309.apps.languageTrainer.verbs
      */
-    public Statistics(String listName, boolean listType, String[] langCodes) {
+    public Statistics(String listName, boolean listType, String[] langCodes, int total) {
         this.listName = listName;
         this.listType = listType;
         this.langCodes = langCodes;
+        this.total = total;
     }
 
     @Override
