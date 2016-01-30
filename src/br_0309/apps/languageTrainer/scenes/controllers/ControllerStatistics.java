@@ -101,57 +101,7 @@ public class ControllerStatistics implements Initializable, IController {
                 };
             }
         });
-        // Set up bar chart
         setupBarChart();
-       /* ArrayList<ArrayList<Statistics>> list = new ArrayList<>();
-        for (Statistics stat : allStatistics) {
-            boolean cont = false;
-            for (ArrayList<Statistics> l : list) {
-                for (Statistics s : l) {
-                    System.out.println(s.listName + " Correct: " + s.correct + " Incorrect: " + s.incorrect + " Cheated: " + s.cheated + " Total: " + s.total);
-                    if (s.listName.equals(stat.listName) && Arrays.equals(s.langCodes, stat.langCodes)) {
-                        l.add(stat);
-                        cont = true;
-                        break;
-                    }
-                }
-                if (cont) {
-                    break;
-                }
-            }
-            if (! cont) {
-                ArrayList<Statistics> l = new ArrayList<>();
-                l.add(stat);
-                list.add(l);
-            }
-        }
-        XYChart.Series<String, Number> seriesCorrect = new XYChart.Series<>();
-        seriesCorrect.setName(BUNDLE.getString("statistics.correct"));
-        XYChart.Series<String, Number> seriesIncorrect = new XYChart.Series<>();
-        seriesIncorrect.setName(BUNDLE.getString("statistics.incorrect"));
-        XYChart.Series<String, Number> seriesCheated = new XYChart.Series<>();
-        seriesCheated.setName(BUNDLE.getString("statistics.cheated"));
-        Set<String> categories = new HashSet<>();
-        for (ArrayList<Statistics> l : list) {
-            int correct = 0, incorrect = 0, cheated = 0;
-            for (Statistics stat : l) {
-                correct += stat.correct;
-                incorrect += stat.incorrect;
-                cheated += stat.cheated;
-            }
-            Statistics stat = l.get(0);
-            //noinspection HardcodedFileSeparator
-            String title = stat.listName + " " + Character.toUpperCase(stat.langCodes[0].charAt(0)) + "/" + Character.toUpperCase(stat.langCodes[1].charAt(0));
-            seriesCorrect.getData().add(new XYChart.Data<>(title, ((double) correct / stat.total) * 100));
-            seriesIncorrect.getData().add(new XYChart.Data<>(title, ((double) incorrect / stat.total) * 100));
-            seriesCheated.getData().add(new XYChart.Data<>(title, ((double) cheated / stat.total) * 100));
-            categories.add(title);
-        }
-        xAxisBar.setCategories(FXCollections.observableArrayList(categories));
-        yAxisBar.setUpperBound(100.0d);
-        yAxisBar.setLowerBound(0.0d);
-        //noinspection unchecked
-        barChart.getData().addAll(seriesCorrect, seriesIncorrect, seriesCheated);*/
         yAxisLine.setUpperBound(100.0d);
         yAxisLine.setLowerBound(0.0d);
     }
