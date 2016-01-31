@@ -16,7 +16,7 @@ DisableFinishedPage=No
 DisableWelcomePage=No
 DefaultGroupName=Benjamin Raison
 ;Optional License
-LicenseFile=C:\Users\Benjamin\OneDrive\Coding\Projects\Language-Trainer\package\windows\License.txt
+;LicenseFile=C:\Users\Benjamin\OneDrive\Coding\Projects\Language-Trainer\package\windows\License.txt
 ;WinXP or above
 MinVersion=0,5.1 
 OutputBaseFilename=Language-Trainer-0.6.5
