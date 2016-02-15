@@ -22,7 +22,6 @@ public class VerbEnglish implements Serializable {
     public String[] futurePerfect;
     public String[] futureContinuous;
     public String[] futurePerfectContinuous;
-    public transient boolean warning = false;
 
     public VerbEnglish() {
     }
@@ -32,7 +31,6 @@ public class VerbEnglish implements Serializable {
         // Participles
         String presentParticiple;
         String pastParticiple;
-        boolean warning = false;
         if (infinitive.endsWith("y") && StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 2))) {
             presentParticiple = infinitive + "ing";
             pastParticiple = infinitive.substring(0, infinitive.length() - 1) + "ied";
@@ -56,7 +54,6 @@ public class VerbEnglish implements Serializable {
             String s = infinitive + infinitive.charAt(infinitive.length() - 1);
             presentParticiple = s + "ing";
             pastParticiple = s + "ed";
-            warning = true;
         } else {
             presentParticiple = infinitive + "ing";
             pastParticiple = infinitive + "ed";
@@ -66,7 +63,6 @@ public class VerbEnglish implements Serializable {
         verb.presentParticiple = presentParticiple;
         verb.pastParticiple = pastParticiple;
         verb.infinitive = infinitive;
-        verb.warning = warning;
         // Present tenses
         verb.presentContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
                                                presentParticiple};
@@ -103,7 +99,6 @@ public class VerbEnglish implements Serializable {
         // Participles
         String presentParticiple;
         String pastParticiple;
-        boolean warning = false;
         if (infinitive.endsWith("y") && StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 2))) {
             presentParticiple = infinitive + "ing";
             pastParticiple = infinitive.substring(0, infinitive.length() - 1) + "ied";
@@ -127,7 +122,6 @@ public class VerbEnglish implements Serializable {
             String s = infinitive + infinitive.charAt(infinitive.length() - 1);
             presentParticiple = s + "ing";
             pastParticiple = s + "ed";
-            warning = true;
         } else {
             presentParticiple = infinitive + "ing";
             pastParticiple = infinitive + "ed";
@@ -137,7 +131,6 @@ public class VerbEnglish implements Serializable {
         verb.presentParticiple = presentParticiple;
         verb.pastParticiple = pastParticiple;
         verb.infinitive = infinitive;
-        verb.warning = warning;
         // Present tenses
         verb.presentContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
                                                presentParticiple};
@@ -173,7 +166,6 @@ public class VerbEnglish implements Serializable {
         if (pastSimpleI == null || pastSimpleI.trim().equals("")) return conjugate(infinitive);
         // Participles
         String presentParticiple;
-        boolean warning = false;
         if (infinitive.endsWith("y") && StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 2))) {
             presentParticiple = infinitive + "ing";
         } else if (infinitive.endsWith("e")) {
@@ -191,7 +183,6 @@ public class VerbEnglish implements Serializable {
         } else if (StringUtil.isTwoSyllable(infinitive)) {
             String s = infinitive + infinitive.charAt(infinitive.length() - 1);
             presentParticiple = s + "ing";
-            warning = true;
         } else {
             presentParticiple = infinitive + "ing";
         }
@@ -200,7 +191,6 @@ public class VerbEnglish implements Serializable {
         verb.presentParticiple = presentParticiple;
         verb.pastParticiple = pastParticiple;
         verb.infinitive = infinitive;
-        verb.warning = warning;
         // Present tenses
         verb.presentContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
                                                presentParticiple};
@@ -231,12 +221,11 @@ public class VerbEnglish implements Serializable {
         return verb;
     }
 
-    public static VerbEnglish conjugate(String infinitive, String pastParticiple, boolean needAnotherVar) {
+    public static VerbEnglish conjugate(String infinitive, String pastParticiple, @SuppressWarnings("UnusedParameters") boolean needAnotherVar) {
         if (infinitive == null || infinitive.trim().equals("")) return EMPTY_VERB;
         if (pastParticiple == null || pastParticiple.trim().equals("")) return conjugate(infinitive);
         // Participles
         String presentParticiple;
-        boolean warning = false;
         if (infinitive.endsWith("y") && StringUtil.isConsonant(infinitive.charAt(infinitive.length() - 2))) {
             presentParticiple = infinitive + "ing";
         } else if (infinitive.endsWith("e")) {
@@ -254,7 +243,6 @@ public class VerbEnglish implements Serializable {
         } else if (StringUtil.isTwoSyllable(infinitive)) {
             String s = infinitive + infinitive.charAt(infinitive.length() - 1);
             presentParticiple = s + "ing";
-            warning = true;
         } else {
             presentParticiple = infinitive + "ing";
         }
@@ -263,7 +251,6 @@ public class VerbEnglish implements Serializable {
         verb.presentParticiple = presentParticiple;
         verb.pastParticiple = pastParticiple;
         verb.infinitive = infinitive;
-        verb.warning = warning;
         // Present tenses
         verb.presentContinuous = new String[] {presentParticiple, presentParticiple, presentParticiple, presentParticiple, presentParticiple,
                                                presentParticiple};

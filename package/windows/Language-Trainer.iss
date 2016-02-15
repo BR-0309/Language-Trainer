@@ -9,14 +9,14 @@ AppPublisher=Benjamin Raison
 AppCopyright=Copyright (c) 2016 Benjamin Raison
 DefaultDirName={localappdata}\Language-Trainer
 DisableStartupPrompt=Yes
-DisableDirPage=auto
-DisableProgramGroupPage=Yes
+DisableDirPage=No
+DisableProgramGroupPage=No
 DisableReadyPage=No
 DisableFinishedPage=No
 DisableWelcomePage=No
 DefaultGroupName=Benjamin Raison
 ;Optional License
-;LicenseFile=C:\Users\Benjamin\OneDrive\Coding\Projects\Language-Trainer\package\windows\License.txt
+;LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1 
 OutputBaseFilename=Language-Trainer-0.6.5

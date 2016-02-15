@@ -20,7 +20,6 @@ import java.text.DateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-// FIXME: Fix empty lists being shown
 public class ControllerStatistics implements Initializable, IController {
 
     private final ArrayList<Statistics> allStatistics = new ArrayList<>();

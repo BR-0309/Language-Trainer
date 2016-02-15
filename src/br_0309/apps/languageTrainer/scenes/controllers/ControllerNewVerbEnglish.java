@@ -589,6 +589,9 @@ public class ControllerNewVerbEnglish implements Initializable, IController {
         txtFuturePerfectContinuousThey.setText(verb.futurePerfectContinuous[5]);
     }
 
+    /**
+     * Returns true if all the text fields have <i>something</i> in them
+     */
     private boolean areAllFilled() {
         return ! (txtPresentParticiple.getText().trim().isEmpty() || txtPastParticiple.getText().trim().isEmpty() || txtPresentSimpleI.getText().trim()
                                                                                                                                       .isEmpty() ||
