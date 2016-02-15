@@ -2,6 +2,8 @@ package br_0309.apps.languageTrainer;
 
 import br_0309.apps.languageTrainer.util.SystemUtil;
 
+import java.util.Locale;
+
 @SuppressWarnings("HardcodedFileSeparator")
 public class Reference {
 
@@ -50,4 +52,6 @@ public class Reference {
 
     public static final String COPYRIGHTS_BASE_NAME = "/lang/Copyright-";
     public static final String COPYRIGHTS_END = ".txt";
+
+    public static final Locale SYSTEM_LOCALE = Locale.getDefault();
 }

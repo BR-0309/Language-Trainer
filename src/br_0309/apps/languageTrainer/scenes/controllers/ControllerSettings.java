@@ -164,7 +164,6 @@ public class ControllerSettings implements Initializable {
         LanguageTrainer.showMenu();
     }
 
-    // FIXME: Reverts to wrong language
     public void onReset() {
         if (FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmReset"), BUNDLE.getString("generic.noUndo"),
                                           BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"))) {
@@ -173,7 +172,7 @@ public class ControllerSettings implements Initializable {
             boxCorrect.getSelectionModel().select(mapReversed.get(userData.getSoundCorrect()));
             boxIncorrect.getSelectionModel().select(mapReversed.get(userData.getSoundIncorrect()));
             boxFinished.getSelectionModel().select(mapReversed.get(userData.getSoundFinished()));
-            Language l = new Language(LanguageTrainer.userData.getLanguage().getDisplayName(), new ImageView(LanguageHandler.getFlag(userData.getLanguage())));
+            Language l = new Language(Reference.SYSTEM_LOCALE.getDisplayName(), new ImageView(LanguageHandler.getFlag(Reference.SYSTEM_LOCALE)));
             boxLanguage.getSelectionModel().selectFirst();
             for (int i = 0; i < boxLanguage.getItems().size(); i++) {
                 Language l2 = boxLanguage.getItems().get(i);
