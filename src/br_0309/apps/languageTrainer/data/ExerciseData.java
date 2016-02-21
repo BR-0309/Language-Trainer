@@ -6,15 +6,14 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.io.File;
 
-// TODO: Check if safe to remove languages
 public class ExerciseData implements Comparable<ExerciseData> {
 
+    public final File file;
+    public final String[] langs;
     private final SimpleBooleanProperty selected;
     private final SimpleStringProperty title;
     private final SimpleStringProperty languages;
     private final SimpleStringProperty type;
-    public final File file;
-    public final String[] langs;
 
     public ExerciseData(boolean selected, String title, String languages, String type, File file, String[] langs2) {
         this.selected = new SimpleBooleanProperty(selected);
@@ -29,10 +28,15 @@ public class ExerciseData implements Comparable<ExerciseData> {
         return selected.get();
     }
 
+    public void setSelected(boolean value) {
+        selected.set(value);
+    }
+
     public String getTitle() {
         return title.get();
     }
 
+    @SuppressWarnings("unused")
     public String getLanguages() {
         return languages.get();
     }
@@ -46,10 +50,6 @@ public class ExerciseData implements Comparable<ExerciseData> {
         return title.get().compareTo(o.getTitle());
     }
 
-    public void setSelected(boolean value) {
-        selected.set(value);
-    }
-
     /**
      * isActive for table. <br>
      * On table: column.setCellValueFactory(new
@@ -57,6 +57,7 @@ public class ExerciseData implements Comparable<ExerciseData> {
      *
      * @return BooleanProperty
      */
+    @SuppressWarnings("unused")
     public BooleanProperty activeProperty() {
         return selected;
     }

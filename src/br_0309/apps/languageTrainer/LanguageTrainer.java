@@ -27,7 +27,6 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-// TODO: Add icons at different resolutions
 // TODO: Make themes less terrible
 // FIXME: If window is maximised, keep it so
 // TODO: Get a system for bundle keys
@@ -36,7 +35,7 @@ public class LanguageTrainer extends Application {
     public static final UniversalData universalData = new UniversalData();
     public static UserData userData = new UserData();
     public static Stage window;
-    public static IController currentController;
+    private static IController currentController;
 
     public static Random random;
 
@@ -168,7 +167,7 @@ public class LanguageTrainer extends Application {
         }
     }
 
-    public static boolean askForExit() {
+    private static boolean askForExit() {
         ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
         return FXUtil
                 .showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"), BUNDLE.getString("generic.confirmQuit"),
@@ -310,7 +309,6 @@ public class LanguageTrainer extends Application {
             });
             window.sizeToScene();
             window.show();
-            // TODO: Does this do anything?
             window.setMinWidth(window.getWidth());
             window.setMinHeight(window.getHeight());
         } catch (IOException e) {
