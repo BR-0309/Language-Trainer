@@ -17,7 +17,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import javax.sound.sampled.*;
-import javax.swing.*;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -68,7 +67,6 @@ public class LanguageTrainer extends Application {
         // If the application is run from anything but loose files, redirect console to log_<<time>>.txt
         if (! SystemUtil.isDirectory() || SystemUtil.isMacApp()) {
             File log = new File(Reference.DEFAULT_SAVE_DIR + File.separator + "logs" + File.separator + "log_" + SystemUtil.getTimeAndDate() + ".txt");
-            JOptionPane.showMessageDialog(null, log.getAbsolutePath());
             try {
                 log.getParentFile().mkdirs();
                 log.createNewFile();

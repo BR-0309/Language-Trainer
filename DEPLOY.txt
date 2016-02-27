@@ -1,3 +1,7 @@
 *Generate ant build file
 *Add root to ant classpath (right-click on build(right), properties, classpath, add)
 *Profit!
+
+ERROR -1073741790
+
+ICONSWAP IS SEEN AS A VIRUS

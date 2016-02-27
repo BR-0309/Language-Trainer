@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+// FIXME: Search doesn't really work
 public class ControllerCreateTranslationList implements Initializable, IController {
 
     private final ArrayList<Locale> locales = new ArrayList<>();
@@ -100,7 +101,19 @@ public class ControllerCreateTranslationList implements Initializable, IControll
     }
 
     public void exit() {
-        // TODO: Add do you want to save dialog
+        int choice = FXUtil.showYesNoCancelDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("createTranslation.save"),
+                                                  BUNDLE.getString("createTranslation.changes"));
+        // If Yes was selected
+        if (choice == 0) {
+            // If saving was unsuccessful
+            if(!save()){
+                return;
+            }
+            // If cancel was selected
+        } else if (choice == 2) {
+            return;
+        }
+        // If saving was successful or no was selected
         LanguageTrainer.showMenu();
     }
 
@@ -143,22 +156,24 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         txtTitle.setText(file.getName().replaceAll("_", " ").substring(0, file.getName().length() - 4));
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
-    public void save() {
+    @SuppressWarnings("WeakerAccess")
+    public boolean save() {
         if (table.getColumns().size() < 2) {
             FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.requirement"));
-            return;
+            return false;
         }
         if (txtTitle.getText().trim().isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
             txtTitle.requestFocus();
             FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.enterTitle"));
-            return;
+            return false;
         }
         File file = new File(Reference.DEFAULT_EXERCISE_DIR + File.separator + txtTitle.getText().trim().replaceAll(" ", "_") + ".tra");
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
             if (! file.exists()) {
+                //noinspection ResultOfMethodCallIgnored
                 file.getParentFile().mkdirs();
+                //noinspection ResultOfMethodCallIgnored
                 file.createNewFile();
             }
             String lang = locales.get(0).getLanguage();
@@ -196,6 +211,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         }
         FXUtil.showInformationDialog(BUNDLE.getString("createList.saveSuccessful"),
                                      BUNDLE.getString("createList.savedAs").replace("{0}", file.getAbsolutePath()));
+        return true;
     }
 
     public void addLanguage() {
@@ -282,8 +298,8 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         column.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent>() {
             @Override
             public void handle(TableColumn.CellEditEvent event) {
-                ((VocabularyListData) event.getTableView().getItems().get(event.getTablePosition().getRow()))
-                        .set(event.getTableColumn().getText(), event.getNewValue().toString());
+                ((VocabularyListData) event.getTableView().getItems().get(event.getTablePosition().getRow())).set(event.getTableColumn().getText(),
+                                                                                                                  event.getNewValue().toString());
                 event.getTableView().getSelectionModel().selectNext();
             }
         });
