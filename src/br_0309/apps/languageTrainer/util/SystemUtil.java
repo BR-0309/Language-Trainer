@@ -3,7 +3,11 @@ package br_0309.apps.languageTrainer.util;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 public class SystemUtil {
 
@@ -68,7 +72,13 @@ public class SystemUtil {
     }
 
     public static String getTimeAndDataFormatted() {
-        return new SimpleDateFormat("HH:mm:ss dd/MM/yyyy zzz").format(new Date());
+        ZonedDateTime zone = ZonedDateTime.now();
+        try{
+            return zone.format(DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy zzz", Locale.UK));
+        }catch(DateTimeException e){
+            System.err.println("Error formatting time. Reverting to old method");
+            return new SimpleDateFormat("HH:mm:ss dd/MM/yyyy zzz").format(new Date());
+        }
     }
 
 }
