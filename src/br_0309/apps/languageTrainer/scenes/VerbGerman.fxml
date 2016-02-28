@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerNewVerbGerman">
    <bottom>
-      <HBox alignment="CENTER_RIGHT" spacing="5.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" spacing="5.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <Button defaultButton="true" mnemonicParsing="false" text="%generic.ok" />
-            <Button mnemonicParsing="false" text="%generic.cancel" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#onOK" text="%generic.ok" />
+            <Button mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -21,27 +21,393 @@
    <center>
       <Accordion BorderPane.alignment="CENTER">
         <panes>
-          <TitledPane text="Präsens">
+          <TitledPane text="Indikativ">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <AnchorPane layoutX="29.6" layoutY="29.6" prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Präsens" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Präteritum" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="250.0">
+                           <children>
+                              <Label alignment="CENTER" text="Perfekt" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich habe" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du hast" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es hat" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir haben" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr habt" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie haben" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="250.0">
+                           <children>
+                              <Label alignment="CENTER" text="Präteritum" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich hatte" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du hattest" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es hatte" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir hatten" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr hattet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie hatten" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Futur I" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich werde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du wirst" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es wird" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr werdet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="280.0" style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="250.0">
+                           <children>
+                              <Label alignment="CENTER" text="Futur II" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich werde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du wirst" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es wird" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr werdet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="205.0" />
+                              <Label fx:id="lblHaben1" layoutX="202.0" layoutY="35.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="32.5" />
+                              <Label fx:id="lblHaben2" layoutX="257.0" layoutY="41.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="67.5" />
+                              <Label fx:id="lblHaben3" layoutX="267.0" layoutY="51.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="102.5" />
+                              <Label fx:id="lblHaben4" layoutX="263.0" layoutY="41.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="137.5" />
+                              <Label fx:id="lblHaben5" layoutX="277.0" layoutY="61.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.5" />
+                              <Label fx:id="lblHaben6" layoutX="273.0" layoutY="51.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="207.5" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
             </content>
           </TitledPane>
-          <TitledPane text="Präteritum">
+          <TitledPane text="Konjunktiv I">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Präsens" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Perfekt" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich sei" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du seist/seiest" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es sei" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir seien" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr seiet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie seien" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Futur I" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich werde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du werdest" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es werde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr werdet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="285.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="250.0">
+                           <children>
+                              <Label alignment="CENTER" text="Futur II" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich werde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du werdest" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es werde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr werdet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="205.0" />
+                              <Label fx:id="lblHaben7" layoutX="202.0" layoutY="35.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="32.5" />
+                              <Label fx:id="lblHaben8" layoutX="257.0" layoutY="41.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="67.5" />
+                              <Label fx:id="lblHaben9" layoutX="267.0" layoutY="51.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="102.5" />
+                              <Label fx:id="lblHaben10" layoutX="263.0" layoutY="41.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="137.5" />
+                              <Label fx:id="lblHaben11" layoutX="277.0" layoutY="61.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.5" />
+                              <Label fx:id="lblHaben12" layoutX="273.0" layoutY="51.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="207.5" />
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
             </content>
           </TitledPane>
-          <TitledPane text="Futur">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </TitledPane>
-            <TitledPane text="Konjunktiv">
+            <TitledPane text="Konjunktiv II">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Präteritum" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Plusquamperfekt" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich hätte" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du hättest" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es hätte" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir hätten" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr hättet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie hätten" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <Label alignment="CENTER" text="Futur I" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich würde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du würdest" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es würde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir würden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr würdet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie würden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="285.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="250.0">
+                           <children>
+                              <Label alignment="CENTER" text="Futur II" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Ich werde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="Du werdest" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="Er/Sie/Es werde" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="Wir werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="Ihr werdet" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="Sie werden" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="65.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="100.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="135.0" />
+                              <TextField AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="170.0" />
+                              <TextField AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="205.0" />
+                              <Label fx:id="lblHaben13" layoutX="202.0" layoutY="35.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="32.5" />
+                              <Label fx:id="lblHaben14" layoutX="257.0" layoutY="41.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="67.5" />
+                              <Label fx:id="lblHaben15" layoutX="267.0" layoutY="51.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="102.5" />
+                              <Label fx:id="lblHaben16" layoutX="263.0" layoutY="41.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="137.5" />
+                              <Label fx:id="lblHaben17" layoutX="277.0" layoutY="61.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="172.5" />
+                              <Label fx:id="lblHaben18" layoutX="273.0" layoutY="51.0" text="haben" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="207.5" />
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
               </content>
             </TitledPane>
         </panes>
       </Accordion>
    </center>
+   <top>
+      <HBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="Infinitiv:" />
+                  <TextField />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="Partizp I:" />
+                  <TextField />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="Partizip II:" />
+                  <TextField />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" onAction="#onHabenChanged" selected="true" text="haben">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group" />
+                     </toggleGroup>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" onAction="#onHabenChanged" text="sein" toggleGroup="$group" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets left="5.0" right="5.0" />
+         </VBox.margin>
+      </HBox>
+   </top>
 </BorderPane>

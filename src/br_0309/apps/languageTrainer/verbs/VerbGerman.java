@@ -13,7 +13,13 @@ public class VerbGerman implements Serializable {
     public String[] plusquamperfekt;
     public String[] futur1;
     public String[] futur2;
-    public String[] konjunktiv1;
-    public String[] konjunktiv2;
+    public String[] konjunktiv1Präsens;
+    public String[] konjunktiv1Perfekt;
+    public String[] konjunktiv1Futur1;
+    public String[] konjunktiv1Futur2;
+    public String[] konjunktiv2Präteritum;
+    public String[] konjunktiv2Plusquamperfekt;
+    public String[] konjunktiv2Futur1;
+    public String[] konjunktiv2Futur2;
 
 }

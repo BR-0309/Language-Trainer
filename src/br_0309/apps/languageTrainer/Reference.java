@@ -18,6 +18,7 @@ public class Reference {
     public static final String FXML_ABOUT = "/br_0309/apps/languageTrainer/scenes/About.fxml";
     public static final String FXML_RESOURCES = "/br_0309/apps/languageTrainer/scenes/Resources.fxml";
     public static final String FXML_VERB_ENGLISH = "/br_0309/apps/languageTrainer/scenes/VerbEnglish.fxml";
+    public static final String FXML_VERB_GERMAN = "/br_0309/apps/languageTrainer/scenes/VerbGerman.fxml";
 
     public static final String[] THEMES = {"/stylesheets/default.css", "/stylesheets/dark.css", "/stylesheets/blue.css"};
 
