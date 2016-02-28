@@ -68,7 +68,7 @@ public class SystemUtil {
     }
 
     public static String getTimeAndDataFormatted() {
-        return new SimpleDateFormat("HH:mm:ss dd/MMMM/yyyy zzzz").format(new Date());
+        return new SimpleDateFormat("HH:mm:ss dd/MM/yyyy zzz").format(new Date());
     }
 
 }
