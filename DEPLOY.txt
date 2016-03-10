@@ -2,6 +2,13 @@
 *Add root to ant classpath (right-click on build(right), properties, classpath, add)
 *Profit!
 
+Windows:
+
 ERROR -1073741790
 
 ICONSWAP IS SEEN AS A VIRUS
+
+OS X
+
+Check if all the variables have been updated after application/JDK update.
+Check if CreateTranslationList has been renamed (WHY DOES IT DO THAT???$9

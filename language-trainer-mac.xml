@@ -165,7 +165,6 @@
         </dirset>
     </path>
 
-
     <target name="compile.module.language-trainer"
             depends="compile.module.language-trainer.production,compile.module.language-trainer.tests"
             description="Compile module Language-Trainer"/>

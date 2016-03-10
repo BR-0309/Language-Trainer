@@ -320,8 +320,7 @@ public class LanguageTrainer extends Application {
      */
     private void showLogin() {
         Stage stage = new Stage();
-        // TODO: Add more images for better resolutions
-        stage.getIcons().add(new Image(Reference.LOGO));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_PROFILE_SELECT),
                                            ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
