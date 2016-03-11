@@ -284,7 +284,7 @@ public class LanguageTrainer extends Application {
             window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
             showLogin();
             LanguageHandler.setDisplayLanguage(userData.getLanguage());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU),
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_VERB_GERMAN),
                                                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());

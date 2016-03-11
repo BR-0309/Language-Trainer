@@ -1,6 +1,7 @@
 package br_0309.apps.languageTrainer.verbs;
 
 // FIXME: Check that all the forms are there
+// TODO: Remember that certain verbs don't conjugate completely
 public class VerbFrench {
 
     public String infinitif;
