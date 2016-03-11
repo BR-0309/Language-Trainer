@@ -106,7 +106,7 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         // If Yes was selected
         if (choice == 0) {
             // If saving was unsuccessful
-            if(!save()){
+            if(!saveBoolean()){
                 return;
             }
             // If cancel was selected
@@ -156,8 +156,63 @@ public class ControllerCreateTranslationList implements Initializable, IControll
         txtTitle.setText(file.getName().replaceAll("_", " ").substring(0, file.getName().length() - 4));
     }
 
-    @SuppressWarnings("WeakerAccess")
-    public boolean save() {
+    public void save() {
+        if (table.getColumns().size() < 2) {
+            FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.requirement"));
+            return;
+        }
+        if (txtTitle.getText().trim().isEmpty()) {
+            Toolkit.getDefaultToolkit().beep();
+            txtTitle.requestFocus();
+            FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.enterTitle"));
+            return;
+        }
+        File file = new File(Reference.DEFAULT_EXERCISE_DIR + File.separator + txtTitle.getText().trim().replaceAll(" ", "_") + ".tra");
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
+            if (! file.exists()) {
+                //noinspection ResultOfMethodCallIgnored
+                file.getParentFile().mkdirs();
+                //noinspection ResultOfMethodCallIgnored
+                file.createNewFile();
+            }
+            String lang = locales.get(0).getLanguage();
+            for (int i = 1; i < locales.size(); i++) {
+                lang += ":" + locales.get(i).getLanguage();
+            }
+            writer.write(lang);
+            writer.newLine();
+            // Cycle through all rows of the table
+            for (VocabularyListData d : data) {
+                String[] words = new String[locales.size()];
+                // Add all columns to array
+                for (int i = 0; i < locales.size(); i++) {
+                    words[i] = d.get(locales.get(i).getDisplayLanguage()).trim();
+                }
+                // Make sure there are at least two values in the array
+                int counter = 0;
+                for (String s : words) {
+                    if (! s.equals("")) {
+                        counter++;
+                    }
+                    if (counter > 1) break;
+                }
+                if (counter < 2) continue;
+                String line = words[0];
+                for (int i = 1; i < words.length; i++) {
+                    line += "=" + words[i];
+                }
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
+        }
+        FXUtil.showInformationDialog(BUNDLE.getString("createList.saveSuccessful"),
+                                     BUNDLE.getString("createList.savedAs").replace("{0}", file.getAbsolutePath()));
+    }
+
+    public boolean saveBoolean() {
         if (table.getColumns().size() < 2) {
             FXUtil.showErrorDialog(BUNDLE.getString("createList.saveFailed"), BUNDLE.getString("createList.requirement"));
             return false;
