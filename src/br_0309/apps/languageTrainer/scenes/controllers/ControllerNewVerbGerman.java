@@ -1,5 +1,6 @@
 package br_0309.apps.languageTrainer.scenes.controllers;
 
+import br_0309.apps.languageTrainer.verbs.VerbGerman;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -11,6 +12,7 @@ import java.util.ResourceBundle;
 
 // FIXME: Remove IController
 // This is terrible. Why can't I assign multiple nodes the same ID?
+// 129 fx:id's in one class!!
 public class ControllerNewVerbGerman implements Initializable, IController {
 
     // Labels behind the text fields (always "haben" or "sein")
@@ -187,6 +189,20 @@ public class ControllerNewVerbGerman implements Initializable, IController {
     private Label[] lblsKonjunktivIPerfekt;
     private Label[] lblsKonjunktivIIPlusquamperfekt;
     private TextField[] allTextFields;
+    private TextField[] txtsPräsens;
+    private TextField[] txtsPerfekt;
+    private TextField[] txtsPräteritum;
+    private TextField[] txtsPlusquamperfekt;
+    private TextField[] txtsFuturI;
+    private TextField[] txtsFuturII;
+    private TextField[] txtsKonjunktivIPräsens;
+    private TextField[] txtsKonjunktivIPerfekt;
+    private TextField[] txtsKonjunktivIFuturI;
+    private TextField[] txtsKonjunktivIFuturII;
+    private TextField[] txtsKonjunktivIIPräteritum;
+    private TextField[] txtsKonjunktivIIPlusquamperfekt;
+    private TextField[] txtsKonjunktivIIFuturI;
+    private TextField[] txtsKonjunktivIIFuturII;
 
     private boolean isHabenSelected = true;
 
@@ -220,6 +236,66 @@ public class ControllerNewVerbGerman implements Initializable, IController {
                                          txtKonjunktivIIFuturIDu, txtKonjunktivIIFuturIEr, txtKonjunktivIIFuturIWir, txtKonjunktivIIFuturIIhr,
                                          txtKonjunktivIIFuturISie, txtKonjunktivIIFuturIIIch, txtKonjunktivIIFuturIIDu, txtKonjunktivIIFuturIIEr,
                                          txtKonjunktivIIFuturIIWir, txtKonjunktivIIFuturIIIhr, txtKonjunktivIIFuturIISie};
+
+        txtsPräsens = new TextField[] {txtPraesensIch, txtPraesensDu, txtPraesensEr, txtPraesensWir, txtPraesensIhr, txtPraesensSie};
+        txtsPerfekt = new TextField[] {txtPerfektIch, txtPerfektDu, txtPerfektEr, txtPerfektWir, txtPerfektIhr, txtPerfektSie};
+        txtsPräteritum = new TextField[] {txtPraeteritumIch, txtPraeteritumDu, txtPraeteritumEr, txtPraeteritumWir, txtPraeteritumIhr, txtPraeteritumSie};
+        txtsPlusquamperfekt = new TextField[] {txtPlusquamperfektIch, txtPlusquamperfektDu, txtPlusquamperfektEr, txtPlusquamperfektWir, txtPlusquamperfektIhr,
+                                               txtPlusquamperfektSie};
+        txtsFuturI = new TextField[] {txtFuturIIch, txtFuturIDu, txtFuturIEr, txtFuturIWir, txtFuturIIhr, txtFuturISie};
+        txtsFuturII = new TextField[] {txtFuturIIIch, txtFuturIIDu, txtFuturIIEr, txtFuturIIWir, txtFuturIIIhr, txtFuturIISie};
+        txtsKonjunktivIPräsens = new TextField[] {txtKonjunktivIPraesensIch, txtKonjunktivIPraesensDu, txtKonjunktivIPraesensEr, txtKonjunktivIPraesensWir,
+                                                  txtKonjunktivIPraesensIhr, txtKonjunktivIPraesensSie};
+        txtsKonjunktivIPerfekt = new TextField[] {txtKonjunktivIPerfektIch, txtKonjunktivIPerfektDu, txtKonjunktivIPerfektEr, txtKonjunktivIPerfektWir,
+                                                  txtKonjunktivIPerfektIhr, txtKonjunktivIPerfektSie};
+        txtsKonjunktivIFuturI = new TextField[] {txtKonjunktivIFuturIIch, txtKonjunktivIFuturIDu, txtKonjunktivIFuturIEr, txtKonjunktivIFuturIWir,
+                                                 txtKonjunktivIFuturIIhr, txtKonjunktivIFuturISie};
+        txtsKonjunktivIFuturII = new TextField[] {txtKonjunktivIFuturIIIch, txtKonjunktivIFuturIIDu, txtKonjunktivIFuturIIEr, txtKonjunktivIFuturIIWir,
+                                                  txtKonjunktivIFuturIIIhr, txtKonjunktivIFuturIISie};
+        txtsKonjunktivIIPräteritum = new TextField[] {txtKonjunktivIIPraeteritumIch, txtKonjunktivIIPraeteritumDu, txtKonjunktivIIPraeteritumEr,
+                                                      txtKonjunktivIIPraeteritumWir, txtKonjunktivIIPraeteritumIhr, txtKonjunktivIIPraeteritumSie};
+        txtsKonjunktivIIPlusquamperfekt = new TextField[] {txtKonjunktivIIPlusquamperfektIch, txtKonjunktivIIPlusquamperfektDu,
+                                                           txtKonjunktivIIPlusquamperfektEr, txtKonjunktivIIPlusquamperfektWir,
+                                                           txtKonjunktivIIPlusquamperfektIhr, txtKonjunktivIIPlusquamperfektSie};
+        txtsKonjunktivIIFuturI = new TextField[] {txtKonjunktivIIFuturIIch, txtKonjunktivIIFuturIDu, txtKonjunktivIIFuturIEr, txtKonjunktivIIFuturIWir,
+                                                  txtKonjunktivIIFuturIIhr, txtKonjunktivIIFuturISie};
+        txtsKonjunktivIIFuturII = new TextField[] {txtKonjunktivIIFuturIIIch, txtKonjunktivIIFuturIIDu, txtKonjunktivIIFuturIIEr, txtKonjunktivIIFuturIIWir,
+                                                   txtKonjunktivIIFuturIIIhr, txtKonjunktivIIFuturIISie};
+        // Setup the "predictions"
+        txtInfinitiv.textProperty().addListener((observable, oldValue, newValue) -> {
+            for (TextField txt : txtsFuturI) {
+                txt.setText(newValue);
+            }
+            for (TextField txt : txtsKonjunktivIFuturI) {
+                txt.setText(newValue);
+            }
+            for (TextField txt : txtsKonjunktivIIFuturI) {
+                txt.setText(newValue);
+            }
+        });
+        txtPartizipII.textProperty().addListener((observable, oldValue, newValue) -> {
+            for (TextField txt : txtsPerfekt) {
+                txt.setText(newValue);
+            }
+            for (TextField txt : txtsPlusquamperfekt) {
+                txt.setText(newValue);
+            }
+            for (TextField txt : txtsFuturII) {
+                txt.setText(newValue);
+            }
+            for (TextField txt : txtsKonjunktivIPerfekt) {
+                txt.setText(newValue);
+            }
+            for (TextField txt : txtsKonjunktivIFuturII) {
+                txt.setText(newValue);
+            }
+            for (TextField txt : txtsKonjunktivIIPlusquamperfekt) {
+                txt.setText(newValue);
+            }
+            for (TextField txt : txtsKonjunktivIIFuturII) {
+                txt.setText(newValue);
+            }
+        });
     }
 
     // RadioButton
@@ -253,11 +329,53 @@ public class ControllerNewVerbGerman implements Initializable, IController {
     }
 
     public void onOK() {
-        if(!areAllFilled()){
+        if (! areAllFilled()) {
             Toolkit.getDefaultToolkit().beep();
             return;
         }
-        // FIXME
+        VerbGerman verb = new VerbGerman();
+        verb.isHaben = isHabenSelected;
+        verb.infinitiv = txtInfinitiv.getText().trim();
+        verb.partizipI = txtPartizipI.getText().trim();
+        verb.partizipII = txtPartizipII.getText().trim();
+        for(int i = 0; i < 6; i++){
+            verb.präsens[i] = txtsPräsens[i].getText().trim();
+            verb.perfekt[i] = txtsPerfekt[i].getText().trim();
+            verb.präteritum[i] = txtsPräteritum[i].getText().trim();
+            verb.plusquamperfekt[i] = txtsPlusquamperfekt[i].getText().trim();
+            verb.konjunktivIPräsens[i] = txtsKonjunktivIPräsens[i].getText().trim();
+            verb.konjunktivIPerfekt[i] = txtsKonjunktivIPerfekt[i].getText().trim();
+            verb.konjunktivIFuturI[i] = txtsKonjunktivIFuturI[i].getText().trim();
+            verb.konjunktivIFuturII[i] = txtsKonjunktivIFuturII[i].getText().trim();
+            verb.konjunktivIIPräteritum[i] = txtsKonjunktivIIPräteritum[i].getText().trim();
+            verb.konjunktivIIPlusquamperfekt[i] = txtsKonjunktivIIPlusquamperfekt[i].getText().trim();
+            verb.konjunktivIIFuturI[i] = txtsKonjunktivIIFuturI[i].getText().trim();
+            verb.konjunktivIIFuturII[i] = txtsKonjunktivIIFuturII[i].getText().trim();
+        }
+        // FIXME Commit verb to list
+    }
+
+    public void loadVerb(VerbGerman verb) {
+        // Set text in text fields
+        txtInfinitiv.setText(verb.infinitiv);
+        txtPartizipI.setText(verb.partizipI);
+        txtPartizipII.setText(verb.partizipII);
+        for (int i = 0; i < 6; i++){
+            txtsPräsens[i].setText(verb.präsens[i]);
+            txtsPerfekt[i].setText(verb.perfekt[i]);
+            txtsPräteritum[i].setText(verb.präteritum[i]);
+            txtsPlusquamperfekt[i].setText(verb.plusquamperfekt[i]);
+            txtsFuturI[i].setText(verb.futurI[i]);
+            txtsFuturII[i].setText(verb.futurII[i]);
+            txtsKonjunktivIPräsens[i].setText(verb.konjunktivIPräsens[i]);
+            txtsKonjunktivIPerfekt[i].setText(verb.konjunktivIPerfekt[i]);
+            txtsKonjunktivIFuturI[i].setText(verb.konjunktivIFuturI[i]);
+            txtsKonjunktivIFuturII[i].setText(verb.konjunktivIFuturII[i]);
+            txtsKonjunktivIIPräteritum[i].setText(verb.konjunktivIIPräteritum[i]);
+            txtsKonjunktivIIPlusquamperfekt[i].setText(verb.konjunktivIIPlusquamperfekt[i]);
+            txtsKonjunktivIIFuturI[i].setText(verb.konjunktivIIFuturI[i]);
+            txtsKonjunktivIIFuturII[i].setText(verb.konjunktivIIFuturII[i]);
+        }
     }
 
     public void onCancel() {
@@ -265,9 +383,9 @@ public class ControllerNewVerbGerman implements Initializable, IController {
         stage.close();
     }
 
-    private boolean areAllFilled(){
+    private boolean areAllFilled() {
         for (TextField txt : allTextFields) {
-            if(txt.getText().trim().isEmpty()){
+            if (txt.getText().trim().isEmpty()) {
                 return false;
             }
         }
