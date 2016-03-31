@@ -21,22 +21,18 @@
     </center>
     <bottom>
         <AnchorPane BorderPane.alignment="CENTER">
-            <children>
-                <Button defaultButton="true" mnemonicParsing="false" onAction="#onOk" text="%generic.ok"
-                        AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
-                <HBox spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
-                      AnchorPane.topAnchor="5.0">
-                    <children>
-                        <Hyperlink onAction="#onCC0" text="%about.cc0"/>
-                        <Hyperlink onAction="#onCCA" text="%about.cca"/>
-                        <Hyperlink onAction="#onPublicDomain" text="%about.publicDomain">
-                            <tooltip>
-                                <Tooltip text="%about.publicDomainTooltip"/>
-                            </tooltip>
-                        </Hyperlink>
-                    </children>
-                </HBox>
-            </children>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#onOk" text="%generic.ok"
+                    AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+            <HBox spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
+                  AnchorPane.topAnchor="5.0">
+                <Hyperlink onAction="#onCC0" text="%about.cc0"/>
+                <Hyperlink onAction="#onCCA" text="%about.cca"/>
+                <Hyperlink onAction="#onPublicDomain" text="%about.publicDomain">
+                    <tooltip>
+                        <Tooltip text="%about.publicDomainTooltip"/>
+                    </tooltip>
+                </Hyperlink>
+            </HBox>
         </AnchorPane>
     </bottom>
 </BorderPane>

@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0"
             prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerTranslate">
+            fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerVerbs">
     <AnchorPane layoutX="400.0" layoutY="107.0" prefHeight="255.0" prefWidth="130.0" style="-fx-border-color: black;"
                 AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
         <ProgressBar fx:id="progressBar" layoutY="286.0" progress="0.0" AnchorPane.bottomAnchor="25.0"

@@ -1,50 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.Font?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerStatistics">
     <center>
         <TabPane side="RIGHT" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-            <tabs>
-                <Tab text="%statistics.development">
-                    <content>
-                        <LineChart fx:id="lineChart" title="%statistics.development">
-                            <xAxis>
-                                <CategoryAxis side="BOTTOM" />
-                            </xAxis>
-                            <yAxis>
-                                <NumberAxis fx:id="yAxisLine" autoRanging="false" label="\%" side="LEFT" />
-                            </yAxis>
-                        </LineChart>
-                    </content>
-                </Tab>
-                <Tab text="%statistics.answerQuality">
-                    <content>
-                        <PieChart fx:id="pieChart" labelsVisible="false" />
-                    </content>
-                </Tab>
-                <Tab text="%statistics.comparison">
-                    <content>
-                        <StackedBarChart fx:id="barChart">
-                            <xAxis>
-                                <CategoryAxis side="BOTTOM" tickLabelRotation="90.0" fx:id="xAxisBar">
-                           <tickLabelFont>
-                              <Font size="10.0" />
-                           </tickLabelFont></CategoryAxis>
-                            </xAxis>
-                            <yAxis>
-                                <NumberAxis fx:id="yAxisBar" autoRanging="false" label="\%" side="LEFT" />
-                            </yAxis>
-                        </StackedBarChart>
-                    </content>
-                </Tab>
-            </tabs>
+            <Tab text="%statistics.development">
+                <LineChart fx:id="lineChart" title="%statistics.development">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxisLine" autoRanging="false" label="\%" side="LEFT"/>
+                    </yAxis>
+                </LineChart>
+            </Tab>
+            <Tab text="%statistics.answerQuality">
+                <PieChart fx:id="pieChart" labelsVisible="false"/>
+            </Tab>
+            <Tab text="%statistics.comparison">
+                <StackedBarChart fx:id="barChart">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" tickLabelRotation="90.0" fx:id="xAxisBar">
+                            <tickLabelFont>
+                                <Font size="10.0"/>
+                            </tickLabelFont>
+                        </CategoryAxis>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxisBar" autoRanging="false" label="\%" side="LEFT"/>
+                    </yAxis>
+                </StackedBarChart>
+            </Tab>
         </TabPane>
     </center>
     <left>
@@ -56,10 +46,10 @@
     </left>
     <bottom>
         <AnchorPane BorderPane.alignment="CENTER">
-            <children>
-                <TextField fx:id="txtSearch" prefWidth="180.0" promptText="%generic.search" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                <Button defaultButton="true" mnemonicParsing="false" onAction="#exit" text="%generic.ok" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            </children>
+            <TextField fx:id="txtSearch" prefWidth="180.0" promptText="%generic.search" AnchorPane.bottomAnchor="5.0"
+                       AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#exit" text="%generic.ok"
+                    AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
         </AnchorPane>
     </bottom>
 </BorderPane>

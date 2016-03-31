@@ -9,56 +9,50 @@
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="106.0"
                     prefWidth="665.0" style="-fx-border-color: gray; -fx-border-insets: 5;"
                     BorderPane.alignment="CENTER">
-            <children>
-                <TextField fx:id="search" layoutX="17.0" layoutY="17.0" prefWidth="195.0" promptText="%generic.search"
-                           AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0"/>
-                <ComboBox fx:id="types" layoutX="17.0" layoutY="50.0" prefWidth="196.0" AnchorPane.leftAnchor="10.0"
-                          AnchorPane.topAnchor="40.0"/>
-                <VBox alignment="CENTER" focusTraversable="true" layoutX="450.0" layoutY="17.0" spacing="5.0"
-                      AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="10.0">
-                    <children>
-                        <Button fx:id="startTraining" mnemonicParsing="false" onAction="#onStartTraining"
-                                prefWidth="200.0" text="%menu.startTraining">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="viewStatistics" mnemonicParsing="false" onAction="#onStatistics"
-                                prefWidth="200.0" text="%menu.viewStatistics">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onSettings" prefWidth="200.0" text="%menu.settings">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                        </Button>
-                    </children>
-                </VBox>
-                <VBox alignment="TOP_CENTER" layoutX="476.0" layoutY="23.0" spacing="5.0" AnchorPane.bottomAnchor="10.0"
-                      AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                    <children>
-                        <Button fx:id="createTranslationList" mnemonicParsing="false" onAction="#onTranslationList"
-                                prefWidth="190.0" text="%menu.createTranslationList">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="createVerbList" mnemonicParsing="false" onAction="#onVerbList" prefWidth="190.0"
-                                text="%menu.createVerbList">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onAbout" prefWidth="190.0" text="%generic.about">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
-                        </Button>
-                    </children>
-                </VBox>
-            </children>
+            <TextField fx:id="search" layoutX="17.0" layoutY="17.0" prefWidth="195.0" promptText="%generic.search"
+                       AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0"/>
+            <ComboBox fx:id="types" layoutX="17.0" layoutY="50.0" prefWidth="196.0" AnchorPane.leftAnchor="10.0"
+                      AnchorPane.topAnchor="40.0"/>
+            <VBox alignment="CENTER" focusTraversable="true" layoutX="450.0" layoutY="17.0" spacing="5.0"
+                  AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="10.0">
+                <Button fx:id="startTraining" mnemonicParsing="false" onAction="#onStartTraining"
+                        prefWidth="200.0" text="%menu.startTraining">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="viewStatistics" mnemonicParsing="false" onAction="#onStatistics"
+                        prefWidth="200.0" text="%menu.viewStatistics">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#onSettings" prefWidth="200.0" text="%menu.settings">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </Button>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="476.0" layoutY="23.0" spacing="5.0" AnchorPane.bottomAnchor="10.0"
+                  AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <Button fx:id="createTranslationList" mnemonicParsing="false" onAction="#onTranslationList"
+                        prefWidth="190.0" text="%menu.createTranslationList">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="createVerbList" mnemonicParsing="false" onAction="#onVerbList" prefWidth="190.0"
+                        text="%menu.createVerbList">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#onAbout" prefWidth="190.0" text="%generic.about">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </Button>
+            </VBox>
         </AnchorPane>
     </bottom>
     <center>

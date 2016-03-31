@@ -28,15 +28,13 @@ import java.util.ResourceBundle;
 
 // TODO: Make themes less terrible
 // FIXME: If window is maximised, keep it so
-// TODO: Get a system for bundle keys
 public class LanguageTrainer extends Application {
 
     public static final UniversalData universalData = new UniversalData();
     public static UserData userData = new UserData();
     public static Stage window;
-    private static IController currentController;
-
     public static Random random;
+    private static IController currentController;
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void main(String[] args) {
@@ -167,9 +165,8 @@ public class LanguageTrainer extends Application {
 
     private static boolean askForExit() {
         ResourceBundle BUNDLE = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
-        return FXUtil
-                .showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"), BUNDLE.getString("generic.confirmQuit"),
-                                        BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"));
+        return FXUtil.showConfirmationDialog(BUNDLE.getString("generic.confirm"), BUNDLE.getString("generic.confirmQuit"),
+                                             BUNDLE.getString("generic.confirmQuit"), BUNDLE.getString("generic.ok"), BUNDLE.getString("generic.cancel"));
     }
 
     public static void playSoundCorrect() {
@@ -284,7 +281,7 @@ public class LanguageTrainer extends Application {
             window.getIcons().add(new Image(getClass().getResourceAsStream(Reference.LOGO)));
             showLogin();
             LanguageHandler.setDisplayLanguage(userData.getLanguage());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_VERB_GERMAN),
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_MENU),
                                                ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());

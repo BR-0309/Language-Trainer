@@ -10,15 +10,11 @@
             fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerAddLanguage">
     <bottom>
         <VBox prefHeight="58.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-            <children>
-                <TextField fx:id="txtSearch" promptText="%generic.search"/>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-                    <children>
-                        <Button defaultButton="true" mnemonicParsing="false" onAction="#ok" text="%generic.ok"/>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" text="%generic.cancel"/>
-                    </children>
-                </HBox>
-            </children>
+            <TextField fx:id="txtSearch" promptText="%generic.search"/>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#ok" text="%generic.ok"/>
+                <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" text="%generic.cancel"/>
+            </HBox>
         </VBox>
     </bottom>
     <center>

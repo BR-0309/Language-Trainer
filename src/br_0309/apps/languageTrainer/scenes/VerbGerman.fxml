@@ -477,6 +477,7 @@
             </padding>
             <RadioButton mnemonicParsing="false" onAction="#onHabenChanged" selected="true" text="haben">
                <toggleGroup>
+                  <!--suppress JavaFxUnresolvedFxIdReference -->
                   <ToggleGroup fx:id="group"/>
                </toggleGroup>
                <HBox.margin>
