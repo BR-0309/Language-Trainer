@@ -1013,14 +1013,13 @@ public class VerbEnglish implements Serializable, Verb {
     public String getAnswers(int number) {
         String[] verbs;
         String[] answers;
-        String[] returns;
         int pos;
         switch (number) {
             case 0:
-                returns = presentParticiple.split(";");
+                answers = presentParticiple.split(";");
                 break;
             case 1:
-                returns = pastParticiple.split(";");
+                answers = pastParticiple.split(";");
                 break;
             case 2:
                 verbs = presentSimple[0].split(";");
@@ -1028,7 +1027,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 3:
                 verbs = presentSimple[1].split(";");
@@ -1036,7 +1034,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 4:
                 verbs = presentSimple[2].split(";");
@@ -1047,7 +1044,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she " + verb;
                     answers[pos++] = "it " + verb;
                 }
-                returns = answers;
                 break;
             case 5:
                 verbs = presentSimple[3].split(";");
@@ -1055,7 +1051,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 6:
                 verbs = presentSimple[4].split(";");
@@ -1063,7 +1058,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 7:
                 verbs = presentSimple[5].split(";");
@@ -1071,7 +1065,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 8:
                 verbs = presentContinuous[0].split(";");
@@ -1079,7 +1072,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I am " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 9:
                 verbs = presentContinuous[1].split(";");
@@ -1087,7 +1079,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you are " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 10:
                 verbs = presentContinuous[2].split(";");
@@ -1098,7 +1089,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she is " + verb;
                     answers[pos++] = "it is " + verb;
                 }
-                returns = answers;
                 break;
             case 11:
                 verbs = presentContinuous[3].split(";");
@@ -1106,7 +1096,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we are " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 12:
                 verbs = presentContinuous[4].split(";");
@@ -1114,7 +1103,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you are " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 13:
                 verbs = presentContinuous[5].split(";");
@@ -1122,7 +1110,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they are " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 14:
                 verbs = presentPerfect[0].split(";");
@@ -1130,7 +1117,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 15:
                 verbs = presentPerfect[1].split(";");
@@ -1138,7 +1124,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 16:
                 verbs = presentPerfect[2].split(";");
@@ -1149,7 +1134,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she has " + verb;
                     answers[pos++] = "it has " + verb;
                 }
-                returns = answers;
                 break;
             case 17:
                 verbs = presentPerfect[3].split(";");
@@ -1157,7 +1141,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 18:
                 verbs = presentPerfect[4].split(";");
@@ -1165,7 +1148,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 19:
                 verbs = presentPerfect[5].split(";");
@@ -1173,7 +1155,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 20:
                 verbs = presentPerfectContinuous[0].split(";");
@@ -1181,7 +1162,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 21:
                 verbs = presentPerfectContinuous[1].split(";");
@@ -1189,7 +1169,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 22:
                 verbs = presentPerfectContinuous[2].split(";");
@@ -1200,7 +1179,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she has been " + verb;
                     answers[pos++] = "it has been " + verb;
                 }
-                returns = answers;
                 break;
             case 23:
                 verbs = presentPerfectContinuous[3].split(";");
@@ -1208,7 +1186,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 24:
                 verbs = presentPerfectContinuous[4].split(";");
@@ -1216,7 +1193,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 25:
                 verbs = presentPerfectContinuous[5].split(";");
@@ -1224,7 +1200,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 26:
                 verbs = pastSimple[0].split(";");
@@ -1232,7 +1207,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 27:
                 verbs = pastSimple[1].split(";");
@@ -1240,7 +1214,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 28:
                 verbs = pastSimple[2].split(";");
@@ -1251,7 +1224,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she " + verb;
                     answers[pos++] = "it " + verb;
                 }
-                returns = answers;
                 break;
             case 29:
                 verbs = pastSimple[3].split(";");
@@ -1259,7 +1231,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 30:
                 verbs = pastSimple[4].split(";");
@@ -1267,7 +1238,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 31:
                 verbs = pastSimple[5].split(";");
@@ -1275,7 +1245,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 32:
                 verbs = pastContinuous[0].split(";");
@@ -1283,7 +1252,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I was " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 33:
                 verbs = pastContinuous[1].split(";");
@@ -1291,7 +1259,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you were " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 34:
                 verbs = pastContinuous[2].split(";");
@@ -1302,7 +1269,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she was " + verb;
                     answers[pos++] = "it was " + verb;
                 }
-                returns = answers;
                 break;
             case 35:
                 verbs = pastContinuous[3].split(";");
@@ -1310,7 +1276,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we were " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 36:
                 verbs = pastContinuous[4].split(";");
@@ -1318,7 +1283,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you were " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 37:
                 verbs = pastContinuous[5].split(";");
@@ -1326,7 +1290,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they were " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 38:
                 verbs = pastPerfect[0].split(";");
@@ -1334,7 +1297,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I had " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 39:
                 verbs = pastPerfect[1].split(";");
@@ -1342,7 +1304,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you had " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 40:
                 verbs = pastPerfect[2].split(";");
@@ -1353,7 +1314,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she had " + verb;
                     answers[pos++] = "it had " + verb;
                 }
-                returns = answers;
                 break;
             case 41:
                 verbs = pastPerfect[3].split(";");
@@ -1361,7 +1321,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we had " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 42:
                 verbs = pastPerfect[4].split(";");
@@ -1369,7 +1328,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you had " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 43:
                 verbs = pastPerfect[5].split(";");
@@ -1377,7 +1335,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they had " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 44:
                 verbs = pastPerfectContinuous[0].split(";");
@@ -1385,7 +1342,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I had been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 45:
                 verbs = pastPerfectContinuous[1].split(";");
@@ -1393,7 +1349,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you had been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 46:
                 verbs = pastPerfectContinuous[2].split(";");
@@ -1404,7 +1359,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she had been " + verb;
                     answers[pos++] = "it had been " + verb;
                 }
-                returns = answers;
                 break;
             case 47:
                 verbs = pastPerfectContinuous[3].split(";");
@@ -1412,7 +1366,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we had been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 48:
                 verbs = pastPerfectContinuous[4].split(";");
@@ -1420,7 +1373,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you had been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 49:
                 verbs = pastPerfectContinuous[5].split(";");
@@ -1428,7 +1380,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they had been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 50:
                 verbs = future[0].split(";");
@@ -1436,7 +1387,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I will " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 51:
                 verbs = future[1].split(";");
@@ -1444,7 +1394,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you will " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 52:
                 verbs = future[2].split(";");
@@ -1455,7 +1404,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she will " + verb;
                     answers[pos++] = "it will " + verb;
                 }
-                returns = answers;
                 break;
             case 53:
                 verbs = future[3].split(";");
@@ -1463,7 +1411,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we will " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 54:
                 verbs = future[4].split(";");
@@ -1471,7 +1418,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you will " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 55:
                 verbs = future[5].split(";");
@@ -1479,7 +1425,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they will " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 56:
                 verbs = futurePerfect[0].split(";");
@@ -1487,7 +1432,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I will have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 57:
                 verbs = futurePerfect[1].split(";");
@@ -1495,7 +1439,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you will have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 58:
                 verbs = futurePerfect[2].split(";");
@@ -1506,7 +1449,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she will have " + verb;
                     answers[pos++] = "it will have " + verb;
                 }
-                returns = answers;
                 break;
             case 59:
                 verbs = futurePerfect[3].split(";");
@@ -1514,7 +1456,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we will have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 60:
                 verbs = futurePerfect[4].split(";");
@@ -1522,7 +1463,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you will have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 61:
                 verbs = futurePerfect[5].split(";");
@@ -1530,7 +1470,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they will have " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 62:
                 verbs = futureContinuous[0].split(";");
@@ -1538,7 +1477,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I will be " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 63:
                 verbs = futureContinuous[1].split(";");
@@ -1546,7 +1484,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you will be " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 64:
                 verbs = futureContinuous[2].split(";");
@@ -1557,7 +1494,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she will be " + verb;
                     answers[pos++] = "it will be " + verb;
                 }
-                returns = answers;
                 break;
             case 65:
                 verbs = futureContinuous[3].split(";");
@@ -1565,7 +1501,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we will be " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 66:
                 verbs = futureContinuous[4].split(";");
@@ -1573,7 +1508,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you will be " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 67:
                 verbs = futureContinuous[5].split(";");
@@ -1581,7 +1515,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they will be " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 68:
                 verbs = futurePerfectContinuous[0].split(";");
@@ -1589,7 +1522,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "I will have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 69:
                 verbs = futurePerfectContinuous[1].split(";");
@@ -1597,7 +1529,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you will have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 70:
                 verbs = futurePerfectContinuous[2].split(";");
@@ -1608,7 +1539,6 @@ public class VerbEnglish implements Serializable, Verb {
                     answers[pos++] = "she will have been " + verb;
                     answers[pos++] = "it will have been " + verb;
                 }
-                returns = answers;
                 break;
             case 71:
                 verbs = futurePerfectContinuous[3].split(";");
@@ -1616,7 +1546,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "we will have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 72:
                 verbs = futurePerfectContinuous[4].split(";");
@@ -1624,7 +1553,6 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "you will have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             case 73:
                 verbs = futurePerfectContinuous[5].split(";");
@@ -1632,14 +1560,13 @@ public class VerbEnglish implements Serializable, Verb {
                 for (int i = 0; i < verbs.length; i++) {
                     answers[i] = "they will have been " + verbs[i];
                 }
-                returns = answers;
                 break;
             default:
                 System.err.println("Invalid question number: " + number);
                 return "";
         }
         String s = "";
-        for(String a : returns){
+        for(String a : answers){
             //noinspection HardcodedLineSeparator
             s += a + "\n";
         }
