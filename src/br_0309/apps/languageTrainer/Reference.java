@@ -7,10 +7,10 @@ import java.util.Locale;
 @SuppressWarnings("HardcodedFileSeparator")
 public class Reference {
 
-    public static final String FXML_MENU = "/br_0309/apps/languageTrainer/scenes/Menu.fxml";
-    public static final String FXML_PROFILE_SELECT = "/br_0309/apps/languageTrainer/scenes/ProfileSelect.fxml";
+    static final String FXML_MENU = "/br_0309/apps/languageTrainer/scenes/Menu.fxml";
+    static final String FXML_PROFILE_SELECT = "/br_0309/apps/languageTrainer/scenes/ProfileSelect.fxml";
     public static final String FXML_PROFILE_NEW = "/br_0309/apps/languageTrainer/scenes/ProfileNew.fxml";
-    public static final String FXML_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/Translate.fxml";
+    static final String FXML_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/Translate.fxml";
     public static final String FXML_SETTINGS = "/br_0309/apps/languageTrainer/scenes/Settings.fxml";
     public static final String FXML_CREATE_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/CreateTranslationList.fxml";
     public static final String FXML_LANGUAGE_ADD = "/br_0309/apps/languageTrainer/scenes/LanguageAdd.fxml";
@@ -19,6 +19,7 @@ public class Reference {
     public static final String FXML_RESOURCES = "/br_0309/apps/languageTrainer/scenes/Resources.fxml";
     public static final String FXML_VERB_ENGLISH = "/br_0309/apps/languageTrainer/scenes/VerbEnglish.fxml";
     public static final String FXML_VERB_GERMAN = "/br_0309/apps/languageTrainer/scenes/VerbGerman.fxml";
+    public static final String FXMK_VERB_FRENCH = "/br_0309/apps/languageTrainer/scenes/VerbFrench.fxml";
     public static final String FXML_VERBS = "/br_0309/apps/languageTrainer/scenes/Verbs.fxml";
 
     public static final String[] THEMES = {"/stylesheets/default.css", "/stylesheets/dark.css", "/stylesheets/blue.css"};
@@ -37,7 +38,7 @@ public class Reference {
     public static String DEFAULT_EXERCISE_DIR;
     public static final String DEFAULT_PROFILE_DIR = SystemUtil.getUserHome();
 
-    public static final String LOGO = "/icons/Logo.png";
+    static final String LOGO = "/icons/Logo.png";
     public static final String VERSION = "0.6.5";
 
     public static final String[] SOUNDS_CORRECT = {"/sounds/correct/correct.wav", "/sounds/correct/correct2.wav", "/sounds/correct/game-sound-correct-v2.wav",
@@ -56,4 +57,5 @@ public class Reference {
     public static final String COPYRIGHTS_END = ".txt";
 
     public static final Locale SYSTEM_LOCALE = Locale.getDefault();
+    public static final Locale[] VERB_LOCALES = {Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH};
 }

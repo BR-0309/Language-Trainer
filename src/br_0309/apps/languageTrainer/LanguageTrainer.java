@@ -269,6 +269,10 @@ public class LanguageTrainer extends Application {
         }
     }
 
+    public static void showCreateVerbList(int language){
+        // FIXME: Implement verb list editor
+    }
+
     @Override
     public void start(Stage primaryStage) {
         Thread.currentThread().setUncaughtExceptionHandler((thread, throwable) -> {

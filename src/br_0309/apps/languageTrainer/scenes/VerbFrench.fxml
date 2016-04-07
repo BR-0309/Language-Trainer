@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerNewVerbFrench">
+   <center>
+      <Accordion BorderPane.alignment="CENTER">
+        <panes>
+          <TitledPane animated="false" text="présent / passé">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="CENTER" text="présent" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="je" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="tu" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="il/elle/on" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="nous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="vous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="ils/elles" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField fx:id="txtPresentJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtPresentTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtPresentIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtPresentNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField fx:id="txtPresentVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField fx:id="txtPresentIls" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="285.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="CENTER" text="passé composé" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="j'ai" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="tu as" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="il/elle/on a" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="nous avons" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="vous avez" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="ils/elles ont" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField fx:id="txtPasseComposeJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtPasseComposeTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtPasseComposeIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtPasseComposeNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField fx:id="txtPasseComposeVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField fx:id="txtPasseComposeIls" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="CENTER" text="imparfait" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="je" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="tu" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="il/elle/on" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="nous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="vous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="ils/elles" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField fx:id="txtImparfaitJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtImparfaitTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtImparfaitIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtImparfaitNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField fx:id="txtImparfaitVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField fx:id="txtImparfaitIls" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="255.0">
+                           <children>
+                              <Label alignment="CENTER" text="plus-que-parfait" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="j'avais" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="tu avais" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="il/elle/on avait" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="nous avions" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="vous aviez" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="ils/elles avaient" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField fx:id="txtPlusQueParfaitJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtPlusQueParfaitTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtPlusQueParfaitIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtPlusQueParfaitNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField fx:id="txtPlusQueParfaitVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField fx:id="txtPlusQueParfaitIls" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="285.0" AnchorPane.topAnchor="255.0">
+                           <children>
+                              <Label alignment="CENTER" text="passé simple" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="je" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="tu" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="il/elle/on" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="nous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="vous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="ils/elles" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField fx:id="txtPasseSimpleJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtPasseSimpleTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtPasseSimpleIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtPasseSimpleNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField fx:id="txtPasseSimpleVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField fx:id="txtPasseSimpleIls" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content></TitledPane>
+          <TitledPane animated="false" text="futur / conditionnel / impératif">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="CENTER" text="futur simple" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="je" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="tu" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="il/elle/on" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="nous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="vous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="ils/elles" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField fx:id="txtFuturSimpleJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtFuturSimpleTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtFuturSimpleIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtFuturSimpleNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField fx:id="txtFuturSimpleVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField fx:id="txtFuturSimpleIls" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="285.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="CENTER" text="futur composé" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="je vais" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="tu vas" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="il/elle/on va" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="nous allons" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="vous allez" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="ils/elles vont" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField fx:id="txtFuturComposeJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtFuturComposeTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtFuturComposeIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtFuturComposeNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField fx:id="txtFuturComposeVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField fx:id="txtFuturComposeIls" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="CENTER" text="conditionnel présent" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="je" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="tu" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="il/elle/on" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label text="nous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label text="vous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label text="ils/elles" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <TextField fx:id="txtConditionnelPresentJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtConditionnelPresentTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtConditionnelPresentIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtConditionnelPresentNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="135.0" />
+                              <TextField fx:id="txtConditionnelPresentVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="170.0" />
+                              <TextField fx:id="txtConditionnelPresentIls" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="205.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="275.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="255.0">
+                           <children>
+                              <Label alignment="CENTER" text="impératif présent" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="tu" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label text="nous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label text="vous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <TextField fx:id="txtImperativPresentTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtImperatifPresentNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
+                              <TextField fx:id="txtImperatifVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content></TitledPane>
+        </panes>
+      </Accordion>
+   </center>
+   <top>
+      <HBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="infinitif:" />
+                  <TextField fx:id="txtInfinitif" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="participe présent:" />
+                  <TextField fx:id="txtParticipePresent" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="participe passé:" />
+                  <TextField fx:id="txtParticipePasse" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <RadioButton mnemonicParsing="false" onAction="#onAvoirChanged" selected="true" text="avoir">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group" />
+                     </toggleGroup>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></RadioButton>
+                  <RadioButton mnemonicParsing="false" onAction="#onAvoirChanged" text="être" toggleGroup="$group">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </RadioButton>
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#onOk" text="%generic.ok" />
+            <Button mnemonicParsing="false" onAction="#onCancel" text="%generic.cancel" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+</BorderPane>

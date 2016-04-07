@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerCreateTranslationList">
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerCreateTranslationList">
     <center>
         <TableView fx:id="table" editable="true" BorderPane.alignment="CENTER">
             <columnResizePolicy>
@@ -14,29 +17,34 @@
     <bottom>
         <AnchorPane BorderPane.alignment="CENTER">
             <BorderPane.margin>
-                <Insets top="5.0"/>
+                <Insets top="5.0" />
             </BorderPane.margin>
-            <VBox layoutX="268.0" layoutY="35.0" spacing="5.0" AnchorPane.bottomAnchor="5.0"
-                  AnchorPane.rightAnchor="5.0">
-                <TextField fx:id="txtTitle" promptText="Title"/>
-                <HBox layoutX="169.0" layoutY="35.0" spacing="5.0" AnchorPane.bottomAnchor="5.0"
-                      AnchorPane.rightAnchor="5.0">
-                    <Button mnemonicParsing="false" onAction="#open" text="%generic.open"/>
-                    <Button mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="75.0"
-                            text="%generic.save"/>
-                    <Button mnemonicParsing="false" onAction="#addLanguage"
-                            text="%createTranslation.addLanguage"/>
-                    <Button mnemonicParsing="false" onAction="#exit" text="%generic.btnExit"/>
-                </HBox>
-            </VBox>
-            <VBox spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
-                <TextField fx:id="txtSearch" promptText="Search"/>
-                <AnchorPane>
-                    <Button mnemonicParsing="false" onAction="#next" text="%generic.next"/>
-                    <Button mnemonicParsing="false" onAction="#previous" text="%generic.previous"
-                            AnchorPane.rightAnchor="0.0"/>
-                </AnchorPane>
-            </VBox>
+           <children>
+               <VBox layoutX="268.0" layoutY="35.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                  <children>
+                      <TextField fx:id="txtTitle" promptText="Title" />
+                      <HBox layoutX="169.0" layoutY="35.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                         <children>
+                             <Button mnemonicParsing="false" onAction="#open" text="%generic.open" />
+                             <Button mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="75.0" text="%generic.save" />
+                             <Button mnemonicParsing="false" onAction="#addLanguage" text="%createTranslation.addLanguage" />
+                             <Button mnemonicParsing="false" onAction="#exit" text="%generic.btnExit" />
+                         </children>
+                      </HBox>
+                  </children>
+               </VBox>
+               <VBox spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
+                  <children>
+                      <TextField fx:id="txtSearch" promptText="Search" />
+                      <AnchorPane>
+                         <children>
+                             <Button mnemonicParsing="false" onAction="#next" text="%generic.next" />
+                             <Button mnemonicParsing="false" onAction="#previous" text="%generic.previous" AnchorPane.rightAnchor="0.0" />
+                         </children>
+                      </AnchorPane>
+                  </children>
+               </VBox>
+           </children>
         </AnchorPane>
     </bottom>
 </BorderPane>

@@ -210,7 +210,20 @@ public class ControllerMenu implements Initializable, IController {
     }
 
     public void onVerbList() {
-        // FIXME: Implement verb list editor
+        ArrayList<String> languages = new ArrayList<>();
+        for(Locale l : Reference.VERB_LOCALES) {
+            languages.add(l.getDisplayLanguage());
+        }
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(languages.get(0), languages);
+        dialog.initOwner(LanguageTrainer.window);
+        dialog.setHeaderText("Select language:");
+        dialog.setTitle("");
+        Optional<String> result = dialog.showAndWait();
+        if(!result.isPresent()) {
+            return;
+        }
+        LanguageTrainer.showCreateVerbList(languages.indexOf(result.get()));
     }
 
     public void onAbout() {
