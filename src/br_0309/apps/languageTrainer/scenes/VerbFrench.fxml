@@ -45,12 +45,12 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label text="j'ai" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
-                              <Label text="tu as" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
-                              <Label text="il/elle/on a" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
-                              <Label text="nous avons" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
-                              <Label text="vous avez" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
-                              <Label text="ils/elles ont" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <Label fx:id="lblPasseComposeJe" text="j'ai" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label fx:id="lblPasseComposeTu" text="tu as" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label fx:id="lblPasseComposeIl" text="il/elle/on a" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label fx:id="lblPasseComposeNous" text="nous avons" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label fx:id="lblPasseComposeVous" text="vous avez" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label fx:id="lblPasseComposeIls" text="ils/elles ont" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
                               <TextField fx:id="txtPasseComposeJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
                               <TextField fx:id="txtPasseComposeTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
                               <TextField fx:id="txtPasseComposeIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
@@ -93,12 +93,12 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label text="j'avais" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
-                              <Label text="tu avais" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
-                              <Label text="il/elle/on avait" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
-                              <Label text="nous avions" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
-                              <Label text="vous aviez" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
-                              <Label text="ils/elles avaient" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
+                              <Label fx:id="lblPlusQueParfaitJe" text="j'avais" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Label fx:id="lblPlusQueParfaitTu" text="tu avais" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+                              <Label fx:id="lblPlusQueParfaitIl" text="il/elle/on avait" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
+                              <Label fx:id="lblPlusQueParfaitNous" text="nous avions" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="140.0" />
+                              <Label fx:id="lblPlusQueParfaitVous" text="vous aviez" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="175.0" />
+                              <Label fx:id="lblPlusQueParfaitIls" text="ils/elles avaient" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="210.0" />
                               <TextField fx:id="txtPlusQueParfaitJe" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
                               <TextField fx:id="txtPlusQueParfaitTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
                               <TextField fx:id="txtPlusQueParfaitIl" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
@@ -223,9 +223,9 @@
                               <Label text="tu" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="35.0" />
                               <Label text="nous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
                               <Label text="vous" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="105.0" />
-                              <TextField fx:id="txtImperativPresentTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
+                              <TextField fx:id="txtImperatifPresentTu" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" />
                               <TextField fx:id="txtImperatifPresentNous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="65.0" />
-                              <TextField fx:id="txtImperatifVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
+                              <TextField fx:id="txtImperatifPresentVous" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
