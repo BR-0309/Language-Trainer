@@ -24,6 +24,7 @@ public class ControllerProfileNew implements Initializable {
     public Button ok;
     public Button cancel;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txtLocation.setText(Reference.DEFAULT_PROFILE_DIR);

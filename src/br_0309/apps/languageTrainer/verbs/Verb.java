@@ -1,11 +1,15 @@
 package br_0309.apps.languageTrainer.verbs;
 
-interface Verb {
+import java.io.Serializable;
 
-    boolean isCorrect(int number, String answer);
+public abstract class Verb implements Serializable {
 
-    String getQuestion(int number);
+    public abstract boolean isCorrect(int number, String answer);
 
-    String getAnswers(int number);
+    public abstract String getQuestion(int number);
+
+    public abstract String getAnswers(int number);
+
+    public abstract String getInfinitive();
 
 }

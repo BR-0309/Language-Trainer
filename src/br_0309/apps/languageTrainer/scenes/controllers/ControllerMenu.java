@@ -217,7 +217,7 @@ public class ControllerMenu implements Initializable, IController {
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>(languages.get(0), languages);
         dialog.initOwner(LanguageTrainer.window);
-        dialog.setHeaderText("Select language:");
+        dialog.setHeaderText(BUNDLE.getString("verbs.selectLanguage"));
         dialog.setTitle("");
         Optional<String> result = dialog.showAndWait();
         if(!result.isPresent()) {

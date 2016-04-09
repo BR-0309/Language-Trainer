@@ -2,7 +2,7 @@ package br_0309.apps.languageTrainer.verbs;
 
 import java.io.Serializable;
 
-public class VerbGerman implements Serializable, Verb {
+public class VerbGerman extends Verb implements Serializable {
 
     public String infinitiv;
     public String partizipI;
@@ -23,11 +23,29 @@ public class VerbGerman implements Serializable, Verb {
     public String[] konjunktivIIFuturII;
     public boolean isHaben;
 
+    public VerbGerman() {
+        präsens = new String[6];
+        perfekt = new String[6];
+        präteritum = new String[6];
+        plusquamperfekt = new String[6];
+        futurI = new String[6];
+        futurII = new String[6];
+        konjunktivIPräsens = new String[6];
+        konjunktivIPerfekt = new String[6];
+        konjunktivIFuturI = new String[6];
+        konjunktivIFuturII = new String[6];
+        konjunktivIIPräteritum = new String[6];
+        konjunktivIIPlusquamperfekt = new String[6];
+        konjunktivIIFuturI = new String[6];
+        konjunktivIIFuturII = new String[6];
+        isHaben = true;
+    }
+
     public boolean isCorrect(int number, String answer) {
         answer = answer.trim();
         //noinspection HardcodedLineSeparator
-        for(String s : getAnswers(number).split("\n")){
-            if(s.trim().equals(answer)){
+        for (String s : getAnswers(number).split("\n")) {
+            if (s.trim().equals(answer)) {
                 return true;
             }
         }
@@ -1021,6 +1039,11 @@ public class VerbGerman implements Serializable, Verb {
             returns += s + "\n";
         }
         return returns;
+    }
+
+    @Override
+    public String getInfinitive() {
+        return infinitiv;
     }
 
 }

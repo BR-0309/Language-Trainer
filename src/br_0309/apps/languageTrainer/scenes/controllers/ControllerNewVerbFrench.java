@@ -1,13 +1,18 @@
 package br_0309.apps.languageTrainer.scenes.controllers;
 
+import br_0309.apps.languageTrainer.verbs.Verb;
+import br_0309.apps.languageTrainer.verbs.VerbFrench;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.awt.*;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class ControllerNewVerbFrench implements Initializable {
+public class ControllerNewVerbFrench extends ControllerNewVerb implements Initializable, IController {
 
     // Passé composé labels
     public Label lblPasseComposeJe;
@@ -89,6 +94,9 @@ public class ControllerNewVerbFrench implements Initializable {
     public TextField txtImperatifPresentNous;
     public TextField txtImperatifPresentVous;
 
+    public Label lblWarning;
+
+    public VerbFrench result = null;
     private Label[] lblsPasseCompose;
     private Label[] lblsPlusQueParfait;
     private TextField[] txtsPresent;
@@ -99,13 +107,15 @@ public class ControllerNewVerbFrench implements Initializable {
     private TextField[] txtsFuturSimple;
     private TextField[] txtsFuturCompose;
     private TextField[] txtsConditionnelPresent;
-    private TextField[] txtsImperfatifPresent;
+    private TextField[] allTextFields;
+    private boolean isAvoirSelected = true;
+    private List<Verb> preEnteredVerbs;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblsPasseCompose = new Label[] {lblPasseComposeJe, lblPasseComposeTu, lblPasseComposeIl, lblPasseComposeNous, lblPasseComposeVous, lblPasseComposeIls};
         lblsPlusQueParfait = new Label[] {lblPlusQueParfaitJe, lblPlusQueParfaitTu, lblPlusQueParfaitIl, lblPlusQueParfaitNous, lblPlusQueParfaitVous,
-                                          lblPasseComposeIls};
+                                          lblPlusQueParfaitIls};
         txtsPresent = new TextField[] {txtPresentJe, txtPresentTu, txtPresentIl, txtPresentNous, txtPresentVous, txtPresentIls};
         txtsPasseCompose = new TextField[] {txtPasseComposeJe, txtPasseComposeTu, txtPasseComposeIl, txtPasseComposeNous, txtPasseComposeVous,
                                             txtPasseComposeIls};
@@ -118,19 +128,139 @@ public class ControllerNewVerbFrench implements Initializable {
                                             txtFuturComposeIls};
         txtsConditionnelPresent = new TextField[] {txtConditionnelPresentJe, txtConditionnelPresentTu, txtConditionnelPresentIl, txtConditionnelPresentNous,
                                                    txtConditionnelPresentVous, txtConditionnelPresentIls};
-        txtsImperfatifPresent = new TextField[] {txtImperatifPresentTu, txtImperatifPresentNous, txtImperatifPresentVous};
+        allTextFields = new TextField[] {txtPresentJe, txtPresentTu, txtPresentIl, txtPresentNous, txtPresentVous, txtPresentIls, txtPasseComposeJe, txtPasseComposeTu, txtPasseComposeIl, txtPasseComposeNous, txtPasseComposeVous,
+                                         txtPasseComposeIls, txtImparfaitJe, txtImparfaitTu, txtImparfaitIl, txtImparfaitNous, txtImparfaitVous,
+                                         txtImparfaitIls, txtPlusQueParfaitJe, txtPlusQueParfaitTu, txtPlusQueParfaitIl, txtPlusQueParfaitNous, txtPlusQueParfaitVous,
+                                         txtPlusQueParfaitIls, txtPasseSimpleJe, txtPasseSimpleTu, txtPasseSimpleIl, txtPasseSimpleNous, txtPasseSimpleVous,
+                                         txtPasseSimpleIls, txtFuturSimpleJe, txtFuturSimpleTu, txtFuturSimpleIl, txtFuturSimpleNous, txtFuturSimpleVous,
+                                         txtFuturSimpleIls, txtFuturComposeJe, txtFuturComposeTu, txtFuturComposeIl, txtFuturComposeNous, txtFuturComposeVous,
+                                         txtFuturComposeIls, txtConditionnelPresentJe, txtConditionnelPresentTu, txtConditionnelPresentIl, txtConditionnelPresentNous,
+                                         txtConditionnelPresentVous, txtConditionnelPresentIls, txtImperatifPresentTu, txtImperatifPresentNous, txtImperatifPresentVous};
+        // FIXME: Add impératif and conditionnel/futur simple
+        txtInfinitif.textProperty().addListener((observable, oldValue, newValue) -> {
+            for (Verb v : preEnteredVerbs) {
+                if (v.getInfinitive().equals(newValue)) {
+                    Toolkit.getDefaultToolkit().beep();
+                    lblWarning.setVisible(true);
+                } else {
+                    lblWarning.setVisible(false);
+                }
+            }
+            // TODO: Add futur simple/conditionnel présent
+            for(TextField txt : txtsFuturCompose) {
+                txt.setText(newValue);
+            }
+        });
+        txtParticipePasse.textProperty().addListener((observable, oldValue, newValue) -> {
+            newValue = newValue.trim();
+            for(TextField txt : txtsPasseCompose) {
+                txt.setText(newValue);
+            }
+            for(TextField txt : txtsPlusQueParfait) {
+                txt.setText(newValue);
+            }
+        });
+
     }
 
+    @SuppressWarnings("HardcodedFileSeparator")
     public void onAvoirChanged() {
-
+        isAvoirSelected = ! isAvoirSelected;
+        String[] passeCompose;
+        String[] plusQueParfait;
+        if (isAvoirSelected) {
+            passeCompose = new String[] {"j'ai", "tu as", "il/elle/on a", "nous avons", "vous avez", "ils/elles ont"};
+            plusQueParfait = new String[] {"j'avais", "tu avais", "il/elle/on avait", "nous avions", "vous aviez", "ils/elles avaient"};
+        } else {
+            passeCompose = new String[] {"je suis", "tu es", "il/elle/on est", "nous sommes", "vous êtes", "ils/elles sont"};
+            plusQueParfait = new String[] {"j'étais", "tu étais", "il/elle/on était", "nous étions", "vous étiez", "ils/elles étaient"};
+        }
+        for (int i = 0; i < 6; i++) {
+            lblsPasseCompose[i].setText(passeCompose[i]);
+            lblsPlusQueParfait[i].setText(plusQueParfait[i]);
+        }
     }
 
     public void onOk() {
+        if(!areAllFieldsFilled() || lblWarning.isVisible()){
+            Toolkit.getDefaultToolkit().beep();
+            return;
+        }
+        VerbFrench verb = new VerbFrench();
+        verb.isAvoir = isAvoirSelected;
+        verb.infinitif = txtInfinitif.getText().trim();
+        verb.participePresent = txtParticipePresent.getText().trim();
+        verb.participePasse = txtParticipePasse.getText().trim();
+        verb.imperatifPresent[0] = txtImperatifPresentTu.getText().trim();
+        verb.imperatifPresent[1] = txtImperatifPresentNous.getText().trim();
+        verb.imperatifPresent[2] = txtImperatifPresentVous.getText().trim();
 
+        for(int i = 0; i < 6; i++) {
+            verb.present[i] = txtsPresent[i].getText().trim();
+            verb.passeCompose[i] = txtsPasseCompose[i].getText().trim();
+            verb.plusQueParfait[i] = txtsPlusQueParfait[i].getText().trim();
+            verb.imparfait[i] = txtsImparfait[i].getText().trim();
+            verb.passeSimple[i] = txtsPasseSimple[i].getText().trim();
+            verb.futurCompose[i] = txtsFuturCompose[i].getText().trim();
+            verb.futurSimple[i] = txtsFuturSimple[i].getText().trim();
+            verb.conditionnelPresent[i] = txtsConditionnelPresent[i].getText().trim();
+        }
+        result = verb;
+        onCancel();
+    }
+
+    private boolean areAllFieldsFilled() {
+        for(TextField txt : allTextFields) {
+            if(txt.getText().trim().isEmpty()){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void onCancel() {
+        Stage stage = (Stage) lblPasseComposeJe.getScene().getWindow();
+        stage.close();
+    }
+
+    @Override
+    public void onExit() {
 
     }
 
+    @Override
+    public void onInsert(char c) {
+
+    }
+
+    @Override
+    public Verb getResult() {
+        return result;
+    }
+
+    @Override
+    void initPreEnteredVerbs(List<Verb> list) {
+        preEnteredVerbs = list;
+    }
+
+    @Override
+    public void loadVerb(Verb v) {
+        VerbFrench verb = (VerbFrench) v;
+        txtInfinitif.setText(verb.infinitif);
+        txtParticipePasse.setText(verb.participePasse);
+        txtParticipePresent.setText(verb.participePresent);
+        txtImperatifPresentTu.setText(verb.imperatifPresent[0]);
+        txtImperatifPresentNous.setText(verb.imperatifPresent[1]);
+        txtImperatifPresentVous.setText(verb.imperatifPresent[2]);
+        for(int i = 0; i < 6; i++){
+            txtsPresent[i].setText(verb.present[i]);
+            txtsPasseCompose[i].setText(verb.passeCompose[i]);
+            txtsPlusQueParfait[i].setText(verb.plusQueParfait[i]);
+            txtsImparfait[i].setText(verb.imparfait[i]);
+            txtsPasseSimple[i].setText(verb.passeSimple[i]);
+            txtsFuturCompose[i].setText(verb.futurCompose[i]);
+            txtsFuturSimple[i].setText(verb.futurSimple[i]);
+            txtsConditionnelPresent[i].setText(verb.conditionnelPresent[i]);
+        }
+    }
 }

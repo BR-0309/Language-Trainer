@@ -2,10 +2,9 @@ package br_0309.apps.languageTrainer.verbs;
 
 import java.io.Serializable;
 
-// FIXME: Check spelling
 // FIXME: Add conjugation
 // TODO: Remember that certain verbs don't conjugate completely
-public class VerbFrench implements Serializable, Verb {
+public class VerbFrench extends Verb implements Serializable {
 
     public String infinitif;
     public String participePresent;
@@ -20,6 +19,19 @@ public class VerbFrench implements Serializable, Verb {
     public String[] conditionnelPresent;
     public String[] imperatifPresent;
     public boolean isAvoir;
+
+    public VerbFrench() {
+        present = new String[6];
+        passeCompose = new String[6];
+        imparfait = new String[6];
+        plusQueParfait = new String[6];
+        passeSimple = new String[6];
+        futurSimple = new String[6];
+        futurCompose = new String[6];
+        conditionnelPresent = new String[6];
+        imperatifPresent = new String[3];
+        isAvoir = true;
+    }
 
     public boolean isCorrect(int number, String answer) {
         answer = answer.trim();
@@ -617,6 +629,11 @@ public class VerbFrench implements Serializable, Verb {
             s += a + "\n";
         }
         return s;
+    }
+
+    @Override
+    public String getInfinitive() {
+        return infinitif;
     }
 
 }

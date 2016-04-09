@@ -4,7 +4,7 @@ import br_0309.apps.languageTrainer.util.StringUtil;
 
 import java.io.Serializable;
 
-public class VerbEnglish implements Serializable, Verb {
+public class VerbEnglish extends Verb implements Serializable {
 
     public static transient final VerbEnglish EMPTY_VERB = getEmptyInstance();
     public String infinitive;
@@ -24,6 +24,7 @@ public class VerbEnglish implements Serializable, Verb {
     public String[] futurePerfectContinuous;
 
     public VerbEnglish() {
+
     }
 
     public static VerbEnglish conjugate(String infinitive) {
@@ -296,163 +297,6 @@ public class VerbEnglish implements Serializable, Verb {
         verb.futureContinuous = new String[6];
         verb.futurePerfectContinuous = new String[6];
         return verb;
-    }
-
-    @SuppressWarnings("HardcodedFileSeparator")
-    public String getQuestion(int number) {
-        switch (number) {
-            case 0:
-                return infinitive + ": present participle";
-            case 1:
-                return infinitive + ": past participle";
-            case 2:
-                return infinitive + ": present simple I";
-            case 3:
-                return infinitive + ": present simple you";
-            case 4:
-                return infinitive + ": present simple he/she/it";
-            case 5:
-                return infinitive + ": present simple we";
-            case 6:
-                return infinitive + ": present simple you plural";
-            case 7:
-                return infinitive + ": present simple they";
-            case 8:
-                return infinitive + ": present continuous I";
-            case 9:
-                return infinitive + ": present continuous you";
-            case 10:
-                return infinitive + ": present continuous he/she/it";
-            case 11:
-                return infinitive + ": present continuous we";
-            case 12:
-                return infinitive + ": present continuous you plural";
-            case 13:
-                return infinitive + ": present continuous they";
-            case 14:
-                return infinitive + ": present perfect I";
-            case 15:
-                return infinitive + ": present perfect you";
-            case 16:
-                return infinitive + ": present perfect he/she/it";
-            case 17:
-                return infinitive + ": present perfect we";
-            case 18:
-                return infinitive + ": present perfect you plural";
-            case 19:
-                return infinitive + ": present perfect they";
-            case 20:
-                return infinitive + ": present perfect continuous I";
-            case 21:
-                return infinitive + ": present perfect continuous you";
-            case 22:
-                return infinitive + ": present perfect continuous he/she/it";
-            case 23:
-                return infinitive + ": present perfect continuous we";
-            case 24:
-                return infinitive + ": present perfect continuous you plural";
-            case 25:
-                return infinitive + ": present perfect continuous they";
-            case 26:
-                return infinitive + ": past simple I";
-            case 27:
-                return infinitive + ": past simple you";
-            case 28:
-                return infinitive + ": past simple he/she/it";
-            case 29:
-                return infinitive + ": past simple we";
-            case 30:
-                return infinitive + ": past simple you plural";
-            case 31:
-                return infinitive + ": past simple they";
-            case 32:
-                return infinitive + ": past continuous I";
-            case 33:
-                return infinitive + ": past continuous you";
-            case 34:
-                return infinitive + ": past continuous he/she/it";
-            case 35:
-                return infinitive + ": past continuous we";
-            case 36:
-                return infinitive + ": past continuous you plural";
-            case 37:
-                return infinitive + ": past continuous they";
-            case 38:
-                return infinitive + ": past perfect I";
-            case 39:
-                return infinitive + ": past perfect you";
-            case 40:
-                return infinitive + ": past perfect he/she/it";
-            case 41:
-                return infinitive + ": past perfect we";
-            case 42:
-                return infinitive + ": past perfect you plural";
-            case 43:
-                return infinitive + ": past perfect they";
-            case 44:
-                return infinitive + ": past perfect continuous I";
-            case 45:
-                return infinitive + ": past perfect continuous you";
-            case 46:
-                return infinitive + ": past perfect continuous he/she/it";
-            case 47:
-                return infinitive + ": past perfect continuous we";
-            case 48:
-                return infinitive + ": past perfect continuous you plural";
-            case 49:
-                return infinitive + ": past perfect continuous they";
-            case 50:
-                return infinitive + ": future I";
-            case 51:
-                return infinitive + ": future you";
-            case 52:
-                return infinitive + ": future he/she/it";
-            case 53:
-                return infinitive + ": future we";
-            case 54:
-                return infinitive + ": future you plural";
-            case 55:
-                return infinitive + ": future they";
-            case 56:
-                return infinitive + ": future perfect I";
-            case 57:
-                return infinitive + ": future perfect you";
-            case 58:
-                return infinitive + ": future perfect he/she/it";
-            case 59:
-                return infinitive + ": future perfect we";
-            case 60:
-                return infinitive + ": future perfect you plural";
-            case 61:
-                return infinitive + ": future perfect they";
-            case 62:
-                return infinitive + ": future continuous I";
-            case 63:
-                return infinitive + ": future continuous you";
-            case 64:
-                return infinitive + ": future continuous he/she/it";
-            case 65:
-                return infinitive + ": future continuous we";
-            case 66:
-                return infinitive + ": future continuous you plural";
-            case 67:
-                return infinitive + ": future continuous they";
-            case 68:
-                return infinitive + ": future perfect continuous I";
-            case 69:
-                return infinitive + ": future perfect continuous you";
-            case 70:
-                return infinitive + ": future perfect continuous he/she/it";
-            case 71:
-                return infinitive + ": future perfect continuous we";
-            case 72:
-                return infinitive + ": future perfect continuous you plural";
-            case 73:
-                return infinitive + ": future perfect continuous they";
-            default:
-                System.err.println("Invalid question number: " + number);
-                return "ERROR";
-        }
     }
 
     public boolean isCorrect(int number, String answer) {
@@ -1007,6 +851,163 @@ public class VerbEnglish implements Serializable, Verb {
             default:
                 System.err.println("Invalid question number: " + number);
                 return false;
+        }
+    }
+
+    @SuppressWarnings("HardcodedFileSeparator")
+    public String getQuestion(int number) {
+        switch (number) {
+            case 0:
+                return infinitive + ": present participle";
+            case 1:
+                return infinitive + ": past participle";
+            case 2:
+                return infinitive + ": present simple I";
+            case 3:
+                return infinitive + ": present simple you";
+            case 4:
+                return infinitive + ": present simple he/she/it";
+            case 5:
+                return infinitive + ": present simple we";
+            case 6:
+                return infinitive + ": present simple you plural";
+            case 7:
+                return infinitive + ": present simple they";
+            case 8:
+                return infinitive + ": present continuous I";
+            case 9:
+                return infinitive + ": present continuous you";
+            case 10:
+                return infinitive + ": present continuous he/she/it";
+            case 11:
+                return infinitive + ": present continuous we";
+            case 12:
+                return infinitive + ": present continuous you plural";
+            case 13:
+                return infinitive + ": present continuous they";
+            case 14:
+                return infinitive + ": present perfect I";
+            case 15:
+                return infinitive + ": present perfect you";
+            case 16:
+                return infinitive + ": present perfect he/she/it";
+            case 17:
+                return infinitive + ": present perfect we";
+            case 18:
+                return infinitive + ": present perfect you plural";
+            case 19:
+                return infinitive + ": present perfect they";
+            case 20:
+                return infinitive + ": present perfect continuous I";
+            case 21:
+                return infinitive + ": present perfect continuous you";
+            case 22:
+                return infinitive + ": present perfect continuous he/she/it";
+            case 23:
+                return infinitive + ": present perfect continuous we";
+            case 24:
+                return infinitive + ": present perfect continuous you plural";
+            case 25:
+                return infinitive + ": present perfect continuous they";
+            case 26:
+                return infinitive + ": past simple I";
+            case 27:
+                return infinitive + ": past simple you";
+            case 28:
+                return infinitive + ": past simple he/she/it";
+            case 29:
+                return infinitive + ": past simple we";
+            case 30:
+                return infinitive + ": past simple you plural";
+            case 31:
+                return infinitive + ": past simple they";
+            case 32:
+                return infinitive + ": past continuous I";
+            case 33:
+                return infinitive + ": past continuous you";
+            case 34:
+                return infinitive + ": past continuous he/she/it";
+            case 35:
+                return infinitive + ": past continuous we";
+            case 36:
+                return infinitive + ": past continuous you plural";
+            case 37:
+                return infinitive + ": past continuous they";
+            case 38:
+                return infinitive + ": past perfect I";
+            case 39:
+                return infinitive + ": past perfect you";
+            case 40:
+                return infinitive + ": past perfect he/she/it";
+            case 41:
+                return infinitive + ": past perfect we";
+            case 42:
+                return infinitive + ": past perfect you plural";
+            case 43:
+                return infinitive + ": past perfect they";
+            case 44:
+                return infinitive + ": past perfect continuous I";
+            case 45:
+                return infinitive + ": past perfect continuous you";
+            case 46:
+                return infinitive + ": past perfect continuous he/she/it";
+            case 47:
+                return infinitive + ": past perfect continuous we";
+            case 48:
+                return infinitive + ": past perfect continuous you plural";
+            case 49:
+                return infinitive + ": past perfect continuous they";
+            case 50:
+                return infinitive + ": future I";
+            case 51:
+                return infinitive + ": future you";
+            case 52:
+                return infinitive + ": future he/she/it";
+            case 53:
+                return infinitive + ": future we";
+            case 54:
+                return infinitive + ": future you plural";
+            case 55:
+                return infinitive + ": future they";
+            case 56:
+                return infinitive + ": future perfect I";
+            case 57:
+                return infinitive + ": future perfect you";
+            case 58:
+                return infinitive + ": future perfect he/she/it";
+            case 59:
+                return infinitive + ": future perfect we";
+            case 60:
+                return infinitive + ": future perfect you plural";
+            case 61:
+                return infinitive + ": future perfect they";
+            case 62:
+                return infinitive + ": future continuous I";
+            case 63:
+                return infinitive + ": future continuous you";
+            case 64:
+                return infinitive + ": future continuous he/she/it";
+            case 65:
+                return infinitive + ": future continuous we";
+            case 66:
+                return infinitive + ": future continuous you plural";
+            case 67:
+                return infinitive + ": future continuous they";
+            case 68:
+                return infinitive + ": future perfect continuous I";
+            case 69:
+                return infinitive + ": future perfect continuous you";
+            case 70:
+                return infinitive + ": future perfect continuous he/she/it";
+            case 71:
+                return infinitive + ": future perfect continuous we";
+            case 72:
+                return infinitive + ": future perfect continuous you plural";
+            case 73:
+                return infinitive + ": future perfect continuous they";
+            default:
+                System.err.println("Invalid question number: " + number);
+                return "ERROR";
         }
     }
 
@@ -1566,12 +1567,18 @@ public class VerbEnglish implements Serializable, Verb {
                 return "";
         }
         String s = "";
-        for(String a : answers){
+        for (String a : answers) {
             //noinspection HardcodedLineSeparator
             s += a + "\n";
         }
         return s;
     }
+
+    @Override
+    public String getInfinitive() {
+        return infinitive;
+    }
+
     private boolean equalsAny(String[] answers, String answer) {
         for (String s : answers) {
             if (s.trim().equals(answer.trim())) return true;

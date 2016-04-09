@@ -3,6 +3,7 @@ package br_0309.apps.languageTrainer;
 import br_0309.apps.languageTrainer.data.ExerciseData;
 import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
+import br_0309.apps.languageTrainer.scenes.controllers.ControllerCreateVerbList;
 import br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileSelect;
 import br_0309.apps.languageTrainer.scenes.controllers.ControllerTranslate;
 import br_0309.apps.languageTrainer.scenes.controllers.IController;
@@ -255,7 +256,6 @@ public class LanguageTrainer extends Application {
                 window.setMaximized(true);
                 window.hide();
                 window.show();
-                System.out.println("Maximised");
             } else {
                 window.setMinWidth(0);
                 window.setMinHeight(0);
@@ -269,9 +269,36 @@ public class LanguageTrainer extends Application {
         }
     }
 
-    public static void showCreateVerbList(int language){
+    public static void showCreateVerbList(int language) {
         // FIXME: Implement verb list editor
-    }
+        currentController.onExit();
+        FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_CREATE_VERBS),
+                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+        try {
+            boolean maximised = window.isMaximized();
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
+            ControllerCreateVerbList controller = loader.getController();
+            controller.setLanguage(language);
+            currentController = controller;
+            window.setScene(scene);
+            if (maximised) {
+                window.setMaximized(true);
+                window.hide();
+                window.show();
+            } else {
+                window.setMinWidth(0);
+                window.setMinHeight(0);
+                window.sizeToScene();
+                window.setMinWidth(window.getWidth());
+                window.setMinHeight(window.getHeight());
+            }
+            }catch(IOException e){
+                ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
+                FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", Reference.FXML_TRANSLATION), e.getLocalizedMessage(), e);
+            }
+        }
 
     @Override
     public void start(Stage primaryStage) {
