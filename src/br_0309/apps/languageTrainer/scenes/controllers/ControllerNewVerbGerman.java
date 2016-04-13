@@ -350,11 +350,10 @@ public class ControllerNewVerbGerman extends ControllerNewVerb implements Initia
         verb.partizipI = txtPartizipI.getText().trim();
         verb.partizipII = txtPartizipII.getText().trim();
         for (int i = 0; i < 6; i++) {
-            System.out.println(i);
-            System.out.println(txtsPräsens[i].getText().trim());
             verb.präsens[i] = txtsPräsens[i].getText().trim();
             verb.perfekt[i] = txtsPerfekt[i].getText().trim();
-            verb.präteritum[i] = txtsPräteritum[i].getText().trim();
+            verb.präteritum[i] = txtsPräteritum[i].getText().trim(); verb.futurI[i] = txtsFuturI[i].getText().trim();
+            verb.futurII[i] = txtsFuturII[i].getText().trim(); verb.futurII[i] = txtsFuturII[i].getText().trim();
             verb.plusquamperfekt[i] = txtsPlusquamperfekt[i].getText().trim();
             verb.konjunktivIPräsens[i] = txtsKonjunktivIPräsens[i].getText().trim();
             verb.konjunktivIPerfekt[i] = txtsKonjunktivIPerfekt[i].getText().trim();

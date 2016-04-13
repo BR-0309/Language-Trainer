@@ -2,39 +2,56 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="457.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerCreateVerbList">
-    <SplitPane dividerPositions="0.5" layoutX="5.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0"
-               AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-        <VBox alignment="CENTER" layoutX="8.0" layoutY="43.0" maxHeight="1.7976931348623157E308"
-              maxWidth="1.7976931348623157E308" spacing="5.0" AnchorPane.bottomAnchor="5.0"
-              AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="5.0">
-            <ListView fx:id="list" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"/>
-            <TextField fx:id="txtSearch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                       promptText="%generic.search"/>
-        </VBox>
-        <VBox alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-              spacing="5.0">
-            <TextField fx:id="txtTitle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                       promptText="%generic.title"/>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                  spacing="5.0">
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" onAction="#addVerb" text="%verbs.newVerb"/>
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" onAction="#edit" text="%verbs.editVerb"/>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="268.0" layoutY="87.0" maxHeight="1.7976931348623157E308"
-                  maxWidth="1.7976931348623157E308" spacing="5.0">
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" onAction="#open" text="%generic.open"/>
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" onAction="#save" text="%generic.save"/>
-            </HBox>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    onAction="#onExit" text="%generic.btnExit"/>
-        </VBox>
-    </SplitPane>
-    <Label fx:id="lblLang" layoutX="336.0" layoutY="40.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+    <children>
+        <SplitPane dividerPositions="0.5" layoutX="5.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0"
+                   AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <items>
+                <VBox alignment="CENTER" layoutX="8.0" layoutY="43.0" maxHeight="1.7976931348623157E308"
+                      maxWidth="1.7976931348623157E308" spacing="5.0" AnchorPane.bottomAnchor="5.0"
+                      AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="5.0">
+                    <children>
+                        <ListView fx:id="list" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"/>
+                        <TextField fx:id="txtSearch" maxHeight="1.7976931348623157E308"
+                                   maxWidth="1.7976931348623157E308" promptText="%generic.search"/>
+                    </children>
+                </VBox>
+                <VBox alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                      spacing="5.0">
+                    <children>
+                        <TextField fx:id="txtTitle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                   promptText="%generic.title"/>
+                        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                              spacing="5.0">
+                            <children>
+                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" onAction="#addVerb" text="%verbs.newVerb"/>
+                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" onAction="#edit" text="%verbs.editVerb"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="268.0" layoutY="87.0" maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" spacing="5.0">
+                            <children>
+                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" onAction="#open" text="%generic.open"/>
+                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" onAction="#save" text="%generic.save"/>
+                            </children>
+                        </HBox>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false" onAction="#onExit" text="%generic.btnExit"/>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+        <Label fx:id="lblLang" layoutX="336.0" layoutY="40.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

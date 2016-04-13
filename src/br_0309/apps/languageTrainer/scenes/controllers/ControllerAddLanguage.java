@@ -64,7 +64,7 @@ public class ControllerAddLanguage implements Initializable {
         });
     }
 
-    public void addLocales(ArrayList<Locale> locales) {
+    void addLocales(ArrayList<Locale> locales) {
         List<Locale> localeList = new ArrayList<>();
         for (Locale locale : LanguageHandler.LANGUAGES) {
             String lang = locale.getLanguage();
@@ -84,6 +84,12 @@ public class ControllerAddLanguage implements Initializable {
         Collections.sort(localeList, comparator);
         objects = new FilteredList<>(FXCollections.observableList(localeList));
         list.setItems(objects);
+    }
+
+    void addOnlyTheseLocales(ArrayList<Locale> locales) {
+        Comparator<Locale> comparator = (locale1, locale2) -> locale1.getDisplayLanguage().compareTo(locale2.getDisplayLanguage()); Collections.sort(locales,
+                                                                                                                                                     comparator);
+        objects = new FilteredList<>(FXCollections.observableList(locales)); list.setItems(objects);
     }
 
     public void ok() {

@@ -3,10 +3,7 @@ package br_0309.apps.languageTrainer;
 import br_0309.apps.languageTrainer.data.ExerciseData;
 import br_0309.apps.languageTrainer.data.UniversalData;
 import br_0309.apps.languageTrainer.data.UserData;
-import br_0309.apps.languageTrainer.scenes.controllers.ControllerCreateVerbList;
-import br_0309.apps.languageTrainer.scenes.controllers.ControllerProfileSelect;
-import br_0309.apps.languageTrainer.scenes.controllers.ControllerTranslate;
-import br_0309.apps.languageTrainer.scenes.controllers.IController;
+import br_0309.apps.languageTrainer.scenes.controllers.*;
 import br_0309.apps.languageTrainer.util.FXUtil;
 import br_0309.apps.languageTrainer.util.SystemUtil;
 import javafx.application.Application;
@@ -29,6 +26,7 @@ import java.util.ResourceBundle;
 
 // TODO: Make themes less terrible
 // FIXME: If window is maximised, keep it so
+// TODO: Where is random used?
 public class LanguageTrainer extends Application {
 
     public static final UniversalData universalData = new UniversalData();
@@ -141,7 +139,6 @@ public class LanguageTrainer extends Application {
                                            ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
         try {
             boolean maximised = window.isMaximized();
-            System.out.println(maximised);
             Parent root = loader.load();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm());
@@ -264,13 +261,29 @@ public class LanguageTrainer extends Application {
                 window.setMinHeight(window.getHeight());
             }
         } catch (IOException e) {
+            ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()); FXUtil.showExceptionDialog(
+                    bundle.getString("error.load").replace("{0}", Reference.FXML_TRANSLATION), e.getLocalizedMessage(), e);
+        }
+    }
+
+    public static void showVerbs(ArrayList<ExerciseData> selected) {
+        currentController.onExit(); FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_VERBS),
+                                                                       ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault())); try {
+            boolean maximised = window.isMaximized(); Parent root = loader.load(); Scene scene = new Scene(root); scene.getStylesheets().add(
+                    LanguageTrainer.class.getResource(userData.getTheme()).toExternalForm()); ControllerVerbs controller = loader.getController();
+            controller.init(selected); currentController = controller; window.setScene(scene); if (maximised) {
+                window.setMaximized(true); window.hide(); window.show();
+            } else {
+                window.setMinWidth(0); window.setMinHeight(0); window.sizeToScene(); window.setMinWidth(window.getWidth()); window.setMinHeight(
+                        window.getHeight());
+            }
+        } catch (IOException e) {
             ResourceBundle bundle = ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault());
             FXUtil.showExceptionDialog(bundle.getString("error.load").replace("{0}", Reference.FXML_TRANSLATION), e.getLocalizedMessage(), e);
         }
     }
 
     public static void showCreateVerbList(int language) {
-        // FIXME: Implement verb list editor
         currentController.onExit();
         FXMLLoader loader = new FXMLLoader(LanguageTrainer.class.getResource(Reference.FXML_CREATE_VERBS),
                                            ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));

@@ -23,6 +23,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.*;
 import java.util.function.Predicate;
@@ -54,8 +55,8 @@ public class ControllerMenu implements Initializable, IController {
         CheckBox checkbox = new CheckBox();
         checkbox.setOnAction(event -> {
             boolean isSelected = checkbox.isSelected();
-            @SuppressWarnings("unchecked") Predicate<ExerciseData> p = (Predicate<ExerciseData>) data.getPredicate();
-            data.stream().filter(p::test).forEach(d -> d.setSelected(isSelected));
+            @SuppressWarnings("unchecked") Predicate<ExerciseData> p = (Predicate<ExerciseData>) data.getPredicate(); data.stream().filter(p).forEach(
+                    d -> d.setSelected(isSelected));
         });
         table.getColumns().get(0).setGraphic(checkbox);
 
@@ -127,17 +128,25 @@ public class ControllerMenu implements Initializable, IController {
                     }
                 } else if (file.getName().endsWith("vdt")) {
                     // For verb files
-                    try (Scanner scan = new Scanner(new FileInputStream(file), "UTF-8")) {
-                        String lang = scan.nextLine();
-                        if (lang.length() > 3) {
+                    ObjectInputStream in = null; try {
+                        in = new ObjectInputStream(new FileInputStream(file)); String lang = in.readUTF(); int language = - 1; try {
+                            language = Integer.parseInt(lang);
+                        } catch (NumberFormatException e) {
+                            System.err.println("Invalid language code number: " + lang);
+                        } if (language >= Reference.VERB_LOCALES.length) {
                             System.err.printf("Invalid lang code (%s) in file %s. Skipping." + System.lineSeparator(), lang,
                                               file.getAbsolutePath() + System.lineSeparator());
                             continue;
-                        }
-                        data.add(new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""), new Locale(lang).getDisplayLanguage(), VERBS,
-                                                  file, new String[] {lang}));
+                        } data.add(new ExerciseData(false, file.getName().replaceAll("_", " ").replace(".vdt", ""),
+                                                    Reference.VERB_LOCALES[language].getDisplayLanguage(), VERBS, file, new String[] {lang}));
                     } catch (Exception e) {
                         e.printStackTrace();
+                    } finally {
+                        try {
+                            in.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -147,14 +156,23 @@ public class ControllerMenu implements Initializable, IController {
 
     public void onStartTraining() {
         // Copies selected items
+        // TODO: Find out how this actually works
         ArrayList<ExerciseData> selected = data.stream().filter(ExerciseData::isSelected).collect(Collectors.toCollection(ArrayList::new));
         if (selected.isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
             table.requestFocus();
             return;
         }
-        String translation = BUNDLE.getString("generic.translation");
-        selected.stream().filter(d -> d.getType().equals(translation)).forEach(d -> LanguageTrainer.showTranslation(selected));
+        String translation = BUNDLE.getString("generic.translation"); boolean hasTranslation = false; for (ExerciseData data : selected) {
+            if (data.getType().equals(translation)) {
+                hasTranslation = true; break;
+            }
+        } if (hasTranslation) {
+            LanguageTrainer.showTranslation(selected);
+        } else {
+            LanguageTrainer.showVerbs(selected);
+        }
+
     }
 
     @Override
@@ -187,8 +205,8 @@ public class ControllerMenu implements Initializable, IController {
         stage.initOwner(LanguageTrainer.window);
         stage.initModality(Modality.APPLICATION_MODAL);
         try {
-            Parent parent = FXMLLoader
-                    .load(getClass().getResource(Reference.FXML_SETTINGS), ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
+            Parent parent = FXMLLoader.load(getClass().getResource(Reference.FXML_SETTINGS),
+                                            ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault()));
             Scene scene = new Scene(parent);
             scene.getStylesheets().add(getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm());
             stage.setScene(scene);
@@ -210,20 +228,23 @@ public class ControllerMenu implements Initializable, IController {
     }
 
     public void onVerbList() {
-        ArrayList<String> languages = new ArrayList<>();
-        for(Locale l : Reference.VERB_LOCALES) {
-            languages.add(l.getDisplayLanguage());
+        ArrayList<Locale> locales = new ArrayList<>(); Collections.addAll(locales, Reference.VERB_LOCALES); Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Reference.FXML_LANGUAGE_ADD),
+                                           ResourceBundle.getBundle(Reference.BUNDLE_LOC, Locale.getDefault())); try {
+            Parent root = loader.load(); Scene scene = new Scene(root); scene.getStylesheets().add(
+                    getClass().getResource(LanguageTrainer.userData.getTheme()).toExternalForm()); stage.setScene(scene); stage.sizeToScene();
+            stage.setResizable(false); stage.initModality(Modality.APPLICATION_MODAL); stage.initOwner(LanguageTrainer.window); stage.initStyle(
+                    StageStyle.UTILITY); stage.setTitle(BUNDLE.getString("verbs.selectLanguage")); ControllerAddLanguage controller = loader.getController();
+            controller.addOnlyTheseLocales(locales); stage.showAndWait(); if (controller.newLocale != null) {
+                for (int i = 0; i < Reference.VERB_LOCALES.length; i++) {
+                    if (controller.newLocale.equals(Reference.VERB_LOCALES[i])) {
+                        LanguageTrainer.showCreateVerbList(i); return;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        ChoiceDialog<String> dialog = new ChoiceDialog<>(languages.get(0), languages);
-        dialog.initOwner(LanguageTrainer.window);
-        dialog.setHeaderText(BUNDLE.getString("verbs.selectLanguage"));
-        dialog.setTitle("");
-        Optional<String> result = dialog.showAndWait();
-        if(!result.isPresent()) {
-            return;
-        }
-        LanguageTrainer.showCreateVerbList(languages.indexOf(result.get()));
     }
 
     public void onAbout() {

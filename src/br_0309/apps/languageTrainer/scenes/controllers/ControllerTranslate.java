@@ -94,7 +94,6 @@ public class ControllerTranslate implements Initializable, IController {
             }
         }
         if (words.isEmpty()) {
-            if (rest.isEmpty()) {
                 LanguageTrainer.playSoundFinished();
 
                 MessageFormat format = new MessageFormat("");
@@ -108,24 +107,19 @@ public class ControllerTranslate implements Initializable, IController {
                                     new ChoiceFormat(times, timesStrings)};
                 format.setFormats(formats);
                 String msg = format.format(new Object[] {correct, correct, incorrect, incorrect, cheated, cheated});
-                FXUtil.showInformationDialog(BUNDLE.getString("exercise.finishedHeader"), msg);
+                FXUtil.showInformationDialog(BUNDLE.getString("exercise.finishedHeader"), msg); if (rest.isEmpty()) {
                 LanguageTrainer.showMenu();
-                return;
             } else {
-                // FIXME: Show verbs
+                LanguageTrainer.showVerbs(rest);
             }
-            return;
+
         } else {
-            Collections.shuffle(words, LanguageTrainer.random);
+            Collections.shuffle(words, LanguageTrainer.random); VocabularyData d = words.get(0); lblTitle.setText(BUNDLE.getString("translate.task")
+                                                                                                                        .replace("{0}", d.getFrom())
+                                                                                                                        .replace("{1}", d.getTo()));
+            lblTask.setText(d.getQuestion()); lblCorrect.setText(Integer.toString(correct)); lblIncorrect.setText(Integer.toString(incorrect)); lblList.setText(
+                    d.list); txtAnswer.setText(""); updateProgressBar();
         }
-        VocabularyData d = words.get(0);
-        lblTitle.setText(BUNDLE.getString("translate.task").replace("{0}", d.getFrom()).replace("{1}", d.getTo()));
-        lblTask.setText(d.getQuestion());
-        lblCorrect.setText(Integer.toString(correct));
-        lblIncorrect.setText(Integer.toString(incorrect));
-        lblList.setText(d.list);
-        txtAnswer.setText("");
-        updateProgressBar();
     }
 
     @Override

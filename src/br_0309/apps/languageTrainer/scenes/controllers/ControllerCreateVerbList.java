@@ -16,15 +16,13 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -139,7 +137,37 @@ public class ControllerCreateVerbList implements Initializable, IController {
         this.language = language;
     }
 
-    public void open() {// Note to future self, working on opening now. Copy code from ControllerCreateTranslationList
+    public void open() {
+        // TODO add check for different verb versions
+        FileChooser chooser = new FileChooser(); chooser.setInitialDirectory(new File(Reference.DEFAULT_EXERCISE_DIR)); chooser.getExtensionFilters().add(
+                (new FileChooser.ExtensionFilter(BUNDLE.getString("generic.vdt"), "*.vdt"))); File file = chooser.showOpenDialog(LanguageTrainer.window);
+        if (file == null || ! file.exists() || file.isDirectory()) {
+            return;
+        } unfilteredList.clear(); filteredList = new FilteredList<>(FXCollections.emptyObservableList());
+
+        ObjectInputStream in = null; try {
+            in = new ObjectInputStream(new FileInputStream(file)); String string = in.readUTF(); if (string == null || string.isEmpty()) {
+                Toolkit.getDefaultToolkit().beep(); FXUtil.showErrorDialog("", ""); return;
+            } int language; try {
+                language = Integer.parseInt(string);
+            } catch (NumberFormatException e) {
+                Toolkit.getDefaultToolkit().beep(); FXUtil.showErrorDialog("Invalid file format", ""); return;
+            } Object obj = in.readObject(); if (obj instanceof ArrayList) {
+                @SuppressWarnings("unchecked") ArrayList<Verb> l = (ArrayList<Verb>) obj; unfilteredList.clear(); unfilteredList.addAll(l);
+                filteredList = new FilteredList<>(FXCollections.observableArrayList(unfilteredList)); list.setItems(filteredList);
+            } else {
+                Toolkit.getDefaultToolkit().beep(); FXUtil.showErrorDialog("Invalid file format", ""); return;
+            }
+
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } setLanguage(language); txtTitle.setText(file.getName().replaceAll("_", " ").replace(".vdt", ""));
     }
 
     public void save() {
@@ -165,10 +193,7 @@ public class ControllerCreateVerbList implements Initializable, IController {
         ObjectOutputStream out = null;
         try {
             out = new ObjectOutputStream(new FileOutputStream(file));
-            out.writeUTF(Integer.toString(language));
-            for(Verb v : unfilteredList){
-                out.writeObject(v);
-            }
+            out.writeUTF(Integer.toString(language)); out.writeObject(unfilteredList);
         }catch(IOException e) {
             e.printStackTrace();
             // TODO Specify
@@ -187,7 +212,9 @@ public class ControllerCreateVerbList implements Initializable, IController {
 
     public void edit() {
         int index = -143;
-        Verb verb = list.getSelectionModel().getSelectedItem();
+        Verb verb = list.getSelectionModel().getSelectedItem(); if (list.getSelectionModel().isEmpty()) {
+            return;
+        }
         for(int i = 0; i < unfilteredList.size(); i++){
             if(unfilteredList.get(i).getInfinitive().trim().equals(verb.getInfinitive().trim())){
                 index = i;

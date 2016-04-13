@@ -1,6 +1,7 @@
 package br_0309.apps.languageTrainer.verbs;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class VerbGerman extends Verb implements Serializable {
 
@@ -22,6 +23,7 @@ public class VerbGerman extends Verb implements Serializable {
     public String[] konjunktivIIFuturI;
     public String[] konjunktivIIFuturII;
     public boolean isHaben;
+    private transient String list;
 
     public VerbGerman() {
         präsens = new String[6];
@@ -1044,6 +1046,26 @@ public class VerbGerman extends Verb implements Serializable {
     @Override
     public String getInfinitive() {
         return infinitiv;
+    }
+
+    @Override
+    public String getList() {
+        return list;
+    }
+
+    @Override
+    public void setList(String list) {
+        this.list = list;
+    }
+
+    @Override
+    public Locale getLocale() {
+        return Locale.GERMANY;
+    }
+
+    @Override
+    public int getMaxValue() {
+        return 86;
     }
 
 }

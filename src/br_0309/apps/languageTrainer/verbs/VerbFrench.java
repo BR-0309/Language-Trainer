@@ -1,6 +1,7 @@
 package br_0309.apps.languageTrainer.verbs;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 // FIXME: Add conjugation
 // TODO: Remember that certain verbs don't conjugate completely
@@ -19,6 +20,7 @@ public class VerbFrench extends Verb implements Serializable {
     public String[] conditionnelPresent;
     public String[] imperatifPresent;
     public boolean isAvoir;
+    private transient String list;
 
     public VerbFrench() {
         present = new String[6];
@@ -214,77 +216,66 @@ public class VerbFrench extends Verb implements Serializable {
                 break;
             case 8:
                 verbs = passeCompose[0].split(";");
-                answers = new String[verbs.length * 2];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "j'ai " + answers[i];
+                    answers = new String[verbs.length]; for (String verb : verbs) {
+                        answers[pos++] = "j'ai " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "je suis " + answers[i];
-                        answers[pos++] = "je suis " + answers[i] + "e";
+                    answers = new String[verbs.length * 2]; for (String verb : verbs) {
+                        answers[pos++] = "je suis " + verb; answers[pos++] = "je suis " + verb + "e";
                     }
                 }
                 break;
             case 9:
                 verbs = passeCompose[1].split(";");
-                answers = new String[verbs.length * 2];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "tu as " + answers[i];
+                    answers = new String[verbs.length]; for (String verb : verbs) {
+                        answers[pos++] = "tu as " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "tu es " + answers[i];
-                        answers[pos++] = "tu es" + answers[i] + "e";
+                    answers = new String[verbs.length * 2]; for (String verb : verbs) {
+                        answers[pos++] = "tu es " + verb; answers[pos++] = "tu es " + verb + "e";
                     }
                 }
                 break;
             case 10:
-                verbs = passeCompose[2].split(";");
-                answers = new String[verbs.length * 2];
+                verbs = passeCompose[2].split(";"); answers = new String[verbs.length * 3];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "il a " + answers[i];
-                        answers[pos++] = "elle a " + answers[i];
-                        answers[pos++] = "on a " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "il a " + verb; answers[pos++] = "elle a " + verb; answers[pos++] = "on a " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "il est " + answers[i];
-                        answers[pos++] = "elle est " + answers[i] + "e";
-                        answers[pos++] = "on est " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "il est " + verb; answers[pos++] = "elle est " + verb + "e"; answers[pos++] = "on est " + verb;
                     }
                 }
                 break;
             case 11:
-                verbs = passeCompose[3].split(";");
-                answers = new String[verbs.length * 2];
+                verbs = passeCompose[3].split(";"); answers = new String[verbs.length];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "nous avons " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "nous avons " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "nous sommes " + answers[i] + "s";
+                    for (String verb : verbs) {
+                        answers[pos++] = "nous sommes " + verb + "s";
                     }
                 }
                 break;
             case 12:
-                verbs = passeCompose[4].split(";");
-                answers = new String[verbs.length * 2];
+                verbs = passeCompose[4].split(";"); answers = new String[verbs.length];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "vous avez " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "vous avez " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "vous êtes " + answers[i] + "s";
+                    for (String verb : verbs) {
+                        answers[pos++] = "vous êtes " + verb + "s";
                     }
                 }
                 break;
@@ -293,27 +284,25 @@ public class VerbFrench extends Verb implements Serializable {
                 answers = new String[verbs.length * 2];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "ils ont " + answers[i];
-                        answers[pos++] = "elles ont " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "ils ont " + verb; answers[pos++] = "elles ont " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "ils sont " + answers[i] + "s";
-                        answers[pos++] = "elles sont " + answers[i] + "es";
+                    for (String verb : verbs) {
+                        answers[pos++] = "ils sont " + verb + "s"; answers[pos++] = "elles sont " + verb + "es";
                     }
                 }
                 break;
             case 14:
                 answers = imparfait[0].split(";");
                 for (int i = 0; i < answers.length; i++) {
-                    answers[i] = "je" + answers[i];
+                    answers[i] = "je " + answers[i];
                 }
                 break;
             case 15:
                 answers = imparfait[1].split(";");
                 for (int i = 0; i < answers.length; i++) {
-                    answers[i] = "tu" + answers[i];
+                    answers[i] = "tu " + answers[i];
                 }
                 break;
             case 16:
@@ -329,97 +318,84 @@ public class VerbFrench extends Verb implements Serializable {
             case 17:
                 answers = imparfait[3].split(";");
                 for (int i = 0; i < answers.length; i++) {
-                    answers[i] = "nous" + answers[i];
+                    answers[i] = "nous " + answers[i];
                 }
                 break;
             case 18:
                 answers = imparfait[4].split(";");
                 for (int i = 0; i < answers.length; i++) {
-                    answers[i] = "vous" + answers[i];
+                    answers[i] = "vous " + answers[i];
                 }
                 break;
             case 19:
-                verbs = imparfait[5].split(";");
-                answers = new String[verbs.length * 3];
+                verbs = imparfait[5].split(";"); answers = new String[verbs.length * 2];
                 pos = 0;
                 for (String verb : verbs) {
-                    answers[pos++] = "il " + verb;
-                    answers[pos++] = "elle " + verb;
+                    answers[pos++] = "ils " + verb; answers[pos++] = "elles " + verb;
                 }
                 break;
             case 20:
                 verbs = plusQueParfait[0].split(";");
-                answers = new String[verbs.length * 2];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "j'avais " + answers[i];
+                    answers = new String[verbs.length]; for (String verb : verbs) {
+                        answers[pos++] = "j'avais " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "j'étais " + answers[i];
-                        answers[pos++] = "j'étais " + answers[i] + "e";
+                    answers = new String[verbs.length * 2]; for (String verb : verbs) {
+                        answers[pos++] = "j'étais " + verb; answers[pos++] = "j'étais " + verb + "e";
                     }
                 }
                 break;
             case 21:
                 verbs = plusQueParfait[1].split(";");
-                answers = new String[verbs.length * 2];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "tu avais " + answers[i];
+                    answers = new String[verbs.length]; for (String verb : verbs) {
+                        answers[pos++] = "tu avais " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "tu étais " + answers[i];
-                        answers[pos++] = "tu étais " + answers[i] + "e";
+                    answers = new String[verbs.length * 2]; for (String verb : verbs) {
+                        answers[pos++] = "tu étais " + verb; answers[pos++] = "tu étais " + verb + "e";
                     }
                 }
                 break;
             case 22:
-                verbs = plusQueParfait[2].split(";");
-                answers = new String[verbs.length * 2];
+                verbs = plusQueParfait[2].split(";"); answers = new String[verbs.length * 3];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "il avait " + answers[i];
-                        answers[pos++] = "elle avait " + answers[i];
-                        answers[pos++] = "on avait " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "il avait " + verb; answers[pos++] = "elle avait " + verb; answers[pos++] = "on avait " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "il était " + answers[i];
-                        answers[pos++] = "elle était " + answers[i] + "e";
-                        answers[pos++] = "on était " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "il était " + verb; answers[pos++] = "elle était " + verb + "e"; answers[pos++] = "on était " + verb;
                     }
                 }
                 break;
             case 23:
                 verbs = plusQueParfait[3].split(";");
-                answers = new String[verbs.length * 2];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "nous avions " + answers[i];
+                    answers = new String[verbs.length]; for (String verb : verbs) {
+                        answers[pos++] = "nous avions " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "nous étions " + answers[i] + "s";
+                    answers = new String[verbs.length * 2]; for (String verb : verbs) {
+                        answers[pos++] = "nous étions " + verb + "s";
                     }
                 }
                 break;
             case 24:
-                verbs = plusQueParfait[4].split(";");
-                answers = new String[verbs.length * 2];
+                verbs = plusQueParfait[4].split(";"); answers = new String[verbs.length];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "vous aviez " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "vous aviez " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "vous étiez " + answers[i] + "s";
+                    for (String verb : verbs) {
+                        answers[pos++] = "vous étiez " + verb + "s";
                     }
                 }
                 break;
@@ -428,14 +404,12 @@ public class VerbFrench extends Verb implements Serializable {
                 answers = new String[verbs.length * 2];
                 pos = 0;
                 if (isAvoir) {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "ils avaient " + answers[i];
-                        answers[pos++] = "elles avaient " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "ils avaient " + verb; answers[pos++] = "elles avaient " + verb;
                     }
                 } else {
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "ils étaient " + answers[i] + "s";
-                        answers[pos++] = "elles étaient " + answers[i] + "es";
+                    for (String verb : verbs) {
+                        answers[pos++] = "ils étaient " + verb + "s"; answers[pos++] = "elles étaient " + verb + "es";
                     }
                 }
                 break;
@@ -634,6 +608,26 @@ public class VerbFrench extends Verb implements Serializable {
     @Override
     public String getInfinitive() {
         return infinitif;
+    }
+
+    @Override
+    public String getList() {
+        return list;
+    }
+
+    @Override
+    public void setList(String list) {
+        this.list = list;
+    }
+
+    @Override
+    public Locale getLocale() {
+        return Locale.FRANCE;
+    }
+
+    @Override
+    public int getMaxValue() {
+        return 53;
     }
 
 }

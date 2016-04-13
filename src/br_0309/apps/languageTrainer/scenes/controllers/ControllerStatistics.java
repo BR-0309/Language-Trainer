@@ -44,7 +44,9 @@ public class ControllerStatistics implements Initializable, IController {
         for (Statistics stat : allStatistics) {
             boolean add = true;
             for (Statistics s : tempList) {
-                if (s.listType == stat.listType && s.listName.equals(stat.listName) && Arrays.equals(s.langCodes, stat.langCodes)) add = false;
+                if (s.listType == stat.listType && s.listName.equals(stat.listName) && Arrays.equals(s.langCodes, stat.langCodes)) {
+                    add = false; break;
+                }
             }
             if (add) {
                 tempList.add(stat);
@@ -109,7 +111,7 @@ public class ControllerStatistics implements Initializable, IController {
         LanguageTrainer.showMenu();
     }
 
-    public void setupBarChart() {
+    private void setupBarChart() {
         HashMap<String, Integer> mapCorrect = new HashMap<>();
         HashMap<String, Integer> mapIncorrect = new HashMap<>();
         HashMap<String, Integer> mapCheated = new HashMap<>();
@@ -123,18 +125,16 @@ public class ControllerStatistics implements Initializable, IController {
                 name = stat.listName + " " + Character.toUpperCase(stat.langCodes[0].charAt(0)) + "/" + Character.toUpperCase(stat.langCodes[1].charAt(0));
             } else {
                 name = stat.listName + " " + Character.toUpperCase(stat.langCodes[0].charAt(0));
-            }
+            } int total = stat.correct + stat.incorrect + stat.cheated;
             if (mapCorrect.containsKey(stat.listName)) {
                 mapCorrect.put(name, mapCorrect.get(name) + stat.correct);
                 mapIncorrect.put(name, mapIncorrect.get(name) + stat.incorrect);
-                mapCheated.put(name, mapCheated.get(name) + stat.cheated);
-                mapTotal.put(name, mapTotal.get(name) + stat.total);
+                mapCheated.put(name, mapCheated.get(name) + stat.cheated); mapTotal.put(name, mapTotal.get(name) + total);
             } else {
                 // Add the statistics for the first time
                 mapCorrect.put(name, stat.correct);
                 mapIncorrect.put(name, stat.incorrect);
-                mapCheated.put(name, stat.cheated);
-                mapTotal.put(name, stat.total);
+                mapCheated.put(name, stat.cheated); mapTotal.put(name, total);
             }
         }
 
@@ -157,15 +157,15 @@ public class ControllerStatistics implements Initializable, IController {
         barChart.getData().add(seriesCheated);
     }
 
-    public void prepareCharts(Statistics stat) {
+    private void prepareCharts(Statistics stat) {
         // Never called but fixes NPE?!
         if (stat == null) {
             list.getSelectionModel().selectFirst();
             return;
         }
         ArrayList<Statistics> stats = allStatistics.stream().filter(s -> s.listType == stat.listType && s.listName.equals(stat.listName) &&
-                                                                         Arrays.equals(s.langCodes, stat.langCodes))
-                                                   .collect(Collectors.toCollection(ArrayList::new));
+                                                                         Arrays.equals(s.langCodes, stat.langCodes)).collect(
+                Collectors.toCollection(ArrayList::new));
         if (stats.isEmpty()) {
             return;
         }
@@ -190,10 +190,10 @@ public class ControllerStatistics implements Initializable, IController {
             }
             totalCorrect += s.correct;
             totalIncorrect += s.incorrect;
-            totalCheated += s.cheated;
-            seriesCorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.correct / s.total * 100));
-            seriesIncorrect.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.incorrect / s.total * 100));
-            seriesCheated.getData().add(new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.cheated / s.total * 100));
+            totalCheated += s.cheated; int total = s.correct + s.incorrect + s.cheated; seriesCorrect.getData().add(
+                    new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.correct / total * 100)); seriesIncorrect.getData().add(
+                    new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.incorrect / total * 100)); seriesCheated.getData().add(
+                    new XYChart.Data<>(num + ": " + formatter.format(s.date), (double) s.cheated / total * 100));
             num++;
         }
         lineChart.getData().add(seriesCorrect);
@@ -207,7 +207,6 @@ public class ControllerStatistics implements Initializable, IController {
 
     @Override
     public void onExit() {
-
     }
 
     @Override

@@ -3,6 +3,7 @@ package br_0309.apps.languageTrainer.verbs;
 import br_0309.apps.languageTrainer.util.StringUtil;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class VerbEnglish extends Verb implements Serializable {
 
@@ -22,9 +23,12 @@ public class VerbEnglish extends Verb implements Serializable {
     public String[] futurePerfect;
     public String[] futureContinuous;
     public String[] futurePerfectContinuous;
+    private transient String list;
 
     public VerbEnglish() {
-
+        presentSimple = new String[6]; presentContinuous = new String[6]; presentPerfect = new String[6]; presentPerfectContinuous = new String[6];
+        pastSimple = new String[6]; pastContinuous = new String[6]; pastPerfect = new String[6]; pastPerfectContinuous = new String[6]; future = new String[6];
+        futurePerfect = new String[6]; futureContinuous = new String[6]; futurePerfectContinuous = new String[6];
     }
 
     public static VerbEnglish conjugate(String infinitive) {
@@ -1577,6 +1581,26 @@ public class VerbEnglish extends Verb implements Serializable {
     @Override
     public String getInfinitive() {
         return infinitive;
+    }
+
+    @Override
+    public void setList(String list) {
+        this.list = list;
+    }
+
+    @Override
+    public Locale getLocale() {
+        return Locale.UK;
+    }
+
+    @Override
+    public int getMaxValue() {
+        return 74;
+    }
+
+    @Override
+    public String getList() {
+        return list;
     }
 
     private boolean equalsAny(String[] answers, String answer) {
