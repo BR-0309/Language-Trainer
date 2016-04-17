@@ -26,7 +26,6 @@ import java.util.ResourceBundle;
 
 // TODO: Make themes less terrible
 // FIXME: If window is maximised, keep it so
-// TODO: Where is random used?
 public class LanguageTrainer extends Application {
 
     public static final UniversalData universalData = new UniversalData();

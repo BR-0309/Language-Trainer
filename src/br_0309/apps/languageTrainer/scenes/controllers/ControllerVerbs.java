@@ -34,7 +34,7 @@ public class ControllerVerbs implements Initializable, IController {
     private final ArrayList<Verb> verbs = new ArrayList<>();
     private final ArrayList<String> wrong = new ArrayList<>();
     private final ArrayList<Statistics> statistics = new ArrayList<>();
-    private final Random random = new Random();
+    private final Random random = LanguageTrainer.random;
     public Label lblCorrect;
     public Label lblIncorrect;
     public Label lblProgress;
@@ -67,7 +67,6 @@ public class ControllerVerbs implements Initializable, IController {
         btnCheat.setPadding(Insets.EMPTY);
     }
 
-    // FIXME NOTE TO SELF CURRENTLY TESTING VERBS WITH FRENCH VERBS THAT APPEAR TO BE BEYOND BROKEN
     public void onNext() {
         String answer = txtAnswer.getText().trim().replace("  ", " "); Verb verb = verbs.get(0); if (verbs.get(0).isCorrect(q, answer)) {
             LanguageTrainer.playSoundCorrect(); if (! wrong.contains(verb.getQuestion(q))) {

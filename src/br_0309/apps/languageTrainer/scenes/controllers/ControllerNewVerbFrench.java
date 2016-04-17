@@ -139,6 +139,7 @@ public class ControllerNewVerbFrench extends ControllerNewVerb implements Initia
         // FIXME: Add impératif and conditionnel/futur simple
         txtInfinitif.textProperty().addListener((observable, oldValue, newValue) -> {
             for (Verb v : preEnteredVerbs) {
+                if (v == null) continue;
                 if (v.getInfinitive().equals(newValue)) {
                     Toolkit.getDefaultToolkit().beep();
                     lblWarning.setVisible(true);
