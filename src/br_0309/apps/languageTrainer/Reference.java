@@ -7,10 +7,10 @@ import java.util.Locale;
 @SuppressWarnings("HardcodedFileSeparator")
 public class Reference {
 
-    static final String FXML_MENU = "/br_0309/apps/languageTrainer/scenes/Menu.fxml";
-    static final String FXML_PROFILE_SELECT = "/br_0309/apps/languageTrainer/scenes/ProfileSelect.fxml";
+    public static final String FXML_MENU = "/br_0309/apps/languageTrainer/scenes/Menu.fxml";
+    public static final String FXML_PROFILE_SELECT = "/br_0309/apps/languageTrainer/scenes/ProfileSelect.fxml";
     public static final String FXML_PROFILE_NEW = "/br_0309/apps/languageTrainer/scenes/ProfileNew.fxml";
-    static final String FXML_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/Translate.fxml";
+    public static final  String FXML_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/Translate.fxml";
     public static final String FXML_SETTINGS = "/br_0309/apps/languageTrainer/scenes/Settings.fxml";
     public static final String FXML_CREATE_TRANSLATION = "/br_0309/apps/languageTrainer/scenes/CreateTranslationList.fxml";
     public static final String FXML_LANGUAGE_ADD = "/br_0309/apps/languageTrainer/scenes/LanguageAdd.fxml";
@@ -34,6 +34,7 @@ public class Reference {
     public static final String PROPERTY_SOUND_FINISHED = "finished";
     public static final String PROPERTY_PLAY_SOUNDS = "pSounds";
     public static final String PROPERTY_THEME = "theme";
+    public static final String PROPERTY_RECENTLY_USED_CHARACTERS = "charsRecentlyUsed";
 
     public static String DEFAULT_SAVE_DIR;
     public static String DEFAULT_EXERCISE_DIR;
@@ -59,4 +60,13 @@ public class Reference {
 
     public static final Locale SYSTEM_LOCALE = Locale.getDefault();
     public static final Locale[] VERB_LOCALES = {Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH};
+
+    public static final String URL_CREATIVE_COMMONS_ZERO = "https://creativecommons.org/publicdomain/zero/1.0/";
+    public static final String URL_CREATIVE_COMMONS_ATTRIBUTION = "https://creativecommons.org/licenses/by/3.0/";
+    public static final String URL_PUBLIC_DOMAIN = "https://en.wikipedia.org/wiki/Public_domain";
+    public static final String URL_GEMEINFREIHEIT = "https://de.wikipedia.org/wiki/Gemeinfreiheit";
+
+    public static final String CHARACTERS_LATIN = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+    public static final String CHARACTERS_LATIN_EXTENDED = "ÀàÂâÆæÄäÅåÇçÉéÈèÊêËëÎîÏïÔôŒœÖöòóÙùÛûÜüŸÿÑñ¿¡";
+
 }

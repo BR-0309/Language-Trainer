@@ -103,7 +103,7 @@ public class ControllerProfileSelect implements Initializable {
 
     public void onGo() {
         String name = list.getSelectionModel().getSelectedItem();
-        // TODO: Find out why go returns null
+        // XXX: Find out why go returns null
         Stage stage = (Stage) newProfile.getScene().getWindow();
         if (name != null && ! name.equals("")) {
             try {

@@ -10,11 +10,11 @@ import java.util.Properties;
 
 public class UserData implements Serializable {
 
-    public static final Properties DEFAULT_PROPERTIES = getDefaults();
+    private static final Properties DEFAULT_PROPERTIES = getDefaults();
     private static final long serialVersionUID = 2362898497407984692L;
     public ArrayList<Statistics> stats = new ArrayList<>();
-    public Properties properties;
     public File file;
+    private Properties properties;
 
     /**
      * Creates a UserData object with only the defaults
@@ -43,6 +43,7 @@ public class UserData implements Serializable {
         p.setProperty(Reference.PROPERTY_SOUND_FINISHED, Reference.SOUNDS_FINISHED[0]);
         p.setProperty(Reference.PROPERTY_PLAY_SOUNDS, "true");
         p.setProperty(Reference.PROPERTY_THEME, Reference.THEMES[0]);
+        p.setProperty(Reference.PROPERTY_RECENTLY_USED_CHARACTERS, "");
         return p;
     }
 
@@ -93,8 +94,8 @@ public class UserData implements Serializable {
                 properties = new Properties(getDefaults());
             }
             // For each, set property and value
-            defaults.entrySet().stream().filter(entry -> ! properties.containsKey(entry.getKey()))
-                    .forEach(entry -> properties.setProperty(entry.getKey().toString(), entry.getValue().toString()));
+            defaults.entrySet().stream().filter(entry -> ! properties.containsKey(entry.getKey())).forEach(
+                    entry -> properties.setProperty(entry.getKey().toString(), entry.getValue().toString()));
         }
     }
 
@@ -192,5 +193,15 @@ public class UserData implements Serializable {
     public void setSoundFinished(String sound) {
         properties.setProperty(Reference.PROPERTY_SOUND_FINISHED, sound);
     }
+
+    /**
+     * Sets the recently used characters. <b>Does not save.</b>
+     */
+    public void setRecentlyUsedCharacters(String chars) { properties.setProperty(Reference.PROPERTY_RECENTLY_USED_CHARACTERS, chars); }
+
+    /**
+     * @return recently used characters
+     */
+    public String getRecentlyUsedCharacters() { return properties.getProperty(Reference.PROPERTY_RECENTLY_USED_CHARACTERS); }
 
 }

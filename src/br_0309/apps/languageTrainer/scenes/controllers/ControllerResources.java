@@ -136,10 +136,14 @@ public class ControllerResources implements Initializable {
                                 if (Desktop.isDesktopSupported()) {
                                     try {
                                         Desktop.getDesktop().browse(new URI(item.link));
-                                    } catch (IOException | URISyntaxException e) {
+                                    } catch (IOException e) {
                                         e.printStackTrace();
-                                        // FIXME: Add message & expand
-                                        FXUtil.showExceptionDialog("", "", e);
+                                        FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"),
+                                                                   BUNDLE.getString("error.connection").replace("{0}", item.link), e);
+                                    } catch (URISyntaxException e) {
+                                        e.printStackTrace();
+                                        FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"),
+                                                                   BUNDLE.getString("error.invalidLink").replace("{0}", item.link), e);
                                     }
                                 }
                             });
@@ -168,8 +172,9 @@ public class ControllerResources implements Initializable {
 
         } catch (IOException e) {
             e.printStackTrace();
-            // FIXME: Add message
-            FXUtil.showExceptionDialog("", "", e);
+            FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"),
+                                       BUNDLE.getString("error.connection").replace("{0}", Reference.COPYRIGHTS_BASE_NAME + Locale.getDefault().getLanguage() +
+                                                                                           Reference.COPYRIGHTS_END), e);
         }
         return FXCollections.observableArrayList(list);
     }
@@ -177,11 +182,15 @@ public class ControllerResources implements Initializable {
     public void onCC0() {
         if (Desktop.isDesktopSupported()) {
             try {
-                Desktop.getDesktop().browse(new URI("https://creativecommons.org/publicdomain/zero/1.0/"));
-            } catch (IOException | URISyntaxException e) {
+                Desktop.getDesktop().browse(new URI(Reference.URL_CREATIVE_COMMONS_ZERO));
+            } catch (IOException e) {
                 e.printStackTrace();
-                // FIXME: Add message & expand
-                FXUtil.showExceptionDialog("", "", e);
+                FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"),
+                                           BUNDLE.getString("error.connection").replace("{0}", Reference.URL_CREATIVE_COMMONS_ZERO), e);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+                FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"),
+                                           BUNDLE.getString("error.invalidLink").replace("{0}", Reference.URL_CREATIVE_COMMONS_ZERO), e);
             }
         }
     }
@@ -189,11 +198,15 @@ public class ControllerResources implements Initializable {
     public void onCCA() {
         if (Desktop.isDesktopSupported()) {
             try {
-                Desktop.getDesktop().browse(new URI("https://creativecommons.org/licenses/by/3.0/"));
-            } catch (IOException | URISyntaxException e) {
+                Desktop.getDesktop().browse(new URI(Reference.URL_CREATIVE_COMMONS_ATTRIBUTION));
+            } catch (IOException e) {
                 e.printStackTrace();
-                // FIXME: Add message & expand
-                FXUtil.showExceptionDialog("", "", e);
+                FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"),
+                                           BUNDLE.getString("error.connection").replace("{0}", Reference.URL_CREATIVE_COMMONS_ATTRIBUTION), e);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+                FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"),
+                                           BUNDLE.getString("error.invalidLink").replace("{0}", Reference.URL_CREATIVE_COMMONS_ATTRIBUTION), e);
             }
         }
     }
@@ -201,17 +214,20 @@ public class ControllerResources implements Initializable {
     public void onPublicDomain() {
         String URI;
         if (Locale.getDefault().getLanguage().equals("de")) {
-            URI = "https://de.wikipedia.org/wiki/Gemeinfreiheit";
+            URI = Reference.URL_GEMEINFREIHEIT;
         } else {
-            URI = "https://en.wikipedia.org/wiki/Public_domain";
+            URI = Reference.URL_PUBLIC_DOMAIN;
         }
         if (Desktop.isDesktopSupported()) {
             try {
                 Desktop.getDesktop().browse(new URI(URI));
-            } catch (IOException | URISyntaxException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
-                // FIXME: Add message & expand
-                FXUtil.showExceptionDialog("", "", e);
+                FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"),
+                                           BUNDLE.getString("error.connection").replace("{0}", URI), e);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+                FXUtil.showExceptionDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("error.invalidLink").replace("{0}", URI), e);
             }
         }
     }

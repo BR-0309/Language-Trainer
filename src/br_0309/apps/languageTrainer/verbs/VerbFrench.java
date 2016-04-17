@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Locale;
 
 // FIXME: Add conjugation
-// TODO: Remember that certain verbs don't conjugate completely
+// XXX: Remember that certain verbs don't conjugate completely
 public class VerbFrench extends Verb implements Serializable {
 
     public String infinitif;

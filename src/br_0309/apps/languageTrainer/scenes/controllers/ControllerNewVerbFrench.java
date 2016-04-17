@@ -136,7 +136,7 @@ public class ControllerNewVerbFrench extends ControllerNewVerb implements Initia
                                          txtFuturSimpleIls, txtFuturComposeJe, txtFuturComposeTu, txtFuturComposeIl, txtFuturComposeNous, txtFuturComposeVous,
                                          txtFuturComposeIls, txtConditionnelPresentJe, txtConditionnelPresentTu, txtConditionnelPresentIl, txtConditionnelPresentNous,
                                          txtConditionnelPresentVous, txtConditionnelPresentIls, txtImperatifPresentTu, txtImperatifPresentNous, txtImperatifPresentVous};
-        // FIXME: Add impératif and conditionnel/futur simple
+        // XXX: Add impératif and conditionnel/futur simple
         txtInfinitif.textProperty().addListener((observable, oldValue, newValue) -> {
             for (Verb v : preEnteredVerbs) {
                 if (v == null) continue;
@@ -147,7 +147,7 @@ public class ControllerNewVerbFrench extends ControllerNewVerb implements Initia
                     lblWarning.setVisible(false);
                 }
             }
-            // TODO: Add futur simple/conditionnel présent
+            // XXX: Add futur simple/conditionnel présent
             for(TextField txt : txtsFuturCompose) {
                 txt.setText(newValue);
             }

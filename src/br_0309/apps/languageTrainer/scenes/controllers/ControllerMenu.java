@@ -156,7 +156,7 @@ public class ControllerMenu implements Initializable, IController {
 
     public void onStartTraining() {
         // Copies selected items
-        // TODO: Find out how this actually works
+        // XXX: Find out how this actually works
         ArrayList<ExerciseData> selected = data.stream().filter(ExerciseData::isSelected).collect(Collectors.toCollection(ArrayList::new));
         if (selected.isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
@@ -214,8 +214,7 @@ public class ControllerMenu implements Initializable, IController {
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
-            //TODO: Add title and header
-            FXUtil.showExceptionDialog("", "", e);
+            FXUtil.showExceptionDialog(BUNDLE.getString("error.load").replace("{0}", Reference.FXML_SETTINGS), e.getLocalizedMessage(), e);
         }
     }
 
@@ -261,8 +260,7 @@ public class ControllerMenu implements Initializable, IController {
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
-            //TODO: Add title and header
-            FXUtil.showExceptionDialog("", "", e);
+            FXUtil.showExceptionDialog(BUNDLE.getString("error.load").replace("{0}", Reference.FXML_ABOUT), e.getLocalizedMessage(), e);
         }
     }
 

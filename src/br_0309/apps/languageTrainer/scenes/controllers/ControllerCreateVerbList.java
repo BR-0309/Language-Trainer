@@ -30,13 +30,13 @@ import java.util.ResourceBundle;
 
 public class ControllerCreateVerbList implements Initializable, IController {
 
+    private final ArrayList<Verb> unfilteredList = new ArrayList<>();
     public ListView<Verb> list;
     public TextField txtSearch;
     public TextField txtTitle;
     public Label lblLang;
     public int language;
     private ResourceBundle BUNDLE;
-    private final ArrayList<Verb> unfilteredList = new ArrayList<>();
     private FilteredList<Verb> filteredList;
     private boolean alreadySaved = false;
 
@@ -94,7 +94,7 @@ public class ControllerCreateVerbList implements Initializable, IController {
 
     public void addVerb() {
         String FXML;
-        switch (language){
+        switch (language) {
             case 0:
                 FXML = Reference.FXML_VERB_ENGLISH;
                 break;
@@ -126,8 +126,8 @@ public class ControllerCreateVerbList implements Initializable, IController {
             list.setItems(filteredList);
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: Add title
-            FXUtil.showExceptionDialog("", "", e);
+            FXUtil.showExceptionDialog(BUNDLE.getString("error.load").replace("{0}", FXML), e.getLocalizedMessage(), e);
+
         }
     }
 
@@ -138,25 +138,44 @@ public class ControllerCreateVerbList implements Initializable, IController {
     }
 
     public void open() {
-        // TODO add check for different verb versions
-        FileChooser chooser = new FileChooser(); chooser.setInitialDirectory(new File(Reference.DEFAULT_EXERCISE_DIR)); chooser.getExtensionFilters().add(
-                (new FileChooser.ExtensionFilter(BUNDLE.getString("generic.vdt"), "*.vdt"))); File file = chooser.showOpenDialog(LanguageTrainer.window);
+        // XXX add check for different verb versions
+        FileChooser chooser = new FileChooser();
+        chooser.setInitialDirectory(new File(Reference.DEFAULT_EXERCISE_DIR));
+        chooser.getExtensionFilters().add((new FileChooser.ExtensionFilter(BUNDLE.getString("generic.vdt"), "*.vdt")));
+        File file = chooser.showOpenDialog(LanguageTrainer.window);
         if (file == null || ! file.exists() || file.isDirectory()) {
             return;
-        } unfilteredList.clear(); filteredList = new FilteredList<>(FXCollections.emptyObservableList());
+        }
+        unfilteredList.clear();
+        filteredList = new FilteredList<>(FXCollections.emptyObservableList());
 
-        ObjectInputStream in = null; try {
-            in = new ObjectInputStream(new FileInputStream(file)); String string = in.readUTF(); if (string == null || string.isEmpty()) {
-                Toolkit.getDefaultToolkit().beep(); FXUtil.showErrorDialog("", ""); return;
-            } int language; try {
-                language = Integer.parseInt(string);
+        ObjectInputStream in = null;
+        try {
+            in = new ObjectInputStream(new FileInputStream(file));
+            String lang = in.readUTF();
+            if (lang == null || lang.isEmpty()) {
+                Toolkit.getDefaultToolkit().beep();
+                FXUtil.showErrorDialog("", "");
+                return;
+            }
+            try {
+                language = Integer.parseInt(lang);
             } catch (NumberFormatException e) {
-                Toolkit.getDefaultToolkit().beep(); FXUtil.showErrorDialog("Invalid file format", ""); return;
-            } Object obj = in.readObject(); if (obj instanceof ArrayList) {
-                @SuppressWarnings("unchecked") ArrayList<Verb> l = (ArrayList<Verb>) obj; unfilteredList.clear(); unfilteredList.addAll(l);
-                filteredList = new FilteredList<>(FXCollections.observableArrayList(unfilteredList)); list.setItems(filteredList);
+                Toolkit.getDefaultToolkit().beep();
+                FXUtil.showErrorDialog("Invalid file format", "");
+                return;
+            }
+            Object obj = in.readObject();
+            if (obj instanceof ArrayList) {
+                @SuppressWarnings("unchecked") ArrayList<Verb> l = (ArrayList<Verb>) obj;
+                unfilteredList.clear();
+                unfilteredList.addAll(l);
+                filteredList = new FilteredList<>(FXCollections.observableArrayList(unfilteredList));
+                list.setItems(filteredList);
             } else {
-                Toolkit.getDefaultToolkit().beep(); FXUtil.showErrorDialog("Invalid file format", ""); return;
+                Toolkit.getDefaultToolkit().beep();
+                FXUtil.showErrorDialog("Invalid file format", "");
+                return;
             }
 
         } catch (ClassNotFoundException | IOException e) {
@@ -167,15 +186,17 @@ public class ControllerCreateVerbList implements Initializable, IController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } setLanguage(language); txtTitle.setText(file.getName().replaceAll("_", " ").replace(".vdt", ""));
+        }
+        setLanguage(language);
+        txtTitle.setText(file.getName().replaceAll("_", " ").replace(".vdt", ""));
     }
 
     public void save() {
-        if(list.getItems().isEmpty()){
+        if (list.getItems().isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
             list.requestFocus();
             return;
-        }else if(txtTitle.getText().isEmpty()){
+        } else if (txtTitle.getText().isEmpty()) {
             Toolkit.getDefaultToolkit().beep();
             txtTitle.requestFocus();
             return;
@@ -185,38 +206,37 @@ public class ControllerCreateVerbList implements Initializable, IController {
         try {
             //noinspection ResultOfMethodCallIgnored
             file.createNewFile();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-            // TODO Specify
             FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
         }
         ObjectOutputStream out = null;
         try {
             out = new ObjectOutputStream(new FileOutputStream(file));
-            out.writeUTF(Integer.toString(language)); out.writeObject(unfilteredList);
-        }catch(IOException e) {
+            out.writeUTF(Integer.toString(language));
+            out.writeObject(unfilteredList);
+        } catch (IOException e) {
             e.printStackTrace();
-            // TODO Specify
             FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
-        } finally{
+        } finally {
             try {
                 out.flush();
                 out.close();
-            }catch(IOException | NullPointerException e){
+            } catch (IOException | NullPointerException e) {
                 e.printStackTrace();
-                // TODO Specify
                 FXUtil.showErrorDialog(BUNDLE.getString("generic.error"), BUNDLE.getString("createList.saveFailed"), e.getLocalizedMessage());
             }
         }
     }
 
     public void edit() {
-        int index = -143;
-        Verb verb = list.getSelectionModel().getSelectedItem(); if (list.getSelectionModel().isEmpty()) {
+        int index = - 143;
+        Verb verb = list.getSelectionModel().getSelectedItem();
+        if (list.getSelectionModel().isEmpty()) {
             return;
         }
-        for(int i = 0; i < unfilteredList.size(); i++){
-            if(unfilteredList.get(i).getInfinitive().trim().equals(verb.getInfinitive().trim())){
+        for (int i = 0; i < unfilteredList.size(); i++) {
+            if (unfilteredList.get(i).getInfinitive().trim().equals(verb.getInfinitive().trim())) {
                 index = i;
                 break;
             }
@@ -224,7 +244,7 @@ public class ControllerCreateVerbList implements Initializable, IController {
         List<Verb> list2 = unfilteredList;
         list2.remove(verb);
         String FXML;
-        switch (language){
+        switch (language) {
             case 0:
                 FXML = Reference.FXML_VERB_ENGLISH;
                 break;
@@ -257,8 +277,8 @@ public class ControllerCreateVerbList implements Initializable, IController {
             list.setItems(filteredList);
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: Add title
-            FXUtil.showExceptionDialog("", "", e);
+            FXUtil.showExceptionDialog(BUNDLE.getString("error.load").replace("{0}", FXML), e.getLocalizedMessage(), e);
+
         }
     }
 

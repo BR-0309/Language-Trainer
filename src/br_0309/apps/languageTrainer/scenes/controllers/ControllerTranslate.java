@@ -204,10 +204,10 @@ public class ControllerTranslate implements Initializable, IController {
         }
         if (words.size() == 0) {
             if (rest.size() > 0) {
-                // TODO: Show verbs
+                LanguageTrainer.showVerbs(rest);
                 return;
             }
-            // TODO: Add dialog
+            // XXX: Add dialog
             LanguageTrainer.showMenu();
         }
         Collections.shuffle(words, LanguageTrainer.random);

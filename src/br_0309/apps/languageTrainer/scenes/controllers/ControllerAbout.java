@@ -25,8 +25,10 @@ public class ControllerAbout implements Initializable, IController {
     public TextArea txtArea;
     public Label lblTitle;
 
+    private ResourceBundle BUNDLE;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        BUNDLE = resources;
         // Nodes have not been added to the scene yet, so this must be run after initialisation
         Platform.runLater(() -> {
             Stage stage = (Stage) txtArea.getScene().getWindow();
@@ -51,8 +53,7 @@ public class ControllerAbout implements Initializable, IController {
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: Add message
-            FXUtil.showExceptionDialog("", "", e);
+            FXUtil.showExceptionDialog(BUNDLE.getString("error.load").replace("{0}", Reference.FXML_RESOURCES), e.getLocalizedMessage(), e);
         }
     }
 
