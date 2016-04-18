@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br_0309.apps.languageTrainer.scenes.controllers.ControllerCharacters">
+   <top>
+      <ComboBox fx:id="comboBox" prefWidth="150.0" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <FlowPane hgap="5.0" prefWrapLength="200.0" vgap="5.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

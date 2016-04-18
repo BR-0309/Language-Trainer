@@ -636,12 +636,12 @@ public class VerbGerman extends Verb implements Serializable {
                     person = "du habest ";
                 } else {
                     person = "du seist ";
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "du seiest " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "du seiest " + verb;
                     }
                 }
-                for (int i = 0; i < answers.length; i++) {
-                    answers[pos++] = person + answers[i];
+                for (String verb2 : verbs) {
+                    answers[pos++] = person + verb2;
                 }
                 break;
             case 46:
@@ -861,12 +861,12 @@ public class VerbGerman extends Verb implements Serializable {
                     person = "du hättest ";
                 } else {
                     person = "du wärst ";
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "du wärest " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "du wärest " + verb;
                     }
                 }
-                for (int i = 0; i < answers.length; i++) {
-                    answers[pos++] = person + answers[i];
+                for (String verb2 : verbs) {
+                    answers[pos++] = person + verb2;
                 }
                 break;
             case 70:
@@ -903,12 +903,12 @@ public class VerbGerman extends Verb implements Serializable {
                     person = "ihr hättet ";
                 } else {
                     person = "ihr wärt ";
-                    for (int i = 0; i < answers.length; i++) {
-                        answers[pos++] = "du wäret " + answers[i];
+                    for (String verb : verbs) {
+                        answers[pos++] = "du wäret " + verb;
                     }
                 }
-                for (int i = 0; i < answers.length; i++) {
-                    answers[pos++] = person + answers[i];
+                for (String verb1 : verbs) {
+                    answers[pos++] = person + verb1;
                 }
                 break;
             case 73:
