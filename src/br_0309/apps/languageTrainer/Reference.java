@@ -41,7 +41,7 @@ public class Reference {
     public static final String DEFAULT_PROFILE_DIR = SystemUtil.getUserHome();
 
     static final String LOGO = "/icons/Logo.png";
-    public static final String VERSION = "0.6.5";
+    public static final String VERSION = "1.0";
 
     public static final String[] SOUNDS_CORRECT = {"/sounds/correct/correct.wav", "/sounds/correct/correct2.wav", "/sounds/correct/game-sound-correct-v2.wav",
                                                    "/sounds/correct/jingle-4.wav", "/sounds/correct/powerup-success.wav"};

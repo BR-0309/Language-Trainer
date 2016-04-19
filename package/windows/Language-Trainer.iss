@@ -3,8 +3,8 @@
 [Setup]
 AppId={{Language_Trainer_id}}
 AppName=Language Trainer
-AppVersion=0.6.5
-AppVerName=Language Trainer 0.6.5
+AppVersion=1.0
+AppVerName=Language Trainer 1.0
 AppPublisher=Benjamin Raison
 AppCopyright=Copyright (c) 2016 Benjamin Raison
 DefaultDirName={localappdata}\Language-Trainer
@@ -18,8 +18,8 @@ DefaultGroupName=Benjamin Raison
 ;Optional License
 ;LicenseFile=
 ;WinXP or above
-MinVersion=0,5.1 
-OutputBaseFilename=Language-Trainer-0.6.5
+MinVersion=0,5.1
+OutputBaseFilename=Language-Trainer-1.0
 Compression=lzma2/ultra64
 SolidCompression=no
 PrivilegesRequired=lowest
@@ -27,7 +27,7 @@ SetupIconFile=Language-Trainer\Language-Trainer.ico
 UninstallDisplayIcon={app}\Language-Trainer.ico
 UninstallDisplayName=Language-Trainer
 WizardImageStretch=No
-WizardSmallImageFile=Language-Trainer-setup-icon.bmp   
+WizardSmallImageFile=Language-Trainer-setup-icon.bmp
 
 
 [Languages]
@@ -67,6 +67,6 @@ begin
 // Possible future improvements:
 //   if version less or same => just launch app
 //   if upgrade => check if same app is running and wait for it to exit
-//   Add pack200/unpack200 support? 
+//   Add pack200/unpack200 support?
   Result := True;
-end;  
+end;
