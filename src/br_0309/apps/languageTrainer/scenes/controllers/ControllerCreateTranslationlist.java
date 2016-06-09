@@ -36,6 +36,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 // FIXME: Search doesn't really work
+// FIXME: Ignores last row if not commited
 public class ControllerCreateTranslationList implements Initializable, IController {
 
     private final ArrayList<Locale> locales = new ArrayList<>();

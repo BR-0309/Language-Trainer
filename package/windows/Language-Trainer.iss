@@ -3,8 +3,8 @@
 [Setup]
 AppId={{Language_Trainer_id}}
 AppName=Language Trainer
-AppVersion=1.0
-AppVerName=Language Trainer 1.0
+AppVersion=1.1
+AppVerName=Language Trainer 1.1
 AppPublisher=Benjamin Raison
 AppCopyright=Copyright (c) 2016 Benjamin Raison
 DefaultDirName={localappdata}\Language-Trainer
@@ -19,7 +19,7 @@ DefaultGroupName=Benjamin Raison
 ;LicenseFile=
 ;WinXP or above
 MinVersion=0,5.1
-OutputBaseFilename=Language-Trainer-1.0
+OutputBaseFilename=Language-Trainer-1.1
 Compression=lzma2/ultra64
 SolidCompression=no
 PrivilegesRequired=lowest
